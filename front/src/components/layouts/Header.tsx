@@ -15,6 +15,15 @@ import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import { StayPrimaryLandscape } from '@material-ui/icons';
+import Button from '@material-ui/core/Button';
+
+
+const sections = [
+	{ title: '釣果一覧', url: '/posts' },
+  { title: '釣り人一覧', url: '/users' },
+  { title: '釣果を投稿', url: '/posts_new' },
+	{ title: 'ランキング', url: '/ranking' },
+];
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -35,7 +44,11 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     width: 500,
   },
-
+  toolbarSecondary: {
+    justifyContent: 'space-around',
+    overflowX: 'auto',
+    backgroundColor: theme.palette.background.paper,
+  },
   exitIcon: {
     color: 'white'
   },
@@ -110,10 +123,20 @@ return (
           <ExitToAppIcon/>
         </IconButton>
     </Toolbar>
+    <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      {sections.map((section) => (
+        <Button
+          key={section.title}
+          href={section.url}
+          className={classes.toolbarLink}
+          >
+          {section.title}
+        </Button>
+      ))}
+    </Toolbar>
   </React.Fragment>
   );
 }
-
 Header.propTypes = {
   sections: PropTypes.array,
   title: PropTypes.string,

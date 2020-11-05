@@ -11,7 +11,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import UserCard from "../../components/users/UserCard"
+import PostForm from "../../components/posts/PostForm"
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,31 +21,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PostsShow = (props: any) => {
+const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/login");
-  }, [currentUser]);
-
   return (
-    <div>
+    <Fragment>
       <Template>
         <Container maxWidth="lg">
-          <Grid container style={{ marginTop: "1em" }}>
-            <Grid item md={1} style={{ marginTop: "1em" }}>
-              <PostButtons/>
-            </Grid>
-            <Grid item md={8} style={{ marginTop: "1em" }}>メイン</Grid>
-            <Grid item md={3} style={{ marginTop: "1em" }}>
-              <UserCard/>
-            </Grid>
-          </Grid>
+          <PostForm />
         </Container>
       </Template>
-    </div>
+    </Fragment>
   );
 };
-export default PostsShow;
+export default PostsNew;
