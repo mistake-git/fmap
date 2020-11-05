@@ -75,18 +75,8 @@ return (
             noWrap
             className={classes.toolbarTitle}
           >
-          <Link to="/top" className={classes.topLink}> {title}</Link>
+          <Link to="/" className={classes.topLink}> {title}</Link>
         </Typography>
-        <Link to="/mypage">
-          <IconButton>
-            <AccountCircleIcon/>
-          </IconButton>
-        </Link>
-        <Link to="/posts/new">
-          <IconButton>
-            <DashboardIcon/>
-          </IconButton>
-        </Link>
         <IconButton aria-describedby={id} onClick={handleClick}>
           <Badge badgeContent={4} color="secondary">
             <NotificationsIcon/>
