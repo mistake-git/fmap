@@ -14,21 +14,19 @@ import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
+import { StayPrimaryLandscape } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+    backgroundColor: '#3f51b5;',
   },
   toolbarTitle: {
     flex: 1,
   },
   topLink: {
     textDecoration: 'none',
-  },
-  toolbarSecondary: {
-    justifyContent: 'space-around',
-    overflowX: 'auto',
-    backgroundColor: theme.palette.background.paper,
+    color: 'white'
   },
   toolbarLink: {
     padding: theme.spacing(1),
@@ -36,8 +34,12 @@ const useStyles = makeStyles((theme) => ({
   },
   typography: {
     width: 500,
-    background: "white",
   },
+
+  exitIcon: {
+    color: 'white'
+  },
+
   small: {
     width: theme.spacing(3.5),
     height: theme.spacing(3.5),
@@ -72,16 +74,15 @@ export default function Header(props: any) {
 return (
   <React.Fragment>
     <Toolbar className={classes.toolbar}>
-          <Typography
-            component="h3"
-            variant="h5"
-            color="inherit"
-            align="left"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-          <Link to="/" className={classes.topLink}> {title}</Link>
-        </Typography>
+      <Typography
+        component="h3"
+        variant="h5"
+        align="left"
+        noWrap
+        className={classes.toolbarTitle}
+      >
+        <Link to="/" className={classes.topLink}> {title}</Link>
+      </Typography>
       <Popover
         className={classes.popver}
         id={id}
@@ -105,7 +106,7 @@ return (
         </div>
         <Typography align="center">お知らせはありません</Typography>
       </Popover>
-        <IconButton>
+        <IconButton className={classes.exitIcon}>
           <ExitToAppIcon/>
         </IconButton>
     </Toolbar>
