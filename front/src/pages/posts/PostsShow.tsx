@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-
+import UserCard from "../../components/users/UserCard"
 const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(1.5),
@@ -32,11 +32,13 @@ const PostsShow = (props: any) => {
       <Template>
         <Container maxWidth="lg">
           <Grid container style={{ marginTop: "1em" }}>
-            <Grid item md={2} style={{ marginTop: "1em" }}>
+            <Grid item md={1} style={{ marginTop: "1em" }}>
               <PostButtons/>
             </Grid>
             <Grid item md={8} style={{ marginTop: "1em" }}>メイン</Grid>
-            <Grid item md={2} style={{ marginTop: "1em" }}>ユーザーーカード</Grid>
+            <Grid item md={3} style={{ marginTop: "1em" }}>
+              <UserCard/>
+            </Grid>
           </Grid>
         </Container>
       </Template>
