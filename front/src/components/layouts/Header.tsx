@@ -13,6 +13,7 @@ import Badge from '@material-ui/core/Badge';
 import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     width: 500,
     background: "white",
+  },
+  small: {
+    width: theme.spacing(3.5),
+    height: theme.spacing(3.5),
   },
   sticky :{
     position: 'sticky',
@@ -68,7 +73,7 @@ return (
   <React.Fragment>
     <Toolbar className={classes.toolbar}>
           <Typography
-            component="h2"
+            component="h3"
             variant="h5"
             color="inherit"
             align="left"
@@ -77,11 +82,6 @@ return (
           >
           <Link to="/" className={classes.topLink}> {title}</Link>
         </Typography>
-        <IconButton aria-describedby={id} onClick={handleClick}>
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon/>
-          </Badge>
-        </IconButton>
       <Popover
         className={classes.popver}
         id={id}

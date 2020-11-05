@@ -28,7 +28,6 @@ const Home = (props: any) => {
                   whiteSpace: "pre"
                 }}
               >
-                {currentUser && JSON.stringify(currentUser, null, 4)}
                 {currentUser && currentUser.email}さんでログイン中
               </Typography>
               <Button

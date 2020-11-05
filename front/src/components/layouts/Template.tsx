@@ -15,37 +15,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const sections = [
-	{ title: 'トップ', url: '/top' },
-	{ title: '会社を知る', url: '/company' },
-	{ title: '人を知る', url: '/member' },
-	{ title: '業務を知る', url: '/work' },
-	{ title: 'ランキング', url: '/ranking' },
-];
-
-const mainFeaturedPost = {
-	title: 'Title of a longer featured blog post',
-	description:
-		"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-	image: 'https://source.unsplash.com/random',
-	imgText: 'main image description',
-	linkText: 'Continue reading…',
-};
-
-
-const sidebar = {
-	archives: [
-		{ title: 'March 2020', url: '#' },
-	],
-};
-
 export default function Template(props: any){
 	const classes = useStyles();
 
 	return (
 		<React.Fragment>
 			<CssBaseline />
-			<Header title="Fishing Map" sections={sections} />
+			<Header title="Fishing Map" />
         <Container maxWidth="xl">
           {props.children}
         </Container>
