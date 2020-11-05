@@ -39,7 +39,7 @@ const sidebar = {
 	],
 };
 
-export default function Home(children: any) {
+export default function Template(props: any){
 	const classes = useStyles();
 
 	return (
@@ -47,7 +47,7 @@ export default function Home(children: any) {
 			<CssBaseline />
 			<Header title="Fishing Map" sections={sections} />
         <Container maxWidth="xl">
-          {children}
+          {props.children}
         </Container>
 			<Footer title="Fishing Map" />
 		</React.Fragment>
