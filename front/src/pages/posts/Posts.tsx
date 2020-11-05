@@ -5,6 +5,7 @@ import auth from "../../firebase";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -26,7 +27,11 @@ const Posts = (props: any) => {
       <Template>
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "1em" }}>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
+            <Grid item md={4} style={{ marginTop: "1em" }}>
+              <Link to="/posts/1" >
+                <PostCard/>
+              </Link>
+            </Grid>
             <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
             <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
             <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
