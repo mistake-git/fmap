@@ -28,7 +28,7 @@ const PostsNew = (props: any) => {
   return (
     <Fragment>
       <Template>
-        <Container maxWidth="lg">
+        <Container maxWidth="sm">
           <PostForm />
         </Container>
       </Template>
