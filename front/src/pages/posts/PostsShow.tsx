@@ -13,6 +13,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
 import UserCard from "../../components/users/UserCard"
 import axios from 'axios'
+import Demo from "../../components/posts/Chart";
 
 const useStyles = makeStyles((theme) => ({
   control: {

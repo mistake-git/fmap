@@ -6,14 +6,14 @@
 /api/!/tmp/.keep
 
 # Ignore uploaded files in development
-/storage/*
-!/storage/.keep
+/front/storage/*
+/front/!/storage/.keep
 
-/node_modules
-/yarn-error.log
+/front/node_modules
+/front/yarn-error.log
 
-/public/assets
-.byebug_history
+/front/public/assets
+/front/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
