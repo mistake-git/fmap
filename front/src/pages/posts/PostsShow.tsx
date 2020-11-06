@@ -13,6 +13,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
 import UserCard from "../../components/users/UserCard"
 import axios from 'axios'
+import Chart from "../../components/posts/Chart"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +59,7 @@ const PostsShow = (props: any) => {
             </Grid>
             <Grid item md={8} style={{ marginTop: "1em" }}>
               {post.name}
+              <Chart/>
             </Grid>
             <Grid item md={3} style={{ marginTop: "1em" }}>
               <UserCard/>
