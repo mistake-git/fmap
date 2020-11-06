@@ -7,8 +7,6 @@ import axios from 'axios'
 import PostModel from "../../models/PostModel";
 
 
-
-
 interface State {
   posts: PostModel[]
   post: PostModel
@@ -41,7 +39,7 @@ const Posts = (props: any) => {
       <Template>
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "1em" }}>
-            <Grid item md={4} style={{ marginTop: "1em" }}>
+            <Grid item xs={12} sm={8} md={4} style={{ marginTop: "1em" }}>
               {posts.map((post) => {
                 return(
                   <PostCard post={ post } key={post.id}/>

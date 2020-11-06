@@ -36,11 +36,11 @@ export default function PostCard(props: any) {
 		<Card className={classes.root}>
 			<CardActionArea>
 				<Link to={`/posts/${props.post.id}`}>
-				<CardMedia
-				className={classes.media}
-				image="/static/images/cards/contemplative-reptile.jpg"
-				title="Contemplative Reptile"
-				/>
+					<CardMedia
+					className={classes.media}
+					image="/static/images/cards/contemplative-reptile.jpg"
+					title="Contemplative Reptile"
+					/>
 				</Link>
 				<CardContent>
 				<Typography gutterBottom  component="h2">

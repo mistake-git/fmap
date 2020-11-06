@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
 import UserCard from "../../components/users/UserCard"
-
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -21,13 +21,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsShow = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
+  
   const classes = useStyles();
+  const [post, setPost] = React.useState<any>('')
 
   useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/login");
-  }, [currentUser]);
+    axios.get(`http://localhost:3000/posts/${props.match.params.id}`)
+		.then((results) => {
+			console.log(results)
+			setPost(results.data)
+		})
+		.catch((data) =>{
+			console.log(data)
+		})
+  },[setPost]);
 
   return (
     <div>
@@ -37,7 +44,9 @@ const PostsShow = (props: any) => {
             <Grid item md={1} style={{ marginTop: "1em" }}>
               <PostButtons/>
             </Grid>
-            <Grid item md={8} style={{ marginTop: "1em" }}>メイン</Grid>
+            <Grid item md={8} style={{ marginTop: "1em" }}>
+              {post.name}
+            </Grid>
             <Grid item md={3} style={{ marginTop: "1em" }}>
               <UserCard/>
             </Grid>
