@@ -161,7 +161,7 @@ export default function PostsForm(props: any) {
                       <Switch
                         checked={state.public}
                         onChange={handleChange}
-                        name="status"
+                        name="public"
                         color="primary"
                       />
                     }
