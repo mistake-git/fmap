@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { Fragment, useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
+import * as Yup from "yup";
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { Field, Form, Formik } from "formik";
+import { TextField } from "formik-material-ui";
+import axios from 'axios'
+import {
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  Link,
+  Typography,
+  LinearProgress
+} from "@material-ui/core";
+
+
+export const PostSchema = Yup.object().shape({
+  email: Yup.string()
+    .email()
+    .required(),
+  password: Yup.string()
+    .min(6)
+    .required()
+});
 
 
 const useStyles = makeStyles({
@@ -54,7 +73,7 @@ const useStyles = makeStyles({
   ];
 
 
-export default function PostsForm() {
+export default function PostsForm(props: any) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -68,119 +87,59 @@ export default function PostsForm() {
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
-        <CardContent>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                margin="dense"
-                id="name"
-                label="魚種"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-            <TextField
-                margin="dense"
-                id="number"
-                label="匹数"
-                type="number"
-                fullWidth
-                variant="outlined"
-              />        
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                margin="dense"
-                id="size"
-                label="サイズ"
-                type="number"
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                margin="dense"
-                id="weight"
-                label="重さ"
-                type="number"
-                fullWidth
-                variant="outlined"
-              />        
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-select-currency-native"
-                select
-                label="天気"
-                margin="dense"
-                fullWidth
-                SelectProps={{
-                        native: true,
-                }}
-                variant="outlined"
-                >
-                {admins.map((admin) => (
-                  <option key={admin.value} value={admin.value}>
-                  {admin.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                id="outlined-select-currency-native"
-                select
-                label="餌"
-                margin="dense"
-                fullWidth
-                SelectProps={{
-                  native: true,
-                }}
-                variant="outlined"
-                >
-                {departments.map((department) => (
-                  <option key={department.value} value={department.value}>
-                  {department.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                margin="dense"
-                id="weight"
-                label="メモ"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />        
-            </Grid>
-          </Grid>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.public}
-                onChange={handleChange}
-                name="public"
-                color="primary"
-              />
-            }
-            label="公開する"
+        <Formik
+            initialValues={{ email: "", password: "" }}
+            validationSchema={PostSchema}
+            onSubmit={async value => {
+              try {
+                await axios.post('http://localhost:3000/posts',{post: post} )
+                .then(() => {
+                  props.history.push("/posts");
+                })
+              } catch (error) {
+                alert(error.message);
+              }
+            }}
+            render={({ submitForm, isSubmitting, isValid }) => (
+              <Form>
+                {isSubmitting && <LinearProgress />}
+                <FormControl margin="normal" fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="email"
+                    label="メールアドレス"
+                    fullWidth
+                    variant="outlined"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="password"
+                    label="パスワード"
+                    fullWidth
+                    variant="outlined"
+                    type="password"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    onClick={submitForm}
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    type="submit"
+                    disabled={!isValid || isSubmitting}
+                  >
+                    釣果を登録
+                  </Button>
+                </FormControl>
+              </Form>
+            )}
           />
-        </CardContent>
-        <CardActions>
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          >
-          釣果を登録
-        </Button>
-        </CardActions>
 			</Card>
 		</React.Fragment>
 	);
