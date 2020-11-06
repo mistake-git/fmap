@@ -15,6 +15,9 @@ import Switch from '@material-ui/core/Switch';
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import axios from 'axios'
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Button,
   Container,
@@ -36,6 +39,9 @@ const useStyles = makeStyles({
   root: {
     minWidth: 150,
   },
+  input: {
+    display: 'none',
+  },
 });
 
 export default function PostsForm(props: any) {
@@ -52,9 +58,10 @@ export default function PostsForm(props: any) {
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
-        <CardContent>        
+        <CardContent>  
           <Formik
             initialValues={{ 
+              image: "",
               name: "", 
               size: "" ,
               weight: "",
@@ -68,6 +75,7 @@ export default function PostsForm(props: any) {
               try {
                 await axios.post('http://localhost:3000/posts' )
                 .then(() => {
+                  
                   props.history.push("/posts");
                 })
               } catch (error) {
@@ -76,115 +84,138 @@ export default function PostsForm(props: any) {
             }}
             render={({ submitForm, isSubmitting, isValid }) => (
               <Form>
+                <Grid container className={classes.root} spacing={1}>
                 {isSubmitting && <LinearProgress />}
-                <FormControl margin="normal" fullWidth>
-                  <Field
-                    required
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="name"
-                    label="魚種"
-                    fullWidth
-                    variant="outlined"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="size"
-                    label="サイズ"
-                    fullWidth
-                    variant="outlined"
-                    type="number"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="weight"
-                    label="重さ"
-                    fullWidth
-                    variant="outlined"
-                    type="number"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="number"
-                    label="数量"
-                    fullWidth
-                    variant="outlined"
-                    type="number"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="feed"
-                    label="餌"
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="weather"
-                    label="天気"
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    component={TextField}
-                  />
-                </FormControl>
-                
-                <FormControl fullWidth>
-                  <Field
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="memo"
-                    label="メモ"
-                    fullWidth
-                    variant="outlined"
-                    type="text"
-                    component={TextField}
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={state.public}
-                        onChange={handleChange}
-                        name="public"
-                        color="primary"
+                  <Grid item xs={12}>
+                    <input accept="image" className={classes.input} id="icon-button-file" type="file"/>
+                    <label htmlFor="icon-button-file">
+                      <IconButton color="primary" aria-label="upload picture" component="span">
+                        <AttachmentIcon />
+                      </IconButton>
+                    </label>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                   
+                      <Field
+                        required
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name="name"
+                        label="魚種"
+                        fullWidth
+                        variant="outlined"
+                        type="text"
+                        component={TextField}
                       />
-                    }
-                    label="公開する"
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                    onClick={submitForm}
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    type="submit"
-                    disabled={!isValid || isSubmitting}
-                  >
-                    釣果を登録
-                  </Button>
-                </FormControl>
+                  
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    
+                      <Field
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name="size"
+                        label="サイズ"
+                        fullWidth
+                        variant="outlined"
+                        type="number"
+                        component={TextField}
+                      />
+                    
+                  </Grid>
+
+                  <Grid item xs={12} md={6}>
+                   
+                      <Field
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name="weight"
+                        label="重さ"
+                        fullWidth
+                        variant="outlined"
+                        type="number"
+                        component={TextField}
+                      />
+                   
+                  </Grid>
+
+                  <Grid item xs={12} md={6}>
+                   
+                      <Field
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name="number"
+                        label="数量"
+                        fullWidth
+                        variant="outlined"
+                        type="number"
+                        component={TextField}
+                      />
+                    
+                  </Grid>
+                  
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="feed"
+                      label="餌"
+                      fullWidth
+                      variant="outlined"
+                      type="text"
+                      component={TextField}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="weather"
+                      label="天気"
+                      fullWidth
+                      variant="outlined"
+                      type="text"
+                      component={TextField}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Field
+                      fullWidth
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="memo"
+                      label="メモ"
+                      variant="outlined"
+                      type="text"
+                      component={TextField}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={state.public}
+                          onChange={handleChange}
+                          name="public"
+                          color="primary"
+                        />
+                      }
+                      label="公開する"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                      onClick={submitForm}
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      type="submit"
+                      disabled={!isValid || isSubmitting}
+                    >
+                      釣果を登録
+                    </Button>
+                  </Grid>
+                </Grid>
               </Form>
             )}
           />
-        </CardContent>
+        </CardContent>   
 			</Card>
 		</React.Fragment>
 	);
