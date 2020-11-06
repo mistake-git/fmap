@@ -92,7 +92,7 @@ export default function PostsForm(props: any) {
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
-                await axios.post('http://localhost:3000/posts',{post: post} )
+                await axios.post('http://localhost:3000/posts' )
                 .then(() => {
                   props.history.push("/posts");
                 })
