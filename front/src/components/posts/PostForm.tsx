@@ -27,12 +27,8 @@ import {
 
 
 export const PostSchema = Yup.object().shape({
-  email: Yup.string()
-    .email()
+  name: Yup.string()
     .required(),
-  password: Yup.string()
-    .min(6)
-    .required()
 });
 
 
@@ -41,37 +37,6 @@ const useStyles = makeStyles({
     minWidth: 150,
   },
 });
-
-  const admins = [
-		{
-			value: 0,
-			label: '閲覧',
-		},
-		{
-			value:  1,
-			label: '執筆',
-		},
-		{
-			value: 2,
-			label: '管理',
-		},
-  ];
-
-  const departments = [
-		{
-			value: 0,
-			label: '営業',
-		},
-		{
-			value:  1,
-			label: '総務',
-		},
-		{
-			value: 2,
-			label: 'ITソリューション',
-		},
-  ];
-
 
 export default function PostsForm(props: any) {
   const classes = useStyles();
@@ -87,8 +52,17 @@ export default function PostsForm(props: any) {
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
-        <Formik
-            initialValues={{ email: "", password: "" }}
+        <CardContent>        
+          <Formik
+            initialValues={{ 
+              name: "", 
+              size: "" ,
+              weight: "",
+              number: "",
+              feed: "",
+              memo: "",
+              status: "",
+            }}
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
@@ -105,9 +79,10 @@ export default function PostsForm(props: any) {
                 {isSubmitting && <LinearProgress />}
                 <FormControl margin="normal" fullWidth>
                   <Field
+                    required
                     style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="email"
-                    label="メールアドレス"
+                    name="name"
+                    label="魚種"
                     fullWidth
                     variant="outlined"
                     component={TextField}
@@ -116,12 +91,81 @@ export default function PostsForm(props: any) {
                 <FormControl fullWidth>
                   <Field
                     style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    name="password"
-                    label="パスワード"
+                    name="size"
+                    label="サイズ"
                     fullWidth
                     variant="outlined"
-                    type="password"
+                    type="number"
                     component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="weight"
+                    label="重さ"
+                    fullWidth
+                    variant="outlined"
+                    type="number"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="number"
+                    label="数量"
+                    fullWidth
+                    variant="outlined"
+                    type="number"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="feed"
+                    label="餌"
+                    fullWidth
+                    variant="outlined"
+                    type="text"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="weather"
+                    label="天気"
+                    fullWidth
+                    variant="outlined"
+                    type="text"
+                    component={TextField}
+                  />
+                </FormControl>
+                
+                <FormControl fullWidth>
+                  <Field
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    name="memo"
+                    label="メモ"
+                    fullWidth
+                    variant="outlined"
+                    type="text"
+                    component={TextField}
+                  />
+                </FormControl>
+                <FormControl fullWidth>
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={state.public}
+                        onChange={handleChange}
+                        name="status"
+                        color="primary"
+                      />
+                    }
+                    label="公開する"
                   />
                 </FormControl>
                 <FormControl fullWidth>
@@ -140,6 +184,7 @@ export default function PostsForm(props: any) {
               </Form>
             )}
           />
+        </CardContent>
 			</Card>
 		</React.Fragment>
 	);
