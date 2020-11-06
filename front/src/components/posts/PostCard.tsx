@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function PostCard() {
+export default function PostCard(props: any) {
   const classes = useStyles();
 
 	return (
@@ -37,7 +37,7 @@ export default function PostCard() {
 				/>
 				<CardContent>
 				<Typography gutterBottom  component="h2">
-					記事タイトル
+					{props.post.name}
 				</Typography>
 				</CardContent>
 			</CardActionArea>
