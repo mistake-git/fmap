@@ -41,7 +41,7 @@ const Posts = (props: any) => {
           <Grid container style={{ marginTop: "1em" }}>
           {posts.map((post) => {
             return(
-              <Grid item xs={12} md={4} style={{ marginTop: "1em" }}>
+              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
                 <PostCard post={ post } key={post.id}/>
               </Grid>
             )
