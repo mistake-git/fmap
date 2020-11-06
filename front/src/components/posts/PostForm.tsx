@@ -43,20 +43,30 @@ const useStyles = makeStyles({
   },
 });
 
+interface State {
+	image?: string;
+}
+
 export default function PostsForm(props: any) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     private: true,
     public: true,
   });
+  const [image, setImage] = React.useState<string>("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const fileChange =(e: any) => {
+    setImage(URL.createObjectURL(e.target.image[0]));
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [e.target.name]: e.target.checked });
   };
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
         <CardContent>  
+          <img src={image}/>
           <Formik
             initialValues={{ 
               image: "",
@@ -85,7 +95,7 @@ export default function PostsForm(props: any) {
                 <Grid container className={classes.root} spacing={1}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
-                    <input accept="image" className={classes.input} id="icon-button-file" type="file"/>
+                    <input accept="image" className={classes.input} id="icon-button-file" type="file" onChange={fileChange}/>
                     <label htmlFor="icon-button-file">
                       <IconButton color="primary" aria-label="upload picture" component="span">
                         <AttachmentIcon />
