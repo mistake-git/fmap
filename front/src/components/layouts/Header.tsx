@@ -19,7 +19,7 @@ import Button from '@material-ui/core/Button';
 
 
 const sections = [
-  { title: '地図で見る', url: '/map' },
+  { title: '地図', url: '/map' },
 	{ title: '釣果一覧', url: '/posts' },
   { title: '釣り人一覧', url: '/users' },
   { title: '釣果を投稿', url: '/posts_new' },
