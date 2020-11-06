@@ -76,6 +76,8 @@ export default function PostsForm(props: any) {
               number: "",
               feed: "",
               memo: "",
+              date: "",
+              time: "",
               status: "",
             }}
             validationSchema={PostSchema}
