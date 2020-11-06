@@ -38,7 +38,7 @@ const Posts = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <Grid container style={{ marginTop: "1em" }}>
+          <Grid container style={{ marginTop: "3em" }}>
           {posts.map((post) => {
             return(
               <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
