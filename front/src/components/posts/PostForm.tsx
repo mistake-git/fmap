@@ -34,7 +34,6 @@ export const PostSchema = Yup.object().shape({
     .required(),
 });
 
-
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
@@ -46,7 +45,6 @@ const useStyles = makeStyles({
 
 export default function PostsForm(props: any) {
   const classes = useStyles();
-
   const [state, setState] = React.useState({
     private: true,
     public: true,
@@ -95,61 +93,50 @@ export default function PostsForm(props: any) {
                     </label>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                   
-                      <Field
-                        required
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        name="name"
-                        label="魚種"
-                        fullWidth
-                        variant="outlined"
-                        type="text"
-                        component={TextField}
-                      />
-                  
+                    <Field
+                      required
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="name"
+                      label="魚種"
+                      fullWidth
+                      variant="outlined"
+                      type="text"
+                      component={TextField}
+                    />
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    
-                      <Field
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        name="size"
-                        label="サイズ"
-                        fullWidth
-                        variant="outlined"
-                        type="number"
-                        component={TextField}
-                      />
-                    
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="size"
+                      label="サイズ"
+                      fullWidth
+                      variant="outlined"
+                      type="number"
+                      component={TextField}
+                    />
                   </Grid>
-
                   <Grid item xs={12} md={6}>
-                   
-                      <Field
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        name="weight"
-                        label="重さ"
-                        fullWidth
-                        variant="outlined"
-                        type="number"
-                        component={TextField}
-                      />
-                   
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="weight"
+                      label="重さ"
+                      fullWidth
+                      variant="outlined"
+                      type="number"
+                      component={TextField}
+                    />
                   </Grid>
-
                   <Grid item xs={12} md={6}>
-                   
-                      <Field
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        name="number"
-                        label="数量"
-                        fullWidth
-                        variant="outlined"
-                        type="number"
-                        component={TextField}
-                      />
-                    
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="number"
+                      label="数量"
+                      fullWidth
+                      variant="outlined"
+                      type="number"
+                      component={TextField}
+                    />
                   </Grid>
-                  
                   <Grid item xs={12} md={6}>
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
@@ -161,7 +148,6 @@ export default function PostsForm(props: any) {
                       component={TextField}
                     />
                   </Grid>
-
                   <Grid item xs={12} md={6}>
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
@@ -173,7 +159,6 @@ export default function PostsForm(props: any) {
                       component={TextField}
                     />
                   </Grid>
-
                   <Grid item xs={12}>
                     <Field
                       fullWidth
