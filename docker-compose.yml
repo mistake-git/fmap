@@ -1,14 +1,6 @@
 version: '3.5'
 
 services:
-  front:
-      build: ./front
-      command: yarn start
-      volumes:
-        - ./front:/app
-      ports:
-        - 8000:3000
-      tty: true
   db:
     image: mysql:5.7
     environment:
