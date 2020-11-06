@@ -1,9 +1,9 @@
 /.bundle
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/api/log/*
+/api/tmp/*
+/api/log/.keep
+/api/!/tmp/.keep
 
 # Ignore uploaded files in development
 /storage/*
@@ -21,7 +21,7 @@
 /vendor/
 
 .DS_STORE
-node_modules
+/front/node_modules
 scripts/flow/*/.flowconfig
 .flowconfig
 *~
