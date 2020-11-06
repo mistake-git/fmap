@@ -10,6 +10,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import { NoEncryption } from '@material-ui/icons';
+import PostModel from "../../models/PostModel";
 
 const useStyles = makeStyles({
 	root: {
@@ -23,8 +24,17 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function PostCard() {
+interface Props {
+  post: PostModel
+}
+
+export default function PostCard(props: any) {
   const classes = useStyles();
+
+
+  const handleDeleate = () => {
+    props.deletePost(props.post.id)
+  } 
 
 	return (
     <Fragment>
@@ -39,7 +49,7 @@ export default function PostCard() {
         </Fab>
       </Box>
       <Box mt={2}>
-        <Fab>
+        <Fab onClick={handleDeleate}>
           <DeleteIcon/>
         </Fab>
       </Box>

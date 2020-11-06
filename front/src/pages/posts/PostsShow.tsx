@@ -36,13 +36,24 @@ const PostsShow = (props: any) => {
 		})
   },[setPost]);
 
+  const deleatePost = (id: any) => {
+    axios.delete(`http://localhost:3000/posts/${id}`)
+    .then((response) => {
+      console.log('set')
+      props.history.push("/posts");
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
+
   return (
     <div>
       <Template>
         <Container maxWidth="lg">
           <Grid container style={{ marginTop: "1em" }}>
             <Grid item md={1} style={{ marginTop: "1em" }}>
-              <PostButtons/>
+              <PostButtons post = {post} deletePost = {deleatePost} />
             </Grid>
             <Grid item md={8} style={{ marginTop: "1em" }}>
               {post.name}

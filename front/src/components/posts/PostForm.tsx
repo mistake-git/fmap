@@ -85,7 +85,6 @@ export default function PostsForm(props: any) {
               try {
                 await axios.post('http://localhost:3000/posts' )
                 .then(() => {
-                  
                   props.history.push("/posts");
                 })
               } catch (error) {
