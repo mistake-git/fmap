@@ -11,6 +11,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import { NoEncryption } from '@material-ui/icons';
+import PostModel from '../../models/PostModel';
 
 const useStyles = makeStyles({
 	root: {
@@ -24,17 +25,23 @@ const useStyles = makeStyles({
 	}
 });
 
+interface Props {
+	post: PostModel
+}
+
 export default function PostCard(props: any) {
   const classes = useStyles();
 
 	return (
 		<Card className={classes.root}>
 			<CardActionArea>
+				<Link to={`/posts/${props.post.id}`}>
 				<CardMedia
 				className={classes.media}
 				image="/static/images/cards/contemplative-reptile.jpg"
 				title="Contemplative Reptile"
 				/>
+				</Link>
 				<CardContent>
 				<Typography gutterBottom  component="h2">
 					{props.post.name}

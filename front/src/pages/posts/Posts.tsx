@@ -1,11 +1,18 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { Button, Container, Grid, Typography } from "@material-ui/core";
-import { AuthContext } from "../../Auth";
-import auth from "../../firebase";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import PostModel from "../../models/PostModel";
+
+
+
+
+interface State {
+  posts: PostModel[]
+  post: PostModel
+}
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -14,13 +21,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Posts = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
+ 
   const classes = useStyles();
+  const [posts, setPosts] = React.useState<PostModel[]>([])
 
   useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/login");
-  }, [currentUser]);
+    axios.get('http://localhost:3000/posts')
+		.then((results) => {
+			console.log(results)
+			setPosts(results.data)
+		})
+		.catch((data) =>{
+			console.log(data)
+		})
+  },[setPosts]);
 
   return (
     <Fragment>
@@ -28,21 +42,15 @@ const Posts = (props: any) => {
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "1em" }}>
             <Grid item md={4} style={{ marginTop: "1em" }}>
-              <Link to="/posts/1" >
-                <PostCard/>
-              </Link>
+              {posts.map((post) => {
+                return(
+                  <PostCard post={ post } key={post.id}/>
+                )
+              })}
             </Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
-            <Grid item md={4} style={{ marginTop: "1em" }}><PostCard/></Grid>
           </Grid>
         </Container>
-      </Template>
+        </Template>
     </Fragment>
   );
 };
