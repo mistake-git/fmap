@@ -1,16 +1,16 @@
 /.bundle
 # Ignore all logfiles and tempfiles.
-/api/log/*
-/api/tmp/*
-/api/log/.keep
-/api/!/tmp/.keep
+api/log/*
+api/tmp/*
+api/log/.keep
+api/!/tmp/.keep
 
 # Ignore uploaded files in development
-/front/storage/*
-/front/!/storage/.keep
+front/storage/*
+front/!/storage/.keep
 
-/front/node_modules
-/front/yarn-error.log
+front/node_modules
+front/yarn-error.log
 
 /front/public/assets
 /front/.byebug_history

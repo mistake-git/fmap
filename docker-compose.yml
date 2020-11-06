@@ -26,6 +26,14 @@ services:
     depends_on:
       - db
     tty: true
+  front:
+    build: ./front
+    command: yarn start
+    volumes:
+      - ./front:/app
+    ports:
+      - 8000:3000
+    tty: true
   
 volumes:
   mysql-data:
