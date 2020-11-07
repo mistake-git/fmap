@@ -22,8 +22,6 @@ interface Props {
   post: PostModel;
 }
 
-
-
 export default function PostData(props: any) {
   const classes = useStyles();
 

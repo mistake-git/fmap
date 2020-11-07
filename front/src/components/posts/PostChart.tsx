@@ -25,6 +25,14 @@ interface Props {
 
 
 export default function PostData(props: any) {
+　
+  const datalist =[
+    {title: `${props.post.name}のよく釣れる餌`, chart: <Pie/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <Bar/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <Line/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <HorizontalBar/>},
+  ]
+
   return(
     <React.Fragment>
       <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
@@ -32,30 +40,14 @@ export default function PostData(props: any) {
       </Box>
       <Divider/>
       <Grid container style={{ marginTop: "1em" }}>
-        <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
-          <Typography variant="button" display="block" gutterBottom>
-            {props.post.name}のよく釣れる餌
-          </Typography>
-          <Pie/>
-        </Grid>
-        <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
-          <Typography variant="button" display="block" gutterBottom>
-            {props.post.name}のよく釣れる時期
-          </Typography>
-          <Bar/>
-        </Grid>
-        <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
-          <Typography variant="button" display="block" gutterBottom>
-            {props.post.name}のよく釣れる時間
-          </Typography>
-          <Line/>
-        </Grid>
-        <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
-          <Typography variant="button" display="block" gutterBottom>
-            {props.post.name}のサイズの分布
-          </Typography>
-          <HorizontalBar/>
-        </Grid>
+        {datalist.map((data) => (
+          <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
+            <Typography variant="button" display="block" gutterBottom>
+            {data.title}
+            </Typography>
+            {data.chart}
+          </Grid>
+        ))}
       </Grid>
     </React.Fragment>
   )
