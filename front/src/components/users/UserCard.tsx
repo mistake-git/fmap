@@ -43,8 +43,6 @@ export default function UserCard() {
           <ListItemText primary="ユーザーネーム" />
         </ListItem>
         <ListItem>
-          フォロー 1
-          フォロワー 2
           釣果 3
         </ListItem>
         <ListItem>

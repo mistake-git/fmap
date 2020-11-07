@@ -34,7 +34,8 @@ export default class Chart extends React.Component {
     let options: ChartOptions = {
       legend: {
         position: 'bottom',
-      }
+      },
+      responsive: true,
     };
 
     return (

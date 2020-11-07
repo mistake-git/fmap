@@ -23,7 +23,8 @@ const sections = [
 	{ title: '釣果一覧', url: '/posts' },
   { title: '釣り人一覧', url: '/users' },
   { title: '釣果を投稿', url: '/posts_new' },
-	{ title: 'ランキング', url: '/ranking' },
+  { title: 'ランキング', url: '/ranking' },
+  { title: 'マイページ', url: '/mypage' },
 ];
 
 const useStyles = makeStyles((theme) => ({

@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import { Button, Container, Divider, Grid, Typography } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 import auth from "../../firebase";
 import Template from "../../components/layouts/Template";
@@ -57,17 +57,42 @@ const PostsShow = (props: any) => {
       <Template>
         <Container maxWidth="lg">
           <Grid container style={{ marginTop: "1em" }}>
-            <Grid item md={1} style={{ marginTop: "1em" }}>
+            <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
               <PostButtons post = {post} deletePost = {deleatePost} />
             </Grid>
             <Grid item md={8} style={{ marginTop: "1em" }}>
-              {post.name}
-              <Pie/>
-              <Bar/>
-              <Line/>
-              <HorizontalBar/>
+              <Box fontWeight="fontWeightBold"　fontSize={16}>
+                {post.name}のデータ分析
+              </Box>
+              <Divider/>
+              <Grid container style={{ marginTop: "1em" }}>
+                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
+                  <Typography variant="button" display="block" gutterBottom>
+                    {post.name}のよく釣れる餌
+                  </Typography>
+                  <Pie/>
+                </Grid>
+                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
+                  <Typography variant="button" display="block" gutterBottom>
+                    {post.name}のよく釣れる時期
+                  </Typography>
+                  <Bar/>
+                </Grid>
+                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
+                  <Typography variant="button" display="block" gutterBottom>
+                    {post.name}のよく釣れる時間
+                  </Typography>
+                  <Line/>
+                </Grid>
+                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
+                  <Typography variant="button" display="block" gutterBottom>
+                    {post.name}のサイズの分布
+                  </Typography>
+                  <HorizontalBar/>
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item md={3} style={{ marginTop: "1em" }}>
+            <Grid item xs={12} md={3} style={{ marginTop: "1em" }}>
               <UserCard/>
             </Grid>
           </Grid>
