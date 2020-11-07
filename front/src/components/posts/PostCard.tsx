@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 });
 
 interface Props {
-	post: PostModel
+	post: PostModel;
 }
 
 export default function PostCard(props: any) {

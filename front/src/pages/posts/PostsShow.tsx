@@ -13,10 +13,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
 import UserCard from "../../components/users/UserCard"
 import axios from 'axios'
-import Pie from "../../components/chart/Pie"
-import Bar  from "../../components/chart/Bar";
-import HorizontalBar  from "../../components/chart/HorizontalBar";
-import Line  from "../../components/chart/Line";
+import PostData from "../../components/posts/PostData";
+import PostChart from "../../components/posts/PostChart";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -61,36 +59,8 @@ const PostsShow = (props: any) => {
               <PostButtons post = {post} deletePost = {deleatePost} />
             </Grid>
             <Grid item md={8} style={{ marginTop: "1em" }}>
-              <Box fontWeight="fontWeightBold"　fontSize={16}>
-                {post.name}のデータ分析
-              </Box>
-              <Divider/>
-              <Grid container style={{ marginTop: "1em" }}>
-                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
-                  <Typography variant="button" display="block" gutterBottom>
-                    {post.name}のよく釣れる餌
-                  </Typography>
-                  <Pie/>
-                </Grid>
-                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
-                  <Typography variant="button" display="block" gutterBottom>
-                    {post.name}のよく釣れる時期
-                  </Typography>
-                  <Bar/>
-                </Grid>
-                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
-                  <Typography variant="button" display="block" gutterBottom>
-                    {post.name}のよく釣れる時間
-                  </Typography>
-                  <Line/>
-                </Grid>
-                <Grid item xs={12} sm={6} style={{ marginTop: "2em" }}>
-                  <Typography variant="button" display="block" gutterBottom>
-                    {post.name}のサイズの分布
-                  </Typography>
-                  <HorizontalBar/>
-                </Grid>
-              </Grid>
+              <PostData post={post}/>
+              <PostChart post={post} />
             </Grid>
             <Grid item xs={12} md={3} style={{ marginTop: "1em" }}>
               <UserCard/>
