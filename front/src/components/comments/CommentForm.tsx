@@ -29,7 +29,6 @@ import {
 } from "@material-ui/core";
 
 
-
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
@@ -40,16 +39,15 @@ const useStyles = makeStyles({
 });
 
 
-
 export const CommentSchema = Yup.object().shape({
   content: Yup.string()
     .required(),
 });
 
 export default function LayoutTextFields() {
+
   const classes = useStyles();
-  
- 
+  const [buttonOpen, setButtonOpen]= React.useState(false);
 
   return (
     <div>
@@ -60,40 +58,46 @@ export default function LayoutTextFields() {
         0件コメント
       </Box>
       　<Formik
-            initialValues={{ 
-              content: "", 
-            }}
-            validationSchema={CommentSchema}
-            onSubmit={async value => {
-              try {
-                
-              } catch (error) {
-                alert(error.message);
-              }
-            }}
-            render={({ submitForm, isSubmitting, isValid }) => (
-              <Form>
-                <Field
-                  fullWidth
-                  required
-                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                  name="content"
-                  label="コメント"
-                  variant="outlined"
-                  type="text"
-                  component={TextField}
-                />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={submitForm}
-                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                  type="submit"
-                  disabled={!isValid || isSubmitting}
-                >
-                  コメント
-                </Button>
-              </Form>
+          initialValues={{ 
+            content: "", 
+          }}
+          validationSchema={CommentSchema}
+          onSubmit={async value => {
+            try {
+              
+            } catch (error) {
+              alert(error.message);
+            }
+          }}
+          render={({ submitForm, isSubmitting, isValid }) => (
+            <Form>
+              <Field
+                fullWidth
+                required
+                style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                name="content"
+                placeholder="コメントを入力"
+                type="text"
+                component={TextField}
+                onClick={() => setButtonOpen(true)}
+              />
+              <Grid container justify="flex-end">
+                <Grid>
+                  {buttonOpen &&
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={submitForm}
+                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                    type="submit"
+                    disabled={!isValid || isSubmitting}
+                  >
+                    コメント
+                  </Button>
+                  }
+                </Grid>
+              </Grid>
+            </Form>
           )}
         />
     </div>
