@@ -1,7 +1,7 @@
-import Pie from "../chart/Pie"
-import Bar  from "../chart/Bar";
-import HorizontalBar  from "../chart/HorizontalBar";
-import Line  from "../chart/Line";
+import PieChart from "../chart/PieChart"
+import BarChart  from "../chart/BarChart";
+import HorizontalBarChart  from "../chart/HorizontalBarChart";
+import LineChart  from "../chart/LineChart";
 import React, { Fragment, useContext, useEffect } from "react";
 import { Button, Container, Divider, Grid, Typography } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
@@ -27,10 +27,10 @@ interface Props {
 export default function PostData(props: any) {
 　
   const datalist =[
-    {title: `${props.post.name}のよく釣れる餌`, chart: <Pie/>},
-    {title: `${props.post.name}のよく釣れる時期`, chart: <Bar/>},
-    {title: `${props.post.name}のよく釣れる時期`, chart: <Line/>},
-    {title: `${props.post.name}のよく釣れる時期`, chart: <HorizontalBar/>},
+    {title: `${props.post.name}のよく釣れる餌`, chart: <PieChart/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <BarChart/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <LineChart/>},
+    {title: `${props.post.name}のよく釣れる時期`, chart: <HorizontalBarChart/>},
   ]
 
   return(

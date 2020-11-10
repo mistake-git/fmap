@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom"
 import { Pie } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js'
 
-export default class Chart extends React.Component {
+export default class PieChart extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = {};
@@ -44,4 +44,4 @@ export default class Chart extends React.Component {
   }
 }
 
-ReactDOM.render(<Chart />, document.getElementById("root"))
+ReactDOM.render(<PieChart />, document.getElementById("root"))

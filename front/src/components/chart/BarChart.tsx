@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom"
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js'
 
-export default class Chart extends React.Component {
+export default class BarChart extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = {};
@@ -73,4 +73,4 @@ export default class Chart extends React.Component {
   }
 }
 
-ReactDOM.render(<Chart />, document.getElementById("root"))
+ReactDOM.render(<BarChart />, document.getElementById("root"))
