@@ -8,7 +8,9 @@ import {
   Link,
   Typography,
   LinearProgress,
-  Box
+  Box,
+  Card,
+  CardContent
 } from "@material-ui/core";
 import Template from "../components/layouts/Template";
 import UserCard from "../components/users/UserCard";
@@ -26,7 +28,7 @@ const useStyles = makeStyles({
 	root: {
     width: "100%",
     textAlign: "center"
-	},
+  }
 });
 
 const MyPage = (props: any) => {
@@ -50,9 +52,15 @@ const MyPage = (props: any) => {
     <Template>
       <Container maxWidth="xl">
         <Grid container spacing={1} style={{ marginTop: "1em" }}>
-          <Grid item xs={12} md={4} style={{ marginTop: "1em" }}>
-            <UserCard/>
-            <PieChart/>
+          <Grid item xs={12} md={3} style={{ marginTop: "1em" }}>
+            <Card>
+              <CardContent>
+                <UserCard/>
+                <Box mt={3}>
+                  <PieChart/>
+                </Box>
+              </CardContent>
+            </Card>
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <Grid container style={{ marginTop: "3em" }}>

@@ -18,10 +18,15 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 345,
     },
     avatar: {
-      backgroundColor: red[500],
+      width: theme.spacing(10),
+      height: theme.spacing(10),
     },
+    userName:{
+      paddingLeft: theme.spacing(3),
+    }
   }),
 );
+
 
 export default function UserCard() {
   const classes = useStyles();
@@ -36,11 +41,11 @@ export default function UserCard() {
       <List>
         <ListItem>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar className={classes.avatar}>
               <ImageIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="ユーザーネーム" />
+          <ListItemText primary="ユーザーネーム" className={classes.userName} />
         </ListItem>
         <ListItem>
           釣果 3

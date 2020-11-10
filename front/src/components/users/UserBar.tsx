@@ -52,7 +52,6 @@ export default function UserBar() {
               secondary={secondary ? 'Secondary text' : null}
             />
             <ListItemSecondaryAction>
-              
               <Button
                 variant="contained"
                 color="primary"
