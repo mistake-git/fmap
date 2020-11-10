@@ -17,6 +17,7 @@ import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";
 import CommentUsers from "../../components/comments/CommentUsers";
 import CommentFrom from "../../components/comments/CommentForm";
+import UserBar from "../../components/users/UserBar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -55,22 +56,19 @@ const PostsShow = (props: any) => {
   return (
     <Template>
       <Container maxWidth="lg">
-        <Grid container style={{ marginTop: "1em" }}>
+        <Grid container spacing={1} style={{ marginTop: "1em" }}>
           <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
             <PostButtons post = {post} deletePost = {deleatePost} />
           </Grid>
-          <Grid item md={8} style={{ marginTop: "1em" }}>
+          <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
             <PostChart post={post} />
+            <UserBar/>
             <CommentFrom/>
             <CommentUsers/>
             <Box my={3}>
               <Divider/>
             </Box>
-           
-          </Grid>
-          <Grid item xs={12} md={3} style={{ marginTop: "1em" }}>
-            <UserCard/>
           </Grid>
         </Grid>
       </Container>

@@ -44,7 +44,7 @@ export const CommentSchema = Yup.object().shape({
     .required(),
 });
 
-export default function LayoutTextFields() {
+export default function CommentForm() {
 
   const classes = useStyles();
   const [buttonOpen, setButtonOpen]= React.useState(false);

@@ -8,7 +8,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { Box } from '@material-ui/core';
-import ChatIcon from '@material-ui/icons/Chat';
+import CommentMenu from './CommentMenu';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,6 +45,7 @@ export default function CommentUsers() {
               </Typography>
             }
           />
+          <CommentMenu/>
         </ListItem>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
