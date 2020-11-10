@@ -27,6 +27,7 @@ import {
   Typography,
   LinearProgress
 } from "@material-ui/core";
+import PostDateTimePicker from '../../components/posts/PostDateTimePicker'
 
 
 export const PostSchema = Yup.object().shape({
@@ -93,7 +94,7 @@ export default function PostsForm(props: any) {
             }}
             render={({ submitForm, isSubmitting, isValid }) => (
               <Form>
-                <Grid container className={classes.root} spacing={1}>
+                <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
                     <input accept="image" className={classes.input} id="icon-button-file" type="file" onChange={fileChange}/>
@@ -169,6 +170,9 @@ export default function PostsForm(props: any) {
                       type="text"
                       component={TextField}
                     />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <PostDateTimePicker/>
                   </Grid>
                   <Grid item xs={12}>
                     <Field
