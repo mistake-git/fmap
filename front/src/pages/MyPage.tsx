@@ -10,14 +10,17 @@ import {
   LinearProgress,
   Box,
   Card,
-  CardContent
+  CardContent,
+  Divider
 } from "@material-ui/core";
 import Template from "../components/layouts/Template";
 import UserCard from "../components/users/UserCard";
+import UserTab from "../components/users/UserTab";
 import PostCard from "../components/posts/PostCard";
 import axios from 'axios'
 import PostModel from "../models/PostModel";
 import PieChart from "../components/chart/PieChart";
+
 
 interface State {
   posts: PostModel[]
@@ -35,6 +38,8 @@ const MyPage = (props: any) => {
   const [posts, setPosts] = React.useState<PostModel[]>([])
 
   const classes = useStyles();
+  const [formOpen, setFormOpen]= React.useState(false);
+
 
   useEffect(() => {
     axios.get('http://localhost:3000/posts')
@@ -50,29 +55,47 @@ const MyPage = (props: any) => {
 
   return (
     <Template>
-      <Container maxWidth="xl">
-        <Grid container spacing={1} style={{ marginTop: "1em" }}>
-          <Grid item xs={12} md={3} style={{ marginTop: "1em" }}>
-            <Card>
-              <CardContent>
-                <UserCard/>
-                <Box mt={3}>
-                  <PieChart/>
-                </Box>
-              </CardContent>
-            </Card>
+      <Container maxWidth="md">
+        <Grid container>
+          <Grid item xs={12} sm={7}>
+            <UserCard/>
+              <Button onClick={() => setFormOpen(true)}>
+                <Typography 
+                  color='textSecondary'
+                  variant='caption'
+                > 
+                  自己紹介を入力
+                </Typography>
+              </Button>
+              {formOpen &&
+                <React.Fragment>
+                  <Box>
+                    フォームです
+                  </Box>
+                  <Button　onClick={() => setFormOpen(false)}>
+                    キャンセル
+                  </Button>
+                </React.Fragment>
+              }
           </Grid>
-          <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
-            <Grid container style={{ marginTop: "3em" }}>
-              {posts.map((post) => {
-                return(
-                  <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                    <PostCard post={ post } key={post.id}/>
-                  </Grid>
-                )
-              })}
-            </Grid>
+      
+          <Grid item xs={12} sm={5}>
+            <PieChart/>
           </Grid>
+          <Grid item xs={12} >
+            <Box my={2}>
+              <UserTab/>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid container style={{ marginTop: "3em" }}>
+          {posts.map((post) => {
+            return(
+              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                <PostCard post={ post } key={post.id}/>
+              </Grid>
+            )
+          })}
         </Grid>
       </Container>
     </Template>

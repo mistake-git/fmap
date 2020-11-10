@@ -36,6 +36,9 @@ const useStyles = makeStyles({
   input: {
     display: 'none',
   },
+  marginRight:{
+    marginRight: 20,
+  }
 });
 
 
@@ -84,16 +87,27 @@ export default function CommentForm() {
               <Grid container justify="flex-end">
                 <Grid>
                   {buttonOpen &&
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={submitForm}
-                    style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                    type="submit"
-                    disabled={!isValid || isSubmitting}
-                  >
-                    コメント
-                  </Button>
+                  <React.Fragment>
+                    <Button
+                      className={classes.marginRight}
+                      variant="contained"
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      type="submit"
+                      onClick={() => setButtonOpen(false)}
+                    >
+                      キャンセル
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={submitForm}
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      type="submit"
+                      disabled={!isValid || isSubmitting}
+                    >
+                      コメント
+                    </Button>                    
+                  </React.Fragment>
                   }
                 </Grid>
               </Grid>

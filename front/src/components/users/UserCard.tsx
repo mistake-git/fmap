@@ -11,18 +11,21 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ImageIcon from '@material-ui/icons/Image';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      maxWidth: 345,
-    },
     avatar: {
-      width: theme.spacing(10),
-      height: theme.spacing(10),
+      width: theme.spacing(15),
+      height: theme.spacing(15),
     },
     userName:{
       paddingLeft: theme.spacing(3),
+      fontSize: "1.5rem",
+      fontWeight: "bold",
+    },
+    paddingNone:{
+      padding: 0
     }
   }),
 );
@@ -37,30 +40,25 @@ export default function UserCard() {
   };
 
   return (
-    <Card className={classes.root} style={{ border: "none", boxShadow: "none" }}>
-      <List>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar className={classes.avatar}>
-              <ImageIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="ユーザーネーム" className={classes.userName} />
-        </ListItem>
-        <ListItem>
-          釣果 3
-        </ListItem>
-        <ListItem>
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          startIcon={<AddIcon />}
+    <List>
+      <ListItem  className={classes.paddingNone}>
+        <ListItemAvatar>
+          <Avatar className={classes.avatar}>
+            <ImageIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={
+        <React.Fragment>
+        <Box
+          fontSize="h6.fontSize"
+          fontWeight="fontWeightBold"
+          ml={2}
         >
-          フォロー
-        </Button>
-        </ListItem>
-      </List>
-    </Card>
+          ユーザーネーム
+        </Box>
+      </React.Fragment>
+        }/>
+      </ListItem>
+    </List>
   );
 }
