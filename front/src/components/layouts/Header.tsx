@@ -13,11 +13,18 @@ import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
-import { StayPrimaryLandscape } from '@material-ui/icons';
+import { AccountCircle, StayPrimaryLandscape } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import { AuthContext } from "../../Auth";
 import auth from "../../firebase";
 import React, { Fragment, useContext, useEffect } from "react";
+import AppBar from '@material-ui/core/AppBar';
+import MenuIcon from '@material-ui/icons/Menu';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
 
 const sections = [
@@ -26,7 +33,6 @@ const sections = [
   { title: '釣り人一覧', url: '/users' },
   { title: '釣果を投稿', url: '/posts_new' },
   { title: 'ランキング', url: '/ranking' },
-  { title: 'マイページ', url: '/mypage/1' },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -53,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'auto',
     backgroundColor: theme.palette.background.paper,
   },
-  exitIcon: {
+  link: {
     color: 'white'
   },
 
@@ -74,8 +80,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props: any) {
   const classes = useStyles();
   const { title } = props;
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -122,18 +131,28 @@ return (
           </Typography>
         </div>
         <Typography align="center">お知らせはありません</Typography>
-      </Popover>
-        <IconButton className={classes.exitIcon}>
+        </Popover>
+        <Link to="/mypage/1">
+          <IconButton
+           className={classes.link}
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+          >
+          <AccountCircle />
+        </IconButton>
+        </Link>
+        
+        <IconButton>
           <ExitToAppIcon
+            className={classes.link}
             onClick={async event => {
               try {
                 await auth.signOut();
-                props.history.push("/login");
               } catch (error) {
                 alert(error.message);
               }
             }}
-            style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
           />
         </IconButton>
     </Toolbar>

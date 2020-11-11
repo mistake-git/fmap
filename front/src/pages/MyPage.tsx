@@ -20,6 +20,7 @@ import PostCard from "../components/posts/PostCard";
 import axios from 'axios'
 import PostModel from "../models/PostModel";
 import PieChart from "../components/chart/PieChart";
+import IntroductionForm from "../components/users/IntroductionForm";
 
 
 interface State {
@@ -59,24 +60,7 @@ const MyPage = (props: any) => {
         <Grid container>
           <Grid item xs={12} sm={7}>
             <UserCard/>
-              <Button onClick={() => setFormOpen(true)}>
-                <Typography 
-                  color='textSecondary'
-                  variant='caption'
-                > 
-                  自己紹介を入力
-                </Typography>
-              </Button>
-              {formOpen &&
-                <React.Fragment>
-                  <Box>
-                    フォームです
-                  </Box>
-                  <Button　onClick={() => setFormOpen(false)}>
-                    キャンセル
-                  </Button>
-                </React.Fragment>
-              }
+            <IntroductionForm/>
           </Grid>
       
           <Grid item xs={12} sm={5}>
