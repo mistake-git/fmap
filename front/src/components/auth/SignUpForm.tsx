@@ -26,13 +26,6 @@ export const AuthSchema = Yup.object().shape({
 });
 
 const SignUpForm = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    // if logged in, redirect to home
-    currentUser && props.history.push("/");
-  }, [currentUser]);
-
   return (
     <Formik
       initialValues={{ email: "", password: "" }}

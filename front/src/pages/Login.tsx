@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useContext, useEffect } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,9 +14,18 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import LoginForm from '../components/auth/LoginForm';
 import AuthTemplate from '../components/layouts/AuthTemplate';
+import { AuthContext } from "../Auth";
+import SignUpForm from '../components/auth/SignUpForm';
 
 
-export default function Login() {
+export default function Login(props: any) {
+
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    // if logged in, redirect to home
+    currentUser && props.history.push("/");
+  }, [currentUser]);
 
   return (
     <AuthTemplate　title="ログイン">

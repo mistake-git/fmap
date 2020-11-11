@@ -18,13 +18,6 @@ import { AuthSchema } from "./SignUpForm";
 
 
 const LoginForm = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    // if logged in, redirect to home
-    currentUser && props.history.push("/");
-  }, [currentUser]);
-
   return (
     <Formik
       initialValues={{ email: "", password: "" }}

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +15,9 @@ import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import { StayPrimaryLandscape } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
+import { AuthContext } from "../../Auth";
+import auth from "../../firebase";
+import React, { Fragment, useContext, useEffect } from "react";
 
 
 const sections = [
@@ -122,7 +124,17 @@ return (
         <Typography align="center">お知らせはありません</Typography>
       </Popover>
         <IconButton className={classes.exitIcon}>
-          <ExitToAppIcon/>
+          <ExitToAppIcon
+            onClick={async event => {
+              try {
+                await auth.signOut();
+                props.history.push("/login");
+              } catch (error) {
+                alert(error.message);
+              }
+            }}
+            style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+          />
         </IconButton>
     </Toolbar>
     <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
