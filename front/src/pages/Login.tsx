@@ -1,98 +1,26 @@
-import { Field, Form, Formik } from "formik";
-import { TextField } from "formik-material-ui";
-import React, { Fragment, useContext, useEffect } from "react";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import LoginForm from '../components/auth/LoginForm';
+import AuthTemplate from '../components/layouts/AuthTemplate';
 
-import {
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  LinearProgress,
-  Link,
-  Typography
-} from "@material-ui/core";
 
-import { AuthContext } from "../Auth";
-import auth from "../firebase";
-import { AuthSchema } from "./Signup";
-
-const Login = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    // if logged in, redirect to home
-    currentUser && props.history.push("/");
-  }, [currentUser]);
+export default function Login() {
 
   return (
-    <Fragment>
-      <Container>
-        <Grid container>
-          <Grid item md={4}></Grid>
-          <Grid item md={4}>
-            <Formik
-              initialValues={{ email: "", password: "" }}
-              validationSchema={AuthSchema}
-              onSubmit={async value => {
-                try {
-                  await auth.signInWithEmailAndPassword(
-                    value.email,
-                    value.password
-                  );
-                  props.history.push("/");
-                } catch (error) {
-                  alert(error.message);
-                }
-              }}
-              render={({ submitForm, isSubmitting, isValid }) => (
-                <Form>
-                  {isSubmitting && <LinearProgress />}
-                  <FormControl margin="normal" fullWidth>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="email"
-                      label="メールアドレス"
-                      fullWidth
-                      variant="outlined"
-                      component={TextField}
-                    />
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="password"
-                      label="パスワード"
-                      fullWidth
-                      variant="outlined"
-                      type="password"
-                      component={TextField}
-                    />
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      onClick={submitForm}
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      type="submit"
-                      disabled={!isValid || isSubmitting}
-                    >
-                      ログイン
-                    </Button>
-                    <Typography align="center">
-                      <Link href="/signup">新規登録</Link>
-                    </Typography>
-                  </FormControl>
-                </Form>
-              )}
-            />
-          </Grid>
-          <Grid item md={4}></Grid>
-        </Grid>
-      </Container>
-    </Fragment>
+    <AuthTemplate　title="ログイン">
+       <LoginForm/>
+    </AuthTemplate>
   );
-};
-
-export default Login;
+}

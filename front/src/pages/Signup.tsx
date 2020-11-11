@@ -1,108 +1,25 @@
-import { Field, Form, Formik } from "formik";
-import { TextField } from "formik-material-ui";
-import React, { Fragment, useContext, useEffect } from "react";
-import * as Yup from "yup";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
-import {
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  Link,
-  Typography,
-  LinearProgress
-} from "@material-ui/core";
+import AuthTemplate from '../components/layouts/AuthTemplate';
+import SignUpForm from '../components/auth/SignUpForm';
 
-import { AuthContext } from "../Auth";
-import auth from "../firebase";
-
-export const AuthSchema = Yup.object().shape({
-  email: Yup.string()
-    .email()
-    .required(),
-  password: Yup.string()
-    .min(6)
-    .required()
-});
-
-const Signup = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    // if logged in, redirect to home
-    currentUser && props.history.push("/");
-  }, [currentUser]);
-
+export default function SignUp() {
   return (
-    <Fragment>
-      <Container>
-        <Grid container>
-          <Grid item md={4}></Grid>
-          <Grid item md={4}>
-            <Formik
-              initialValues={{ email: "", password: "" }}
-              validationSchema={AuthSchema}
-              onSubmit={async value => {
-                try {
-                  await auth.createUserWithEmailAndPassword(
-                    value.email,
-                    value.password
-                  );
-                  // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
-                  props.history.push("/login");
-                } catch (error) {
-                  alert(error.message);
-                }
-              }}
-              render={({ submitForm, isSubmitting, isValid }) => (
-                <Form>
-                  {isSubmitting && <LinearProgress />}
-                  <FormControl margin="normal" fullWidth>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="email"
-                      label="メールアドレス"
-                      fullWidth
-                      variant="outlined"
-                      component={TextField}
-                    />
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="password"
-                      label="パスワード"
-                      fullWidth
-                      variant="outlined"
-                      type="password"
-                      component={TextField}
-                    />
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      onClick={submitForm}
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      type="submit"
-                      disabled={!isValid || isSubmitting}
-                    >
-                      新規登録
-                    </Button>
-                    <Typography align="center">
-                      <Link href="/login">ログイン</Link>
-                    </Typography>
-                  </FormControl>
-                </Form>
-              )}
-            />
-          </Grid>
-          <Grid item md={4}></Grid>
-        </Grid>
-      </Container>
-    </Fragment>
+    <AuthTemplate title="新規登録">
+       <SignUpForm/>
+    </AuthTemplate>
   );
-};
-
-export default Signup;
+}
