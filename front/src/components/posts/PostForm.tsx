@@ -181,6 +181,8 @@ export default function PostsForm(props: any) {
                       name="memo"
                       label="メモ"
                       variant="outlined"
+                      multiline={true}
+                      rows={4}
                       type="text"
                       component={TextField}
                     />

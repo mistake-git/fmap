@@ -68,8 +68,9 @@ export default function IntroductionForm() {
                 placeholder="自己紹介を入力"
                 type="text"
                 variant="outlined"
-                rows={4}
                 component={TextField}
+                multiline={true}
+                rows={4}
                 onClick={() => setFormOpen(true)}
               />
               <Grid container justify="flex-end">
