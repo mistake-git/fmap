@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Fragment, useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import  Header  from './Header';
 import  Footer  from './Footer';
 import Box from '@material-ui/core/Box';
+import { AuthContext } from "../../Auth";
+import auth from "../../firebase";
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
@@ -16,7 +18,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Template(props: any){
+
 	const classes = useStyles();
+	const { currentUser } = useContext(AuthContext);
 
 	return (
 		<React.Fragment>

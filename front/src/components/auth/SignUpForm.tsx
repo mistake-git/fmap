@@ -37,7 +37,6 @@ const SignUpForm = (props: any) => {
             value.password
           );
           // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
-          props.history.push("/login");
         } catch (error) {
           alert(error.message);
         }

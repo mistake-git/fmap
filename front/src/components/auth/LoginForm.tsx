@@ -28,7 +28,6 @@ const LoginForm = (props: any) => {
             value.email,
             value.password
           );
-          props.history.push("/");
         } catch (error) {
           alert(error.message);
         }
