@@ -21,7 +21,11 @@ const useStyles = makeStyles({
 	},
 	nounderline: {
 		textDecoration: 'none',
-	}
+  },
+  positionTop: {
+    position: 'sticky',
+    top: 20,
+  }
 });
 
 interface Props {
@@ -38,21 +42,23 @@ export default function PostCard(props: any) {
 
 	return (
     <Fragment>
-      <Box mt={2}>
-        <Fab color="secondary">
-          <FavoriteIcon />
-        </Fab>
-      </Box>
-      <Box mt={2}>
-        <Fab color="primary">
-          <EditIcon/>
-        </Fab>
-      </Box>
-      <Box mt={2}>
-        <Fab onClick={handleDeleate}>
-          <DeleteIcon/>
-        </Fab>
-      </Box>
+      <div className={classes.positionTop}>
+        <Box mt={2}>
+          <Fab color="secondary">
+            <FavoriteIcon />
+          </Fab>
+        </Box>
+        <Box mt={2}>
+          <Fab color="primary">
+            <EditIcon/>
+          </Fab>
+        </Box>
+        <Box mt={2}>
+          <Fab onClick={handleDeleate}>
+            <DeleteIcon/>
+          </Fab>
+        </Box>
+      </div>
     </Fragment>
 	);
 }
