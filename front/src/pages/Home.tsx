@@ -30,22 +30,6 @@ const Home = (props: any) => {
               >
                 {currentUser && currentUser.email}さんでログイン中
               </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={async event => {
-                  try {
-                    await auth.signOut();
-                    props.history.push("/login");
-                  } catch (error) {
-                    alert(error.message);
-                  }
-                }}
-                style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-              >
-                ログアウト
-              </Button>
             </Grid>
             <Grid item md={4}></Grid>
           </Grid>
