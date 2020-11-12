@@ -30,6 +30,7 @@ const PostsShow = (props: any) => {
   
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/posts/${props.match.params.id}`)
@@ -41,6 +42,11 @@ const PostsShow = (props: any) => {
 			console.log(data)
 		})
   },[setPost]);
+
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/login");
+  }, [currentUser]);
 
   const deleatePost = (id: any) => {
     axios.delete(`http://localhost:3000/posts/${id}`)

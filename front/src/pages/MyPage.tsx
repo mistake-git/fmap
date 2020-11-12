@@ -21,6 +21,7 @@ import axios from 'axios'
 import PostModel from "../models/PostModel";
 import PieChart from "../components/chart/PieChart";
 import IntroductionForm from "../components/users/IntroductionForm";
+import { AuthContext } from "../Auth";
 
 
 interface State {
@@ -40,7 +41,7 @@ const MyPage = (props: any) => {
 
   const classes = useStyles();
   const [formOpen, setFormOpen]= React.useState(false);
-
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get('http://localhost:3000/posts')
@@ -53,6 +54,10 @@ const MyPage = (props: any) => {
 		})
   },[setPosts]);
 
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/login");
+  }, [currentUser]);
 
   return (
     <Template>

@@ -15,6 +15,7 @@ import PostForm from "../../components/posts/PostForm"
 
 
 
+
 const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(1.5),
@@ -24,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
 const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
+
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/login");
+  }, [currentUser]);
 
   return (
     <Fragment>

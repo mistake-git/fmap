@@ -5,6 +5,7 @@ import PostCard from "../../components/posts/PostCard"
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
+import { AuthContext } from "../../Auth";
 
 
 interface State {
@@ -22,6 +23,13 @@ const Posts = (props: any) => {
  
   const classes = useStyles();
   const [posts, setPosts] = React.useState<PostModel[]>([])
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/login");
+  }, [currentUser]);
+
 
   useEffect(() => {
     axios.get('http://localhost:3000/posts')
