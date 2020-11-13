@@ -50,7 +50,7 @@ const SignUpForm = (props: any) => {
         <Form>
           {isSubmitting && <LinearProgress />}
           <FormControl margin="normal" fullWidth>
-          <Field
+            <Field
               style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
               name="name"
               label="名前"
