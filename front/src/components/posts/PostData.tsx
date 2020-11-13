@@ -26,12 +26,13 @@ export default function PostData(props: any) {
   const classes = useStyles();
 
   const datalist = [
-    { label: '日時', name: props.post.name },
-    { label: '魚種', name: '' },
-    { label: 'サイズ', name: '' },
-    { label: '重さ', name: '' },
-    { label: '餌', name: '' },
-    { label: '天候', name: '' },
+    { label: '日付', content: props.post.date },
+    { label: '時間', content: props.post.time },
+    { label: '魚種', content: props.post.name },
+    { label: 'サイズ', content: props.post.size },
+    { label: '重さ', content: props.post.weight },
+    { label: '餌', content: props.post.feed },
+    { label: '天候', content: props.post.weather},
   ];
 
   return (
@@ -46,7 +47,7 @@ export default function PostData(props: any) {
             {data.label}
           </Grid>
           <Grid item xs={12} sm={3} style={{ marginTop: "1em" }}>
-            {data.name}
+            {data.content}
           </Grid>
         </Grid>
       ))}
