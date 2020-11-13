@@ -17,10 +17,15 @@ import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
 
 export const AuthSchema = Yup.object().shape({
+  name: Yup.string()
+    .required(),
   email: Yup.string()
     .email()
     .required(),
   password: Yup.string()
+    .min(6)
+    .required(),
+    password_confirmation: Yup.string()
     .min(6)
     .required()
 });
@@ -28,7 +33,7 @@ export const AuthSchema = Yup.object().shape({
 const SignUpForm = (props: any) => {
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{name: "", email: "", password: "" ,password_confirmation: ""}}
       validationSchema={AuthSchema}
       onSubmit={async value => {
         try {
@@ -45,6 +50,14 @@ const SignUpForm = (props: any) => {
         <Form>
           {isSubmitting && <LinearProgress />}
           <FormControl margin="normal" fullWidth>
+          <Field
+              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+              name="name"
+              label="名前"
+              fullWidth
+              variant="outlined"
+              component={TextField}
+            />
             <Field
               style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
               name="email"
@@ -59,6 +72,17 @@ const SignUpForm = (props: any) => {
               style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
               name="password"
               label="パスワード"
+              fullWidth
+              variant="outlined"
+              type="password"
+              component={TextField}
+            />
+          </FormControl>
+          <FormControl fullWidth>
+            <Field
+              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+              name="password_confirmation"
+              label="パスワード確認"
               fullWidth
               variant="outlined"
               type="password"
