@@ -50,19 +50,13 @@ interface State {
 
 export default function PostsForm(props: any) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    private: true,
-    public: true,
-  });
+
   const [image, setImage] = React.useState<string>("");
 
   const fileChange =(e: any) => {
     setImage(URL.createObjectURL(e.target.image[0]));
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [e.target.name]: e.target.checked });
-  };
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
@@ -84,7 +78,18 @@ export default function PostsForm(props: any) {
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
-                await axios.post('http://localhost:3000/posts' )
+                const post ={
+                  name: value.name, 
+                  size: value.size ,
+                  weight: value.weight,
+                  number: value.number,
+                  feed: value.feed,
+                  memo: value.memo,
+                  date: value.date,
+                  time: value.time,                
+                  status: value.status,
+                }
+                await axios.post('http://localhost:3000/api/v1/posts',{post: post} )
                 .then(() => {
                   props.history.push("/posts");
                 })
@@ -185,19 +190,6 @@ export default function PostsForm(props: any) {
                       rows={4}
                       type="text"
                       component={TextField}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={state.public}
-                          onChange={handleChange}
-                          name="public"
-                          color="primary"
-                        />
-                      }
-                      label="公開する"
                     />
                   </Grid>
                   <Grid item xs={12}>
