@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function CommentUsers() {
+export default function Comment() {
   const classes = useStyles();
 
   return (
