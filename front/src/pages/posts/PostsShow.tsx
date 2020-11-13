@@ -73,7 +73,7 @@ const PostsShow = (props: any) => {
             <PostChart post={post} />
             <UserBar/>
             <CommentFrom post={post}/>
-            <Comments comments={comments}/>
+            <Comments comments={comments} post={post}/>
             <Box my={3}>
               <Divider/>
             </Box>

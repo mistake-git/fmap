@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+
 export default function Comments(props: any) {
   const classes = useStyles();
 
@@ -47,7 +48,7 @@ export default function Comments(props: any) {
                   </Typography>
                 }
               />
-              <CommentMenu/>
+              <CommentMenu post={props.post} comment={comment}/>
             </ListItem>   
           </List>
         )
