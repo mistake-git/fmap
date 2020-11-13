@@ -27,7 +27,7 @@ export default function Comments(props: any) {
 
   return (
     <React.Fragment>
-
+      {props.comments.map((comment: any) => {
         return(
           <List className={classes.root}>
             <ListItem alignItems="flex-start">
@@ -43,7 +43,7 @@ export default function Comments(props: any) {
                     className={classes.inline}
                     color="textPrimary"
                   >
-                   
+                   {comment.content}
                   </Typography>
                 }
               />
@@ -51,7 +51,7 @@ export default function Comments(props: any) {
             </ListItem>   
           </List>
         )
- 
+      })}
     </React.Fragment>
   );
 }

@@ -30,13 +30,15 @@ const PostsShow = (props: any) => {
   
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
+  const [comments, setComments] = React.useState<any[]>([])
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
 		.then((results) => {
 			console.log(results)
-			setPost(results.data)
+      setPost(results.data)
+      setComments(results.data.comments)
 		})
 		.catch((data) =>{
 			console.log(data)
@@ -71,7 +73,7 @@ const PostsShow = (props: any) => {
             <PostChart post={post} />
             <UserBar/>
             <CommentFrom post={post}/>
-            <Comments/>
+            <Comments comments={comments}/>
             <Box my={3}>
               <Divider/>
             </Box>
