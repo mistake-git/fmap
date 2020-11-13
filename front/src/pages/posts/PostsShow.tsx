@@ -15,7 +15,7 @@ import UserCard from "../../components/users/UserCard"
 import axios from 'axios'
 import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";
-import Comment from "../../components/comments/Comment";
+import Comments from "../../components/comments/Comments";
 import CommentFrom from "../../components/comments/CommentForm";
 import UserBar from "../../components/users/UserBar";
 
@@ -71,7 +71,7 @@ const PostsShow = (props: any) => {
             <PostChart post={post} />
             <UserBar/>
             <CommentFrom post={post}/>
-            <Comment/>
+            <Comments/>
             <Box my={3}>
               <Divider/>
             </Box>
