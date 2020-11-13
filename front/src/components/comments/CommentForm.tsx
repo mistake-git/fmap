@@ -64,7 +64,7 @@ export default function CommentForm(props: any) {
         <Divider/>
       </Box>
       <Box fontWeight="fontWeightBold" my={3}　fontSize={16}>
-        0件コメント
+      {props.commentsCount}件のコメント
       </Box>
       　<Formik
           initialValues={{ 
