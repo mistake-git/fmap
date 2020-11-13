@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: @post
+    render json: post
   end
 
   def create
@@ -20,24 +20,25 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(majocategory_params)
-      render json: @post 
+    if post.update(majocategory_params)
+      render json: post 
     else
-      render json:  @post.errors
+      render json:  post.errors
     end
   end
 
   def destroy
-    @post.destroy
+    post.destroy
   end
 
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
   end
 
   def post_params
     params.require(:post).permit(:name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status)
   end
+  
 end
