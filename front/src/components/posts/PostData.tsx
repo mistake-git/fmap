@@ -47,7 +47,9 @@ export default function PostData(props: any) {
             {data.label}
           </Grid>
           <Grid item xs={12} sm={3} style={{ marginTop: "1em" }}>
+          <Box fontWeight="fontWeightBold">
             {data.content}
+          </Box>
           </Grid>
         </Grid>
       ))}
