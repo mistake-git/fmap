@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     scope :v1 do
 
       resources :posts do
-        resources :comments,only:[:create]
+        resources :comments
       end
       
       resources :users

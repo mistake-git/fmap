@@ -22,29 +22,28 @@ export default function CommentMenu(props: any) {
     setAnchorEl(null);
   };
 
-  const deleateComment = (id: any) => {
+  const deleteComment = (id: any) => {
     axios.delete(`http://localhost:3000/api/v1/posts/${props.post.id}/comments/${props.comment.id}`)
-    .then((response) => {
-      props.history.push("/posts");
+    .then(() => {
     })
     .catch((data) =>{
       console.log(data)
     })
+    handleClose()
   }
 
   const options = [
     {
-    item: 
-      <React.Fragment>
+    item:
+    <MenuItem> 
         <Edit color="action" />編集
-      </React.Fragment>,
+    </MenuItem>
     },
     {item:
-      <React.Fragment>
+      <MenuItem onClick={deleteComment}>
         <Delete color="action"
-          onClick={deleateComment}
         />削除
-      </React.Fragment>,
+      </MenuItem>
     }
   ];
 
@@ -72,9 +71,9 @@ export default function CommentMenu(props: any) {
         }}
       >
         {options.map((option) => (
-          <MenuItem onClick={handleClose}>
-            {option.item}
-          </MenuItem>
+          <React.Fragment>
+             {option.item}
+          </React.Fragment>
         ))}
       </Menu>
     </div>
