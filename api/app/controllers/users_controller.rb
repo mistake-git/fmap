@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    users = User.find_by(uid: params[:uid])
+    users = User.all.order(created_at: :desc)
     render json: users
   end
 
