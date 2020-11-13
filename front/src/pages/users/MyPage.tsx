@@ -13,15 +13,15 @@ import {
   CardContent,
   Divider
 } from "@material-ui/core";
-import Template from "../components/layouts/Template";
-import UserCard from "../components/users/UserCard";
-import UserTab from "../components/users/UserTab";
-import PostCard from "../components/posts/PostCard";
+import Template from "../../components/layouts/Template";
+import UserCard from "../../components/users/UserCard";
+import UserTab from "../../components/users/UserTab";
+import PostCard from "../../components/posts/PostCard";
 import axios from 'axios'
-import PostModel from "../models/PostModel";
-import PieChart from "../components/chart/PieChart";
-import IntroductionForm from "../components/users/IntroductionForm";
-import { AuthContext } from "../Auth";
+import PostModel from "../../models/PostModel";
+import PieChart from "../../components/chart/PieChart";
+import IntroductionForm from "../../components/users/IntroductionForm";
+import { AuthContext } from "../../Auth";
 
 
 interface State {

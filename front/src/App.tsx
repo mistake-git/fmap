@@ -10,7 +10,7 @@ import Signup from "./pages/Signup";
 import Posts from "./pages/posts/Posts";
 import PostsShow from "./pages/posts/PostsShow";
 import PostsNew from "./pages/posts/PostsNew";
-import Mypage from "./pages/MyPage";
+import Mypage from "./pages/users/MyPage";
 
 const App: React.FC = () => {
   return (
