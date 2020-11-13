@@ -33,7 +33,7 @@ const PostsShow = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/posts/${props.match.params.id}`)
+    axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
 		.then((results) => {
 			console.log(results)
 			setPost(results.data)
@@ -49,7 +49,7 @@ const PostsShow = (props: any) => {
   }, [currentUser]);
 
   const deleatePost = (id: any) => {
-    axios.delete(`http://localhost:3000/posts/${id}`)
+    axios.delete(`http://localhost:3000/api/v1/posts/${id}`)
     .then((response) => {
       console.log('set')
       props.history.push("/posts");

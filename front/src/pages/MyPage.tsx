@@ -44,7 +44,7 @@ const MyPage = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/posts')
+    axios.get('http://localhost:3000/api/v1/posts')
 		.then((results) => {
 			console.log(results)
 			setPosts(results.data)
