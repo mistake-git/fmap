@@ -27,6 +27,8 @@ import {
   Typography,
   LinearProgress
 } from "@material-ui/core";
+import { datePickerDefaultProps } from "@material-ui/pickers/constants/prop-types";
+import PostModel from "../../models/PostModel";
 
 
 const useStyles = makeStyles({
@@ -41,13 +43,17 @@ const useStyles = makeStyles({
   }
 });
 
+interface Props {
+  post: PostModel;
+}
+
 
 export const CommentSchema = Yup.object().shape({
   content: Yup.string()
     .required('コメントを入力してください'),
 });
 
-export default function CommentForm() {
+export default function CommentForm(props: any) {
 
   const classes = useStyles();
   const [buttonOpen, setButtonOpen]= React.useState(false);
@@ -67,7 +73,10 @@ export default function CommentForm() {
           validationSchema={CommentSchema}
           onSubmit={async value => {
             try {
-              
+              const comment ={
+                content: value.content,
+              }
+              await axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comment`,{comment: comment} )
             } catch (error) {
               alert(error.message);
             }

@@ -70,7 +70,7 @@ const PostsShow = (props: any) => {
             <PostData post={post}/>
             <PostChart post={post} />
             <UserBar/>
-            <CommentFrom/>
+            <CommentFrom post={post}/>
             <CommentUsers/>
             <Box my={3}>
               <Divider/>
