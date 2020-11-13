@@ -16,7 +16,7 @@ import {
 import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
 
-export const AuthSchema = Yup.object().shape({
+const AuthSchema = Yup.object().shape({
   name: Yup.string()
     .required(),
   email: Yup.string()
@@ -25,7 +25,7 @@ export const AuthSchema = Yup.object().shape({
   password: Yup.string()
     .min(6)
     .required(),
-    password_confirmation: Yup.string()
+  password_confirmation: Yup.string()
     .min(6)
     .required()
 });

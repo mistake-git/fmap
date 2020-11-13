@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import React, { Fragment, useContext, useEffect } from "react";
+import * as Yup from "yup";
 
 import {
   Button,
@@ -14,7 +15,15 @@ import {
 
 import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
-import { AuthSchema } from "./SignUpForm";
+
+const AuthSchema = Yup.object().shape({
+  email: Yup.string()
+    .email()
+    .required(),
+  password: Yup.string()
+    .min(6)
+    .required(),
+});
 
 
 const LoginForm = (props: any) => {
