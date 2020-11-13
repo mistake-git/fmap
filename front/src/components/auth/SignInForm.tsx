@@ -26,7 +26,7 @@ const AuthSchema = Yup.object().shape({
 });
 
 
-const LoginForm = (props: any) => {
+const SignInForm = (props: any) => {
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -87,4 +87,4 @@ const LoginForm = (props: any) => {
   );
 };
 
-export default LoginForm;
+export default SignInForm;

@@ -12,13 +12,13 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import LoginForm from '../components/auth/LoginForm';
+import SignInForm from '../components/auth/SignInForm';
 import AuthTemplate from '../components/layouts/AuthTemplate';
 import { AuthContext } from "../Auth";
 import SignUpForm from '../components/auth/SignUpForm';
 
 
-export default function Login(props: any) {
+export default function SiginIn(props: any) {
 
   const { currentUser } = useContext(AuthContext);
 
@@ -29,7 +29,7 @@ export default function Login(props: any) {
 
   return (
     <AuthTemplate　title="ログイン">
-       <LoginForm/>
+       <SignInForm/>
     </AuthTemplate>
   );
 }

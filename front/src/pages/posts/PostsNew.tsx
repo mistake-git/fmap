@@ -28,7 +28,7 @@ const PostsNew = (props: any) => {
 
   useEffect(() => {
     // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/login");
+    currentUser === null && props.history.push("/signin");
   }, [currentUser]);
 
   return (

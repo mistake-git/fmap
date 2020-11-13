@@ -102,7 +102,7 @@ const SignUpForm = (props: any) => {
               新規登録
             </Button>
             <Typography align="center">
-              <Link href="/login">ログイン</Link>
+              <Link href="/signin">ログイン</Link>
             </Typography>
           </FormControl>
         </Form>
