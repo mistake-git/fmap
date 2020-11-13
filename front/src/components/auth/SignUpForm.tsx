@@ -2,6 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import React, { Fragment, useContext, useEffect } from "react";
 import * as Yup from "yup";
+import axios from 'axios'
 
 import {
   Button,
@@ -15,6 +16,7 @@ import {
 
 import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
+import UserModel from "../../models/UserModel";
 
 const AuthSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,9 +30,17 @@ const AuthSchema = Yup.object().shape({
   password_confirmation: Yup.string()
     .min(6)
     .required()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
 });
 
+interface State {
+ user: UserModel;
+}
+
+
 const SignUpForm = (props: any) => {
+
+
   return (
     <Formik
       initialValues={{name: "", email: "", password: "" ,password_confirmation: ""}}
@@ -41,6 +51,11 @@ const SignUpForm = (props: any) => {
             value.email,
             value.password
           );
+          const user ={
+            name: value.name,
+            email: value.email,
+          }
+          axios.post('http://localhost:3000/api/v1/users',{user: user})
           // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
         } catch (error) {
           alert(error.message);
@@ -65,6 +80,7 @@ const SignUpForm = (props: any) => {
               fullWidth
               variant="outlined"
               component={TextField}
+             
             />
           </FormControl>
           <FormControl fullWidth>
@@ -112,3 +128,4 @@ const SignUpForm = (props: any) => {
 };
 
 export default SignUpForm;
+
