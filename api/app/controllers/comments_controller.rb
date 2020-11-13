@@ -1,9 +1,9 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   before_action :set_post, only: [:create, :destroy]
   
   def create
     comment = Comment.new(
-      comment_params.merge(post_id: post.id)
+      comment_params.merge(post_id: @post.id)
     )
     if comment.save
     else
@@ -17,11 +17,11 @@ class CommentController < ApplicationController
   private
 
   def comment_params
-    params.permit(:content,　:post_id)
+    params.require(:comment).permit(:content)
   end
 
   def set_post
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
   end
 
 end

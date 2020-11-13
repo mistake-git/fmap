@@ -69,6 +69,7 @@ export default function CommentForm(props: any) {
       　<Formik
           initialValues={{ 
             content: "", 
+            post_id: "",
           }}
           validationSchema={CommentSchema}
           onSubmit={async value => {
@@ -76,7 +77,7 @@ export default function CommentForm(props: any) {
               const comment ={
                 content: value.content,
               }
-              await axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comment`,{comment: comment} )
+              await axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
             } catch (error) {
               alert(error.message);
             }
