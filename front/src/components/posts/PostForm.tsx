@@ -32,7 +32,7 @@ import PostDateTimePicker from '../../components/posts/PostDateTimePicker'
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
-    .required(),
+    .required('魚種を入力してください'),
 });
 
 const useStyles = makeStyles({
@@ -91,7 +91,6 @@ export default function PostsForm(props: any) {
                 }
                 await axios.post('http://localhost:3000/api/v1/posts',{post: post} )
                 .then(() => {
-                  props.history.push("/posts");
                 })
               } catch (error) {
                 alert(error.message);

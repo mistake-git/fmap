@@ -11,19 +11,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    post = Post.new(post_params)
     if post.save
       render json: post
     else
       render json: post.errors
-    end
-  end
-
-  def update
-    if @post.update(majocategory_params)
-      render json: post 
-    else
-      render json:  post.errors
     end
   end
 
