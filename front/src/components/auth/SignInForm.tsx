@@ -19,10 +19,10 @@ import auth from "../../plugins/firebase";
 const AuthSchema = Yup.object().shape({
   email: Yup.string()
     .email()
-    .required(),
+    .required('メールアドレスを入力してください'),
   password: Yup.string()
     .min(6)
-    .required(),
+    .required('パスワードを入力してください'),
 });
 
 

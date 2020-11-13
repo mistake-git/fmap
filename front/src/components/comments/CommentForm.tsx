@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 
 export const CommentSchema = Yup.object().shape({
   content: Yup.string()
-    .required(),
+    .required('コメントを入力してください'),
 });
 
 export default function CommentForm() {

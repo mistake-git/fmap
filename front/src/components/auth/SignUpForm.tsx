@@ -20,17 +20,17 @@ import UserModel from "../../models/UserModel";
 
 const AuthSchema = Yup.object().shape({
   name: Yup.string()
-    .required(),
+    .required('名前を入力してください'),
   email: Yup.string()
     .email()
-    .required(),
+    .required('メールアドレスを入力してください'),
   password: Yup.string()
     .min(6)
-    .required(),
+    .required('パスワードを入力してください'),
   password_confirmation: Yup.string()
     .min(6)
-    .required()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('パスワード確認を入力してください')
+    .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
 });
 
 interface State {
