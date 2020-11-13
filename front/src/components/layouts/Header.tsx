@@ -16,7 +16,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { AccountCircle, StayPrimaryLandscape } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import { AuthContext } from "../../Auth";
-import auth from "../../firebase";
+import auth from "../../plugins/firebase";
 import React, { Fragment, useContext, useEffect } from "react";
 import AppBar from '@material-ui/core/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';

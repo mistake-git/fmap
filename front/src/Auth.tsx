@@ -1,7 +1,6 @@
 import { User } from "firebase";
 import React, { createContext, useEffect, useState } from "react";
-
-import auth from "./firebase";
+import auth from "./plugins/firebase";
 
 interface IAuthContext {
   currentUser: User | null | undefined;

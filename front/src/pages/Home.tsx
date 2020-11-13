@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { Button, Container, Grid, Typography } from "@material-ui/core";
 import { AuthContext } from "../Auth";
-import auth from "../firebase";
+import auth from "../plugins/firebase";
 import Template from "../components/layouts/Template";
 
 const Home = (props: any) => {

@@ -9,7 +9,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import Box from '@material-ui/core/Box';
 import { AuthContext } from "../../Auth";
-import auth from "../../firebase";
+import auth from "../../plugins/firebase";
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {

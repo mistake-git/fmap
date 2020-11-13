@@ -5,7 +5,7 @@ import LineChart  from "../chart/LineChart";
 import React, { Fragment, useContext, useEffect } from "react";
 import { Button, Container, Divider, Grid, Typography } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
-import auth from "../../firebase";
+import auth from "../../plugins/firebase";
 import Template from "../layouts/Template";
 import PostCard from "./PostCard"
 import { makeStyles } from '@material-ui/core/styles';
