@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import PostForm from "../../components/posts/NewPostForm"
+import PostNewForm from "../../components/posts/PostNewForm"
 
 
 
@@ -36,7 +36,7 @@ const PostsNew = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm />
+          <PostNewForm />
         </Container>
       </Template>
     </Fragment>

@@ -48,7 +48,7 @@ interface State {
 	image?: string;
 }
 
-export default function NewForm(props: any) {
+export default function PostNewForm(props: any) {
   const classes = useStyles();
 
   const [image, setImage] = React.useState<string>("");

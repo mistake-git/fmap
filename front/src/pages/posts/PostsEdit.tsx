@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import EditPostForm from "../../components/posts/NewPostForm"
+import PostEditForm from "../../components/posts/PostNewForm"
 import axios from 'axios'
 
 
@@ -48,7 +48,7 @@ const PostsEdit = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <EditPostForm post={post}/>
+          <PostEditForm post={post}/>
         </Container>
       </Template>
     </Fragment>
