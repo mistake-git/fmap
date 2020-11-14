@@ -52,6 +52,7 @@ export default function EditForm(props: any) {
   const classes = useStyles();
 
   const [image, setImage] = React.useState<string>("");
+  
 
   const fileChange =(e: any) => {
     setImage(URL.createObjectURL(e.target.image[0]));
