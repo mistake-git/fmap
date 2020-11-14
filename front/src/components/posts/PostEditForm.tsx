@@ -61,7 +61,7 @@ export default function EditForm(props: any) {
   const initialValues={
     image: "",
     name: props.post.name, 
-    size: props.post.size ,
+    size: 1 ,
     weight: props.post.weight,
     number: props.post.number,
     feed: props.post.feed,
@@ -70,7 +70,6 @@ export default function EditForm(props: any) {
     time: props.post.time,
     status: props.post.status,
   };
-
 
 	return (
 		<React.Fragment>
@@ -100,7 +99,7 @@ export default function EditForm(props: any) {
                 alert(error.message);
               }
             }}
-            render={({ submitForm, isSubmitting, isValid }) => (
+            render={({ submitForm, isSubmitting, isValid, values,}) => (
               <Form>
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
