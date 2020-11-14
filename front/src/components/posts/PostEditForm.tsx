@@ -69,7 +69,8 @@ export default function EditForm(props: any) {
     date: props.post.date,
     time: props.post.time,
     status: props.post.status,
-  }
+  };
+
 
 	return (
 		<React.Fragment>
