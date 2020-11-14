@@ -89,9 +89,8 @@ export default function PostsForm(props: any) {
                   time: value.time,                
                   status: value.status,
                 }
-                await axios.post(props.url,{post: post} )
-                .then(() => {
-                })
+                await
+                axios.post(props.url,{post: post} )
               } catch (error) {
                 alert(error.message);
               }

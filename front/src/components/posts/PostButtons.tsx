@@ -49,9 +49,11 @@ export default function PostCard(props: any) {
           </Fab>
         </Box>
         <Box mt={2}>
-          <Fab color="primary">
-            <EditIcon/>
-          </Fab>
+          <Link to={`/posts/${props.post.id}/edit`}>
+            <Fab color="primary">
+              <EditIcon/>
+            </Fab>
+          </Link>
         </Box>
         <Box mt={2}>
           <Fab onClick={handleDeleate}>
