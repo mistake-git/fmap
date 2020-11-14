@@ -15,7 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "./PostButtons"
-import UserCard from "../users/UserCard"
+import UserCard from "../users/UserMain"
 import PostModel from "../../models/PostModel";
 
 

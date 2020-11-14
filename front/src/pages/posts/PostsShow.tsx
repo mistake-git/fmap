@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import UserCard from "../../components/users/UserCard"
+import UserCard from "../../components/users/UserMain"
 import axios from 'axios'
 import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";

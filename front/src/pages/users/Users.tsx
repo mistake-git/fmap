@@ -6,11 +6,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import UserModel from "../../models/UserModel";
 import { AuthContext } from "../../Auth";
+import UserCard from "../../components/users/UserCard";
 
 
 interface State {
-  posts: UserModel[]
-  post: UserModel
+  users: UserModel[]
+  user: UserModel
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -49,9 +50,7 @@ const Users = (props: any) => {
           <Grid container style={{ marginTop: "3em" }}>
           {users.map((user) => {
             return(
-              <div>
-                {user.name}
-              </div>
+              <UserCard user={user}/>
             )
           })}
           </Grid>

@@ -14,7 +14,7 @@ import {
   Divider
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import UserCard from "../../components/users/UserCard";
+import UserCard from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
 import PostCard from "../../components/posts/PostCard";
 import axios from 'axios'

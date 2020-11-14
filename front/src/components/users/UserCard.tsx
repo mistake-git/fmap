@@ -1,64 +1,48 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import Avatar from '@material-ui/core/Avatar';
-import { red } from '@material-ui/core/colors';
-import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ImageIcon from '@material-ui/icons/Image';
-import { Typography } from '@material-ui/core';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom';
+import { NoEncryption, PinDropSharp } from '@material-ui/icons';
+import UserModel from '../../models/UserModel';
+import { Avatar, Box } from '@material-ui/core';
+import { createStyles, Theme } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    avatar: {
-      width: theme.spacing(15),
-      height: theme.spacing(15),
+    avater: {
+      width: theme.spacing(9),
+      height: theme.spacing(9),
     },
-    userName:{
-      paddingLeft: theme.spacing(3),
-      fontSize: "1.5rem",
-      fontWeight: "bold",
-    },
-    paddingNone:{
-      padding: 0
-    }
   }),
 );
 
+interface Props {
+	user: UserModel;
+}
 
-export default function UserCard() {
+export default function PostCard(props: any) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-  return (
-    <List>
-      <ListItem  className={classes.paddingNone}>
-        <ListItemAvatar>
-          <Avatar className={classes.avatar}>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={
-        <React.Fragment>
-        <Box
-          fontSize="h6.fontSize"
-          fontWeight="fontWeightBold"
-          ml={2}
-        >
-          ユーザーネーム
+	return (
+	
+      <div>
+        <Box m={2}>
+          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avater} />
         </Box>
-      </React.Fragment>
-        }/>
-      </ListItem>
-    </List>
-  );
+        <Typography align="center">
+          <Box mt={1} fontWeight="fontWeightBold">
+            {props.user.name}
+          </Box>
+        </Typography>
+      </div>
+    
+	);
 }
