@@ -118,6 +118,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      value={props.post.name}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -129,6 +130,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      value={props.post.size}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -140,6 +142,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      value={props.post.weight}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -151,6 +154,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      value={props.post.number}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -162,6 +166,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      value={props.post.feed}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -173,6 +178,7 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      value={props.post.weaher}
                     />
                   </Grid>
                   <Grid item xs={12}>
