@@ -90,7 +90,7 @@ export default function NewForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post('http://localhost:3000/api/v1/posts',{post: newPost} )
+                axios.post('http://localhost:3000/api/v1/posts',{post: newPost} );
                 props.history.push('/posts');
               } catch (error) {
                 alert(error.message);
