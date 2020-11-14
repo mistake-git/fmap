@@ -12,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
 import PostForm from "../../components/posts/PostForm"
-
+import axios from 'axios'
 
 
 
@@ -23,8 +23,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsEdit = (props: any) => {
+  const [post, setPost] = React.useState<any>('')
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
+		.then((results) => {
+			console.log(results)
+      setPost(results.data)
+		})
+		.catch((data) =>{
+			console.log(data)
+		})
+  },[setPost]);
+
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
+
+  const url = `http://localhost:3000/api/v1/posts/${post.id}/update`
 
   useEffect(() => {
     // if not logged in, redirect to login page
@@ -35,7 +50,7 @@ const PostsEdit = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm />
+          <PostForm url={url}/>
         </Container>
       </Template>
     </Fragment>

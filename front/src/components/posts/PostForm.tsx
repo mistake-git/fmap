@@ -89,7 +89,7 @@ export default function PostsForm(props: any) {
                   time: value.time,                
                   status: value.status,
                 }
-                await axios.post('http://localhost:3000/api/v1/posts',{post: post} )
+                await axios.post(props.url,{post: post} )
                 .then(() => {
                 })
               } catch (error) {

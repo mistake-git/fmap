@@ -27,6 +27,8 @@ const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
+  const url = 'http://localhost:3000/api/v1/posts'
+
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
@@ -36,7 +38,7 @@ const PostsNew = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm />
+          <PostForm url={url} />
         </Container>
       </Template>
     </Fragment>
