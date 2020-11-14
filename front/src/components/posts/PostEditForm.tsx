@@ -57,24 +57,26 @@ export default function EditForm(props: any) {
     setImage(URL.createObjectURL(e.target.image[0]));
   }
 
+  const initialValues={
+    image: "",
+    name: props.post.name, 
+    size: props.post.size ,
+    weight: props.post.weight,
+    number: props.post.number,
+    feed: props.post.feed,
+    memo: props.post.memo,
+    date: props.post.date,
+    time: props.post.time,
+    status: props.post.status,
+  }
+
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
         <CardContent>  
           <img src={image}/>
           <Formik
-            initialValues={{ 
-              image: "",
-              name: props.post.name, 
-              size: props.post.size ,
-              weight: props.post.weight,
-              number: props.post.number,
-              feed: props.post.feed,
-              memo: props.post.memo,
-              date: props.post.date,
-              time: props.post.time,
-              status: props.post.status,
-            }}
+            initialValues={initialValues}
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
