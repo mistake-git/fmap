@@ -20,10 +20,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    if post.update(post_params)
-      render json: post
+    if @post.update(post_params)
+      render json: @post
     else
-      render json: post.errors
+      render json: @post.errors
     end
   end
 

@@ -39,6 +39,11 @@ const PostsEdit = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
+  const pushPosts = () =>{
+    props.history.push('/posts')
+  }
+
+
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
@@ -48,7 +53,7 @@ const PostsEdit = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostEditForm post={post}/>
+          <PostEditForm post={post} pushPosts={pushPosts}/>
         </Container>
       </Template>
     </Fragment>

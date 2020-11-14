@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
+
+  const pushPosts = () =>{
+    props.history.push('/posts')
+  }
 
   useEffect(() => {
     // if not logged in, redirect to login page
@@ -36,7 +41,7 @@ const PostsNew = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostNewForm />
+          <PostNewForm pushPosts={pushPosts} />
         </Container>
       </Template>
     </Fragment>

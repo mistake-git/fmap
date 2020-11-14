@@ -93,8 +93,8 @@ export default function EditForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/update`,{post: editPost} );
-                props.history.push(`/posts/${props.post.id}`);
+                axios.patch(`http://localhost:3000/api/v1/posts/${props.post.id}`,{post: editPost} );
+                props.pushPosts();
               } catch (error) {
                 alert(error.message);
               }
