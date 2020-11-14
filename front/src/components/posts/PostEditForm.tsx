@@ -65,15 +65,15 @@ export default function EditForm(props: any) {
           <Formik
             initialValues={{ 
               image: "",
-              name: "", 
-              size: "" ,
-              weight: "",
-              number: "",
-              feed: "",
-              memo: "",
-              date: "",
-              time: "",
-              status: "",
+              name: props.post.name, 
+              size: props.post.size ,
+              weight: props.post.weight,
+              number: props.post.number,
+              feed: props.post.feed,
+              memo: props.post.memo,
+              date: props.post.date,
+              time: props.post.time,
+              status: props.post.status,
             }}
             validationSchema={PostSchema}
             onSubmit={async value => {
@@ -118,7 +118,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
-                      value={props.post.name}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -130,7 +129,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
-                      value={props.post.size}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -142,7 +140,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
-                      value={props.post.weight}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -154,7 +151,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
-                      value={props.post.number}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -166,7 +162,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
-                      value={props.post.feed}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -178,7 +173,6 @@ export default function EditForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
-                      value={props.post.weaher}
                     />
                   </Grid>
                   <Grid item xs={12}>
