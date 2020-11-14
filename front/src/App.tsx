@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/posts/:id/edit" component={PostsEdit} />
           <Route exact path="/posts/:id" component={PostsShow} />
-          <Route exact path="/posts/new" component={PostsNew} />
+          <Route exact path="/posts_new" component={PostsNew} />
           <Route exact path="/mypage/:id" component={Mypage} />
         </AuthProvider>
       </Switch>
