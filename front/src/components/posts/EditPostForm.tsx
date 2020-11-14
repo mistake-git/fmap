@@ -78,7 +78,7 @@ export default function EditForm(props: any) {
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
-                const post ={
+                const newPost ={
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -90,7 +90,8 @@ export default function EditForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/update`,{post: post} )
+                axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/update`,{post: newPost} )
+                props.history.push(`/posts/${props.post.id}`);
               } catch (error) {
                 alert(error.message);
               }

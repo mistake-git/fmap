@@ -78,7 +78,7 @@ export default function NewForm(props: any) {
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
-                const post ={
+                const newPost ={
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -90,7 +90,7 @@ export default function NewForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post('http://localhost:3000/api/v1/posts',{post: post} )
+                axios.post('http://localhost:3000/api/v1/posts',{post: newPost} )
               } catch (error) {
                 alert(error.message);
               }
