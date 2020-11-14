@@ -31,7 +31,7 @@ const sections = [
   { title: '地図', url: '/map' },
 	{ title: '釣果一覧', url: '/posts' },
   { title: '釣り人一覧', url: '/users' },
-  { title: '釣果を投稿', url: '/posts_new' },
+  { title: '釣果を投稿', url: '/posts/new' },
   { title: 'ランキング', url: '/ranking' },
 ];
 
