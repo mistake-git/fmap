@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import PostForm from "../../components/posts/PostForm"
+import PostForm from "../../components/posts/NewPostForm"
 
 
 
@@ -27,10 +27,6 @@ const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  const url = 'http://localhost:3000/api/v1/posts';
-
-  const page = 'new';
-
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
@@ -40,7 +36,7 @@ const PostsNew = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm url={url} page={page} />
+          <PostForm />
         </Container>
       </Template>
     </Fragment>

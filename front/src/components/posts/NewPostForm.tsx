@@ -27,7 +27,7 @@ import {
   Typography,
   LinearProgress
 } from "@material-ui/core";
-import PostDateTimePicker from '../../components/posts/PostDateTimePicker'
+import PostDateTimePicker from './PostDateTimePicker'
 
 
 export const PostSchema = Yup.object().shape({
@@ -48,7 +48,7 @@ interface State {
 	image?: string;
 }
 
-export default function PostsForm(props: any) {
+export default function NewForm(props: any) {
   const classes = useStyles();
 
   const [image, setImage] = React.useState<string>("");
@@ -90,7 +90,7 @@ export default function PostsForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post(props.url,{post: post} )
+                axios.post('http://localhost:3000/api/v1/posts',{post: post} )
               } catch (error) {
                 alert(error.message);
               }

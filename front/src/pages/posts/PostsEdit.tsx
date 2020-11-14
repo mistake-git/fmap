@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import PostForm from "../../components/posts/PostForm"
+import EditPostForm from "../../components/posts/NewPostForm"
 import axios from 'axios'
 
 
@@ -39,10 +39,6 @@ const PostsEdit = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  const url = `http://localhost:3000/api/v1/posts/${post.id}/update`
-
-  const page ="edit"
-
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
@@ -52,7 +48,7 @@ const PostsEdit = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm url={url} page={page}/>
+          <EditPostForm post={post}/>
         </Container>
       </Template>
     </Fragment>
