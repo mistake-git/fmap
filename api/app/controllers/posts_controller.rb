@@ -19,6 +19,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    if post.update(post_params)
+      render json: post
+    else
+      render json: post.errors
+    end
+  end
+
   def destroy
     @post.destroy
   end
