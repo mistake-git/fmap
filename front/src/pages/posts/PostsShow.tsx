@@ -50,6 +50,10 @@ const PostsShow = (props: any) => {
     currentUser === null && props.history.push("/signin");
   }, [currentUser]);
 
+  const pushPost = () =>{
+    props.history.push(`/posts/${post.id}`)
+  }
+
   const deleatePost = (id: any) => {
     axios.delete(`http://localhost:3000/api/v1/posts/${id}`)
     .then((response) => {

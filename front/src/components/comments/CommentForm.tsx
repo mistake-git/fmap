@@ -78,6 +78,7 @@ export default function CommentForm(props: any) {
                 content: value.content,
               }
               await axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
+              window.location.reload()
             } catch (error) {
               alert(error.message);
             }

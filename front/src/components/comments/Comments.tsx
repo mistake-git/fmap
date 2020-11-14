@@ -48,7 +48,7 @@ export default function Comments(props: any) {
                   </Typography>
                 }
               />
-              <CommentMenu post={props.post} comment={comment}/>
+              <CommentMenu pushPost={props.pushPost} post={props.post} comment={comment}/>
             </ListItem>   
           </List>
         )

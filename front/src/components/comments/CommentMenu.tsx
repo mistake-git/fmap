@@ -25,6 +25,7 @@ export default function CommentMenu(props: any) {
   const deleteComment = (id: any) => {
     axios.delete(`http://localhost:3000/api/v1/posts/${props.post.id}/comments/${props.comment.id}`)
     .then(() => {
+      window.location.reload()
     })
     .catch((data) =>{
       console.log(data)
