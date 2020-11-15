@@ -36,8 +36,6 @@ const useStyles = makeStyles({
   },
   imageWrapper: {
     position: 'relative',
-    width: '50%',
-    textAlign: 'center'
   },
   cancelButton: {
     position: 'absolute',
@@ -89,14 +87,20 @@ export default function PostNewForm(props: any) {
         <CardContent>
           {src &&
             <React.Fragment>
-              <div className={classes.imageWrapper} >
-                <CancelIcon
-                  color="primary"
-                  onClick={clear}
-                  className={classes.cancelButton}
-                />
-                <img src={src} style={{width: '100%'}}/>
-              </div>
+              <Grid container spacing={3}>
+                <Grid item xs={2}></Grid>
+                <Grid item xs={8}>
+                  <div className={classes.imageWrapper} >
+                    <CancelIcon
+                      color="primary"
+                      onClick={clear}
+                      className={classes.cancelButton}
+                    />
+                    <img src={src} style={{width: '100%'}}/>
+                  </div>
+                </Grid>
+                <Grid item xs={2}></Grid>
+              </Grid>
             </React.Fragment> 
           }
           <Formik
