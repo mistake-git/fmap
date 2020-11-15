@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   },
   imageWrapper: {
     position: 'relative',
+    width: '50%',
+    textAlign: 'center'
   },
   cancelButton: {
     position: 'absolute',
@@ -97,7 +99,7 @@ export default function ProfileUserModal() {
                   onClick={clear}
                   className={classes.cancelButton}
                 />
-                <img src={src} style={{width: '100%'}}/>
+                <img src={src} style={{width: '50%'}}/>
               </div>
             </React.Fragment> 
           }

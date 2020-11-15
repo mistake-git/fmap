@@ -14,7 +14,8 @@ import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Button,
   Grid,
-  LinearProgress
+  LinearProgress,
+  Typography
 } from "@material-ui/core";
 import PostDateTimePicker from './PostDateTimePicker'
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -35,6 +36,8 @@ const useStyles = makeStyles({
   },
   imageWrapper: {
     position: 'relative',
+    width: '50%',
+    textAlign: 'center'
   },
   cancelButton: {
     position: 'absolute',
@@ -84,18 +87,18 @@ export default function PostNewForm(props: any) {
 		<React.Fragment>
 			<Card className={classes.root}>
         <CardContent>
-        {src &&
-          <React.Fragment>
-            <div className={classes.imageWrapper}>
-              <CancelIcon
-                color="primary"
-                onClick={clear}
-                className={classes.cancelButton}
-              />
-              <img src={src} style={{width: '100%'}}/>
-            </div>
-          </React.Fragment> 
-        }
+          {src &&
+            <React.Fragment>
+              <div className={classes.imageWrapper} >
+                <CancelIcon
+                  color="primary"
+                  onClick={clear}
+                  className={classes.cancelButton}
+                />
+                <img src={src} style={{width: '100%'}}/>
+              </div>
+            </React.Fragment> 
+          }
           <Formik
             initialValues={{ 
               image: "",
