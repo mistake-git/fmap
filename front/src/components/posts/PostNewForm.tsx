@@ -34,6 +34,8 @@ import {
   LinearProgress
 } from "@material-ui/core";
 import PostDateTimePicker from './PostDateTimePicker'
+import CancelIcon from '@material-ui/icons/Cancel';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 
 
 export const PostSchema = Yup.object().shape({
@@ -48,6 +50,15 @@ const useStyles = makeStyles({
   input: {
     display: 'none',
   },
+  image_wrapper: {
+    position: 'relative',
+  },
+  cancel_button: {
+    position: 'absolute',
+    top: '-5px',
+    right: '-5px',
+    cursor: 'pointer',
+  }
 });
 
 interface State {
@@ -58,7 +69,9 @@ export default function PostNewForm(props: any) {
   const classes = useStyles();
 
   const [src, setSrc] = React.useState('')
+
   const ref = createRef<HTMLInputElement>()
+
   const onClick = () => {
     if (ref.current) {
       ref.current.click()
@@ -79,11 +92,27 @@ export default function PostNewForm(props: any) {
     }
   }
 
+  const clear = () => {
+    setSrc('');
+    window.location.reload()
+  };
+
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
         <CardContent>
-        {src && <img src={src} style={{width: '100%'}}/>}
+        {src &&
+          <React.Fragment>
+            <div className={classes.image_wrapper}>
+              <CancelIcon
+                color="primary"
+                onClick={clear}
+                className={classes.cancel_button}
+              />
+              <img src={src} style={{width: '100%'}}/>
+            </div>
+          </React.Fragment> 
+        }
           <Formik
             initialValues={{ 
               image: "",
@@ -101,6 +130,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const newPost ={
+                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -123,7 +153,12 @@ export default function PostNewForm(props: any) {
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
-                    <input accept="image" className={classes.input} id="icon-button-file" type="file"
+                    <input 
+                      name="image"
+                      accept="image" 
+                      className={classes.input} 
+                      id="icon-button-file" 
+                      type="file"
                       onChange={onChange}
                       onClick={onClick}
                     />
