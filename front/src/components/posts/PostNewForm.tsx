@@ -83,7 +83,7 @@ export default function PostNewForm(props: any) {
 		<React.Fragment>
 			<Card className={classes.root}>
         <CardContent>
-        <div>{src && <img src={src} />}</div>
+        {src && <img src={src} style={{width: '100%'}}/>}
           <Formik
             initialValues={{ 
               image: "",
