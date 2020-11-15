@@ -1,4 +1,10 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, {
+  ChangeEvent,
+  createRef,
+  Fragment,
+  FunctionComponent,
+  useState,
+} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -51,17 +57,33 @@ interface State {
 export default function PostNewForm(props: any) {
   const classes = useStyles();
 
-  const [image, setImage] = React.useState<string>("");
-
-  const fileChange =(e: any) => {
-    setImage(URL.createObjectURL(e.target.image[0]));
+  const [src, setSrc] = React.useState('')
+  const ref = createRef<HTMLInputElement>()
+  const onClick = () => {
+    if (ref.current) {
+      ref.current.click()
+    }
+  }
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files === null) {
+      return
+    }
+    const file = event.target.files.item(0)
+    if (file === null) {
+      return
+    }
+    var reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      setSrc(reader.result as string)
+    }
   }
 
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
-        <CardContent>  
-          <img src={image}/>
+        <CardContent>
+        <div>{src && <img src={src} />}</div>
           <Formik
             initialValues={{ 
               image: "",
@@ -101,7 +123,10 @@ export default function PostNewForm(props: any) {
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
-                    <input accept="image" className={classes.input} id="icon-button-file" type="file" onChange={fileChange}/>
+                    <input accept="image" className={classes.input} id="icon-button-file" type="file"
+                      onChange={onChange}
+                      onClick={onClick}
+                    />
                     <label htmlFor="icon-button-file">
                       <IconButton color="primary" aria-label="upload picture" component="span">
                         <AttachmentIcon />
