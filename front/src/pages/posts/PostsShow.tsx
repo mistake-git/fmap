@@ -1,17 +1,10 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { Button, Container, Divider, Grid, Typography } from "@material-ui/core";
+import { Container, Divider, Grid} from "@material-ui/core";
 import { AuthContext } from "../../Auth";
-import auth from "../../plugins/firebase";
 import Template from "../../components/layouts/Template";
-import PostCard from "../../components/posts/PostCard"
 import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
-import EditIcon from '@material-ui/icons/Edit';
 import PostButtons from "../../components/posts/PostButtons"
-import UserCard from "../../components/users/UserMain"
 import axios from 'axios'
 import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";

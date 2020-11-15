@@ -1,17 +1,9 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Button,
   Container,
-  FormControl,
   Grid,
-  Link,
-  Typography,
-  LinearProgress,
   Box,
-  Card,
-  CardContent,
-  Divider
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserCard from "../../components/users/UserMain";

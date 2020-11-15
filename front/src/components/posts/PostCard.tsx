@@ -10,7 +10,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
-import { NoEncryption } from '@material-ui/icons';
 import PostModel from '../../models/PostModel';
 
 const useStyles = makeStyles({
