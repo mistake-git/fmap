@@ -6,7 +6,7 @@ import {
   Box,
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import UserCard from "../../components/users/UserMain";
+import UserMain from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
 import PostCard from "../../components/posts/PostCard";
 import axios from 'axios'
@@ -56,7 +56,7 @@ const MyPage = (props: any) => {
       <Container maxWidth="md">
         <Grid container>
           <Grid item xs={12} sm={7}>
-            <UserCard/>
+            <UserMain/>
             <IntroductionForm/>
           </Grid>
       

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function UserCard() {
+export default function UserMain() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
