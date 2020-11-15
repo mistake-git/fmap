@@ -7,6 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ImageIcon from '@material-ui/icons/Image';
+import ProfileUserModal from './ProfileImageModal';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,8 +20,11 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: "1.5rem",
       fontWeight: "bold",
     },
-    paddingNone:{
+    paddingNone: {
       padding: 0
+    },
+    avaterWrapper: {
+     position: 'relative',
     }
   }),
 );
@@ -37,11 +41,14 @@ export default function UserMain() {
   return (
     <List>
       <ListItem  className={classes.paddingNone}>
-        <ListItemAvatar>
-          <Avatar className={classes.avatar}>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
+        <div className={classes.avaterWrapper}>
+          <ProfileUserModal/>
+          <ListItemAvatar>
+            <Avatar className={classes.avatar}>
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+        </div>
         <ListItemText primary={
         <React.Fragment>
         <Box

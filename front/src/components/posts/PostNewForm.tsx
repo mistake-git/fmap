@@ -33,10 +33,10 @@ const useStyles = makeStyles({
   input: {
     display: 'none',
   },
-  image_wrapper: {
+  imageWrapper: {
     position: 'relative',
   },
-  cancel_button: {
+  cancelButton: {
     position: 'absolute',
     top: '-5px',
     right: '-5px',
@@ -86,11 +86,11 @@ export default function PostNewForm(props: any) {
         <CardContent>
         {src &&
           <React.Fragment>
-            <div className={classes.image_wrapper}>
+            <div className={classes.imageWrapper}>
               <CancelIcon
                 color="primary"
                 onClick={clear}
-                className={classes.cancel_button}
+                className={classes.cancelButton}
               />
               <img src={src} style={{width: '100%'}}/>
             </div>
