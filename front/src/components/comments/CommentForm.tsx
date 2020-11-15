@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import * as Yup from "yup";
@@ -11,19 +10,29 @@ import {
   Grid,
 } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    progress: {
+      display: 'flex',
+      '& > * + *': {
+        marginLeft: theme.spacing(2),
+      },
+    },
+    root: {
+      minWidth: 150,
+    },
+    input: {
+      display: 'none',
+    },
+    marginRight:{
+      marginRight: 20,
+    }
+  }),
+);
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 150,
-  },
-  input: {
-    display: 'none',
-  },
-  marginRight:{
-    marginRight: 20,
-  }
-});
 
 interface Props {
   post: PostModel;
@@ -67,6 +76,11 @@ export default function CommentForm(props: any) {
           }}
           render={({ submitForm, isSubmitting, isValid }) => (
             <Form>
+              {isSubmitting &&
+                <div className={classes.root}>
+                  <CircularProgress />
+                </div>
+              }
               <Field
                 fullWidth
                 required
