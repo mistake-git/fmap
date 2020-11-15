@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     avaterWrapper: {
      position: 'relative',
+    },
+    cameraIcon: {
+      position: 'absolute',
+      bottom: '-5px',
+      right: '-5px', 
     }
   }),
 );
@@ -42,12 +47,14 @@ export default function UserMain() {
     <List>
       <ListItem  className={classes.paddingNone}>
         <div className={classes.avaterWrapper}>
-          <ProfileUserModal/>
           <ListItemAvatar>
             <Avatar className={classes.avatar}>
               <ImageIcon />
             </Avatar>
           </ListItemAvatar>
+          <div className={classes.cameraIcon}>
+            <ProfileUserModal/>
+          </div>
         </div>
         <ListItemText primary={
         <React.Fragment>

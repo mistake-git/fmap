@@ -18,7 +18,7 @@ import {
 } from "@material-ui/core";
 import PostDateTimePicker from './PostDateTimePicker'
 import CancelIcon from '@material-ui/icons/Cancel';
-import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+
 
 
 export const PostSchema = Yup.object().shape({
@@ -149,6 +149,7 @@ export default function PostNewForm(props: any) {
                       <IconButton color="primary" aria-label="upload picture" component="span">
                         <AttachmentIcon />
                       </IconButton>
+                      ファイルを選択
                     </label>
                   </Grid>
                   <Grid item xs={12} md={6}>
