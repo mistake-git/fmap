@@ -13,9 +13,6 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     if post.save
-      file = File.open(params[:image])
-      post.image.attach(io: file)
-      file.close
       render json: post
     else
       render json: post.errors
