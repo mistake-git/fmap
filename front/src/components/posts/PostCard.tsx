@@ -36,9 +36,9 @@ export default function PostCard(props: any) {
 			<CardActionArea>
 				<Link to={`/posts/${props.post.id}`}>
 					<CardMedia
-					className={classes.media}
-					image="/static/images/cards/contemplative-reptile.jpg"
-					title="Contemplative Reptile"
+						className={classes.media}
+						image={props.post.image}
+						title="Contemplative Reptile"
 					/>
 				</Link>
 				<CardContent>
