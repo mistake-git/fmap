@@ -103,7 +103,6 @@ export default function PostNewForm(props: any) {
           }
           <Formik
             initialValues={{ 
-              image: "",
               name: "", 
               size: "" ,
               weight: "",
@@ -118,7 +117,6 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,

@@ -30,9 +30,15 @@ const PostsEdit = (props: any) => {
   const classes = useStyles();
 
   const updatePost = (post:any) =>{
-    axios.patch('http://localhost:3000/api/v1/posts',{post: post} );
+    axios.patch('http://localhost:3000/api/v1/posts',{post: post} )
+    .then((response) => {
+      console.log('set')
+      props.history.push(`/posts/${response.data.post.id}`);
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
   }
-
 
   useEffect(() => {
     // if not logged in, redirect to login page
