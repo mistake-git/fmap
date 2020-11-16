@@ -40,7 +40,6 @@ interface State {
 
 const SignUpForm = (props: any) => {
 
-
   return (
     <Formik
       initialValues={{name: "", email: "", password: "" ,password_confirmation: ""}}

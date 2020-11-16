@@ -70,7 +70,6 @@ export default function CommentForm(props: any) {
               }
               await 
               props.createComment(comment)
-             
             } catch (error) {
               alert(error.message);
             }

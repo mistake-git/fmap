@@ -67,11 +67,13 @@ export default function CommentContainer(props: any) {
 
   return (
     <React.Fragment>
-     <CommentForm commentsCount={comments.length}/>
+     <CommentForm 
+      commentsCount={comments.length}
+      createComment={createComment}
+      />
      <Comments 
       comments={comments} 
       post={props.post} 
-      createComment={createComment}
       deleteComment={destroyComment}
      />
     </React.Fragment>

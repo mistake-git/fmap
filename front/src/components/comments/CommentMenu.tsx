@@ -20,7 +20,7 @@ export default function CommentMenu(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null);
-    props.destroyComment();
+    props.destroyComment(props.comment.id);
   };
 
   const options = [
