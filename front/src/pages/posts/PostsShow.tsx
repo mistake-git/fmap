@@ -46,7 +46,7 @@ const PostsShow = (props: any) => {
   const createComment = (comment: any) =>{
     axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
     .then((response) => {
-      const newData = update(comments, {$push:[response.data]})
+      const newData = update(comments, {$unshift:[response.data]})
       setComments(newData)
     })
     .catch((data) =>{
