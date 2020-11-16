@@ -8,7 +8,6 @@ import CardContent from '@material-ui/core/CardContent';
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
-import axios from 'axios'
 import IconButton from '@material-ui/core/IconButton';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
@@ -78,7 +77,6 @@ export default function PostNewForm(props: any) {
 
   const clear = () => {
     setSrc('');
-    window.location.reload()
   };
 
 	return (
@@ -119,7 +117,7 @@ export default function PostNewForm(props: any) {
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
-                const newPost ={
+                const post ={
                   image: value.image,
                   name: value.name, 
                   size: value.size ,
@@ -132,8 +130,7 @@ export default function PostNewForm(props: any) {
                   status: value.status,
                 }
                 await
-                axios.post('http://localhost:3000/api/v1/posts',{post: newPost} );
-                props.pushPosts();
+                props.action(post);
               } catch (error) {
                 alert(error.message);
               }

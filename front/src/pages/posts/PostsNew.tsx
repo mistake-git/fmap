@@ -3,7 +3,8 @@ import { Container} from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
-import PostNewForm from "../../components/posts/PostNewForm"
+import PostForm from "../../components/posts/PostForm"
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -15,20 +16,20 @@ const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  const pushPosts = () =>{
-    props.history.push('/posts')
-  }
-
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
   }, [currentUser]);
 
+  const createPost = (post: any) => {
+    axios.post('http://localhost:3000/api/v1/posts',{post: post} );
+  }
+
   return (
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostNewForm pushPosts={pushPosts} />
+          <PostForm action={createPost} />
         </Container>
       </Template>
     </Fragment>

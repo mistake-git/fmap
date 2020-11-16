@@ -3,7 +3,7 @@ import { Container} from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
-import PostEditForm from "../../components/posts/PostEditForm"
+import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +29,8 @@ const PostsEdit = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  const pushPosts = () =>{
-    props.history.push('/posts')
+  const updatePost = (post:any) =>{
+    axios.patch('http://localhost:3000/api/v1/posts',{post: post} );
   }
 
 
@@ -43,7 +43,7 @@ const PostsEdit = (props: any) => {
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostEditForm post={post} pushPosts={pushPosts}/>
+          <PostForm post={post} action={updatePost}/>
         </Container>
       </Template>
     </Fragment>
