@@ -24,8 +24,8 @@ const PostsNew = (props: any) => {
   const createPost = (post: any) => {
     axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {
-      console.log('set')
-      props.history.push(`/posts/${response.data.post.id}`);
+      console.log(response)
+      props.history.push(`/posts/${response.data.id}`);
     })
     .catch((data) =>{
       console.log(data)
