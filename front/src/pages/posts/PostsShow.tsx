@@ -46,7 +46,7 @@ const PostsShow = (props: any) => {
 
 
   const createComment = (comment: any) =>{
-    axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
+    axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
     .then((response) => {
       const newData = update(comments, {$push:[response.data]})
       setComments(newData)
@@ -95,7 +95,7 @@ const PostsShow = (props: any) => {
              post={post}
              comments={comments}
              createComment={createComment}
-             createDestroy={destroyComment}
+             destroyComment={destroyComment}
              />
             <Box my={3}>
               <Divider/>
