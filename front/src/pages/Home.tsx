@@ -2,14 +2,20 @@ import React, { Fragment, useContext, useEffect } from "react";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { AuthContext } from "../Auth";
 import Template from "../components/layouts/Template";
+import axios from 'axios'
 
 const Home = (props: any) => {
   const { currentUser } = useContext(AuthContext);
+  const [user, setUser] = React.useState('');
 
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
   }, [currentUser]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
+  }, [setUser]);
 
   return (
     <Fragment>
@@ -27,7 +33,7 @@ const Home = (props: any) => {
                   whiteSpace: "pre"
                 }}
               >
-                {currentUser && currentUser.email}さんでログイン中
+              
                 
               </Typography>
             </Grid>
