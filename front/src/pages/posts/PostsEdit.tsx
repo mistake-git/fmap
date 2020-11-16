@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PostsEdit = (props: any) => {
   const [post, setPost] = React.useState<any>('')
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
@@ -26,7 +27,11 @@ const PostsEdit = (props: any) => {
 		})
   },[setPost]);
 
-  const { currentUser } = useContext(AuthContext);
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/signin");
+  }, [currentUser]);
+
   const classes = useStyles();
 
   const updatePost = (post: any) =>{
@@ -40,16 +45,29 @@ const PostsEdit = (props: any) => {
     })
   }
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
+ 　
+  const value ={
+    name: post.name, 
+    size: post.size ,
+    weight: post.weight,
+    number: post.number,
+    feed: post.feed,
+    memo: post.memo,
+    date: post.date,
+    time: post.time,
+    status: post.statu,
+    user_id: 1,
+  }
+  
   return (
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm post={post} action={updatePost}/>
+          <PostForm 
+            post={post} 
+            action={updatePost}
+            value={value}
+          />
         </Container>
       </Template>
     </Fragment>

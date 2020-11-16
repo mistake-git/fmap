@@ -32,11 +32,28 @@ const PostsNew = (props: any) => {
     })
   }
 
+  　
+  const value ={
+    name: "", 
+    size: "",
+    weight: "",
+    number: "",
+    feed: "",
+    memo: "",
+    date: "",
+    time: "",
+    status: "",
+    user_id: "",
+  }
+
   return (
     <Fragment>
       <Template>
         <Container maxWidth="md">
-          <PostForm action={createPost} />
+          <PostForm 
+            action={createPost} 
+            value={value}
+          />
         </Container>
       </Template>
     </Fragment>

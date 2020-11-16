@@ -110,18 +110,7 @@ export default function PostNewForm(props: any) {
             </React.Fragment> 
           }
           <Formik
-            initialValues={{ 
-              name: "", 
-              size: "" ,
-              weight: "",
-              number: "",
-              feed: "",
-              memo: "",
-              date: "",
-              time: "",
-              status: "",
-              user_id: "",
-            }}
+            initialValues={props.value}
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
@@ -173,6 +162,7 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="text"
+                      value={props.post.name}
                       component={TextField}
                     />
                   </Grid>
