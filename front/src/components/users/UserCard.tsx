@@ -23,13 +23,11 @@ export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
     <div>
-      <Box m={2}>
+      <Box mx={5} mb={1}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avater} />
       </Box>
       <Typography align="center">
-        <Box mt={1} fontWeight="fontWeightBold">
-          {props.user.name}
-        </Box>
+        {props.user.name}
       </Typography>
     </div>
 	);
