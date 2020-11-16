@@ -33,7 +33,7 @@ export default function CommentContainer(props: any) {
     axios.get(`http://localhost:3000/api/v1/posts/${props.post.id}`)
 		.then((results) => {
 			console.log(results)
-      setComments(results.data)
+      setComments(results.data.comments)
 		})
 		.catch((data) =>{
 			console.log(data)

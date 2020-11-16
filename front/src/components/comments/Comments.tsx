@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 export default function Comments(props: any) {
   const classes = useStyles();
 
