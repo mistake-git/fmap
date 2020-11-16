@@ -1,6 +1,8 @@
 import React, {
   ChangeEvent,
   createRef,
+  useEffect,
+  useContext,
 } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,10 +16,12 @@ import {
   Button,
   Grid,
   LinearProgress,
-  Typography
 } from "@material-ui/core";
 import PostDateTimePicker from './PostDateTimePicker'
 import CancelIcon from '@material-ui/icons/Cancel';
+import userEvent from '@testing-library/user-event';
+import axios from 'axios'
+import { AuthContext } from '../../Auth';
 
 
 
@@ -49,11 +53,25 @@ interface State {
 }
 
 export default function PostNewForm(props: any) {
+  const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
   const [src, setSrc] = React.useState('')
+  
+  const [user, setUser] = React.useState<any>('')
 
   const ref = createRef<HTMLInputElement>()
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
+    .then((results) => {
+			console.log(results)
+      setUser(results.data)
+		})
+		.catch((data) =>{
+			console.log(data)
+		})
+  }, [setUser]);
 
   const onClick = () => {
     if (ref.current) {
@@ -112,6 +130,7 @@ export default function PostNewForm(props: any) {
               date: "",
               time: "",
               status: "",
+              user_id: "",
             }}
             validationSchema={PostSchema}
             onSubmit={async value => {
@@ -126,6 +145,7 @@ export default function PostNewForm(props: any) {
                   date: value.date,
                   time: value.time,                
                   status: value.status,
+                  user_id: user.id
                 }
                 await
                 props.action(post);
