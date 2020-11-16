@@ -24,6 +24,7 @@ const PostsShow = (props: any) => {
   const [post, setPost] = React.useState<any>('')
   const [comments, setComments] = React.useState<any>([])
   const { currentUser } = useContext(AuthContext);
+  const [feeds, setFeeds] = React.useState<any>([])
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)

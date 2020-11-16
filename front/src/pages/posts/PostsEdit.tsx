@@ -45,7 +45,6 @@ const PostsEdit = (props: any) => {
     })
   }
 
- 　
   const value ={
     name: post.name, 
     size: post.size ,
