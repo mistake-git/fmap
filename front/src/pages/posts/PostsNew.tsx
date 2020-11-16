@@ -34,6 +34,7 @@ const PostsNew = (props: any) => {
 
   　
   const value ={
+    image: "",
     name: "", 
     size: "",
     weight: "",

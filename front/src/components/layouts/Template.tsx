@@ -8,7 +8,7 @@ import { AuthContext } from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
-		marginTop: theme.spacing(3),
+		marginTop: theme.spacing(9),
 	},
 }));
 
@@ -21,7 +21,7 @@ export default function Template(props: any){
 		<React.Fragment>
 			<CssBaseline />
 			<Header title="Fishing Map" />
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" className={classes.mainGrid}>
           {props.children}
         </Container>
 			<Footer title="Fishing Map" />

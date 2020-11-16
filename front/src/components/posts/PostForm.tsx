@@ -1,7 +1,6 @@
 import React, {
   ChangeEvent,
   createRef,
-  useEffect,
   useContext,
 } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,10 +18,7 @@ import {
 } from "@material-ui/core";
 import PostDateTimePicker from './PostDateTimePicker'
 import CancelIcon from '@material-ui/icons/Cancel';
-import userEvent from '@testing-library/user-event';
-import axios from 'axios'
 import { AuthContext } from '../../Auth';
-
 
 
 export const PostSchema = Yup.object().shape({
@@ -115,6 +111,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
+                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -162,7 +159,6 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="text"
-                      value={props.post.name}
                       component={TextField}
                     />
                   </Grid>
