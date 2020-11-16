@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    same_name_post = Post.where(:name @post.name)
+    same_name_post = Post.where(name: @post.name)
     feeds = Post.where.not(feed: "").group(:feed).sum(:number)
     render json: @post,feeds
   end
