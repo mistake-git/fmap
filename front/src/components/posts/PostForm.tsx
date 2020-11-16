@@ -62,16 +62,6 @@ export default function PostNewForm(props: any) {
 
   const ref = createRef<HTMLInputElement>()
 
-  useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
-    .then((results) => {
-			console.log(results)
-      setUser(results.data)
-		})
-		.catch((data) =>{
-			console.log(data)
-		})
-  }, [setUser]);
 
   const onClick = () => {
     if (ref.current) {
