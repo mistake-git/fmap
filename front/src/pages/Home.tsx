@@ -15,11 +15,6 @@ const Home = (props: any) => {
   const [user, setUser] = React.useState<any>('');
 
   useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
-  useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
     .then((results) => {
 			console.log(results)
@@ -30,6 +25,11 @@ const Home = (props: any) => {
 		})
   }, [setUser]);
 
+  useEffect(() => {
+    // if not logged in, redirect to login page
+    currentUser === null && props.history.push("/signin");
+  }, [currentUser]);
+
   return (
     <Fragment>
       <Template>
@@ -37,7 +37,11 @@ const Home = (props: any) => {
           <Grid container style={{ marginTop: "1em" }}>
             <Grid item md={4}></Grid>
             <Grid item md={4}>
-            <Typography>{user.name}ログインしています</Typography>
+            
+            <Typography>
+              {currentUser && currentUser.email}でログイン
+              {user && user.name}
+              ログインしています</Typography>
               <Typography
                 variant="caption"
                 style={{
