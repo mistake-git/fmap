@@ -49,12 +49,19 @@ const SignUpForm = (props: any) => {
           await auth.createUserWithEmailAndPassword(
             value.email,
             value.password
-          );
-          const user ={
-            name: value.name,
-            email: value.email,
-          }
-          axios.post('http://localhost:3000/api/v1/users',{user: user})
+          )
+          .then((results) => {
+            const user ={
+              name: value.name,
+              email: value.email,
+              uid: results.user?.uid
+            }
+            axios.post('http://localhost:3000/api/v1/users',{user: user})
+            console.log(results)
+          })
+          .catch((data) =>{
+           
+          })
           // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
         } catch (error) {
           alert(error.message);

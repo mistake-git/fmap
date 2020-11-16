@@ -28,6 +28,7 @@ const Home = (props: any) => {
                 }}
               >
                 {currentUser && currentUser.email}さんでログイン中
+                
               </Typography>
             </Grid>
             <Grid item md={4}></Grid>
