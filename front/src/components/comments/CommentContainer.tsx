@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function CommentContainer(props: any) {
   const classes = useStyles();
-  const [comments, setComments] = React.useState<any>([])
+  const [comments, setComments] = React.useState<any>([]);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.post.id}`)
@@ -45,7 +45,7 @@ export default function CommentContainer(props: any) {
     axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
     .then((response) => {
       const newData = update(comments, {$push:[response.data]})
-      setComments({comments: newData})
+      setComments(newData)
     })
     .catch((data) =>{
       console.log(data)
@@ -57,7 +57,7 @@ export default function CommentContainer(props: any) {
     .then((response) => {
       const commentIndex = comments.findIndex((x: any) => x.id === id)
       const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
-      setComments({comments: deleteComments})
+      setComments(deleteComments)
       console.log('set')
     })
     .catch((data) =>{
@@ -72,7 +72,7 @@ export default function CommentContainer(props: any) {
       createComment={createComment}
       />
      <Comments 
-      comments={comments} 
+      comments={comments}
       post={props.post} 
       deleteComment={destroyComment}
      />
