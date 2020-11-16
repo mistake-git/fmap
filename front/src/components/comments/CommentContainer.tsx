@@ -27,54 +27,19 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function CommentContainer(props: any) {
   const classes = useStyles();
-  const [comments, setComments] = React.useState<any>([]);
 
-  useEffect(() => {
-    axios.get(`http://localhost:3000/api/v1/posts/${props.post.id}`)
-		.then((results) => {
-			console.log(results)
-      setComments(results.data.comments)
-		})
-		.catch((data) =>{
-			console.log(data)
-		})
-  },[setComments]);
-
-
-  const createComment = (comment: any) =>{
-    axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
-    .then((response) => {
-      const newData = update(comments, {$push:[response.data]})
-      setComments(newData)
-    })
-    .catch((data) =>{
-      console.log(data)
-    })
-  }
-
-  const destroyComment = (id: any) => {
-    axios.delete(`http://localhost:3000/api/v1/posts/${props.post.id}/comments/${id}`)
-    .then((response) => {
-      const commentIndex = comments.findIndex((x: any) => x.id === id)
-      const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
-      setComments(deleteComments)
-      console.log('set')
-    })
-    .catch((data) =>{
-      console.log(data)
-    })
-  }
+  
 
   return (
     <React.Fragment>
      <CommentForm 
-      commentsCount={comments.length}
-      createComment={createComment}
+      commentsCount={props.comments.length}
+      createComment={props.createComment}
       />
      <Comments 
-      comments={comments}
+      comments={props.comments}
       post={props.post} 
-      destroyComment={destroyComment}
+      destroyComment={props.destroyComment}
      />
     </React.Fragment>
   );

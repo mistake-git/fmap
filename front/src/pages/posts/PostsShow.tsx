@@ -12,7 +12,7 @@ import Comments from "../../components/comments/Comments";
 import CommentFrom from "../../components/comments/CommentForm";
 import UserBar from "../../components/users/UserBar";
 import CommentContainer from "../../components/comments/CommentContainer";
-
+import update from 'react-addons-update'
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -24,6 +24,7 @@ const PostsShow = (props: any) => {
   
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
+  const [comments, setComments] = React.useState<any>([])
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const PostsShow = (props: any) => {
 		.then((results) => {
 			console.log(results)
       setPost(results.data)
+      setComments(results.data.comments)
 		})
 		.catch((data) =>{
 			console.log(data)
@@ -42,8 +44,29 @@ const PostsShow = (props: any) => {
     currentUser === null && props.history.push("/signin");
   }, [currentUser]);
 
-  const pushPost = () =>{
-    props.history.push(`/posts/${post.id}`)
+
+  const createComment = (comment: any) =>{
+    axios.post(`http://localhost:3000/api/v1/posts/${props.post.id}/comments`,{comment: comment} )
+    .then((response) => {
+      const newData = update(comments, {$push:[response.data]})
+      setComments(newData)
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
+
+  const destroyComment = (id: any) => {
+    axios.delete(`http://localhost:3000/api/v1/posts/${props.post.id}/comments/${id}`)
+    .then(() => {
+      const commentIndex = comments.findIndex((x: any) => x.id === id)
+      const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
+      setComments(deleteComments)
+      console.log('set')
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
   }
 
   const deleatePost = (id: any) => {
@@ -68,7 +91,12 @@ const PostsShow = (props: any) => {
             <PostData post={post}/>
             <PostChart post={post} />
             <UserBar/>
-            <CommentContainer post={post}/>
+            <CommentContainer
+             post={post}
+             comments={comments}
+             createComment={createComment}
+             createDestroy={destroyComment}
+             />
             <Box my={3}>
               <Divider/>
             </Box>
