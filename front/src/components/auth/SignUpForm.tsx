@@ -60,7 +60,7 @@ const SignUpForm = (props: any) => {
             console.log(results)
           })
           .catch((data) =>{
-           
+           　console.log(data)
           })
           // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
         } catch (error) {
