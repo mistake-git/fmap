@@ -29,11 +29,11 @@ const PostsEdit = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  const updatePost = (post:any) =>{
-    axios.patch('http://localhost:3000/api/v1/posts',{post: post} )
+  const updatePost = (post: any) =>{
+    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{post: post} )
     .then((response) => {
       console.log('set')
-      props.history.push(`/posts/${response.data.post.id}`);
+      props.history.push(`/posts/${response.data.id}`);
     })
     .catch((data) =>{
       console.log(data)
