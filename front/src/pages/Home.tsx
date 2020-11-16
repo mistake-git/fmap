@@ -14,7 +14,6 @@ const Home = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const [user, setUser] = React.useState<any>('');
 
-
   useEffect(() => {
     // if not logged in, redirect to login page
     currentUser === null && props.history.push("/signin");
@@ -41,7 +40,7 @@ const Home = (props: any) => {
             <Grid item md={4}>
             
             <Typography>
-              {currentUser && currentUser.email}でログイン
+              {currentUser && currentUser.uid}でログイン
               {user && user.name}
               ログインしています</Typography>
               <Typography
