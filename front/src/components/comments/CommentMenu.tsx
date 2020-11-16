@@ -20,18 +20,8 @@ export default function CommentMenu(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null);
+    props.destroyComment();
   };
-
-  const deleteComment = (id: any) => {
-    axios.delete(`http://localhost:3000/api/v1/posts/${props.post.id}/comments/${props.comment.id}`)
-    .then(() => {
-      window.location.reload()
-    })
-    .catch((data) =>{
-      console.log(data)
-    })
-    handleClose()
-  }
 
   const options = [
     {
@@ -41,7 +31,7 @@ export default function CommentMenu(props: any) {
     </MenuItem>
     },
     {item:
-      <MenuItem onClick={deleteComment}>
+      <MenuItem onClick={handleClose}>
         <Delete color="action"
         />削除
       </MenuItem>

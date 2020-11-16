@@ -11,6 +11,7 @@ import PostChart from "../../components/posts/PostChart";
 import Comments from "../../components/comments/Comments";
 import CommentFrom from "../../components/comments/CommentForm";
 import UserBar from "../../components/users/UserBar";
+import CommentContainer from "../../components/comments/CommentContainer";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +24,6 @@ const PostsShow = (props: any) => {
   
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
-  const [comments, setComments] = React.useState<any[]>([])
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -31,7 +31,6 @@ const PostsShow = (props: any) => {
 		.then((results) => {
 			console.log(results)
       setPost(results.data)
-      setComments(results.data.comments)
 		})
 		.catch((data) =>{
 			console.log(data)
@@ -69,8 +68,7 @@ const PostsShow = (props: any) => {
             <PostData post={post}/>
             <PostChart post={post} />
             <UserBar/>
-            <CommentFrom post={post} commentsCount={comments.length}/>
-            <Comments comments={comments} post={post}/>
+            <CommentContainer post={post}/>
             <Box my={3}>
               <Divider/>
             </Box>

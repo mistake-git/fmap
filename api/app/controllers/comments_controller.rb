@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:create, :destroy]
+  before_action :set_post, only: [:index, :create, :destroy]
   before_action :set_comment, only: [:destroy]
-  
+
+
   def create
     comment = Comment.new(
       comment_params.merge(post_id: @post.id)
     )
     if comment.save
+      render json: comment
     else
       render json: comment.errors
     end
