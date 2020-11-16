@@ -8,8 +8,6 @@ import PostButtons from "../../components/posts/PostButtons"
 import axios from 'axios'
 import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";
-import Comments from "../../components/comments/Comments";
-import CommentFrom from "../../components/comments/CommentForm";
 import UserBar from "../../components/users/UserBar";
 import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'

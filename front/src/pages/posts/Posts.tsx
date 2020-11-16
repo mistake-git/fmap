@@ -7,7 +7,6 @@ import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import { AuthContext } from "../../Auth";
 
-
 interface State {
   posts: PostModel[]
   post: PostModel

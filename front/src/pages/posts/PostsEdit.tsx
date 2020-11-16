@@ -6,8 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import PostEditForm from "../../components/posts/PostEditForm"
 import axios from 'axios'
 
-
-
 const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(1.5),

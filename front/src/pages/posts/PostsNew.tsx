@@ -5,16 +5,11 @@ import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
 import PostNewForm from "../../components/posts/PostNewForm"
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(1.5),
   },
 }));
-
-
 
 const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
