@@ -74,7 +74,7 @@ export default function CommentContainer(props: any) {
      <Comments 
       comments={comments}
       post={props.post} 
-      deleteComment={destroyComment}
+      destroyComment={destroyComment}
      />
     </React.Fragment>
   );
