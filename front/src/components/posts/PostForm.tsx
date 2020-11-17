@@ -133,14 +133,15 @@ export default function PostNewForm(props: any) {
                   number: value.number,
                   feed: value.feed,
                   memo: value.memo,
-                  date: value.date,
                   weather: value.weather,
-                  time: value.time,                
+                  date: value.date,
+                  time: value.time,  
                   status: value.status,
                   user_id: 1,
                 }
                 await
                 props.action(post);
+                console.log(post);
               } catch (error) {
                 alert(error.message);
               }
