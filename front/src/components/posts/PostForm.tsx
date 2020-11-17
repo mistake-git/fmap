@@ -19,6 +19,13 @@ import {
 import PostDateTimePicker from './PostDateTimePicker'
 import CancelIcon from '@material-ui/icons/Cancel';
 import { AuthContext } from '../../Auth';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 
 export const PostSchema = Yup.object().shape({
@@ -57,6 +64,14 @@ export default function PostNewForm(props: any) {
   const [user, setUser] = React.useState<any>('')
 
   const ref = createRef<HTMLInputElement>()
+
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(
+    new Date(),
+  );
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
 
 
   const onClick = () => {
@@ -112,7 +127,6 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -239,7 +253,41 @@ export default function PostNewForm(props: any) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <PostDateTimePicker/>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <Grid container justify="space-around" spacing={2}>
+                        <Grid item xs={12} md={6}>
+                          <KeyboardDatePicker
+                            fullWidth
+                            disableToolbar
+                            name="date"
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            margin="normal"
+                            id="date-picker-inline"
+                            label="Date picker inline"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                              'aria-label': 'change date',
+                            }}
+                          />
+                        </Grid>
+                        <Grid item xs={12} md={6}>
+                          <KeyboardTimePicker
+                            fullWidth
+                            name="time"
+                            margin="normal"
+                            id="time-picker"
+                            label="Time picker"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                              'aria-label': 'change time',
+                            }}
+                          />
+                        </Grid>
+                      </Grid>
+                    </MuiPickersUtilsProvider>
                   </Grid>
                   <Grid item xs={12}>
                     <Field

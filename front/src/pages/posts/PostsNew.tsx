@@ -27,7 +27,6 @@ const PostsNew = (props: any) => {
     })
   }
   const values ={
-    image: "",
     name: "", 
     size: "",
     weight: "",
