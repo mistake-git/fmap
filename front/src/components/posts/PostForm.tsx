@@ -106,6 +106,7 @@ export default function PostNewForm(props: any) {
             </React.Fragment> 
           }
           <Formik
+          　enableReinitialize={true}
             initialValues={props.values}
             validationSchema={PostSchema}
             onSubmit={async value => {
@@ -160,6 +161,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
 
                   </Grid>
@@ -172,6 +176,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -183,6 +190,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -194,6 +204,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="number"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -205,6 +218,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -216,6 +232,9 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="text"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -232,6 +251,9 @@ export default function PostNewForm(props: any) {
                       rows={4}
                       type="text"
                       component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
