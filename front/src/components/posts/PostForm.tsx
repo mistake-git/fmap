@@ -133,6 +133,7 @@ export default function PostNewForm(props: any) {
                   status: value.status,
                   user_id: 1,
                 }
+
                 await
                 props.action(post);
                 console.log(post);

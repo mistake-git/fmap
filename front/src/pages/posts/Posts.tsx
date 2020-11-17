@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import { AuthContext } from "../../Auth";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 interface State {
   posts: PostModel[]
@@ -16,6 +17,17 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(1.5),
   },
+  loading: {
+    position: "fixed", 
+    top: 0, 
+    left: 0, 
+    width: "100%", 
+    height: "100%", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center",
+  　background: 'rgba(0,0,0,0.15)'
+  }
 }));
 
 const Posts = (props: any) => {
@@ -23,20 +35,37 @@ const Posts = (props: any) => {
   const classes = useStyles();
   const [posts, setPosts] = React.useState<PostModel[]>([])
   const { currentUser } = useContext(AuthContext);
+  const [loading, setLoading] = React.useState(true);
+　
+  //非同期で投稿をAPIから取得
+  const getPosts = async() => {
+    try { 
+    await
+      axios.get('http://localhost:3000/api/v1/posts')
+      .then((results) => {
+        console.log(results)
+        setPosts(results.data)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  　setLoading(false);
+  }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/posts')
-		.then((results) => {
-			console.log(results)
-			setPosts(results.data)
-		})
-		.catch((data) =>{
-			console.log(data)
-		})
+    getPosts();
   },[setPosts]);
+
+
 
   return (
     <Fragment>
+      {loading &&
+        <div className={classes.loading}>
+          <CircularProgress/>
+        </div>
+      }
       <Template>
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "3em" }}>
@@ -54,3 +83,6 @@ const Posts = (props: any) => {
   );
 };
 export default Posts;
+
+
+
