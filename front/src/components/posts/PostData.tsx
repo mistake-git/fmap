@@ -21,8 +21,8 @@ export default function PostData(props: any) {
   const classes = useStyles();
 
   const datalist = [
-    { label: '日付', content: moment(props.post.date).format('YYYY年MM月DD日')},
-    { label: '時間', content: moment(props.post.time).format('LTS')},
+    { label: '日付', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
+    { label: '時間', content: props.post.time && moment(props.post.time).format('LTS')},
     { label: '魚種', content: props.post.name },
     { label: 'サイズ', content: props.post.size },
     { label: '重さ', content: props.post.weight },
