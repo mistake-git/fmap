@@ -84,6 +84,8 @@ const PostsShow = (props: any) => {
             <PostData post={post}/>
             <PostChart post={post} />
             <UserBar/>
+            <Divider/>
+            {post.memo}
             <CommentContainer
              post={post}
              comments={comments}
