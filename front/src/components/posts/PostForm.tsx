@@ -140,12 +140,12 @@ export default function PostNewForm(props: any) {
                 alert(error.message);
               }
             }}
-            render={({ submitForm, isSubmitting, isValid, values }) => (
+            render={({ submitForm, isSubmitting, isValid, values, setFieldValue,}) => (
               <Form>
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
-                    <input 
+                    <Field 
                       name="image"
                       accept="image" 
                       className={classes.input} 
