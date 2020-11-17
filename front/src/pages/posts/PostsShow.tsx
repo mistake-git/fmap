@@ -23,8 +23,6 @@ const PostsShow = (props: any) => {
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
   const [comments, setComments] = React.useState<any>([])
-  const { currentUser } = useContext(AuthContext);
-  const [feeds, setFeeds] = React.useState<any>([])
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
@@ -64,7 +62,7 @@ const PostsShow = (props: any) => {
 
   const deleatePost = (id: any) => {
     axios.delete(`http://localhost:3000/api/v1/posts/${id}`)
-    .then((response) => {
+    .then(() => {
       console.log('set')
       props.history.push("/posts");
     })
