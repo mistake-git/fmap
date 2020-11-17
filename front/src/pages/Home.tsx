@@ -15,25 +15,6 @@ const Home = (props: any) => {
   const [user, setUser] = React.useState<any>('');
 
 
-  const getCurrentUser = async() => {
-    try { 
-    await
-    axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
-      .then((results) => {
-        console.log(results)
-        setUser(results.data)
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
-
-  useEffect(() => {
-    getCurrentUser();
-  }, [setUser]);
-
-
   return (
     <Fragment>
       <Template>
