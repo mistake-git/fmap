@@ -44,6 +44,7 @@ const PostsEdit = (props: any) => {
     name: post.name, 
     size: post.size ,
     weight: post.weight,
+    weather: post.weather,
     number: post.number,
     feed: post.feed,
     memo: post.memo,

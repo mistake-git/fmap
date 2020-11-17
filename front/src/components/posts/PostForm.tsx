@@ -120,6 +120,7 @@ export default function PostNewForm(props: any) {
                   feed: value.feed,
                   memo: value.memo,
                   date: value.date,
+                  weather: value.weather,
                   time: value.time,                
                   status: value.status,
                   user_id: 1,

@@ -31,6 +31,7 @@ const PostsNew = (props: any) => {
     name: "", 
     size: "",
     weight: "",
+    weather: "",
     number: "",
     feed: "",
     memo: "",
