@@ -6,6 +6,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import { AuthContext } from "../../Auth";
 import { withRouter } from 'react-router-dom';
+import axios from 'axios'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,15 +16,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 const Template =(props: any) => {
 	const classes = useStyles();
 	const { currentUser } = useContext(AuthContext);
+	const [user, setUser] = React.useState<any>('');
 
 	useEffect(() => {
 		// if not logged in, redirect to login page
 		currentUser === null && props.history.push("/signin");
 	}, [currentUser]);
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
+    .then((results) => {
+			console.log(results)
+      setUser(results.data)
+		})
+		.catch((data) =>{
+			console.log(data)
+		})
+  }, [setUser]);
 
 	return (
 		<React.Fragment>
