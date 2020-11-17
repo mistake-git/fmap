@@ -26,9 +26,7 @@ const PostsNew = (props: any) => {
       console.log(data)
     })
   }
-
-  　
-  const value ={
+  const values ={
     image: "",
     name: "", 
     size: "",
@@ -48,7 +46,7 @@ const PostsNew = (props: any) => {
         <Container maxWidth="md">
           <PostForm 
             action={createPost} 
-            value={value}
+            values={values}
           />
         </Container>
       </Template>

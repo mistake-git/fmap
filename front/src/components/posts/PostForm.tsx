@@ -106,7 +106,7 @@ export default function PostNewForm(props: any) {
             </React.Fragment> 
           }
           <Formik
-            initialValues={props.value}
+            initialValues={props.values}
             validationSchema={PostSchema}
             onSubmit={async value => {
               try {
@@ -129,7 +129,7 @@ export default function PostNewForm(props: any) {
                 alert(error.message);
               }
             }}
-            render={({ submitForm, isSubmitting, isValid }) => (
+            render={({ submitForm, isSubmitting, isValid, values }) => (
               <Form>
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
@@ -159,7 +159,8 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="text"
-                      component={TextField}
+                      value={props.values.name}
+                      
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>

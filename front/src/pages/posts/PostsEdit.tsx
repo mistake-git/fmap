@@ -40,7 +40,7 @@ const PostsEdit = (props: any) => {
     })
   }
 
-  const value ={
+  const values ={
     name: post.name, 
     size: post.size ,
     weight: post.weight,
@@ -60,7 +60,7 @@ const PostsEdit = (props: any) => {
           <PostForm 
             post={post} 
             action={updatePost}
-            value={value}
+            values={values}
           />
         </Container>
       </Template>
