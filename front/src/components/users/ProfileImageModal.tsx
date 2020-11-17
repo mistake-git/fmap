@@ -8,11 +8,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from 'axios'
 import IconButton from '@material-ui/core/IconButton';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
-  Box,
   Button,
   Grid,
 } from "@material-ui/core";

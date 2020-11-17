@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PostsEdit = (props: any) => {
   const [post, setPost] = React.useState<any>('')
-  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)

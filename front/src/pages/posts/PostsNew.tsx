@@ -13,9 +13,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsNew = (props: any) => {
-  const { currentUser } = useContext(AuthContext);
-  const classes = useStyles();
-
+  
   const createPost = (post: any) => {
     axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {
