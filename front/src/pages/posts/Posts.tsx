@@ -57,8 +57,6 @@ const Posts = (props: any) => {
     getPosts();
   },[setPosts]);
 
-
-
   return (
     <Fragment>
       {loading &&
