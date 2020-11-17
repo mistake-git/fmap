@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Box from '@material-ui/core/Box';
@@ -8,21 +8,27 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
 
-const useStyles = makeStyles({
-	root: {
-		maxWidth: 290,
-	},
-	media: {
-		height: 160,
-	},
-	nounderline: {
-		textDecoration: 'none',
-  },
-  positionTop: {
-    position: 'sticky',
-    top: 20,
-  }
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      backgroundColor: theme.palette.background.paper,
+    },
+    inline: {
+      display: 'inline',
+    },
+    positionTop: {
+      position: 'sticky',
+      top: 20,
+    },
+    icon: {
+      [theme.breakpoints.down('sm')]: {
+        height: '35px',
+        width: '35px'
+      },
+    }
+  }),
+);
 
 interface Props {
   post: PostModel
@@ -38,25 +44,25 @@ export default function PostCard(props: any) {
 
 	return (
     <Fragment>
-      <div className={classes.positionTop}>
-        <Box mt={2}>
-          <Fab color="secondary">
+      <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
+        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
+          <Fab color="secondary" className={classes.icon}>
             <FavoriteIcon />
           </Fab>
         </Box>
-        <Box mt={2}>
+        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
           <Link to={`/posts/${props.post.id}/edit`}>
-            <Fab color="primary">
+            <Fab color="primary" className={classes.icon}>
               <EditIcon/>
             </Fab>
           </Link>
         </Box>
-        <Box mt={2}>
-          <Fab onClick={handleDeleate}>
+        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
+          <Fab onClick={handleDeleate} className={classes.icon}>
             <DeleteIcon/>
           </Fab>
         </Box>
-      </div>
+      </Box>
     </Fragment>
 	);
 }
