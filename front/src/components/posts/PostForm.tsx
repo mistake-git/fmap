@@ -8,7 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
-import { TextField } from "formik-material-ui";
+import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
@@ -160,8 +160,12 @@ export default function PostNewForm(props: any) {
                       variant="outlined"
                       type="text"
                       value={props.values.name}
-                      
+                      component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
                     />
+
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Field
