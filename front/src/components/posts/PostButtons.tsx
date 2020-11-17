@@ -45,19 +45,19 @@ export default function PostCard(props: any) {
 	return (
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
-        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
           <Fab color="secondary" className={classes.icon}>
             <FavoriteIcon />
           </Fab>
         </Box>
-        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
           <Link to={`/posts/${props.post.id}/edit`}>
             <Fab color="primary" className={classes.icon}>
               <EditIcon/>
             </Fab>
           </Link>
         </Box>
-        <Box mt={2} mr={{xs: 1, md: 2}} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
           <Fab onClick={handleDeleate} className={classes.icon}>
             <DeleteIcon/>
           </Fab>
