@@ -6,7 +6,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import { AuthContext } from "../../Auth";
 import { withRouter } from 'react-router-dom';
-import axios from 'axios'
+
 
 
 const useStyles = makeStyles((theme) => ({
