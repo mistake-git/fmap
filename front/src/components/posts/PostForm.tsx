@@ -253,42 +253,33 @@ export default function PostNewForm(props: any) {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                      <Grid container justify="space-around" spacing={2}>
-                        <Grid item xs={12} md={6}>
-                          <KeyboardDatePicker
-                            fullWidth
-                            disableToolbar
-                            name="date"
-                            variant="inline"
-                            format="MM/dd/yyyy"
-                            margin="normal"
-                            id="date-picker-inline"
-                            label="Date picker inline"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            KeyboardButtonProps={{
-                              'aria-label': 'change date',
-                            }}
-                          />
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                          <KeyboardTimePicker
-                            fullWidth
-                            name="time"
-                            margin="normal"
-                            id="time-picker"
-                            label="Time picker"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            KeyboardButtonProps={{
-                              'aria-label': 'change time',
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                    </MuiPickersUtilsProvider>
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="date"
+                      label="日付"
+                      fullWidth
+                      variant="outlined"
+                      type="date"
+                      component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="time"
+                      label="時間"
+                      fullWidth
+                      variant="outlined"
+                      type="time"
+                      component={TextField}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <Field
