@@ -16,11 +16,6 @@ const PostsNew = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
   const createPost = (post: any) => {
     axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {

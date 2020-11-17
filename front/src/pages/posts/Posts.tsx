@@ -25,12 +25,6 @@ const Posts = (props: any) => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
-
-  useEffect(() => {
     axios.get('http://localhost:3000/api/v1/posts')
 		.then((results) => {
 			console.log(results)

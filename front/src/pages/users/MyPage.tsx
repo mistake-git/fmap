@@ -46,11 +46,7 @@ const MyPage = (props: any) => {
 		})
   },[setPosts]);
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
+  
   return (
     <Template>
       <Container maxWidth="md">

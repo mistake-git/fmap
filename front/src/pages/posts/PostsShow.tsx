@@ -38,12 +38,6 @@ const PostsShow = (props: any) => {
 		})
   },[setPost]);
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
-
   const createComment = (comment: any) =>{
     axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
     .then((response) => {

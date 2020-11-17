@@ -27,11 +27,6 @@ const PostsEdit = (props: any) => {
 		})
   },[setPost]);
 
-  useEffect(() => {
-    // if not logged in, redirect to login page
-    currentUser === null && props.history.push("/signin");
-  }, [currentUser]);
-
   const classes = useStyles();
 
   const updatePost = (post: any) =>{
