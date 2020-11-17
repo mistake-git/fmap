@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import { Container} from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";

@@ -14,15 +14,23 @@ const Home = (props: any) => {
   const { currentUser } = useContext(AuthContext);
   const [user, setUser] = React.useState<any>('');
 
-  useEffect(() => {
+
+  const getCurrentUser = async() => {
+    try { 
+    await
     axios.get(`http://localhost:3000/api/v1/users/${currentUser?.uid}`)
-    .then((results) => {
-			console.log(results)
-      setUser(results.data)
-		})
-		.catch((data) =>{
-			console.log(data)
-		})
+      .then((results) => {
+        console.log(results)
+        setUser(results.data)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getCurrentUser();
   }, [setUser]);
 
 

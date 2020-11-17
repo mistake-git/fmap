@@ -2,20 +2,8 @@ import PieChart from "../chart/PieChart"
 import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
 import LineChart  from "../chart/LineChart";
-import React, { Fragment, useContext, useEffect } from "react";
-import { Button, Container, Divider, Grid, Typography } from "@material-ui/core";
-import { AuthContext } from "../../Auth";
-import auth from "../../plugins/firebase";
-import Template from "../layouts/Template";
-import PostCard from "./PostCard"
-import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import {  Divider, Grid, Typography } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
-import EditIcon from '@material-ui/icons/Edit';
-import PostButtons from "./PostButtons"
-import UserCard from "../users/UserMain"
 import PostModel from "../../models/PostModel";
 
 

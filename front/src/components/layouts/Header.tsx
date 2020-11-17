@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import Popover from '@material-ui/core/Popover';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
-import { AccountCircle, StayPrimaryLandscape } from '@material-ui/icons';
+import { AccountCircle} from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import auth from "../../plugins/firebase";
-import React, { Fragment, useContext, useEffect } from "react";
+
 
 
 const sections = [

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../Auth";
 import AuthTemplate from '../components/layouts/AuthTemplate';
 import SignUpForm from '../components/auth/SignUpForm';
