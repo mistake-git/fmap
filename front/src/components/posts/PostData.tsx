@@ -3,6 +3,7 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import { Box, Grid, Typography } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
+import moment from 'moment'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,8 +21,8 @@ export default function PostData(props: any) {
   const classes = useStyles();
 
   const datalist = [
-    { label: '日付', content: props.post.date },
-    { label: '時間', content: props.post.time },
+    { label: '日付', content: moment(props.post.date).format('YYYY年MM月DD日')},
+    { label: '時間', content: moment(props.post.time).format('LTS')},
     { label: '魚種', content: props.post.name },
     { label: 'サイズ', content: props.post.size },
     { label: '重さ', content: props.post.weight },
