@@ -1,3 +1,4 @@
+import React from "react";
 import PieChart from "../chart/PieChart"
 import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
