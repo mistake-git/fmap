@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -72,6 +71,7 @@ export default function CommentForm(props: any) {
               }
               await 
               props.createComment(comment);
+              setButtonOpen(false);
             } catch (error) {
               alert(error.message);
             }
