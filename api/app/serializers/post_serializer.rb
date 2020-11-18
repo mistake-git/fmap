@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serialize
   has_many :comments, serializer: CommentSerializer do
     object.comments.order(id: :desc)
   end
-  belongs_to: user
+  belongs_to :user
 end
 
 
