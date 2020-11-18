@@ -39,7 +39,7 @@ export default function PostCard(props: any) {
 
 
   const handleDeleate = () => {
-    props.deletePost(props.post.id)
+    props.destroyPost(props.post.id)
   } 
 
 	return (
