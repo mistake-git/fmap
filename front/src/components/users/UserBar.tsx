@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
 import { Button, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function UserBar() {
+export default function UserBar(props: any) {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
@@ -39,7 +40,6 @@ export default function UserBar() {
               </Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary="Single-line item"
               secondary={secondary ? 'Secondary text' : null}
             />
             <ListItemSecondaryAction>

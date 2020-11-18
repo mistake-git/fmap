@@ -45,7 +45,8 @@ const PostsShow = (props: any) => {
       axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
         .then((results) => {
         console.log(results)
-        setPost(results.data)
+        setPost(results.data);
+        setComments(results.data.comments)
       })
     }
     catch (error) {
@@ -97,13 +98,14 @@ const PostsShow = (props: any) => {
       })
       .catch((data) =>{
         console.log(data)
+        console.log('get post')
       })
     }
     catch (error) {
       alert(error.message);
     }
   }
-
+  
   return (
     <Template>
       <Container maxWidth="lg">
