@@ -66,6 +66,7 @@ export default function CommentForm(props: any) {
             try {
               const comment ={
                 content: value.content,
+                user_id: props.user.id
               }
               await 
               props.createComment(comment);

@@ -131,7 +131,7 @@ export default function PostNewForm(props: any) {
                   date: value.date,
                   time: value.time,  
                   status: value.status,
-                  user_id: 1,
+                  user_id: props.user.id,
                 }
 
                 await

@@ -11,6 +11,7 @@ import PostChart from "../../components/posts/PostChart";
 import UserBar from "../../components/users/UserBar";
 import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
+import auth from "../../plugins/firebase";
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -23,6 +24,20 @@ const PostsShow = (props: any) => {
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
   const [comments, setComments] = React.useState<any>([])
+  const [user, setUser] = React.useState<any>('');
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user: any) => {
+      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      .then((results) => {
+        console.log(results)
+        setUser(results.data)
+      })
+      .catch((data) =>{
+        console.log(data)
+      })
+    });
+  }, []);
 
   const getPost = async() => {
     try { 
@@ -89,13 +104,12 @@ const PostsShow = (props: any) => {
     }
   }
 
-
   return (
     <Template>
       <Container maxWidth="lg">
         <Grid container spacing={1} style={{ marginTop: "1em" }}>
           <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
-            <PostButtons post = {post} destroyPost = {destroyPost} />
+            <PostButtons post={post} destroyPost = {destroyPost} />
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
@@ -104,6 +118,7 @@ const PostsShow = (props: any) => {
             {post.memo}
             <CommentContainer
              post={post}
+             user={user}
              comments={comments}
              createComment={createComment}
              destroyComment={destroyComment}

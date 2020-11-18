@@ -30,6 +30,7 @@ const Home = (props: any) => {
     });
   }, []);
 
+
   return (
     <Fragment>
       <Template>

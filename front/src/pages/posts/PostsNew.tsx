@@ -1,9 +1,11 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
 import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
+import auth from "../../plugins/firebase";
+
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -12,6 +14,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsNew = (props: any) => {
+
+  const [user, setUser] = React.useState<any>('');
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user: any) => {
+      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      .then((results) => {
+        console.log(results)
+        setUser(results.data)
+      })
+      .catch((data) =>{
+        console.log(data)
+      })
+    });
+  }, []);
 
   const createPost = async(post: any) => {
     try { 
@@ -48,6 +65,7 @@ const PostsNew = (props: any) => {
           <PostForm 
             action={createPost} 
             values={values}
+            user={user}
           />
         </Container>
       </Template>
