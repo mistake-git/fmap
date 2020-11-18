@@ -60,6 +60,7 @@ export default function CommentForm(props: any) {
           initialValues={{ 
             content: "", 
             post_id: "",
+            user_id: ""
           }}
           validationSchema={CommentSchema}
           onSubmit={async value => {
