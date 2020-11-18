@@ -4,13 +4,14 @@ import Typography from '@material-ui/core/Typography';
 import UserModel from '../../models/UserModel';
 import { Avatar, Box } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     avater: {
-      width: theme.spacing(9),
-      height: theme.spacing(9),
+      width: theme.spacing(8),
+      height: theme.spacing(8),
     },
   }),
 );
@@ -26,9 +27,12 @@ export default function PostCard(props: any) {
       <Box mx={5} mb={1}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avater} />
       </Box>
-      <Typography align="center">
-        {props.user.name}
-      </Typography>
+      <Link to={`/mypage/${props.user.uid}`}>
+        <Typography align="center">
+          {props.user.name}
+        </Typography>
+      </Link>
+      
     </div>
 	);
 }

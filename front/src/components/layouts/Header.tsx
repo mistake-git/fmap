@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import { AccountCircle} from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import auth from "../../plugins/firebase";
+import axios from 'axios'
 
 
 
@@ -69,6 +70,22 @@ export default function Header(props: any) {
   const classes = useStyles();
   const { title } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [user, setUser] = React.useState<any>('');
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user: any) => {
+      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      .then((results) => {
+        console.log(results)
+        setUser(results.data)
+      })
+      .catch((data) =>{
+        console.log(data)
+      })
+    });
+  }, []);
+
+
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -120,7 +137,7 @@ return (
         </div>
         <Typography align="center">お知らせはありません</Typography>
         </Popover>
-        <Link to="/mypage/1">
+        <Link to={`/mypage/${user.id}`}>
           <IconButton
            className={classes.link}
             aria-label="account of current user"

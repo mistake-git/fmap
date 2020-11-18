@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { Container, Divider, Grid} from "@material-ui/core";
-import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -105,6 +104,8 @@ const PostsShow = (props: any) => {
       alert(error.message);
     }
   }
+
+  console.log(post.user)
   
   return (
     <Template>

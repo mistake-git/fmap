@@ -8,6 +8,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ImageIcon from '@material-ui/icons/Image';
 import ProfileUserModal from './ProfileImageModal';
+import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
+import UserModel from '../../models/UserModel';
+
+
+interface Props {
+  post: UserModel;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function UserMain() {
+export default function UserMain(props: any) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -63,7 +70,7 @@ export default function UserMain() {
           fontWeight="fontWeightBold"
           ml={2}
         >
-          ユーザーネーム
+        {props.user.name}
         </Box>
       </React.Fragment>
         }/>
