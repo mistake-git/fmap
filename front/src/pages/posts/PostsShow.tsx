@@ -42,10 +42,10 @@ const PostsShow = (props: any) => {
   const getPost = async() => {
     try { 
     await
-    axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
-		.then((results) => {
-			console.log(results)
-      setPost(results.data)
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
+        .then((results) => {
+        console.log(results)
+        setPost(results.data)
       })
     }
     catch (error) {
@@ -59,9 +59,9 @@ const PostsShow = (props: any) => {
 
   const createComment = async(comment: any) => {
     try { 
-    await
-    　axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
-      .then((response) => {
+      await 
+    　 axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
+        .then((response) => {
         const newData = update(comments, {$unshift:[response.data]})
         setComments(newData)
       })
