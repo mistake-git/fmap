@@ -7,6 +7,7 @@ import { TextField } from "formik-material-ui";
 import {
   Button,
   Grid,
+  LinearProgress,
 } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
@@ -77,11 +78,7 @@ export default function CommentForm(props: any) {
           }}
           render={({ submitForm, isSubmitting, isValid }) => (
             <Form>
-              {isSubmitting &&
-                <div className={classes.root}>
-                  <CircularProgress />
-                </div>
-              }
+              {isSubmitting &&<LinearProgress/>}
               <Field
                 fullWidth
                 required
