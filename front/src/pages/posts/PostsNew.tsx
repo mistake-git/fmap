@@ -1,6 +1,5 @@
 import React, { Fragment, useContext } from "react";
 import { Container} from "@material-ui/core";
-import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
 import PostForm from "../../components/posts/PostForm"
@@ -13,17 +12,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsNew = (props: any) => {
-  
-  const createPost = (post: any) => {
+
+  const createPost = async(post: any) => {
+    try { 
+    await
     axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {
       console.log(response)
       props.history.push(`/posts/${response.data.id}`);
     })
-    .catch((data) =>{
-      console.log(data)
-    })
+    }
+    catch (error) {
+      alert(error.message);
+    }
   }
+
   const values ={
     name: "", 
     size: "",

@@ -13,30 +13,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostsEdit = (props: any) => {
-  const [post, setPost] = React.useState<any>('')
+  const [post, setPost] = React.useState<any>('');
 
-  useEffect(() => {
+
+  const getPost = async() => {
+    try { 
+    await
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
 		.then((results) => {
 			console.log(results)
       setPost(results.data)
-		})
-		.catch((data) =>{
-			console.log(data)
-		})
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getPost();
   },[setPost]);
 
-  const classes = useStyles();
-
-  const updatePost = (post: any) =>{
-    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{post: post} )
+  const updatePost = async(post: any) => {
+    try { 
+    await
+    axios.patch('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {
-      console.log('set')
+      console.log(response)
       props.history.push(`/posts/${response.data.id}`);
     })
-    .catch((data) =>{
-      console.log(data)
-    })
+    }
+    catch (error) {
+      alert(error.message);
+    }
   }
 
   const values ={

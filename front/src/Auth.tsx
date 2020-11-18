@@ -15,19 +15,9 @@ const AuthProvider = (props: any) => {
     undefined
   );
 
-  const [user, setUser] = React.useState('')
-
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setCurrentUser(user);
-      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
-      .then((results) => {
-        console.log(results)
-        setUser(results.data)
-      })
-      .catch((data) =>{
-        console.log(data)
-      })
     });
   }, []);
   
