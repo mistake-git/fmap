@@ -33,7 +33,7 @@ export default function Comments(props: any) {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               </ListItemAvatar>
               <ListItemText
-                primary={''}
+                primary={'ユーザーネーム'}
                 secondary={
                   <Typography
                     component="span"

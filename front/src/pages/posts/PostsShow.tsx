@@ -22,6 +22,7 @@ const PostsShow = (props: any) => {
   
   const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
+  const [postUser, setPostUser] = React.useState<any>('')
   const [comments, setComments] = React.useState<any>([])
   const [user, setUser] = React.useState<any>('');
 
@@ -44,8 +45,10 @@ const PostsShow = (props: any) => {
       axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
         .then((results) => {
         console.log(results)
+        //postだけを取ってきてpost.user.nameとかにしてもundifindのエラーが発生してしまうのでstateを定義している
         setPost(results.data);
         setComments(results.data.comments)
+        setPostUser(results.data.user)
       })
     }
     catch (error) {
@@ -104,8 +107,6 @@ const PostsShow = (props: any) => {
       alert(error.message);
     }
   }
-
-  console.log(post.user)
   
   return (
     <Template>
@@ -117,7 +118,7 @@ const PostsShow = (props: any) => {
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
             <PostChart post={post} />
-            <UserBar/>
+            <UserBar user={postUser}/>
             {post.memo}
             <CommentContainer
              post={post}

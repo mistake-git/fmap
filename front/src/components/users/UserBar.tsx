@@ -10,6 +10,7 @@ import FolderIcon from '@material-ui/icons/Folder';
 import { Button, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
+import userEvent from '@testing-library/user-event';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,6 +41,7 @@ export default function UserBar(props: any) {
               </Avatar>
             </ListItemAvatar>
             <ListItemText
+              primary={props.user.name}
               secondary={secondary ? 'Secondary text' : null}
             />
             <ListItemSecondaryAction>
