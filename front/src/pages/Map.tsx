@@ -5,6 +5,7 @@ import Template from '../components/layouts/Template'
 import axios from 'axios'
 import UserModel from '../models/UserModel'
 import auth from '../plugins/firebase'
+import GoogleMapComponent from '../components/map/Map'
 
 interface State {
   user: UserModel
