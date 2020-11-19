@@ -137,7 +137,7 @@ return (
         </div>
         <Typography align="center">お知らせはありません</Typography>
         </Popover>
-        <Link to={`/mypage/${user.id}`}>
+        <Link to={`/mypage/${user.uid}`}>
           <IconButton
            className={classes.link}
             aria-label="account of current user"
