@@ -19,9 +19,9 @@ const GoogleMap = () => {
       lat: 43.0543412,
       lng: 141.355018,
       icon:
-      <Link to={"/posts/1"}>
-        <Avatar alt="R" src="./fish.jpg" />
-      </Link>
+        <Link to={"/posts/1"}>
+          <Avatar alt="R" src="./fish.jpg" />
+        </Link>
     },
     {
       lat: 43.0543451,
