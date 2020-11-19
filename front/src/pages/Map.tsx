@@ -5,7 +5,7 @@ import Template from '../components/layouts/Template'
 import axios from 'axios'
 import UserModel from '../models/UserModel'
 import auth from '../plugins/firebase'
-import GoogleMapComponent from '../components/map/Map'
+import GoogleMap from '../components/map/GoogleMap'
 
 interface State {
   user: UserModel
@@ -52,6 +52,7 @@ const Home = (props: any) => {
             </Grid>
             <Grid item md={4}></Grid>
           </Grid>
+          <GoogleMap/>
         </Container>
       </Template>
     </Fragment>
