@@ -11,6 +11,7 @@ import UserBar from "../../components/users/UserBar";
 import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
+import GoogleMap from "../../components/map/GoogleMap";
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -118,6 +119,11 @@ const PostsShow = (props: any) => {
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
             <PostChart post={post} />
+            <Divider/>
+            <Box my={5}>
+              <GoogleMap/>
+            </Box>
+            <Divider/>
             <UserBar user={postUser}/>
             {post.memo}
             <CommentContainer

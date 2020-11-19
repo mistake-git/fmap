@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
 import RoomIcon from '@material-ui/icons/Room';
+import { Avatar } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
 interface PinProps {
   lat: number,
   lng: number,
@@ -10,18 +13,27 @@ interface PinProps {
 }
 const GoogleMap = () => {
   const [currentKey, setCurrentKey] = useState(-1)
+
   const pins: PinProps[] = [
     {
       lat: 43.0543412,
       lng: 141.355018,
-      icon: <RoomIcon/>
+      icon:
+      <Link to={"/posts/1"}>
+        <Avatar alt="R" src="./fish.jpg" />
+      </Link>
     },
     {
       lat: 43.0543451,
       lng: 141.3528293,
-      icon:  <RoomIcon/>
+      
+      icon:
+        <Link to={"/posts/2"}>
+          <Avatar alt="R" src="./fish.jpg" />
+        </Link>
     }
   ]
+
   const apiLoaded = (map: any, maps: any, pins: any) => {
   }
   const changeBalloon = (key: string) => {
@@ -249,10 +261,6 @@ const GoogleMap = () => {
               lng={pin.lng}
             >
             {pin.icon}
-            {
-              index === currentKey &&
-              'ピンを開きました'
-            }
             </Pin>
           ))
         }
@@ -273,7 +281,7 @@ const Pin = styled.div<{
 `
 
 const GoogleMapWrapper = styled.div`
-  height: 100vh;
+  height: 60vh;
   width: 100%;
 `
 
