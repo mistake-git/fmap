@@ -1,10 +1,37 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
 import RoomIcon from '@material-ui/icons/Room';
 import { Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    xs: {
+      width: theme.spacing(3),
+      height: theme.spacing(3),
+    },
+    sm: {
+      width: theme.spacing(3.5),
+      height: theme.spacing(3.5),
+    },
+    md: {
+      width: theme.spacing(4),
+      height: theme.spacing(4),
+    },
+    lg: {
+      width: theme.spacing(4.5),
+      height: theme.spacing(4.5),
+    },
+    xl: {
+      width: theme.spacing(5),
+      height: theme.spacing(5),
+    },
+  }),
+);
 
 interface PinProps {
   lat: number,
@@ -13,23 +40,51 @@ interface PinProps {
 }
 const GoogleMap = () => {
   const [currentKey, setCurrentKey] = useState(-1)
+  const classes = useStyles();
 
   const pins: PinProps[] = [
     {
-      lat: 43.0543412,
-      lng: 141.355018,
+      lat: 43.4543412,
+      lng: 143.355018,
       icon:
         <Link to={"/posts/1"}>
-          <Avatar alt="R" src="./fish.jpg" />
+          <Avatar alt="R" src="./fish.jpg" className={classes.sm}/>
         </Link>
     },
     {
-      lat: 43.0543451,
+      lat: 45.0543451,
+      lng: 143.4293,
+      
+      icon:
+        <Link to={"/posts/2"}>
+          <Avatar alt="R" src="./fish.jpg" className={classes.xs} />
+        </Link>
+    },
+    {
+      lat: 46.0543451,
+      lng: 143.3528293,
+      
+      icon:
+        <Link to={"/posts/2"}>
+          <Avatar alt="R" src="./fish.jpg" className={classes.lg} />
+        </Link>
+    },
+    {
+      lat: 48.0543451,
       lng: 141.3528293,
       
       icon:
         <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" />
+          <Avatar alt="R" src="./fish.jpg" className={classes.xl} />
+        </Link>
+    },
+    {
+      lat: 46.0543451,
+      lng: 144.3528293,
+      
+      icon:
+        <Link to={"/posts/2"}>
+          <Avatar alt="R" src="./fish.jpg" className={classes.md} />
         </Link>
     }
   ]
@@ -60,7 +115,7 @@ const GoogleMap = () => {
           elementType: 'geometry',
           stylers: [
             {
-              color: '#e9e9e9',
+              color: '#75a9ff',
             },
             {
               lightness: 17,
@@ -240,10 +295,10 @@ const GoogleMap = () => {
             key: 'AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
           }}
           defaultCenter={{
-            lat: 43.0543451,
-            lng: 141.3528293
+            lat: 35.0543451,
+            lng: 135.3528293
           }}
-          defaultZoom={15}
+          defaultZoom={8}
           options={createMapOptions}
           onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, pins)}
           onChildClick={(key: string) => changeBalloon(key)}
