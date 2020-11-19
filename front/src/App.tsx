@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { AuthProvider } from "./Auth";
-import Home from "./pages/Home";
+import Map from "./pages/Map";
 import SignIn from "./pages/SignIn";
 import Signup from "./pages/Signup";
 import Posts from "./pages/posts/Posts";
@@ -19,7 +19,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <AuthProvider>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Map} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/users" component={Users} />

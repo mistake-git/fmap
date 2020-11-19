@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(8),
       height: theme.spacing(8),
     },
+    topLink: {
+      textDecoration: 'none',
+      color: 'black'
+    },
   }),
 );
 
@@ -27,7 +31,7 @@ export default function PostCard(props: any) {
       <Box mx={5} mb={1}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avater} />
       </Box>
-      <Link to={`/mypage/${props.user.uid}`}>
+      <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
         <Typography align="center">
           {props.user.name}
         </Typography>
