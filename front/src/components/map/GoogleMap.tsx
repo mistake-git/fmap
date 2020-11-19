@@ -2,10 +2,11 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
+import RoomIcon from '@material-ui/icons/Room';
 interface PinProps {
   lat: number,
   lng: number,
-  name: string
+  icon: any
 }
 const GoogleMap = () => {
   const [currentKey, setCurrentKey] = useState(-1)
@@ -13,12 +14,12 @@ const GoogleMap = () => {
     {
       lat: 43.0543412,
       lng: 141.355018,
-      name: 'お姉さんレーベル'
+      icon: <RoomIcon/>
     },
     {
       lat: 43.0543451,
       lng: 141.3528293,
-      name: '姉キャバ ジャックローズ'
+      icon:  <RoomIcon/>
     }
   ]
   const apiLoaded = (map: any, maps: any, pins: any) => {
@@ -240,17 +241,17 @@ const GoogleMap = () => {
             pin: {
               lat: number,
               lng: number,
-              name: string
+              icon: any
             },
             index: number) => (
             <Pin
               lat={pin.lat}
               lng={pin.lng}
             >
-            {pin.name}
+            {pin.icon}
             {
               index === currentKey &&
-              'こんにちは'
+              'ピンを開きました'
             }
             </Pin>
           ))
