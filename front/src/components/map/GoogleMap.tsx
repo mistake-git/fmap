@@ -125,11 +125,11 @@ const GoogleMap = () => {
       mapTypeControlOptions: {
         position: maps.ControlPosition.TOP_RIGHT,
       },
-      mapTypeControl: false,
-      zoomControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      fullscreenControl: false,
+      mapTypeControl: true,
+      zoomControl: true,
+      scaleControl: true,
+      streetViewControl: true,
+      fullscreenControl: true,
       styles: [
         {
           featureType: 'water',
@@ -262,7 +262,7 @@ const GoogleMap = () => {
           elementType: 'labels.icon',
           stylers: [
             {
-              visibility: 'off',
+              visibility: 'on',
             },
           ],
         },
