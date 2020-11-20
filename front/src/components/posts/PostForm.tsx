@@ -1,7 +1,6 @@
 import React, {
   ChangeEvent,
   createRef,
-  useContext,
 } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -17,7 +16,6 @@ import {
   LinearProgress,
 } from "@material-ui/core";
 import CancelIcon from '@material-ui/icons/Cancel';
-import { AuthContext } from '../../Auth';
 import 'date-fns';
 
 
@@ -50,22 +48,11 @@ interface State {
 }
 
 export default function PostNewForm(props: any) {
-  const { currentUser } = useContext(AuthContext);
   const classes = useStyles();
 
   const [src, setSrc] = React.useState('')
-  
-  const [user, setUser] = React.useState<any>('')
 
   const ref = createRef<HTMLInputElement>()
-
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(
-    new Date(),
-  );
-
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-  };
 
 
   const onClick = () => {
