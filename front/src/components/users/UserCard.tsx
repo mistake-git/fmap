@@ -27,16 +27,17 @@ interface Props {
 export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
-    <div>
+    <Box my={4}>
       <Box mx={5} mb={1}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avater} />
       </Box>
       <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
         <Typography align="center">
-          {props.user.name}
+          <Box fontWeight="fontWeightBold">
+            {props.user.name}
+          </Box>
         </Typography>
       </Link>
-      
-    </div>
+    </Box>
 	);
 }

@@ -65,7 +65,7 @@ const Users = (props: any) => {
       }
       <Template>
         <Container maxWidth="md">
-          <Grid container style={{ marginTop: "3em" }}>
+          <Grid container style={{ marginTop: "5em" }} spacing={5}>
           {users.map((user) => {
             return(
               <UserCard user={user}/>
