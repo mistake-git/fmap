@@ -122,9 +122,15 @@ const PostsShow = (props: any) => {
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
+            <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+              {post.name}のデータ分析
+            </Box>
             <PostChart post={post} />
             <Divider/>
             <Box my={5}>
+            <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+              {post.name}の釣れた場所
+            </Box>
               <GoogleMap/>
             </Box>
             <Divider/>

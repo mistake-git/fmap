@@ -18,15 +18,12 @@ export default function PostData(props: any) {
   const datalist =[
     {title: `${props.post.name}のよく釣れる餌`, chart: <PieChart/>},
     {title: `${props.post.name}のよく釣れる時期`, chart: <BarChart/>},
-    {title: `${props.post.name}のよく釣れる時感`, chart: <LineChart/>},
+    {title: `${props.post.name}のよく釣れる時間`, chart: <LineChart/>},
     {title: `${props.post.name}のサイズ分布`, chart: <HorizontalBarChart/>},
   ]
 
   return(
     <React.Fragment>
-      <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-        {props.post.name}のデータ分析
-      </Box>
       <Divider/>
       <Grid container style={{ marginTop: "1em" }}>
         {datalist.map((data) => (
