@@ -19,7 +19,7 @@ const AuthSchema = Yup.object().shape({
   name: Yup.string()
     .required('名前を入力してください'),
   email: Yup.string()
-    .email()
+    .email('有効なメールアドレスを入力してください')
     .required('メールアドレスを入力してください'),
   password: Yup.string()
     .min(6)
