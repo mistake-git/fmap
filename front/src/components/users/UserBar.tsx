@@ -9,8 +9,6 @@ import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
 import { Button, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
-import userEvent from '@testing-library/user-event';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

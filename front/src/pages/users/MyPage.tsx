@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, {useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     textAlign: "center"
-  },
-  control: {
-    padding: theme.spacing(1.5),
   },
   loading: {
     position: "fixed", 

@@ -6,15 +6,12 @@ import axios from 'axios'
 
 import {
   Button,
-  Container,
   FormControl,
-  Grid,
   Link,
   Typography,
   LinearProgress
 } from "@material-ui/core";
 
-import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 
@@ -62,7 +59,6 @@ const SignUpForm = (props: any) => {
           .catch((data) =>{
            　console.log(data)
           })
-          // mail for e-mail address verification can be sent here by using sendSignInLinkToEmail()
         } catch (error) {
           alert(error.message);
         }
@@ -86,7 +82,6 @@ const SignUpForm = (props: any) => {
               fullWidth
               variant="outlined"
               component={TextField}
-             
             />
           </FormControl>
           <FormControl fullWidth>

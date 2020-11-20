@@ -2873,3 +2873,1004 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 28ms (Views: 22.3ms | ActiveRecord: 1.3ms | Allocations: 2240)
 
 
+Started GET "/" for 172.18.0.1 at 2020-11-20 15:54:37 +0900
+  [1m[35m (11.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.5ms | Allocations: 309)
+Completed 200 OK in 32ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 1618)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:54:42 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (86.03ms)
+Completed 200 OK in 246ms (Views: 160.2ms | ActiveRecord: 10.1ms | Allocations: 26195)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:54:43 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.66ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 1.3ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:54:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.18ms)
+Completed 200 OK in 20ms (Views: 11.4ms | ActiveRecord: 1.8ms | Allocations: 2505)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:54:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.61ms)
+Completed 200 OK in 16ms (Views: 9.5ms | ActiveRecord: 2.0ms | Allocations: 2486)
+
+
+Started GET "/api/v1/posts" for 172.18.0.1 at 2020-11-20 15:54:56 +0900
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 27 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 24 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 23 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 21 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 19 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 18 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 17 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 15 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 16 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 14 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 13 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 12 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 28 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 27 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 26 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 24 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 23 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 22 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 21 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 20 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 19 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 18 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 17 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 15 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 16 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 14 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 13 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 12 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:54:57 +0900
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (349.31ms)
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Completed 200 OK in 362ms (Views: 340.3ms | ActiveRecord: 20.7ms | Allocations: 99089)
+
+
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.72ms)
+Completed 200 OK in 14ms (Views: 7.5ms | ActiveRecord: 1.9ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:55:01 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (68.63ms)
+Completed 200 OK in 77ms (Views: 69.4ms | ActiveRecord: 6.5ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:01 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.29ms)
+Completed 200 OK in 11ms (Views: 6.1ms | ActiveRecord: 1.3ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:02 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.6ms)
+Completed 200 OK in 12ms (Views: 6.5ms | ActiveRecord: 1.1ms | Allocations: 2505)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:02 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.86ms)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 1.1ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:55:03 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (74.87ms)
+Completed 200 OK in 84ms (Views: 78.1ms | ActiveRecord: 5.3ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:04 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.86ms)
+Completed 200 OK in 14ms (Views: 8.1ms | ActiveRecord: 1.5ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:55:43 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (8.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (8.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (306.03ms)
+Completed 200 OK in 320ms (Views: 293.0ms | ActiveRecord: 26.1ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:44 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (16.49ms)
+Completed 200 OK in 33ms (Views: 20.4ms | ActiveRecord: 2.5ms | Allocations: 2489)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:55:51 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (6.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (45.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (6.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (523.86ms)
+Completed 200 OK in 538ms (Views: 472.2ms | ActiveRecord: 64.7ms | Allocations: 23104)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:51 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (3.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (20.78ms)
+Completed 200 OK in 36ms (Views: 20.6ms | ActiveRecord: 4.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:55:57 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (115.56ms)
+Completed 200 OK in 127ms (Views: 117.7ms | ActiveRecord: 8.0ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:55:58 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.14ms)
+Completed 200 OK in 14ms (Views: 8.2ms | ActiveRecord: 1.4ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:56:27 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (3.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (21.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (154.49ms)
+Completed 200 OK in 165ms (Views: 131.8ms | ActiveRecord: 31.9ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:56:28 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (8.96ms)
+Completed 200 OK in 21ms (Views: 11.0ms | ActiveRecord: 1.9ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:57:51 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (26.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (5.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (95.07ms)
+Completed 200 OK in 133ms (Views: 94.0ms | ActiveRecord: 36.6ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:57:51 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (6.48ms)
+Completed 200 OK in 15ms (Views: 7.6ms | ActiveRecord: 1.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:59:03 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (150.0ms)
+Completed 200 OK in 160ms (Views: 151.3ms | ActiveRecord: 8.2ms | Allocations: 23107)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:59:03 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.3ms)
+Completed 200 OK in 14ms (Views: 8.8ms | ActiveRecord: 1.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:59:37 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (240.16ms)
+Completed 200 OK in 257ms (Views: 243.9ms | ActiveRecord: 12.3ms | Allocations: 23104)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:59:37 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.76ms)
+Completed 200 OK in 21ms (Views: 12.5ms | ActiveRecord: 2.5ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:59:46 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (167.22ms)
+Completed 200 OK in 207ms (Views: 197.5ms | ActiveRecord: 9.0ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:59:47 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.07ms)
+Completed 200 OK in 15ms (Views: 8.0ms | ActiveRecord: 1.7ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 15:59:58 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (155.61ms)
+Completed 200 OK in 171ms (Views: 164.6ms | ActiveRecord: 6.1ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 15:59:58 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (33.65ms)
+Completed 200 OK in 50ms (Views: 35.5ms | ActiveRecord: 2.2ms | Allocations: 2489)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:00:02 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (91.07ms)
+Completed 200 OK in 99ms (Views: 93.0ms | ActiveRecord: 5.5ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:00:03 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.38ms)
+Completed 200 OK in 15ms (Views: 9.7ms | ActiveRecord: 1.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:00:15 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (149.15ms)
+Completed 200 OK in 162ms (Views: 149.9ms | ActiveRecord: 11.7ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:00:16 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.24ms)
+Completed 200 OK in 18ms (Views: 9.9ms | ActiveRecord: 1.5ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:00:23 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (245.76ms)
+Completed 200 OK in 259ms (Views: 247.6ms | ActiveRecord: 10.8ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:00:24 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (20.96ms)
+Completed 200 OK in 33ms (Views: 23.2ms | ActiveRecord: 3.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:00:53 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (94.69ms)
+Completed 200 OK in 116ms (Views: 99.4ms | ActiveRecord: 16.1ms | Allocations: 23106)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:00:53 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (7.92ms)
+Completed 200 OK in 17ms (Views: 9.0ms | ActiveRecord: 2.0ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:01:03 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (94.3ms)
+Completed 200 OK in 110ms (Views: 103.9ms | ActiveRecord: 6.0ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:01:04 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (12.01ms)
+Completed 200 OK in 20ms (Views: 14.7ms | ActiveRecord: 1.3ms | Allocations: 2487)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:01:08 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (101.31ms)
+Completed 200 OK in 117ms (Views: 104.6ms | ActiveRecord: 6.7ms | Allocations: 23103)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:01:08 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.23ms)
+Completed 200 OK in 18ms (Views: 10.3ms | ActiveRecord: 1.6ms | Allocations: 2486)
+
+
+Started GET "/api/v1/users" for 172.18.0.1 at 2020-11-20 16:01:27 +0900
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (54.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (10.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (4.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 6 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 5 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 2 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (110.81ms)
+Completed 200 OK in 185ms (Views: 110.6ms | ActiveRecord: 73.2ms | Allocations: 23107)
+
+
+Started GET "/api/v1/users/knxEYDpNFDgo7ArIwsMPa0uesMl2" for 172.18.0.1 at 2020-11-20 16:01:27 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"knxEYDpNFDgo7ArIwsMPa0uesMl2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = 'knxEYDpNFDgo7ArIwsMPa0uesMl2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 3 ORDER BY `posts`.`created_at` DESC[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:19:in `show'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (5.44ms)
+Completed 200 OK in 11ms (Views: 6.6ms | ActiveRecord: 1.0ms | Allocations: 2486)
+
+

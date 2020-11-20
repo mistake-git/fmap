@@ -1,17 +1,10 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { Container} from "@material-ui/core";
-import { AuthContext } from "../../Auth";
 import Template from "../../components/layouts/Template";
 import { makeStyles } from '@material-ui/core/styles';
 import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 import auth from "../../plugins/firebase";
-
-const useStyles = makeStyles((theme) => ({
-  control: {
-    padding: theme.spacing(1.5),
-  },
-}));
 
 const PostsEdit = (props: any) => {
   const [post, setPost] = React.useState<any>('');

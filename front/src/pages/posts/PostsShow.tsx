@@ -1,7 +1,6 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Container, Divider, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
 import axios from 'axios'
@@ -13,15 +12,9 @@ import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
 import GoogleMap from "../../components/map/GoogleMap";
 
-const useStyles = makeStyles((theme) => ({
-  control: {
-    padding: theme.spacing(1.5),
-  },
-}));
 
 const PostsShow = (props: any) => {
   
-  const classes = useStyles();
   const [post, setPost] = React.useState<any>('')
   const [postUser, setPostUser] = React.useState<any>('')
   const [comments, setComments] = React.useState<any>([])

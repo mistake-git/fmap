@@ -1,11 +1,9 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import React, { Fragment, useEffect } from "react";
+import {　Container, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import PostCard from "../../components/posts/PostCard"
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import UserModel from "../../models/UserModel";
-import { AuthContext } from "../../Auth";
 import UserCard from "../../components/users/UserCard";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -36,7 +34,6 @@ const Users = (props: any) => {
  
   const classes = useStyles();
   const [users, setUsers] = React.useState<UserModel[]>([])
-  const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = React.useState(true);
 
   const getUsers = async() => {

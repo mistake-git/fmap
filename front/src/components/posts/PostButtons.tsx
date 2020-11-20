@@ -11,10 +11,6 @@ import { AuthContext } from '../../Auth'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      width: '100%',
-      backgroundColor: theme.palette.background.paper,
-    },
     inline: {
       display: 'inline',
     },

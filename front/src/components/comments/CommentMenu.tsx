@@ -5,7 +5,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
-import axios from 'axios'
 
 const ITEM_HEIGHT = 48;
 

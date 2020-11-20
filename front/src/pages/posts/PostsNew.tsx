@@ -1,17 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import { Container} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import { makeStyles } from '@material-ui/core/styles';
 import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 import auth from "../../plugins/firebase";
-
-
-const useStyles = makeStyles((theme) => ({
-  control: {
-    padding: theme.spacing(1.5),
-  },
-}));
 
 const PostsNew = (props: any) => {
 
