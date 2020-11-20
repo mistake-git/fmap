@@ -5,15 +5,12 @@ import * as Yup from "yup";
 
 import {
   Button,
-  Container,
   FormControl,
-  Grid,
   LinearProgress,
   Link,
   Typography
 } from "@material-ui/core";
 
-import { AuthContext } from "../../Auth";
 import auth from "../../plugins/firebase";
 
 const AuthSchema = Yup.object().shape({
