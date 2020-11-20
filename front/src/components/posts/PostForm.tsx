@@ -80,7 +80,7 @@ export default function PostNewForm(props: any) {
   };
 
   const forms=[
-    {name: "name", label: "魚種",type: "text"},
+    {name: "name", label: "魚種(必須)",type: "text"},
     {name: "size", label: "サイズ",type: "number"},
     {name: "weight", label: "重さ",type: "weight"},
     {name: "weight", label: "数量",type: "number"},
