@@ -1,4 +1,4 @@
-import React, { Fragment} from "react";
+import React, { Fragment, useContext} from "react";
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
+import { AuthContext } from '../../Auth'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,6 +37,7 @@ interface Props {
 
 export default function PostCard(props: any) {
   const classes = useStyles();
+  const { currentUser } = useContext(AuthContext)
 
 
   const handleDeleate = () => {
@@ -50,18 +52,22 @@ export default function PostCard(props: any) {
             <FavoriteIcon />
           </Fab>
         </Box>
-        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-          <Link to={`/posts/${props.post.id}/edit`}>
-            <Fab color="primary" className={classes.icon}>
-              <EditIcon/>
+        {currentUser && currentUser.uid === props.user.uid &&
+         <Fragment>
+          <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+            <Link to={`/posts/${props.post.id}/edit`}>
+              <Fab color="primary" className={classes.icon}>
+                <EditIcon/>
+              </Fab>
+            </Link>
+          </Box>
+          <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+            <Fab onClick={handleDeleate} className={classes.icon}>
+              <DeleteIcon/>
             </Fab>
-          </Link>
-        </Box>
-        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-          <Fab onClick={handleDeleate} className={classes.icon}>
-            <DeleteIcon/>
-          </Fab>
-        </Box>
+          </Box>
+        </Fragment>
+       }
       </Box>
     </Fragment>
 	);

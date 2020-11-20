@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
@@ -8,8 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ImageIcon from '@material-ui/icons/Image';
 import ProfileUserModal from './ProfileImageModal';
-import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
 import UserModel from '../../models/UserModel';
+import { AuthContext } from '../../Auth'
 
 
 interface Props {
@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function UserMain(props: any) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const { currentUser } = useContext(AuthContext)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -59,9 +60,11 @@ export default function UserMain(props: any) {
               <ImageIcon />
             </Avatar>
           </ListItemAvatar>
-          <div className={classes.cameraIcon}>
-            <ProfileUserModal/>
-          </div>
+          {currentUser && currentUser.uid === props.user.uid &&
+            <div className={classes.cameraIcon}>
+              <ProfileUserModal/>
+            </div>
+          }
         </div>
         <ListItemText primary={
         <React.Fragment>

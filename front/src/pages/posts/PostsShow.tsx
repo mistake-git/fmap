@@ -114,7 +114,11 @@ const PostsShow = (props: any) => {
       <Container maxWidth="lg">
         <Grid container spacing={1} style={{ marginTop: "1em" }}>
           <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
-            <PostButtons post={post} destroyPost = {destroyPost} />
+            <PostButtons 
+              post={post}
+              destroyPost={destroyPost} 
+              user={postUser}
+            />
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
             <PostData post={post}/>
