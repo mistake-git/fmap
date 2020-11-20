@@ -79,6 +79,15 @@ export default function PostNewForm(props: any) {
     setSrc('');
   };
 
+  const forms=[
+    {name: "name", label: "魚種",type: "text"},
+    {name: "size", label: "サイズ",type: "number"},
+    {name: "weight", label: "重さ",type: "weight"},
+    {name: "weight", label: "数量",type: "number"},
+    {name: "date", label: "日付",type: "date"},
+    {name: "time", label: "時間",type: "time"},
+  ]
+
 	return (
 		<React.Fragment>
 			<Card className={classes.root}>
@@ -149,64 +158,22 @@ export default function PostNewForm(props: any) {
                       ファイルを選択
                     </label>
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      required
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="name"
-                      label="魚種"
-                      fullWidth
-                      variant="outlined"
-                      type="text"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="size"
-                      label="サイズ"
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="weight"
-                      label="重さ"
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="number"
-                      label="数量"
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
+                  {forms.map((form) => (
+                    <Grid item xs={12} md={6}>
+                      <Field
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name={form.name}
+                        label={form.label}
+                        fullWidth
+                        variant="outlined"
+                        type={form.type}
+                        component={TextField}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                      />
+                    </Grid>
+                  ))}
                   <Grid item xs={12} md={6}>
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
@@ -229,34 +196,6 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="text"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="date"
-                      label="日付"
-                      fullWidth
-                      variant="outlined"
-                      type="date"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="time"
-                      label="時間"
-                      fullWidth
-                      variant="outlined"
-                      type="time"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,
