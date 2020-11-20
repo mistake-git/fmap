@@ -30,6 +30,14 @@ const AuthSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
 });
 
+
+const forms=[
+  {name: "name", label: "名前",type: "text"},
+  {name: "email", label: "メールアドレス",type: "email"},
+  {name: "password", label: "パスワード",type: "password"},
+  {name: "password_confirmation", label: "パスワード確認",type: "password"},
+]
+
 interface State {
  user: UserModel;
 }
@@ -66,46 +74,21 @@ const SignUpForm = (props: any) => {
       render={({ submitForm, isSubmitting, isValid }) => (
         <Form>
           {isSubmitting && <LinearProgress />}
+
+          {forms.map((form) => (
           <FormControl margin="normal" fullWidth>
             <Field
               style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-              name="name"
-              label="名前"
-              fullWidth
-              variant="outlined"
-              component={TextField}
-            />
-            <Field
-              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-              name="email"
-              label="メールアドレス"
+              name={form.name}
+              label={form.label}
+              type={form.type}
               fullWidth
               variant="outlined"
               component={TextField}
             />
           </FormControl>
-          <FormControl fullWidth>
-            <Field
-              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-              name="password"
-              label="パスワード"
-              fullWidth
-              variant="outlined"
-              type="password"
-              component={TextField}
-            />
-          </FormControl>
-          <FormControl fullWidth>
-            <Field
-              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-              name="password_confirmation"
-              label="パスワード確認"
-              fullWidth
-              variant="outlined"
-              type="password"
-              component={TextField}
-            />
-          </FormControl>
+          ))}
+        
           <FormControl fullWidth>
             <Button
               variant="contained"

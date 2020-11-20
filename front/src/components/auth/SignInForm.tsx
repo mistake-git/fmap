@@ -22,7 +22,6 @@ const AuthSchema = Yup.object().shape({
     .required('パスワードを入力してください'),
 });
 
-
 const SignInForm = (props: any) => {
   return (
     <Formik
