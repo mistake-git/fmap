@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
-import RoomIcon from '@material-ui/icons/Room';
 import { Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -99,6 +98,28 @@ const GoogleMap = () => {
       setCurrentKey(keyNumber)
     }
   }
+  
+  //サイズ空ピンの大きさを求める
+　const getPinSize = (size: number) =>{
+    switch (size){
+      case (size && size >= 0 && size <= 20 ):
+        console.log('xs');
+        break;
+      case  (size && size >= 21 && size <= 40 ):
+        console.log('sm');
+        break;
+      case  (size && size >= 41 && size <= 60 ):
+        console.log('md');
+        break;
+      case  (size && size >= 61 && size <= 80 ):
+        console.log('lg');
+        break;
+      case  (size && size >= 81):
+        console.log('xl');
+        break;
+    }
+  }
+
   const createMapOptions = (maps: Maps): MapOptions => {
     return {
       mapTypeControlOptions: {
