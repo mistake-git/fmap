@@ -17,6 +17,7 @@ import {
 } from "@material-ui/core";
 import CancelIcon from '@material-ui/icons/Cancel';
 import 'date-fns';
+import Switch from '@material-ui/core/Switch';
 
 
 
@@ -53,6 +54,14 @@ export default function PostNewForm(props: any) {
   const [src, setSrc] = React.useState('')
 
   const ref = createRef<HTMLInputElement>()
+  const [state, setState] = React.useState({
+    status: true,
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
 
 
   const onClick = () => {
@@ -216,6 +225,15 @@ export default function PostNewForm(props: any) {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Switch
+                      checked={state.status}
+                      onChange={handleChange}
+                      color="primary"
+                      name="status"
+                      inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                   </Grid>
                   <Grid item xs={12}>
