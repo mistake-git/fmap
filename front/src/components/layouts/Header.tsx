@@ -19,20 +19,21 @@ import ViewModuleIcon from '@material-ui/icons/ViewModule';
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: '#3f51b5;',
+    minHeight: 55,
+   
   },
   toolbarTitle: {
     flex: 1,
   },
-  topLink: {
+  link: {
     textDecoration: 'none',
-    color: 'white'
   },
   typography: {
     width: 500,
   },
-  link: {
-    color: 'white'
+  linkColor:{
+    color: '#3f51b5;',
+    fontWeight: 'bold'
   },
 }));
 
@@ -58,64 +59,54 @@ return (
   <React.Fragment>
     <Toolbar className={classes.toolbar}>
       <Typography
-        component="h3"
-        variant="h5"
         align="left"
         noWrap
         className={classes.toolbarTitle}
-      >
-        <Link to="/" className={classes.topLink}> {title}</Link>
+      > 
+      <Link to={'/'}　className={classes.link}>
+        <img src="../logo.png"/>
+        </Link>
       </Typography>
-      <Link to={'/'}>
-        <IconButton
-          className={classes.link}
-        >
-          <PinDropIcon/>
-        </IconButton>
+  
+      <Link to={'/'}　className={classes.link}>
+      　<Button className={classes.linkColor}>
+          <PinDropIcon/>地図でみる
+        </Button>
       </Link>
-      <Link to={'/posts'}>
-        <IconButton
-          className={classes.link}
-        >
-          <ViewModuleIcon/>
-        </IconButton>
+      <Link to={'/posts'}　className={classes.link}>
+      　<Button className={classes.linkColor}>
+          <ViewModuleIcon/>釣果一覧
+        </Button>
       </Link>
-      <Link to={'/posts/new'}>
-        <IconButton
-          className={classes.link}
-        >
-          <CreateIcon/>
-        </IconButton>
+      <Link to={'/posts/new'}　className={classes.link}>
+        <Button className={classes.linkColor}>
+          <CreateIcon/>投稿する
+        </Button>
       </Link>
-      <Link to={'/users'}>
-        <IconButton
-          className={classes.link}
-        >
-          <GroupIcon/>
-        </IconButton>
+      <Link to={'/users'}　className={classes.link}>
+        <Button className={classes.linkColor}>
+          <GroupIcon/>ユーザー一覧
+        </Button>
       </Link>
-      <Link to={`/mypage/${user.uid}`}>
-        <IconButton
-          className={classes.link}
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-        >
-        <AccountCircle />
-      </IconButton>
+      <Link to={`/mypage/${user.uid}`} className={classes.link}>
+      　<Button className={classes.linkColor}>
+          <AccountCircle />マイページ
+        </Button>
       </Link>
-        <IconButton>
-          <ExitToAppIcon
-            className={classes.link}
-            onClick={async event => {
-              try {
-                await auth.signOut();
-              } catch (error) {
-                alert(error.message);
-              }
-            }}
-          />
-        </IconButton>
+      <Button className={classes.linkColor}>
+      <ExitToAppIcon
+        className={classes.link}
+        onClick={async event => {
+          try {
+            await auth.signOut();
+          } catch (error) {
+            alert(error.message);
+          }
+        }}
+        />ログアウト
+      </Button>
+         
+       
     </Toolbar>
   </React.Fragment>
   );

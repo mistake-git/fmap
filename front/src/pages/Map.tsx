@@ -28,32 +28,10 @@ const Home = (props: any) => {
         })
     })
   }, [])
-
   return (
     <Fragment>
       <Template>
-        <Container>
-          <Grid container style={{ marginTop: '1em' }}>
-            <Grid item md={4}></Grid>
-            <Grid item md={4}>
-              <Typography>
-                {currentUser && currentUser.uid}でログイン
-                {user && user.name}
-                ログインしています
-              </Typography>
-              <Typography
-                variant="caption"
-                style={{
-                  paddingTop: '2em',
-                  paddingBottom: '2em',
-                  whiteSpace: 'pre',
-                }}
-              ></Typography>
-            </Grid>
-            <Grid item md={4}></Grid>
-          </Grid>
-          <GoogleMap />
-        </Container>
+        <GoogleMap />
       </Template>
     </Fragment>
   )

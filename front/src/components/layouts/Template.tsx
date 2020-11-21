@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
-		marginTop: theme.spacing(9),
+		marginTop: theme.spacing(2),
 	},
 }));
 
