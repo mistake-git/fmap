@@ -15,7 +15,6 @@ import PostModel from "../../models/PostModel";
 import PieChart from "../../components/chart/PieChart";
 import IntroductionForm from "../../components/users/IntroductionForm";
 
-
 interface State {
   posts: PostModel[]
   post: PostModel
@@ -84,7 +83,6 @@ const MyPage = (props: any) => {
    getUser();
   },[setUser]);
 
-  
   return (
     <React.Fragment>
       {loading &&

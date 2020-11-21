@@ -12,7 +12,6 @@ import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
 import GoogleMap from "../../components/map/GoogleMap";
 
-
 const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<any>('')

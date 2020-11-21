@@ -52,7 +52,7 @@ const Home = (props: any) => {
             </Grid>
             <Grid item md={4}></Grid>
           </Grid>
-          <GoogleMap/>
+          <GoogleMap />
         </Container>
       </Template>
     </Fragment>

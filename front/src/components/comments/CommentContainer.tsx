@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function CommentContainer(props: any) {
   const classes = useStyles();
 
-  
-
   return (
     <React.Fragment>
      <CommentForm 

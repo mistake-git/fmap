@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 export default function UserBar(props: any) {
   const classes = useStyles();
   const [dense, setDense] = React.useState(false);

@@ -7,7 +7,6 @@ import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
 interface State {
   users: UserModel[]
   user: UserModel
@@ -49,7 +48,6 @@ const Users = (props: any) => {
     }
   　setLoading(false);
   }
-
 
   useEffect(() => {
 	　getUsers();

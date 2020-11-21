@@ -54,7 +54,6 @@ export default function Header(props: any) {
     });
   }, []);
 
-
 return (
   <React.Fragment>
     <Toolbar className={classes.toolbar}>
@@ -105,7 +104,6 @@ return (
         <AccountCircle />
       </IconButton>
       </Link>
-       
         <IconButton>
           <ExitToAppIcon
             className={classes.link}
