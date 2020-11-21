@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#3f51b5;',
     fontWeight: 'bold'
   },
+  logo: {
+    verticalAlign: "middle"
+  }
 }));
 
 export default function Header(props: any) {
@@ -64,7 +67,7 @@ return (
         className={classes.toolbarTitle}
       > 
       <Link to={'/'}　className={classes.link}>
-        <img src="../logo.png"/>
+        <img src="../logo.png" className={classes.logo}/>
         </Link>
       </Typography>
   
