@@ -61,7 +61,7 @@ const Posts = (props: any) => {
     <Fragment>
       {loading &&
         <div className={classes.loading}>
-          <CircularProgress/>
+          <img src="../../load.gif" />
         </div>
       }
       <Template>
