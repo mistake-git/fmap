@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { IconButton } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from 'react-router-dom';
 import { AccountCircle} from '@material-ui/icons';
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     minHeight: 55,
+    boxShadow: '0 3px 6px rgba(0,0,0,0.04)'
    
   },
   toolbarTitle: {
@@ -73,27 +74,28 @@ return (
   
       <Link to={'/'}　className={classes.link}>
       　<Button className={classes.linkColor}>
-          <PinDropIcon/>地図でみる
+          <PinDropIcon/>
+          <Box display={{ xs: 'none', md: 'inline' }}>地図でみる</Box>
         </Button>
       </Link>
       <Link to={'/posts'}　className={classes.link}>
       　<Button className={classes.linkColor}>
-          <ViewModuleIcon/>釣果一覧
+          <ViewModuleIcon/><Box display={{ xs: 'none', md: 'inline' }}>釣果一覧</Box>
         </Button>
       </Link>
       <Link to={'/posts/new'}　className={classes.link}>
         <Button className={classes.linkColor}>
-          <CreateIcon/>投稿する
+          <CreateIcon/><Box display={{ xs: 'none', md: 'inline' }}>投稿する</Box>
         </Button>
       </Link>
       <Link to={'/users'}　className={classes.link}>
         <Button className={classes.linkColor}>
-          <GroupIcon/>ユーザー一覧
+          <GroupIcon/><Box display={{ xs: 'none', md: 'inline' }}>ユーザー一覧</Box>
         </Button>
       </Link>
       <Link to={`/mypage/${user.uid}`} className={classes.link}>
       　<Button className={classes.linkColor}>
-          <AccountCircle />マイページ
+          <AccountCircle /><Box display={{ xs: 'none', md: 'inline' }}>マイページ</Box>
         </Button>
       </Link>
       <Button className={classes.linkColor}>
@@ -106,10 +108,8 @@ return (
             alert(error.message);
           }
         }}
-        />ログアウト
+        /><Box display={{ xs: 'none', md: 'inline' }}>ログアウト</Box>
       </Button>
-         
-       
     </Toolbar>
   </React.Fragment>
   );
