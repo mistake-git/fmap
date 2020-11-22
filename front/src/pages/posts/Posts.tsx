@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex", 
     justifyContent: "center", 
     alignItems: "center",
-  　background: 'rgba(0,0,0,0.15)'
+  　background: 'rgba(0,0,0,0.15)',
+    zIndex:10,
   }
 }));
 
@@ -61,7 +62,7 @@ const Posts = (props: any) => {
     <Fragment>
       {loading &&
         <div className={classes.loading}>
-          <img src="../../load.gif" />
+          <CircularProgress/>
         </div>
       }
       <Template>

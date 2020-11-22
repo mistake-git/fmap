@@ -14,6 +14,7 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import CreateIcon from '@material-ui/icons/Create';
 import GroupIcon from '@material-ui/icons/Group';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import zIndex from "@material-ui/core/styles/zIndex";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   logo: {
-    verticalAlign: "middle"
+    verticalAlign: "middle",
+    zIndex: 1,
   }
 }));
 
@@ -68,7 +70,7 @@ return (
       > 
       <Link to={'/'}　className={classes.link}>
         <img src="../logo.png" className={classes.logo}/>
-        </Link>
+      </Link>
       </Typography>
   
       <Link to={'/'}　className={classes.link}>
