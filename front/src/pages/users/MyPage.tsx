@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
   Grid,
-  Box,
-  CircularProgress,
+  Box
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserMain from "../../components/users/UserMain";
@@ -14,35 +13,17 @@ import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import PieChart from "../../components/chart/PieChart";
 import IntroductionForm from "../../components/users/IntroductionForm";
+import Loading from "../../components/layouts/Loading";
 
 interface State {
   posts: PostModel[]
   post: PostModel
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    textAlign: "center"
-  },
-  loading: {
-    position: "fixed", 
-    top: 0, 
-    left: 0, 
-    width: "100%", 
-    height: "100%", 
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center",
-  　background: 'rgba(0,0,0,0.15)'
-  }
-}));
-
 const MyPage = (props: any) => {
   const [posts, setPosts] = React.useState<PostModel[]>([])
   const [user, setUser] = React.useState<any>('');
 
-  const classes = useStyles();
   const [loading, setLoading] = React.useState(true);
 
   const getPosts = async() => {
@@ -86,9 +67,7 @@ const MyPage = (props: any) => {
   return (
     <React.Fragment>
       {loading &&
-        <div className={classes.loading}>
-          <CircularProgress/>
-        </div>
+        <Loading/>
       }
        <Template>
         <Container maxWidth="md">

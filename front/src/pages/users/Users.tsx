@@ -6,32 +6,15 @@ import axios from 'axios'
 import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Loading from "../../components/layouts/Loading";
 
 interface State {
   users: UserModel[]
   user: UserModel
 }
 
-const useStyles = makeStyles((theme) => ({
-  control: {
-    padding: theme.spacing(1.5),
-  },
-  loading: {
-    position: "fixed", 
-    top: 0, 
-    left: 0, 
-    width: "100%", 
-    height: "100%", 
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center",
-  　background: 'rgba(0,0,0,0.15)'
-  }
-}));
-
 const Users = (props: any) => {
  
-  const classes = useStyles();
   const [users, setUsers] = React.useState<UserModel[]>([])
   const [loading, setLoading] = React.useState(true);
 
@@ -57,9 +40,7 @@ const Users = (props: any) => {
   return (
     <Fragment>
       {loading &&
-        <div className={classes.loading}>
-          <CircularProgress/>
-        </div>
+       <Loading/>
       }
       <Template>
         <Container maxWidth="md">

@@ -7,35 +7,15 @@ import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import { AuthContext } from "../../Auth";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Loading from "../../components/layouts/Loading";
 
 interface State {
   posts: PostModel[]
   post: PostModel
 }
-
-const useStyles = makeStyles((theme) => ({
-  control: {
-    padding: theme.spacing(1.5),
-  },
-  loading: {
-    position: "fixed", 
-    top: 0, 
-    left: 0, 
-    width: "100%", 
-    height: "100%", 
-    display: "flex", 
-    justifyContent: "center", 
-    alignItems: "center",
-  　background: 'rgba(0,0,0,0.15)',
-    zIndex:10,
-  }
-}));
-
 const Posts = (props: any) => {
  
-  const classes = useStyles();
   const [posts, setPosts] = React.useState<PostModel[]>([])
-  const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = React.useState(true);
 　
   //非同期で投稿をAPIから取得
@@ -61,9 +41,7 @@ const Posts = (props: any) => {
   return (
     <Fragment>
       {loading &&
-        <div className={classes.loading}>
-          <CircularProgress/>
-        </div>
+       <Loading />
       }
       <Template>
         <Container maxWidth="md">

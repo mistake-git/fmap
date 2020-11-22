@@ -14,7 +14,6 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import CreateIcon from '@material-ui/icons/Create';
 import GroupIcon from '@material-ui/icons/Group';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
-import zIndex from "@material-ui/core/styles/zIndex";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props: any) {
   const classes = useStyles();
-  const { title } = props;
   const [user, setUser] = React.useState<any>('');
 
   useEffect(() => {
