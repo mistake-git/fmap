@@ -6,6 +6,7 @@ import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
+import PostModel from "../../models/PostModel";
 
 const PostsEdit = (props: any) => {
 
@@ -44,10 +45,10 @@ const PostsEdit = (props: any) => {
     getPost();
   },[setPost]);
 
-  const updatePost = async(post: any) => {
+  const updatePost = async(post: PostModel) => {
     try { 
     await
-    axios.patch('http://localhost:3000/api/v1/posts',{post: post} ) 
+    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{post: post} ) 
     .then((response) => {
       console.log(response)
       props.history.push(`/posts/${response.data.id}`);
