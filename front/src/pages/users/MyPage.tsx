@@ -14,6 +14,7 @@ import PostModel from "../../models/PostModel";
 import PieChart from "../../components/chart/PieChart";
 import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
+import UserModel from "../../models/UserModel";
 
 interface State {
   posts: PostModel[]
@@ -22,7 +23,7 @@ interface State {
 
 const MyPage = (props: any) => {
   const [posts, setPosts] = React.useState<PostModel[]>([])
-  const [user, setUser] = React.useState<any>('');
+  const [user, setUser] = React.useState<UserModel | null>(null);
 
   const [loading, setLoading] = React.useState(true);
 

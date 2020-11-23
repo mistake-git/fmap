@@ -7,6 +7,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import CommentMenu from './CommentMenu';
+import CommentModel from '../../models/CommentModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +26,7 @@ export default function Comments(props: any) {
   
   return (
     <React.Fragment>
-      {props.comments.map((comment: any) => {
+      {props.comments.map((comment: CommentModel) => {
         return(
           <List className={classes.root}>
             <ListItem alignItems="flex-start">

@@ -4,10 +4,11 @@ import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 import auth from "../../plugins/firebase";
+import UserModel from "../../models/UserModel";
 
 const PostsNew = (props: any) => {
 
-  const [user, setUser] = React.useState<any>('');
+  const [user, setUser] = React.useState<UserModel | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
