@@ -42,12 +42,12 @@ const MyPage = (props: any) => {
    getUser();
   },[setUser]);
 
-  if (user && loading){
-    return <Loading/>
-  }
-
   return (
     <React.Fragment>
+      { loading &&
+        <Loading/>
+      }
+      { user &&
        <Template>
         <Container maxWidth="md">
           <Grid container>
@@ -67,7 +67,6 @@ const MyPage = (props: any) => {
               </Box>
             </Grid>
           </Grid>
-          {user && 
             <Grid container style={{ marginTop: "3em" }}>
               {user.posts.map((post: PostModel) => {
                 return(
@@ -77,9 +76,10 @@ const MyPage = (props: any) => {
                 )
               })}
             </Grid>
-          }
         </Container>
+       
       </Template>
+      }
     </React.Fragment>
   );
 };

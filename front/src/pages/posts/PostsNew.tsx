@@ -7,7 +7,6 @@ import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 
 const PostsNew = (props: any) => {
-
   const [user, setUser] = React.useState<UserModel | null>(null);
 
   useEffect(() => {
