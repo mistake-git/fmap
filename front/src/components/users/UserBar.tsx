@@ -39,7 +39,6 @@ export default function UserBar(props: any) {
             </ListItemAvatar>
             <ListItemText
               primary={props.user.name}
-              secondary={secondary ? 'Secondary text' : null}
             />
             <ListItemSecondaryAction>
               <Button
@@ -50,7 +49,6 @@ export default function UserBar(props: any) {
               >
                 フォロー
               </Button>
-              
             </ListItemSecondaryAction>
           </ListItem>
       </List>

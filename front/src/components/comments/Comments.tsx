@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Comments(props: any) {
   const classes = useStyles();
-
+  
   return (
     <React.Fragment>
       {props.comments.map((comment: any) => {
@@ -33,7 +33,7 @@ export default function Comments(props: any) {
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               </ListItemAvatar>
               <ListItemText
-                primary={'ユーザーネーム'}
+                primary={comment.user.name}
                 secondary={
                   <Typography
                     component="span"

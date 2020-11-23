@@ -48,6 +48,7 @@ export default function CommentForm(props: any) {
   const classes = useStyles();
   const [buttonOpen, setButtonOpen]= React.useState(false);
 
+  
   return (
     <div>
       <Box my={3}>
@@ -70,7 +71,7 @@ export default function CommentForm(props: any) {
                 user_id: props.user.id
               }
               await 
-              props.createComment(comment);
+              props.createComment(comment, props.post, props.comments);
               setButtonOpen(false);
             } catch (error) {
               alert(error.message);

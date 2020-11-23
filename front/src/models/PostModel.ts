@@ -1,3 +1,6 @@
+import CommentModel from "./CommentModel";
+import UserModel from "./UserModel";
+
 interface PostModel {
   id?: number
   name: string
@@ -7,6 +10,8 @@ interface PostModel {
   feed?: string
   memo?: string
   status?: string
+  comments: CommentModel[]
+  user: UserModel
 }
 
 export default PostModel

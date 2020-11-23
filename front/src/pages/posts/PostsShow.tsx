@@ -11,13 +11,15 @@ import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
 import GoogleMap from "../../components/map/GoogleMap";
+import PostModel from "../../models/PostModel";
+import CommentModel from "../../models/CommentModel";
+import UserModel from "../../models/UserModel";
 
 const PostsShow = (props: any) => {
   
-  const [post, setPost] = React.useState<any>('')
-  const [postUser, setPostUser] = React.useState<any>('')
-  const [comments, setComments] = React.useState<any>([])
-  const [user, setUser] = React.useState<any>('');
+  const [post, setPost] = React.useState<PostModel | null>(null);
+  const [comments, setComments] = React.useState<any>([]);
+  const [user, setUser] = React.useState<UserModel | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -38,10 +40,25 @@ const PostsShow = (props: any) => {
       axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
         .then((results) => {
         console.log(results)
-        //postだけを取ってきてpost.user.nameとかにしてもundifindのエラーが発生してしまうのでstateを定義している
         setPost(results.data);
-        setComments(results.data.comments)
-        setPostUser(results.data.user)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+  
+  useEffect(() => {
+    getPost();
+  },[setPost]);
+
+  const getComments = async() => {
+    try { 
+    await
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`)
+        .then((results) => {
+        console.log(results)
+        setComments(results.data);
       })
     }
     catch (error) {
@@ -50,16 +67,18 @@ const PostsShow = (props: any) => {
   }
 
   useEffect(() => {
-    getPost();
-  },[setPost]);
+    getComments();
+  },[setComments]);
+ 
 
-  const createComment = async(comment: any) => {
+  const createComment = async(comment: CommentModel) => {
     try { 
       await 
-    　 axios.post(`http://localhost:3000/api/v1/posts/${post.id}/comments`,{comment: comment} )
+    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`,{comment: comment} )
         .then((response) => {
         const newData = update(comments, {$unshift:[response.data]})
         setComments(newData)
+        console.log('create comment')
       })
     }
     catch (error) {
@@ -67,15 +86,15 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const destroyComment = async(id: any) => {
+  const destroyComment = async(id: number) => {
     try { 
     await
-    　 axios.delete(`http://localhost:3000/api/v1/posts/${post.id}/comments/${id}`)
+    　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments/${id}`)
       .then(() => {
         const commentIndex = comments.findIndex((x: any) => x.id === id)
         const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
         setComments(deleteComments)
-        console.log('set')
+        console.log('destroy comment')
       })
     }
     catch (error) {
@@ -100,7 +119,11 @@ const PostsShow = (props: any) => {
       alert(error.message);
     }
   }
-  
+
+  if (post === null){
+    return <div></div>
+  }
+
   return (
     <Template>
       <Container maxWidth="lg">
@@ -109,7 +132,7 @@ const PostsShow = (props: any) => {
             <PostButtons 
               post={post}
               destroyPost={destroyPost} 
-              user={postUser}
+              user={post.user}
             />
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
@@ -120,14 +143,14 @@ const PostsShow = (props: any) => {
             <PostChart post={post} />
             <Divider/>
             <Box my={5}>
-            <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-              {post.name}の釣れた場所
-            </Box>
+              <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+                {post.name}の釣れた場所
+              </Box>
               <GoogleMap/>
             </Box>
-            <Divider/>
-            <UserBar user={postUser}/>
+            <UserBar user={post.user}/>
             {post.memo}
+            { comments && 
             <CommentContainer
              post={post}
              user={user}
@@ -135,9 +158,7 @@ const PostsShow = (props: any) => {
              createComment={createComment}
              destroyComment={destroyComment}
              />
-            <Box my={3}>
-              <Divider/>
-            </Box>
+            }
           </Grid>
         </Grid>
       </Container>
