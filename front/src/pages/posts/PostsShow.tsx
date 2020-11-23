@@ -14,6 +14,7 @@ import GoogleMap from "../../components/map/GoogleMap";
 import PostModel from "../../models/PostModel";
 import CommentModel from "../../models/CommentModel";
 import UserModel from "../../models/UserModel";
+import Loading from "../../components/layouts/Loading";
 
 const PostsShow = (props: any) => {
   
@@ -102,7 +103,7 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const destroyPost = async(id: any) => {
+  const destroyPost = async(id: number) => {
     try { 
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${id}`)
@@ -121,9 +122,9 @@ const PostsShow = (props: any) => {
   }
 
   if (post === null){
-    return <div></div>
+    return <Loading/>
   }
-
+  
   return (
     <Template>
       <Container maxWidth="lg">
