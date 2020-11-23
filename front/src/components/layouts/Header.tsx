@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -68,7 +68,7 @@ return (
         className={classes.toolbarTitle}
       > 
       <Link to={'/'}　className={classes.link}>
-        <img src="../logo.png" className={classes.logo}/>
+        <img src="../../logo.png" className={classes.logo}/>
       </Link>
       </Typography>
   
