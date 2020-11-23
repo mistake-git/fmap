@@ -7,7 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Divider } from '@material-ui/core';
+import { Divider, Grid } from '@material-ui/core';
+import PostModel from '../../models/PostModel';
+import PostCard from '../posts/PostCard';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function ScrollableTabsButtonPrevent() {
+export default function UserTab(props: any) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -71,7 +73,15 @@ export default function ScrollableTabsButtonPrevent() {
       </Tabs>
       <Divider/>
       <TabPanel value={value} index={0}>
-        自分の投稿
+        <Grid container style={{ marginTop: "3em" }} spacing={2}>
+          {props.posts.map((post: PostModel) => {
+            return(
+              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                <PostCard post={ post } key={post.id}/>
+              </Grid>
+            )
+          })}
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
         お気に入り

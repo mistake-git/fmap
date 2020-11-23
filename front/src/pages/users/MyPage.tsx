@@ -57,25 +57,17 @@ const MyPage = (props: any) => {
               />
               <IntroductionForm/>
             </Grid>
-        
             <Grid item xs={12} sm={5}>
               <PieChart/>
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
-                <UserTab/>
+                <UserTab
+                 posts={user.posts}
+                />
               </Box>
             </Grid>
           </Grid>
-            <Grid container style={{ marginTop: "3em" }}>
-              {user.posts.map((post: PostModel) => {
-                return(
-                  <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                    <PostCard post={ post } key={post.id}/>
-                  </Grid>
-                )
-              })}
-            </Grid>
         </Container>
        
       </Template>
