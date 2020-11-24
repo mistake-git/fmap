@@ -24,12 +24,15 @@ export default function CommentMenu(props: any) {
 
   const options = [
     {
+    id: 1,
     item:
     <MenuItem> 
         <Edit color="action" />編集
     </MenuItem>
     },
-    {item:
+    {
+      id:2,
+      item:
       <MenuItem onClick={handleClose}>
         <Delete color="action"
         />削除
@@ -61,7 +64,7 @@ export default function CommentMenu(props: any) {
         }}
       >
         {options.map((option) => (
-          <React.Fragment>
+          <React.Fragment key={option.id}>
              {option.item}
           </React.Fragment>
         ))}

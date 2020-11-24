@@ -43,11 +43,11 @@ const Posts = (props: any) => {
       {posts &&
       <Template>
         <Container maxWidth="md">
-          <Grid container style={{ marginTop: "3em" }}>
+          <Grid container spacing={2}>
           {posts.map((post) => {
             return(
-              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                <PostCard post={ post } key={post.id}/>
+              <Grid item xs={12} sm={6} md={4}>
+                <PostCard post={post} key={post.id}/>
               </Grid>
             )
           })}

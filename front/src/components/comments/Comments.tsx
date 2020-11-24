@@ -28,7 +28,7 @@ export default function Comments(props: any) {
     <React.Fragment>
       {props.comments.map((comment: CommentModel) => {
         return(
-          <List className={classes.root}>
+          <List className={classes.root} key={comment.id}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar alt={comment.user.name} src="/static/images/avatar/1.jpg" />

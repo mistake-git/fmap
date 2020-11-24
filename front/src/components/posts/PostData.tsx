@@ -12,14 +12,14 @@ interface Props {
 export default function PostData(props: any) {
 
   const datalist = [
-    { label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},
-    { label: '日付', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
-    { label: '時間', content: props.post.time && moment(props.post.time).format('LTS')},
-    { label: '魚種', content: props.post.name },
-    { label: 'サイズ', content: props.post.size },
-    { label: '重さ', content: props.post.weight },
-    { label: '餌', content: props.post.feed },
-    { label: '天候', content: props.post.weather},
+    { id: 1, label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},
+    { id: 2, label: '日付', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
+    { id: 3, label: '時間', content: props.post.time && moment(props.post.time).format('LTS')},
+    { id: 4, label: '魚種', content: props.post.name },
+    { id: 5, label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
+    { id: 6, label: '重さ', content: props.post.weight &&`${props.post.weight}kg` },
+    { id: 7, label: '餌', content: props.post.feed },
+    { id: 8, label: '天候', content: props.post.weather},
   ];
 
   return (
@@ -29,7 +29,7 @@ export default function PostData(props: any) {
       </Box>
       <Divider/>
       {datalist.map((data) => (
-        <Grid container style={{ marginTop: "1em" }}>
+        <Grid container style={{ marginTop: "1em" }} key={data.id}>
           <Grid item xs={12} sm={2} style={{ marginTop: "1em" }}>
             {data.label}
           </Grid>
