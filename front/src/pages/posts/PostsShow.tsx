@@ -20,6 +20,7 @@ const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
+  const [likes, setLikes] = React.useState<any>([]);
   const [user, setUser] = React.useState<UserModel | null>(null);
 
   useEffect(() => {
@@ -70,6 +71,25 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getComments();
   },[setComments]);
+
+  //いいねを取得
+  const getLikes = async() => {
+    try { 
+    await
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
+        .then((results) => {
+        console.log(results)
+        setLikes(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getLikes();
+  },[setLikes]);
  
 
   const createComment = async(comment: CommentModel) => {
