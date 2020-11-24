@@ -21,6 +21,7 @@ const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
+  const [isLike, setIsLike] = React.useState(false);
   const [likes, setLikes] = React.useState<any>([]);
   const [user, setUser] = React.useState<UserModel | null>(null);
 
@@ -173,51 +174,54 @@ const PostsShow = (props: any) => {
     }
   }
 
-  if (post === null){
-    return <Loading/>
-  }
+
   
   return (
-    <Template>
-      <Container maxWidth="lg">
-        <Grid container spacing={1} style={{ marginTop: "1em" }}>
-          <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
-            <PostButtons 
-              post={post}
-              user={post.user}
-              destroyPost={destroyPost} 
-              createLike={createLike} 
-              destroyLike={destroyLike} 
-            />
-          </Grid>
-          <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
-            <PostData post={post}/>
-            <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-              {post.name}のデータ分析
-            </Box>
-            <PostChart post={post} />
-            <Divider/>
-            <Box my={5}>
+    <React.Fragment>
+      {post ? 
+      <Template>
+        <Container maxWidth="lg">
+          <Grid container spacing={1} style={{ marginTop: "1em" }}>
+            <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
+              <PostButtons 
+                post={post}
+                user={post.user}
+                destroyPost={destroyPost} 
+                createLike={createLike} 
+                destroyLike={destroyLike} 
+              />
+            </Grid>
+            <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
+              <PostData post={post}/>
               <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-                {post.name}の釣れた場所
+                {post.name}のデータ分析
               </Box>
-              <GoogleMap/>
-            </Box>
-            <UserBar user={post.user}/>
-            {post.memo}
-            { comments && 
-            <CommentContainer
-             post={post}
-             user={user}
-             comments={comments}
-             createComment={createComment}
-             destroyComment={destroyComment}
-             />
-            }
+              <PostChart post={post} />
+              <Divider/>
+              <Box my={5}>
+                <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+                  {post.name}の釣れた場所
+                </Box>
+                <GoogleMap/>
+              </Box>
+              <UserBar user={post.user}/>
+              {post.memo}
+              { comments && 
+              <CommentContainer
+              post={post}
+              user={user}
+              comments={comments}
+              createComment={createComment}
+              destroyComment={destroyComment}
+              />
+              }
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Template>
+        </Container>
+      </Template>
+      : <Loading/>}
+    </React.Fragment>
+    
   );
 };
 export default PostsShow;

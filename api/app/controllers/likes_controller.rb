@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_post,  except: :index
+  before_action :set_post,  except: :destroy
   before_action :set_like, except: :index
 
   def index
