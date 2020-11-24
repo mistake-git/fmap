@@ -14,6 +14,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors
+    end
+  end
+
   def show
     user = User.find_by(uid: params[:id])
     #user_data = user.posts.group(:name).sum(:number)
