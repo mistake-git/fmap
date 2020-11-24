@@ -31,7 +31,7 @@ export default function Comments(props: any) {
           <List className={classes.root}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Avatar alt={comment.user.name} src="/static/images/avatar/1.jpg" />
               </ListItemAvatar>
               <ListItemText
                 primary={comment.user.name}
