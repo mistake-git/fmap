@@ -41,7 +41,7 @@ const MyPage = (props: any) => {
   const updateUser = async(user: UserModel) => {
     try { 
     await
-    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{user: user} ) 
+    axios.patch(`http://localhost:3000/api/v1/users/${props.match.params.id}`,{user: user} ) 
     .then((response) => {
       console.log(response)
       props.history.push(`/users/${response.data.uid}`);
