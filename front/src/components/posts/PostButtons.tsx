@@ -8,7 +8,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
 import { AuthContext } from '../../Auth'
-import userEvent from "@testing-library/user-event";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
