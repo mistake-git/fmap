@@ -3,6 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 export default function LikesUsersGroup() {
+
   return (
     <AvatarGroup max={4}>
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />

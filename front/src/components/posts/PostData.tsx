@@ -24,7 +24,7 @@ export default function PostData(props: any) {
 
   return (
     <React.Fragment>
-      <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+      <Box fontWeight="fontWeightBold" mb={2}　fontSize={16}>
         {props.post.name}のデータ
       </Box>
       <Divider/>

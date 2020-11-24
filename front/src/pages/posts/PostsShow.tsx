@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Divider, Grid} from "@material-ui/core";
+import { Container, Divider, Grid, Typography} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
@@ -16,6 +16,9 @@ import CommentModel from "../../models/CommentModel";
 import UserModel from "../../models/UserModel";
 import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
+import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Favorite } from "@material-ui/icons";
 
 const PostsShow = (props: any) => {
   
@@ -194,6 +197,10 @@ const PostsShow = (props: any) => {
               />
             </Grid>
             <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
+              <Box display="flex" justifyContent="flex-end">
+                <Favorite fontSize="large" color="secondary"/>
+                <LikesUsersGroup/>
+              </Box>
               <PostData post={post}/>
               <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
                 {post.name}のデータ分析
@@ -226,3 +233,7 @@ const PostsShow = (props: any) => {
   );
 };
 export default PostsShow;
+
+
+
+

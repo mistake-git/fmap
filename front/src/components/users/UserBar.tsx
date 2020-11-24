@@ -29,26 +29,26 @@ export default function UserBar(props: any) {
     <div className={classes.demo}>
       <Divider/>
       <List>
-          <ListItem>
-            <ListItemAvatar>
-              <Avatar>
-                <FolderIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={props.user.name}
-            />
-            <ListItemSecondaryAction>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                startIcon={<AddIcon />}
-              >
-                フォロー
-              </Button>
-            </ListItemSecondaryAction>
-          </ListItem>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <FolderIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary={props.user.name}
+          />
+          <ListItemSecondaryAction>
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              startIcon={<AddIcon />}
+            >
+              フォロー
+            </Button>
+          </ListItemSecondaryAction>
+        </ListItem>
       </List>
     </div>
   );
