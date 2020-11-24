@@ -1,24 +1,15 @@
 import React from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import moment from 'moment'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: '100%',
-    },
-  }),
-);
 
 interface Props {
   post: PostModel;
 }
 
 export default function PostData(props: any) {
-  const classes = useStyles();
 
   const datalist = [
     { label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},

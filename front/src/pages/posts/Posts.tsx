@@ -1,12 +1,9 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container, Grid } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
-import { AuthContext } from "../../Auth";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Loading from "../../components/layouts/Loading";
 
 interface State {

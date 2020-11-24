@@ -24,13 +24,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function UserBar(props: any) {
   const classes = useStyles();
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
 
   return (
     <div className={classes.demo}>
       <Divider/>
-      <List dense={dense}>
+      <List>
           <ListItem>
             <ListItemAvatar>
               <Avatar>

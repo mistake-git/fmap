@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import {　Container, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Loading from "../../components/layouts/Loading";
 
 interface State {

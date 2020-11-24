@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Container} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"

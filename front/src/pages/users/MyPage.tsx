@@ -7,7 +7,6 @@ import {
 import Template from "../../components/layouts/Template";
 import UserMain from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
-import PostCard from "../../components/posts/PostCard";
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import PieChart from "../../components/chart/PieChart";

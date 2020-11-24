@@ -1,7 +1,6 @@
 import { User } from "firebase";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "./plugins/firebase";
-import axios from 'axios'
 
 interface IAuthContext {
   currentUser: User | null | undefined;
