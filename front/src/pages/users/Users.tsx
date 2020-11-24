@@ -13,7 +13,7 @@ interface State {
 
 const Users = (props: any) => {
  
-  const [users, setUsers] = React.useState<UserModel[]>([])
+  const [users, setUsers] = React.useState<UserModel[] | null>(null)
   const [loading, setLoading] = React.useState(true);
 
   const getUsers = async() => {
@@ -40,6 +40,7 @@ const Users = (props: any) => {
       {loading &&
        <Loading/>
       }
+      { users &&
       <Template>
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "5em" }} spacing={5}>
@@ -51,6 +52,7 @@ const Users = (props: any) => {
           </Grid>
         </Container>
         </Template>
+      } 
     </Fragment>
   );
 };

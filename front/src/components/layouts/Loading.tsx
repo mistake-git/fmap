@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex", 
     justifyContent: "center", 
     alignItems: "center",
-  　background: 'rgba(0,0,0,0.15)',
     zIndex:10,
   }
 }));
