@@ -3,7 +3,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :posts, serializer: PostSerializer do
     object.posts.order(created_at: :desc)
   end
-  has_many :likes_posts, serializer: PostSerializer do
-    object.posts.order(created_at: :desc)
-  end
+  has_many :likes_posts
 end

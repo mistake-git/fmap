@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(uid: params[:id])
     #user_data = user.posts.group(:name).sum(:number)
-    render json: user
+   render json: user
   end
 
   private
