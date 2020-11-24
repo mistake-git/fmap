@@ -3,5 +3,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :uid, presence: true
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :posts, dependent: :destroy
 end
