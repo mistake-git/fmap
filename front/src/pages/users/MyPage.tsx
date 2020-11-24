@@ -50,25 +50,25 @@ const MyPage = (props: any) => {
        <Template>
         <Container maxWidth="md">
           <Grid container>
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={12} md={7}>
               <UserMain
                 user={user}
               />
               <IntroductionForm/>
             </Grid>
-            <Grid item xs={12} sm={5}>
+            <Grid item xs={12} md={5}>
               <PieChart/>
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
                 <UserTab
                  posts={user.posts}
+                 likesPosts={user.likes_posts}
                 />
               </Box>
             </Grid>
           </Grid>
         </Container>
-       
       </Template>
       }
     </React.Fragment>

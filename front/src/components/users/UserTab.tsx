@@ -84,7 +84,13 @@ export default function UserTab(props: any) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        お気に入り
+        {props.likesPosts.map((post: PostModel) => {
+          return(
+            <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+              <PostCard post={ post } key={post.id}/>
+            </Grid>
+          )
+        })}
       </TabPanel>
       <TabPanel value={value} index={2}>
         閲覧履歴
