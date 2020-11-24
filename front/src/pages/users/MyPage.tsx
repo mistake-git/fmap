@@ -20,6 +20,7 @@ interface State {
 }
 
 const MyPage = (props: any) => {
+
   const [user, setUser] = React.useState<any>('');
   const [loading, setLoading] = React.useState(true);
 
@@ -34,6 +35,7 @@ const MyPage = (props: any) => {
     }
     catch (error) {
       alert(error.message);
+
     }
     　setLoading(false);
   }
@@ -44,7 +46,8 @@ const MyPage = (props: any) => {
     axios.patch(`http://localhost:3000/api/v1/users/${props.match.params.id}`,{user: user} ) 
     .then((response) => {
       console.log(response)
-      props.history.push(`/users/${response.data.uid}`);
+      setUser(response.data);
+      props.history.push(`/mypage/${response.data.uid}`);
     })
     }
     catch (error) {
@@ -55,6 +58,7 @@ const MyPage = (props: any) => {
   useEffect(() => {
    getUser();
   },[setUser]);
+  
 
   const values ={
     Introduction: user.introduction
@@ -73,6 +77,7 @@ const MyPage = (props: any) => {
               <UserMain
                 user={user}
               />
+              {user.introduction}
               <IntroductionForm
                 values={values}
                 updateUser={updateUser}

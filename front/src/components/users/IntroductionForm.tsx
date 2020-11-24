@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
 export const CommentSchema = Yup.object().shape({
   introduction: Yup.string()
-    .required(),
+    .required('自己紹介を入力してください'),
 });
 
 export default function IntroductionForm(props: any) {
@@ -50,12 +50,10 @@ export default function IntroductionForm(props: any) {
           onSubmit={async value => {
             try {
               const user ={
-                name: '',
-                email: '',
-                uid: '',
                 introduction: value.introduction
-             }
+              }
              props.updateUser(user)
+             setFormOpen(false)
             } catch (error) {
               alert(error.message);
             }
