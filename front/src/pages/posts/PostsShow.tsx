@@ -21,7 +21,6 @@ const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
-  const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
   const [user, setUser] = React.useState<UserModel | null>(null);
 
@@ -186,7 +185,6 @@ const PostsShow = (props: any) => {
                 user={user}
                 postUser={post.user}
                 destroyPost={destroyPost} 
-                like={like}
                 createLike={createLike} 
                 destroyLike={destroyLike} 
               />
