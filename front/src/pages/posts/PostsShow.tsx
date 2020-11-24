@@ -25,7 +25,6 @@ const PostsShow = (props: any) => {
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
-  const [likes, setLikes] = React.useState<any>([]);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
 
   useEffect(() => {
@@ -78,33 +77,13 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
 
-  //投稿に紐づいたいいねを全取得
-  const getLikes = async() => {
-    try { 
-    await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
-        .then((results) => {
-        console.log(results)
-        setLikes(results.data);
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
-  
-  useEffect(() => {
-    getLikes();
-  },[setLikes]);
 
   const createLike = async(like: LikeModel ) => {
     try { 
       await
     　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`,{like: like} )
         .then((response) => {
-        const newData = update(likes, {$unshift:[response.data]})
         setLike(response.data)
-        setLikes(newData)
         console.log('create like')
       })
     }
@@ -118,10 +97,7 @@ const PostsShow = (props: any) => {
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
       .then(() => {
-        const likeIndex = likes.findIndex((x: any) => x.id === id)
-        const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
         setLike(null)
-        setLikes(deleteLikes)
         console.log('destroy like')
       })
     }
