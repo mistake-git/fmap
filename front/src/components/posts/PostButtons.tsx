@@ -49,19 +49,30 @@ export default function PostCard(props: any) {
     props.createLike(like)
   }
 
+  const destroyLike = () =>{
+    props.destroyLike(props.like.id)
+  }
+
 	return (
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-        
+          {props.like === null ?
           <Fab
            color="default" 
            className={classes.icon}
            onClick={createLike}
           >
             <FavoriteIcon />
-          </Fab> 
-        
+          </Fab>:
+           <Fab
+           color="secondary" 
+           className={classes.icon}
+           onClick={destroyLike}
+          >
+            <FavoriteIcon />
+          </Fab>
+          }
         </Box>
         {currentUser && currentUser.uid === props.postUser.uid &&
          <Fragment>

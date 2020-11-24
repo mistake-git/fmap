@@ -21,6 +21,7 @@ const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
+  const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
   const [user, setUser] = React.useState<UserModel | null>(null);
 
@@ -98,6 +99,7 @@ const PostsShow = (props: any) => {
     　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`,{like: like} )
         .then((response) => {
         const newData = update(likes, {$unshift:[response.data]})
+        setLike(response.data)
         setLikes(newData)
         console.log('create like')
       })
@@ -114,7 +116,8 @@ const PostsShow = (props: any) => {
       .then(() => {
         const likeIndex = likes.findIndex((x: any) => x.id === id)
         const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
-        setComments(deleteLikes)
+        setLike(null)
+        setLikes(deleteLikes)
         console.log('destroy like')
       })
     }
@@ -183,6 +186,7 @@ const PostsShow = (props: any) => {
               <PostButtons 
                 post={post}
                 user={user}
+                like={like}
                 postUser={post.user}
                 destroyPost={destroyPost} 
                 createLike={createLike} 
@@ -204,7 +208,6 @@ const PostsShow = (props: any) => {
               </Box>
               <UserBar user={post.user}/>
               {post.memo}
-              { comments && 
               <CommentContainer
               post={post}
               user={user}
@@ -212,12 +215,12 @@ const PostsShow = (props: any) => {
               createComment={createComment}
               destroyComment={destroyComment}
               />
-              }
             </Grid>
           </Grid>
         </Container>
-      </Template>
-      : <Loading/>}
+      </Template>: 
+      <Loading/>
+      }
     </React.Fragment>
     
   );
