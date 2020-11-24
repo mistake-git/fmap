@@ -92,7 +92,7 @@ const PostsShow = (props: any) => {
       alert(error.message);
     }
   }
-
+  
   useEffect(() => {
     getLikes();
   },[setLikes]);
