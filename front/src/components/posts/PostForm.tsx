@@ -62,8 +62,6 @@ export default function PostNewForm(props: any) {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-
-
   const onClick = () => {
     if (ref.current) {
       ref.current.click()

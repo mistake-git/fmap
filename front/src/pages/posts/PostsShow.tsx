@@ -21,7 +21,7 @@ const PostsShow = (props: any) => {
   
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
-  const [isLike, setIsLike] = React.useState(false);
+  const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
   const [user, setUser] = React.useState<UserModel | null>(null);
 
@@ -74,7 +74,7 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
 
-  //いいねを取得
+  //投稿に紐づいたいいねを全取得
   const getLikes = async() => {
     try { 
     await
@@ -93,10 +93,10 @@ const PostsShow = (props: any) => {
     getLikes();
   },[setLikes]);
 
-  const createLike = async(like: LikeModel) => {
+  const createLike = async(like: LikeModel ) => {
     try { 
-      await 
-    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`,{like: like} )
+      await
+    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`,{like: like} )
         .then((response) => {
         const newData = update(likes, {$unshift:[response.data]})
         setLikes(newData)
@@ -174,8 +174,6 @@ const PostsShow = (props: any) => {
     }
   }
 
-
-  
   return (
     <React.Fragment>
       {post ? 
@@ -185,8 +183,10 @@ const PostsShow = (props: any) => {
             <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
               <PostButtons 
                 post={post}
-                user={post.user}
+                user={user}
+                postUser={post.user}
                 destroyPost={destroyPost} 
+                like={like}
                 createLike={createLike} 
                 destroyLike={destroyLike} 
               />

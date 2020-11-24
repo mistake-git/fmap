@@ -1,15 +1,19 @@
 class LikesController < ApplicationController
   before_action :set_post,  except: :destroy
-  before_action :set_like, except: :index
+  before_action :set_like, except: [:index, :create]
 
   def index
     likes = @post.likes
     render json: likes
   end
 
+  def show
+    render json: @like
+  end
+
   def create
-    like = Like.new(user_id: current_user.id, post_id: @post.id)
-    like.save
+    like = Like.new(like_params)
+    like.save!
     render json: like
   end
 
@@ -20,7 +24,7 @@ class LikesController < ApplicationController
   private
   
   def set_like
-    @like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
+    @like = Like.find(params[:id])
   end
   
   def set_post

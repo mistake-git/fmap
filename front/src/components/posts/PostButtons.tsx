@@ -8,6 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
 import { AuthContext } from '../../Auth'
+import userEvent from "@testing-library/user-event";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,20 +41,29 @@ export default function PostCard(props: any) {
     props.destroyPost(props.post.id)
   } 
 
+  const createLike = () =>{
+    const like ={
+      user_id: props.user.id,
+      post_id: props.post.id,
+    }
+    props.createLike(like)
+  }
+
 	return (
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-        {props.like ?  
-          <Fab color="secondary" className={classes.icon}>
+        
+          <Fab
+           color="secondary" 
+           className={classes.icon}
+           onClick={createLike}
+          >
             <FavoriteIcon />
-          </Fab>: 
-          <Fab color="default" className={classes.icon}>
-            <FavoriteIcon />
-          </Fab>
-        }
+          </Fab> 
+        
         </Box>
-        {currentUser && currentUser.uid === props.user.uid &&
+        {currentUser && currentUser.uid === props.postUser.uid &&
          <Fragment>
           <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
             <Link to={`/posts/${props.post.id}/edit`}>
