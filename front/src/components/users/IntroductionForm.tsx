@@ -22,11 +22,6 @@ const useStyles = makeStyles({
   }
 });
 
-export const CommentSchema = Yup.object().shape({
-  introduction: Yup.string()
-    .required('自己紹介を入力してください'),
-});
-
 export default function IntroductionForm(props: any) {
 
   const classes = useStyles();
@@ -39,14 +34,15 @@ export default function IntroductionForm(props: any) {
           color='textSecondary'
           variant='caption'
         > 
-          自己紹介を入力
+          自己紹介を編集
         </Typography>
       </Button>
       {FormOpen &&
       　<Formik
       　  enableReinitialize={true}
-          initialValues={props.values}
-          validationSchema={CommentSchema}
+          initialValues={
+            {introduction: props.value}
+          }
           onSubmit={async value => {
             try {
               const user ={

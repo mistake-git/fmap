@@ -58,11 +58,7 @@ const MyPage = (props: any) => {
   useEffect(() => {
    getUser();
   },[setUser]);
-  
 
-  const values ={
-    Introduction: user.introduction
-  }
 
   return (
     <React.Fragment>
@@ -79,7 +75,7 @@ const MyPage = (props: any) => {
               />
               {user.introduction}
               <IntroductionForm
-                values={values}
+                value={user.introduction}
                 updateUser={updateUser}
               />
             </Grid>
