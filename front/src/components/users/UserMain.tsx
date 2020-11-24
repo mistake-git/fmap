@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 export default function UserMain(props: any) {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
