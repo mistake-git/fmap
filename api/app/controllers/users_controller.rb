@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :update]
 
   def index
     users = User.all.order(created_at: :desc)
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = User.find_by(uid: params[:id])
     if @user.update(user_params)
       render json: @user
     else
@@ -23,15 +25,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find_by(uid: params[:id])
     #user_data = user.posts.group(:name).sum(:number)
-   render json: user
+   render json: @user
   end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :uid)
+  end
+
+  def set_user
+    @user = User.find_by(uid: params[:id])
   end
 
 end
