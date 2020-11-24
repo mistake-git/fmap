@@ -55,7 +55,7 @@ export default function PostCard(props: any) {
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
         
           <Fab
-           color="secondary" 
+           color="default" 
            className={classes.icon}
            onClick={createLike}
           >
