@@ -12,7 +12,7 @@ interface State {
 }
 const Posts = (props: any) => {
  
-  const [posts, setPosts] = React.useState<PostModel[]>([])
+  const [posts, setPosts] = React.useState<PostModel[] | null>(null)
   const [loading, setLoading] = React.useState(true);
 　
   //非同期で投稿をAPIから取得
@@ -40,6 +40,7 @@ const Posts = (props: any) => {
       {loading &&
        <Loading />
       }
+      {posts &&
       <Template>
         <Container maxWidth="md">
           <Grid container style={{ marginTop: "3em" }}>
@@ -53,6 +54,7 @@ const Posts = (props: any) => {
           </Grid>
         </Container>
         </Template>
+      }
     </Fragment>
   );
 };

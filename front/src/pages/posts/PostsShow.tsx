@@ -17,16 +17,16 @@ import UserModel from "../../models/UserModel";
 import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Favorite } from "@material-ui/icons";
 
 const PostsShow = (props: any) => {
   
+  const [user, setUser] = React.useState<UserModel | null>(null);
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
-  const [user, setUser] = React.useState<UserModel | null>(null);
+  const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -48,6 +48,7 @@ const PostsShow = (props: any) => {
         .then((results) => {
         console.log(results)
         setPost(results.data);
+        setLikesUsers(results.data.likes_users);
       })
     }
     catch (error) {
@@ -199,7 +200,11 @@ const PostsShow = (props: any) => {
             <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
               <Box display="flex" justifyContent="flex-end">
                 <Favorite fontSize="large" color="secondary"/>
-                <LikesUsersGroup/>
+                {likesUsers &&
+                  <LikesUsersGroup
+                    likesUsers={likesUsers}
+                  />
+                }
               </Box>
               <PostData post={post}/>
               <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>

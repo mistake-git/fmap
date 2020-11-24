@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :image
   has_many :likes, dependent: :destroy
-  has_many :likes_users,through: :likes, source: :user
+  has_many :likes_users, through: :likes, source: :user
 end
