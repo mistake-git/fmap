@@ -5,6 +5,7 @@ import UserModel from '../../models/UserModel';
 import { Avatar, Box } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -17,6 +18,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textDecoration: 'none',
       color: 'black'
     },
+    introduction: {
+      width: '100%'
+    }
   }),
 );
 
@@ -28,16 +32,19 @@ export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
     <Box my={4}>
-      <Box mx={5} mb={1}>
+      <Box mb={1}>
         <Avatar alt={props.user.name} src="/static/images/avatar/1.jpg" className={classes.avater} />
       </Box>
-      <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
-        <Typography align="center">
-          <Box fontWeight="fontWeightBold">
-            {props.user.name}
-          </Box>
-        </Typography>
-      </Link>
+      <Box fontWeight="fontWeightBold">
+        <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
+          {props.user.name}
+        </Link>
+      </Box>
+      <Box className={classes.introduction}>
+        {props. user.introduction &&
+          props.user.introduction
+        }
+      </Box>
     </Box>
 	);
 }
