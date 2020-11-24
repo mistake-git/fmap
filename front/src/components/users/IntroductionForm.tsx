@@ -27,7 +27,7 @@ export const CommentSchema = Yup.object().shape({
     .required(),
 });
 
-export default function IntroductionForm() {
+export default function IntroductionForm(props: any) {
 
   const classes = useStyles();
   const [FormOpen, setFormOpen]= React.useState(false);
@@ -44,13 +44,18 @@ export default function IntroductionForm() {
       </Button>
       {FormOpen &&
       　<Formik
-          initialValues={{ 
-            introduction: "", 
-          }}
+      　  enableReinitialize={true}
+          initialValues={props.values}
           validationSchema={CommentSchema}
           onSubmit={async value => {
             try {
-              
+              const user ={
+                name: '',
+                email: '',
+                uid: '',
+                introduction: value.introduction
+             }
+             props.updateUser(user)
             } catch (error) {
               alert(error.message);
             }

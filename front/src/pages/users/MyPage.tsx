@@ -12,6 +12,7 @@ import PostModel from "../../models/PostModel";
 import PieChart from "../../components/chart/PieChart";
 import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
+import UserModel from "../../models/UserModel";
 
 interface State {
   posts: PostModel[]
@@ -36,10 +37,28 @@ const MyPage = (props: any) => {
     }
     　setLoading(false);
   }
+
+  const updateUser = async(user: UserModel) => {
+    try { 
+    await
+    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{user: user} ) 
+    .then((response) => {
+      console.log(response)
+      props.history.push(`/users/${response.data.uid}`);
+    })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
   
   useEffect(() => {
    getUser();
   },[setUser]);
+
+  const values ={
+    Introduction: user.introduction
+  }
 
   return (
     <React.Fragment>
@@ -54,7 +73,10 @@ const MyPage = (props: any) => {
               <UserMain
                 user={user}
               />
-              <IntroductionForm/>
+              <IntroductionForm
+                values={values}
+                updateUser={updateUser}
+              />
             </Grid>
             <Grid item xs={12} md={5}>
               <PieChart/>
