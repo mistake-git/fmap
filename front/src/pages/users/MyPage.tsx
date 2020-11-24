@@ -21,7 +21,7 @@ interface State {
 
 const MyPage = (props: any) => {
 
-  const [user, setUser] = React.useState<any>('');
+  const [user, setUser] = React.useState<UserModel | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   const getUser = async() => {
@@ -65,7 +65,7 @@ const MyPage = (props: any) => {
       { loading &&
         <Loading/>
       }
-      { user &&
+      {user &&
        <Template>
         <Container maxWidth="md">
           <Grid container>
@@ -87,6 +87,7 @@ const MyPage = (props: any) => {
                 <UserTab
                  posts={user.posts}
                  likesPosts={user.likes_posts}
+    
                 />
               </Box>
             </Grid>
