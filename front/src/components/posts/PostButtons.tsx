@@ -44,9 +44,14 @@ export default function PostCard(props: any) {
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+        {props.like ?  
           <Fab color="secondary" className={classes.icon}>
             <FavoriteIcon />
+          </Fab>: 
+          <Fab color="default" className={classes.icon}>
+            <FavoriteIcon />
           </Fab>
+        }
         </Box>
         {currentUser && currentUser.uid === props.user.uid &&
          <Fragment>
@@ -68,3 +73,5 @@ export default function PostCard(props: any) {
     </Fragment>
 	);
 }
+
+
