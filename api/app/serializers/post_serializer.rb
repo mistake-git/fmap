@@ -5,6 +5,9 @@ class PostSerializer < ActiveModel::Serializer
     object.comments.order(id: :desc)
   end
   belongs_to :user
+  has_many :likes_users, serializer: UserSerializer do
+    object.likes.order(created_at: :desc)
+  end
 end
 
 
