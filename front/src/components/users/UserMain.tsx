@@ -44,12 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function UserMain(props: any) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
   const { currentUser } = useContext(AuthContext)
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <List>

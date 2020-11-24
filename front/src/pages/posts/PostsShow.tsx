@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Divider, Grid, Typography} from "@material-ui/core";
+import { Container, Divider, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
