@@ -77,7 +77,7 @@ export default function UserTab(props: any) {
           {props.posts.map((post: PostModel) => {
             return(
               <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                <PostCard post={ post } key={post.id}/>
+                <PostCard post={ post } />
               </Grid>
             )
           })}
@@ -88,7 +88,7 @@ export default function UserTab(props: any) {
           {props.likesPosts.map((post: PostModel) => {
             return(
               <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                <PostCard post={ post } key={post.id}/>
+                <PostCard post={ post }/>
               </Grid>
             )
           })}
