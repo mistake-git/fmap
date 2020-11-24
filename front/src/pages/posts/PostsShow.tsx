@@ -15,6 +15,7 @@ import PostModel from "../../models/PostModel";
 import CommentModel from "../../models/CommentModel";
 import UserModel from "../../models/UserModel";
 import Loading from "../../components/layouts/Loading";
+import LikeModel from "../../models/LikeModel";
 
 const PostsShow = (props: any) => {
   
@@ -90,6 +91,37 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getLikes();
   },[setLikes]);
+
+  const createLike = async(like: LikeModel) => {
+    try { 
+      await 
+    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`,{like: like} )
+        .then((response) => {
+        const newData = update(likes, {$unshift:[response.data]})
+        setLikes(newData)
+        console.log('create like')
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  const destroyLike = async(id: number) => {
+    try { 
+    await
+    　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
+      .then(() => {
+        const likeIndex = likes.findIndex((x: any) => x.id === id)
+        const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
+        setComments(deleteLikes)
+        console.log('destroy like')
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
  
 
   const createComment = async(comment: CommentModel) => {
@@ -152,8 +184,10 @@ const PostsShow = (props: any) => {
           <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
             <PostButtons 
               post={post}
-              destroyPost={destroyPost} 
               user={post.user}
+              destroyPost={destroyPost} 
+              createLike={createLike} 
+              destroyLike={destroyLike} 
             />
           </Grid>
           <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
