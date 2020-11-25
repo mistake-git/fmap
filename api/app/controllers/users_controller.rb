@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    #user_data = user.posts.group(:name).sum(:number)
+    user_data = @user.posts.group(:name).sum(:number)
+    pp "#{user_data}"
    render json: @user
   end
 
