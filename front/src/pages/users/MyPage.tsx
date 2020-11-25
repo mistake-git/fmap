@@ -84,11 +84,7 @@ const MyPage = (props: any) => {
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
-                <UserTab
-                 posts={user.posts}
-                 likesPosts={user.likes_posts}
-    
-                />
+                
               </Box>
             </Grid>
           </Grid>

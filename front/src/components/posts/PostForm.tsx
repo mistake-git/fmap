@@ -146,7 +146,7 @@ export default function PostNewForm(props: any) {
                 alert(error.message);
               }
             }}
-            render={({ submitForm, isSubmitting, isValid, values, setFieldValue,}) => (
+            render={({ submitForm, isSubmitting, isValid}) => (
               <Form>
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}

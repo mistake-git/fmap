@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    same_name_post = Post.where(name: @post.name)
+    #same_name_post = Post.where(name: @post.name)
     #feed_data = Post.where.not(feed: "").group(:feed).sum(:number)
     #time_data= Post.where.not(time "").group(:time).sum(:number)
     #date_data= Post.where.not(date "").group(:date).sum(:number)

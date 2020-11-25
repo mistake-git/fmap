@@ -27,7 +27,8 @@ const PostsNew = (props: any) => {
     await
     axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
     .then((response) => {
-      console.log(response)
+      console.log(response.data)
+      console.log('create post')
       props.history.push(`/posts/${response.data.id}`);
     })
     }
