@@ -37,7 +37,11 @@ export default function PostCard(props: any) {
         <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
           {props.user.name}
         </Link>
+        
       </Box>
+      <div>
+        釣果 {props.user.posts.length}
+      </div>
       <Box className={classes.introduction}>
         {props. user.introduction &&
           props.user.introduction
