@@ -18,6 +18,9 @@ import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
+import FlashAlert from "../../components/layouts/FlashAlert";
+
+
 
 const PostsShow = (props: any) => {
   
@@ -27,6 +30,8 @@ const PostsShow = (props: any) => {
   const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
+  const [showFlash, setShowFlash] = React.useState(false);
+  const [message, setMessage] = React.useState('');
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -112,10 +117,14 @@ const PostsShow = (props: any) => {
         .then((response) => {
         setLike(response.data)
         console.log('create like')
+        setShowFlash(true)
+        setMessage('いいねしました')
       })
     }
     catch (error) {
       alert(error.message);
+      setShowFlash(true)
+      setMessage('いいねに失敗しました')
     }
   }
 
@@ -126,10 +135,14 @@ const PostsShow = (props: any) => {
       .then(() => {
         setLike(null)
         console.log('destroy like')
+        setShowFlash(true)
+        setMessage('いいねを取り消しました')
       })
     }
     catch (error) {
       alert(error.message);
+      setShowFlash(true)
+      setMessage('いいねの取り消しに失敗しました')
     }
   }
  
@@ -142,10 +155,14 @@ const PostsShow = (props: any) => {
         const newData = update(comments, {$unshift:[response.data]})
         setComments(newData)
         console.log('create comment')
+        setShowFlash(true)
+        setMessage('コメントを投稿しました')
       })
     }
     catch (error) {
       alert(error.message);
+      setShowFlash(true)
+      setMessage('コメントの投稿に失敗しました')
     }
   }
 
@@ -158,10 +175,14 @@ const PostsShow = (props: any) => {
         const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
         setComments(deleteComments)
         console.log('destroy comment')
+        setShowFlash(true)
+        setMessage('コメントを削除しました')
       })
     }
     catch (error) {
       alert(error.message);
+      setShowFlash(true)
+      setMessage('コメントの削除に失敗しました')
     }
   }
 
@@ -172,14 +193,18 @@ const PostsShow = (props: any) => {
       .then(() => {
         console.log('set')
         props.history.push("/posts");
+        setShowFlash(true)
       })
       .catch((data) =>{
         console.log(data)
         console.log('get post')
+        setShowFlash(true)
+        setMessage('投稿を削除しました')
       })
     }
     catch (error) {
       alert(error.message);
+      setMessage('投稿の削除に失敗しました')
     }
   }
 
@@ -187,6 +212,11 @@ const PostsShow = (props: any) => {
     <React.Fragment>
       {post ? 
       <Template>
+        {showFlash &&
+          <FlashAlert
+            message={message}
+          />
+        }     
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
             <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
