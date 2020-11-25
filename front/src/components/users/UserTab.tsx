@@ -70,10 +70,10 @@ export default function UserTab(props: any) {
         onChange={handleChange}
         aria-label="scrollable prevent tabs example"
       >
-        <Tab icon={<DescriptionIcon />} aria-label="post" {...a11yProps(0)} />
-        <Tab icon={<FavoriteIcon />} aria-label="favorite" {...a11yProps(1)} />
-        <Tab icon={<PieChartIcon/>} aria-label="chart" {...a11yProps(2)} />
-        <Tab icon={<MapIcon/>} aria-label="map" {...a11yProps(3)} />
+        <Tab icon={<DescriptionIcon />} aria-label="post" {...a11yProps(0)} label={`投稿${props.posts.length}`} />
+        <Tab icon={<FavoriteIcon />} aria-label="favorite" {...a11yProps(1)} label={`いいね${props.likesPosts.length}`} />
+        <Tab icon={<PieChartIcon/>} aria-label="chart" {...a11yProps(2)} label="グラフ"/>
+        <Tab icon={<MapIcon/>} aria-label="map" {...a11yProps(3)} label="地図"/>
       </Tabs>
       <Divider/>
       <TabPanel value={value} index={0}>
