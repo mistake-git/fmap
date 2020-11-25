@@ -14,7 +14,7 @@ import auth from "../../plugins/firebase";
 
 const AuthSchema = Yup.object().shape({
   email: Yup.string()
-    .email()
+    .email('有効なメールアドレスを入力してください')
     .required('メールアドレスを入力してください'),
   password: Yup.string()
     .min(6,'パスワードは6文字以上で入力してください')
