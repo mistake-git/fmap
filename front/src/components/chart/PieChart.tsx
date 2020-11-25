@@ -3,45 +3,43 @@ import * as ReactDOM from "react-dom"
 import { Pie } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js'
 
-export default class PieChart extends React.Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+export default function PieChart(props: any){
 
-  render() {
-    const data = {
-      labels: [
-        'Red',
-        'Green',
-        'Yellow'
+  const data = {
+    labels: [
+      'Red',
+      'Green',
+      'Yellow'
+    ],
+    datasets: [{
+      data: [300, 50, 100],
+      backgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56'
       ],
-      datasets: [{
-        data: [300, 50, 100],
-        backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ],
-        hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ]
-      }]
-    };
+      hoverBackgroundColor: [
+        '#FF6384',
+        '#36A2EB',
+        '#FFCE56'
+      ]
+    }]
+  };
 
-    let options: ChartOptions = {
-      legend: {
-        position: 'bottom',
-      },
-      responsive: true,
-    };
+  console.log(props.data)
 
+  const options: ChartOptions = {
+    legend: {
+      position: 'bottom',
+    },
+    responsive: true,
+  };
+
+
+    
     return (
       <Pie data={data} options={options} />
     );
-  }
 }
 
 ReactDOM.render(<PieChart />, document.getElementById("root"))

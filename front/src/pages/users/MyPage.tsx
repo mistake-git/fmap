@@ -22,6 +22,9 @@ interface State {
 const MyPage = (props: any) => {
 
   const [user, setUser] = React.useState<UserModel | null>(null);
+  const [posts, setPosts] = React.useState<PostModel | null>(null);
+  const [likesPosts, setLikesPosts] = React.useState<PostModel | null>(null);
+  const [userData, setUserData] = React.useState<any | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   const getUser = async() => {
@@ -30,7 +33,10 @@ const MyPage = (props: any) => {
       axios.get(`http://localhost:3000/api/v1/users/${props.match.params.id}`)
       .then((results) => {
       console.log(results)
-      setUser(results.data);
+      setUser(results.data.user);
+      setPosts(results.data.posts);
+      setLikesPosts(results.data.likes_posts)
+      setUserData(results.data.user_data)
       })
     }
     catch (error) {
@@ -65,7 +71,7 @@ const MyPage = (props: any) => {
       { loading &&
         <Loading/>
       }
-      {user &&
+      {user && posts && likesPosts &&
        <Template>
         <Container maxWidth="md">
           <Grid container>
@@ -80,11 +86,16 @@ const MyPage = (props: any) => {
               />
             </Grid>
             <Grid item xs={12} md={5}>
-              <PieChart/>
+              <PieChart
+                data={userData}
+              />
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
-                
+                <UserTab
+                  posts={posts}
+                  likesPosts={likesPosts}
+                />
               </Box>
             </Grid>
           </Grid>

@@ -14,10 +14,10 @@ const PostsNew = (props: any) => {
       axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
-        setUser(results.data)
+        setUser(results.data.user)
       })
       .catch((data) =>{
-        console.log(data)
+        console.log(data.user)
       })
     });
   }, []);

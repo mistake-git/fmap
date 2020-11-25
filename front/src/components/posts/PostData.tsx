@@ -14,12 +14,13 @@ export default function PostData(props: any) {
   const datalist = [
     { id: 1, label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},
     { id: 2, label: '日付', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
-    { id: 3, label: '時間', content: props.post.time && moment(props.post.time).format('LTS')},
-    { id: 4, label: '魚種', content: props.post.name },
-    { id: 5, label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
-    { id: 6, label: '重さ', content: props.post.weight &&`${props.post.weight}kg` },
-    { id: 7, label: '餌', content: props.post.feed },
-    { id: 8, label: '天候', content: props.post.weather},
+    { id: 3, label: '数量', content: props.post.number},
+    { id: 4, label: '時間', content: props.post.time && moment(props.post.time).format('LTS')},
+    { id: 5, label: '魚種', content: props.post.name },
+    { id: 6, label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
+    { id: 7, label: '重さ', content: props.post.weight &&`${props.post.weight}kg` },
+    { id: 8, label: '餌', content: props.post.feed },
+    { id: 9, label: '天候', content: props.post.weather},
   ];
 
   return (
