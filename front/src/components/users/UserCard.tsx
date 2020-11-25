@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import UserModel from '../../models/UserModel';
-import { Avatar, Box } from '@material-ui/core';
+import { Avatar, Box, Grid } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
@@ -11,13 +11,23 @@ const useStyles = makeStyles((theme: Theme) =>
     avater: {
       width: theme.spacing(8),
       height: theme.spacing(8),
+      margin: 'auto'
     },
     topLink: {
       textDecoration: 'none',
-      color: 'black'
+      color: 'black',
     },
     introduction: {
-      width: '100%'
+      width: '75%',
+      margin: 'auto'
+
+    },
+    userName:{
+      textAlign: 'center'
+    },
+    userPosts:{
+      color: '#3f51b5;',
+      textAlign: 'center',
     }
   }),
 );
@@ -29,24 +39,22 @@ interface Props {
 export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
-    <Box my={4}>
-      <Box mb={1}>
+    <React.Fragment>
+      <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
         <Avatar alt={props.user.name} src="/static/images/avatar/1.jpg" className={classes.avater} />
-      </Box>
-      <Box fontWeight="fontWeightBold">
-        <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
+        <Box fontWeight="bold" className={classes.userName} my={1}>
           {props.user.name}
-        </Link>
-        
-      </Box>
-      <div>
-        釣果 {props.user.posts.length}
-      </div>
-      <Box className={classes.introduction}>
-        {props. user.introduction &&
-          props.user.introduction
-        }
-      </Box>
-    </Box>
+        </Box>
+        <Box fontWeight="bold" className={classes.userPosts}>
+          釣果 {props.user.posts.length}
+        </Box>
+        <Box className={classes.introduction}>
+          {props. user.introduction &&
+            props.user.introduction
+          }
+        </Box>
+      </Link>
+    </React.Fragment>  
 	);
 }
+
