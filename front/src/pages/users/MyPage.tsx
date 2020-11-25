@@ -75,7 +75,7 @@ const MyPage = (props: any) => {
        <Template>
         <Container maxWidth="md">
           <Grid container>
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12}>
               <UserMain
                 user={user}
               />
@@ -85,16 +85,12 @@ const MyPage = (props: any) => {
                 updateUser={updateUser}
               />
             </Grid>
-            <Grid item xs={12} md={5}>
-              <PieChart
-                data={userData}
-              />
-            </Grid>
             <Grid item xs={12} >
               <Box my={2}>
                 <UserTab
                   posts={posts}
                   likesPosts={likesPosts}
+                  UserData={userData}
                 />
               </Box>
             </Grid>

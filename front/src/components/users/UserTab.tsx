@@ -5,11 +5,14 @@ import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import DescriptionIcon from '@material-ui/icons/Description';
 import { Divider, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import PostCard from '../posts/PostCard';
+import PieChart from '../chart/PieChart';
+import PieChartIcon from '@material-ui/icons/PieChart';
+import MapIcon from '@material-ui/icons/Map';
+import GoogleMap from '../map/GoogleMap';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -69,7 +72,8 @@ export default function UserTab(props: any) {
       >
         <Tab icon={<DescriptionIcon />} aria-label="post" {...a11yProps(0)} />
         <Tab icon={<FavoriteIcon />} aria-label="favorite" {...a11yProps(1)} />
-        <Tab icon={<VisibilityIcon />} aria-label="eye" {...a11yProps(2)} />
+        <Tab icon={<PieChartIcon/>} aria-label="chart" {...a11yProps(2)} />
+        <Tab icon={<MapIcon/>} aria-label="map" {...a11yProps(3)} />
       </Tabs>
       <Divider/>
       <TabPanel value={value} index={0}>
@@ -95,7 +99,10 @@ export default function UserTab(props: any) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        閲覧履歴
+        <PieChart data={props.userData}/>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+          <GoogleMap/>
       </TabPanel>
     </div>
   );
