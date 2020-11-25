@@ -30,8 +30,9 @@ const PostsShow = (props: any) => {
   const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
-  const [showFlash, setShowFlash] = React.useState(false);
-  const [message, setMessage] = React.useState('');
+  const [showFlash, setShowFlash] = React.useState(true);
+  const [message, setMessage] = React.useState<string>('');
+  const [severity, setSeverity] = React.useState<string>('');
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -119,12 +120,14 @@ const PostsShow = (props: any) => {
         console.log('create like')
         setShowFlash(true)
         setMessage('いいねしました')
+        setSeverity('success')
       })
     }
     catch (error) {
       alert(error.message);
       setShowFlash(true)
       setMessage('いいねに失敗しました')
+      setSeverity('error')
     }
   }
 
@@ -137,12 +140,14 @@ const PostsShow = (props: any) => {
         console.log('destroy like')
         setShowFlash(true)
         setMessage('いいねを取り消しました')
+        setSeverity('success')
       })
     }
     catch (error) {
       alert(error.message);
       setShowFlash(true)
       setMessage('いいねの取り消しに失敗しました')
+      setSeverity('error')
     }
   }
  
@@ -157,12 +162,14 @@ const PostsShow = (props: any) => {
         console.log('create comment')
         setShowFlash(true)
         setMessage('コメントを投稿しました')
+        setSeverity('success')
       })
     }
     catch (error) {
       alert(error.message);
       setShowFlash(true)
       setMessage('コメントの投稿に失敗しました')
+      setSeverity('error')
     }
   }
 
@@ -177,12 +184,14 @@ const PostsShow = (props: any) => {
         console.log('destroy comment')
         setShowFlash(true)
         setMessage('コメントを削除しました')
+        setSeverity('success')
       })
     }
     catch (error) {
       alert(error.message);
       setShowFlash(true)
       setMessage('コメントの削除に失敗しました')
+      setSeverity('error')
     }
   }
 
@@ -200,11 +209,13 @@ const PostsShow = (props: any) => {
         console.log('get post')
         setShowFlash(true)
         setMessage('投稿を削除しました')
+        setSeverity('success')
       })
     }
     catch (error) {
       alert(error.message);
       setMessage('投稿の削除に失敗しました')
+      setSeverity('error')
     }
   }
 
@@ -212,9 +223,10 @@ const PostsShow = (props: any) => {
     <React.Fragment>
       {post ? 
       <Template>
-        {showFlash &&
+        {showFlash && message && severity &&
           <FlashAlert
             message={message}
+            severity={severity}
           />
         }     
         <Container maxWidth="lg">
