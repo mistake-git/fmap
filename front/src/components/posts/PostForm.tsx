@@ -24,6 +24,8 @@ import Switch from '@material-ui/core/Switch';
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
     .required('魚種を入力してください'),
+  number: Yup.number()
+    .required('数量を入力してください'),
 });
 
 const useStyles = makeStyles({
@@ -90,7 +92,7 @@ export default function PostNewForm(props: any) {
     {name: "name", label: "魚種(必須)",type: "text"},
     {name: "size", label: "サイズ",type: "number"},
     {name: "weight", label: "重さ",type: "weight"},
-    {name: "number", label: "数量",type: "number"},
+    {name: "number", label: "数量(必須)",type: "number"},
     {name: "date", label: "日付",type: "date"},
     {name: "time", label: "時間",type: "time"},
   ]
