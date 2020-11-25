@@ -1,11 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import UserModel from '../../models/UserModel';
 import { Avatar, Box } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 
 
 const useStyles = makeStyles((theme: Theme) =>
