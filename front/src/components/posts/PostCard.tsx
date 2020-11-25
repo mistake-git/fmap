@@ -14,7 +14,7 @@ import PostModel from '../../models/PostModel';
 
 const useStyles = makeStyles({
 	root: {
-		maxWidth: 290,
+		maxWidth: 350,
 	},
 	media: {
 		height: 160,
