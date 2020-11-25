@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function CustomizedSnackbars(props: any) {
+export default function FlashAlert(props: any) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
