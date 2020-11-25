@@ -47,10 +47,10 @@ export default function PostCard(props: any) {
     }
     props.createLike(like)
   }
-
-  const destroyLike = () =>{
-    props.destroyLike(props.like.id)
-  }
+  
+    const destroyLike = () =>{
+      props.destroyLike(props.like.id)
+    }
 
 	return (
     <Fragment>

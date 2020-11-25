@@ -41,6 +41,13 @@ const PostsShow = (props: any) => {
     });
   }, []);
 
+  //自分がいいねしていた場合、そのいいねを取得したい
+  const getMyLike = (user: UserModel) =>{
+    const myLike = likes.find((like: any) => like.user_id === user.id);
+    setLike(myLike);
+  }
+  
+
   const getPost = async() => {
     try { 
     await
@@ -95,16 +102,6 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getLikes();
   },[setLikes]);
-
-
-  //自分がいいねしていた場合、そのいいねを取得したい
-  // const getMyLike = (user: UserModel) =>{
-  //   const myLike = likes.find((like: any) => like.user_id === user.id);
-  //   setLike(myLike);
-  // }
-  // useEffect((user) => {
-  //   getMyLike(user);
-  // },[getMyLike]);
 
 
 
