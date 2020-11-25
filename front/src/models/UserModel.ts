@@ -1,11 +1,11 @@
-import PostModel from "./PostModel";
+import PostModel from './PostModel'
 
 interface UserModel {
   id?: string
   name?: string
   uid?: string
   email?: string
-  introduction?: string 
+  introduction?: string
   password?: string
   password_confirmation?: string
   posts?: PostModel[]

@@ -1,5 +1,5 @@
-import PostModel from "./PostModel";
-import UserModel from "./UserModel";
+import PostModel from './PostModel'
+import UserModel from './UserModel'
 
 interface CommentModel {
   id?: number
