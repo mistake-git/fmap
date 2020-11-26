@@ -1,4 +1,4 @@
-import React, {useEffect } from "react";
+import React, {useEffect,useContext } from "react";
 import {
   Container,
   Grid,
@@ -9,10 +9,10 @@ import UserMain from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
-import PieChart from "../../components/chart/PieChart";
 import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
+import { AuthContext } from '../../Auth'
 
 interface State {
   posts: PostModel[]
@@ -26,6 +26,8 @@ const MyPage = (props: any) => {
   const [likesPosts, setLikesPosts] = React.useState<PostModel | null>(null);
   const [userData, setUserData] = React.useState<any | null>(null);
   const [loading, setLoading] = React.useState(true);
+  const { currentUser } = useContext(AuthContext)
+
 
   const getUser = async() => {
     try { 
@@ -80,10 +82,12 @@ const MyPage = (props: any) => {
                 user={user}
               />
               {user.introduction}
-              <IntroductionForm
-                value={user.introduction}
-                updateUser={updateUser}
-              />
+              {currentUser && user.uid === currentUser.uid &&
+                <IntroductionForm
+                  value={user.introduction}
+                  updateUser={updateUser}
+                />
+              }
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
