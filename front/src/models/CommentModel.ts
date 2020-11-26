@@ -7,7 +7,7 @@ interface CommentModel {
   user_id: number
   content: string
   user: UserModel
-  posts: PostModel
+  posts: PostModel[]
 }
 
 export default CommentModel
