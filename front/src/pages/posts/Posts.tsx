@@ -43,7 +43,7 @@ const Posts = (props: any) => {
       {posts &&
       <Template>
         <Container maxWidth="md">
-          <Grid container spacing={2}>
+          <Grid container spacing={2} style={{ marginTop: "4em" }}>
           {posts.map((post) => {
             return(
               <Grid item xs={12} sm={6} md={4}>
