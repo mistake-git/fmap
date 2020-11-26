@@ -25,11 +25,11 @@ const App: React.FC = () => {
           <Route exact path="/users" component={Users} />
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/posts/:id/edit" component={PostsEdit} />
+          <Route exact path="/mypage/:uid" component={Mypage} />
           <Switch>
             <Route exact path="/posts/new" component={PostsNew} />
             <Route exact path="/posts/:id" component={PostsShow} />
           </Switch>
-          <Route exact path="/mypage/:id" component={Mypage} />
         </AuthProvider>
       </Switch>
     </Router>
