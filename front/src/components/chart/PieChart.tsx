@@ -3,16 +3,20 @@ import * as ReactDOM from "react-dom"
 import { Pie } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js'
 
-export default function PieChart(props: any){
+export default function PieChart(props: any) {
+
+  console.log(props.data)
+
+  if (props.data == null){
+   return <div></div>
+  }
+
+  const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
   const data = {
-    labels: [
-      'Red',
-      'Green',
-      'Yellow'
-    ],
+    labels: Object.keys(props.data),
     datasets: [{
-      data: [300, 50, 100],
+      data: chartVal,
       backgroundColor: [
         '#FF6384',
         '#36A2EB',
@@ -25,9 +29,7 @@ export default function PieChart(props: any){
       ]
     }]
   };
-
-  console.log(props.data)
-
+  
   const options: ChartOptions = {
     legend: {
       position: 'bottom',
@@ -35,11 +37,10 @@ export default function PieChart(props: any){
     responsive: true,
   };
 
+  return (
+    <Pie data={data} options={options} />
+  );
 
-    
-    return (
-      <Pie data={data} options={options} />
-    );
 }
 
 ReactDOM.render(<PieChart />, document.getElementById("root"))

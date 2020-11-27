@@ -104,7 +104,7 @@ const MyPage = (props: any) => {
       { loading &&
         <Loading/>
       }
-      {user && posts && likesPosts &&
+      {user && posts && likesPosts && userData &&
        <Template>
         {showFlash && message && severity &&
           <div className={classes.flash}>
@@ -134,7 +134,7 @@ const MyPage = (props: any) => {
                 <UserTab
                   posts={posts}
                   likesPosts={likesPosts}
-                  UserData={userData}
+                  userData={userData}
                 />
               </Box>
             </Grid>
