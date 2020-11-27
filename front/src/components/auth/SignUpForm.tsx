@@ -30,6 +30,7 @@ const AuthSchema = Yup.object().shape({
     .oneOf([Yup.ref('password'), null], 'パスワードが一致しません')
 });
 
+
 const forms=[
   {name: "name", label: "名前",type: "text"},
   {name: "email", label: "メールアドレス",type: "email"},

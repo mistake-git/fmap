@@ -4,11 +4,14 @@ import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
 import LineChart  from "../chart/LineChart";
 import {  Divider, Grid, Typography } from "@material-ui/core";
+import Box from '@material-ui/core/Box';
 import PostModel from "../../models/PostModel";
+
 
 interface Props {
   post: PostModel;
 }
+
 
 export default function PostData(props: any) {
 　
