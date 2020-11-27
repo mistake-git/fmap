@@ -13,20 +13,36 @@ import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 interface State {
   posts: PostModel[]
   post: PostModel
 }
 
+const useStyles = makeStyles((theme: Theme) => ({
+  flash: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 const MyPage = (props: any) => {
 
+  const classes = useStyles();
   const [user, setUser] = React.useState<UserModel | null>(null);
   const [posts, setPosts] = React.useState<PostModel | null>(null);
   const [likesPosts, setLikesPosts] = React.useState<PostModel | null>(null);
   const [userData, setUserData] = React.useState<any | null>(null);
   const [loading, setLoading] = React.useState(true);
   const { currentUser } = useContext(AuthContext)
+  const [showFlash, setShowFlash] = React.useState(true);
+  const [message, setMessage] = React.useState<string>('');
+  const [severity, setSeverity] = React.useState<undefined | 'success' | 'error' >(undefined);
 
 
   const getUser = async() => {
@@ -56,10 +72,16 @@ const MyPage = (props: any) => {
       console.log(response)
       setUser(response.data);
       props.history.push(`/mypage/${response.data.uid}`);
+      setShowFlash(true)
+      setMessage('自己紹介を更新しました')
+      setSeverity('success')
     })
     }
     catch (error) {
       alert(error.message);
+      setShowFlash(true)
+      setMessage('自己紹介の更新に失敗しました')
+      setSeverity('error')
     }
   }
   
@@ -67,6 +89,15 @@ const MyPage = (props: any) => {
    getUser();
   },[setUser]);
 
+  const Alert = (props: AlertProps) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setShowFlash(false);
+  };
 
   return (
     <React.Fragment>
@@ -75,6 +106,15 @@ const MyPage = (props: any) => {
       }
       {user && posts && likesPosts &&
        <Template>
+        {showFlash && message && severity &&
+          <div className={classes.flash}>
+            <Snackbar open={showFlash} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity={severity}>
+                {message}
+              </Alert>
+            </Snackbar>
+          </div>
+        }     
         <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
