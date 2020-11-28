@@ -18,19 +18,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default function FlashAlert(props: any) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
 
   return (
     <div className={classes.root}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={props.severity}>
+      <Snackbar open={true} autoHideDuration={6000} onClose={props.handleClose}>
+        <Alert onClose={props.handleClose} severity={props.severity}>
           {props.message}
         </Alert>
       </Snackbar>

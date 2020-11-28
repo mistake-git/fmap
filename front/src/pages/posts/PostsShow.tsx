@@ -18,22 +18,11 @@ import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import FlashAlert from "../../components/layouts/FlashAlert";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  flash: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
 const PostsShow = (props: any) => {
 
-  const classes = useStyles();
   const [user, setUser] = React.useState<UserModel | null>(null);
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
@@ -227,9 +216,7 @@ const PostsShow = (props: any) => {
       setSeverity('error')
     }
   }
-  const Alert = (props: AlertProps) => {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
+
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
@@ -242,13 +229,11 @@ const PostsShow = (props: any) => {
       {post ? 
       <Template>
         {showFlash && message && severity &&
-          <div className={classes.flash}>
-            <Snackbar open={showFlash} autoHideDuration={6000} onClose={handleClose}>
-              <Alert onClose={handleClose} severity={severity}>
-                {message}
-              </Alert>
-            </Snackbar>
-          </div>
+          <FlashAlert
+            handleClose={handleClose}
+            message={message}
+            severity={severity}
+          />
         }     
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
