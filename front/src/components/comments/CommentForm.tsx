@@ -32,11 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 interface Props {
   post: PostModel;
 }
-
 
 export const CommentSchema = Yup.object().shape({
   content: Yup.string()
@@ -64,7 +62,7 @@ export default function CommentForm(props: any) {
             user_id: ""
           }}
           validationSchema={CommentSchema}
-          onSubmit={async value => {
+          onSubmit={async (value, {resetForm}) => {
             try {
               const comment ={
                 content: value.content,
@@ -73,11 +71,12 @@ export default function CommentForm(props: any) {
               await 
               props.createComment(comment, props.post, props.comments);
               setButtonOpen(false);
+              resetForm({})
             } catch (error) {
               alert(error.message);
             }
           }}
-          render={({ submitForm, isSubmitting, isValid }) => (
+          render={({ submitForm, resetForm, isSubmitting, isValid }) => (
             <Form>
               {isSubmitting &&<LinearProgress/>}
               <Field
