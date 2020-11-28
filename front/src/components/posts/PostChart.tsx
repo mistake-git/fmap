@@ -13,7 +13,7 @@ interface Props {
 
 
 export default function PostData(props: any) {
-
+  
 　
   const datalist =[
     {
@@ -21,7 +21,7 @@ export default function PostData(props: any) {
       `${props.post.name}のよく釣れる餌`, 
     chart:
       <PieChart
-        data={props.feedData}
+        data={props.dateData}
       />
     },
     {
@@ -44,7 +44,7 @@ export default function PostData(props: any) {
       title: 
         `${props.post.name}のサイズ分布`, 
       chart: 
-        <HorizontalBarChart/>
+       <div></div>
     },
   ]
 

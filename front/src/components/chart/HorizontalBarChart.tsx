@@ -8,6 +8,11 @@ export default function HorizontalChart(props: any){
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
+  if (props.data == null){
+    return <div></div>
+  }
+ 
+
   const data = {
     labels:  Object.keys(props.data),
     datasets: [{
