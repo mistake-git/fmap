@@ -7,8 +7,7 @@ export default function BarChart(props: any) {
 
   if (props.data == null){
     return <div></div>
-   }
- 
+   } 
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
