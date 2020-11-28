@@ -16,6 +16,7 @@ import { AuthContext } from '../../Auth'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import FlashAlert from "../../components/layouts/FlashAlert";
 
 interface State {
   posts: PostModel[]
@@ -107,13 +108,11 @@ const MyPage = (props: any) => {
       {user && posts && likesPosts && userData &&
        <Template>
         {showFlash && message && severity &&
-          <div className={classes.flash}>
-            <Snackbar open={showFlash} autoHideDuration={6000} onClose={handleClose}>
-              <Alert onClose={handleClose} severity={severity}>
-                {message}
-              </Alert>
-            </Snackbar>
-          </div>
+          <FlashAlert
+            handleClose={handleClose}
+            message={message}
+            severity={severity}
+          />
         }     
         <Container maxWidth="md">
           <Grid container>
