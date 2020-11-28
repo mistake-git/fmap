@@ -14,7 +14,6 @@ interface Props {
 
 export default function PostData(props: any) {
 
-  console.log(props.feedData)
 　
   const datalist =[
     {
@@ -29,13 +28,17 @@ export default function PostData(props: any) {
       title: 
         `${props.post.name}のよく釣れる時期`, 
       chart: 
-        <BarChart/>
+        <BarChart
+          data={props.dateData}
+        />
     },
     {
       title: 
         `${props.post.name}のよく釣れる時間`, 
       chart: 
-        <LineChart/>
+        <LineChart
+          data={props.timeData}
+        />
     },
     {
       title: 

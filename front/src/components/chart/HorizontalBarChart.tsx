@@ -6,22 +6,12 @@ import { ChartOptions } from 'chart.js'
 
 export default function HorizontalChart(props: any){ 
 
+  const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
+
   const data = {
-    labels: [
-      '1~10',
-      '11~20',
-      '21~30',
-      '31~40',
-      '41~50',
-      '51~60',
-      '61~70',
-      '71~80',
-      '81~90',
-      '91~100',
-      '101~',
-    ],
+    labels:  Object.keys(props.data),
     datasets: [{
-      data: [120, 100, 100, 103, 102, 109, 120, 100, 100, 111, 129],
+      data: chartVal,
       backgroundColor: [
         '#FF6384',
         '#36A2EB',

@@ -5,23 +5,12 @@ import { ChartOptions } from 'chart.js'
 
 export default function BarChart(props: any) {
 
+  const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
+
   const data = {
-    labels: [
-      '1月',
-      '2月',
-      '3月',
-      '4月',
-      '5月',
-      '6月',
-      '7月',
-      '8月',
-      '9月',
-      '10月',
-      '11月',
-      '12月',
-    ],
+    labels: Object.keys(props.data),
     datasets: [{
-      data: [120, 100, 100, 103, 102, 109, 120, 100, 100, 111, 129],
+      data: chartVal,
       backgroundColor: [
         '#FF6384',
         '#36A2EB',

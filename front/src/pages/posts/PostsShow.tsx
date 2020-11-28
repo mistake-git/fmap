@@ -27,6 +27,8 @@ const PostsShow = (props: any) => {
   const [user, setUser] = React.useState<UserModel | null>(null);
   const [post, setPost] = React.useState<PostModel | null>(null);
   const [feedData, setFeedData] = React.useState<any | null>(null);
+  const [timeData, setTimeData] = React.useState<any | null>(null);
+  const [dateData, setDateData] = React.useState<any | null>(null);
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
@@ -62,8 +64,10 @@ const PostsShow = (props: any) => {
         .then((results) => {
         console.log(results)
         setPost(results.data.post);
+        setDateData(results.data.date_data)
+        console.log(results.data.date_data)
+        setTimeData(results.data.time_data)
         setFeedData(results.data.feed_data)
-        console.log(results.data.feed_data);
         setPostUser(results.data.user);
         setLikesUsers(results.data.likes_users);
         console.log('set post')
@@ -233,7 +237,7 @@ const PostsShow = (props: any) => {
 
   return (
     <React.Fragment>
-      {post && postUser && feedData ? 
+      {post && postUser && feedData && dateData && timeData ? 
       <Template>
         {showFlash && message && severity &&
           <FlashAlert
@@ -271,6 +275,8 @@ const PostsShow = (props: any) => {
               <PostChart 
                 post={post} 
                 feedData={feedData}
+                dateData={dateData}
+                timeData={timeData}
               />
               <Divider/>
               <Box my={5}>

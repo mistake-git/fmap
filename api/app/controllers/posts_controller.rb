@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     time_data =  same_name_post.where.not(time: "").group("HOUR(time)").sum(:number)
     date_data =  same_name_post.where.not(date: "").group("MONTH(date)").sum(:number)
     user = @post.user
-    render json: {post: @post, user: user, feed_data: feed_data }
+    render json: {post: @post, user: user, feed_data: feed_data, time_data: time_data, date_data: date_data }
   end
 
   def create
