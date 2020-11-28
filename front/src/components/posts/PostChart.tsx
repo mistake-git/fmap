@@ -18,15 +18,31 @@ export default function PostData(props: any) {
 　
   const datalist =[
     {
-    title: `${props.post.name}のよく釣れる餌`, 
+    title: 
+      `${props.post.name}のよく釣れる餌`, 
     chart:
-    <PieChart
-      data={props.feedData}
-    />
+      <PieChart
+        data={props.feedData}
+      />
     },
-    {title: `${props.post.name}のよく釣れる時期`, chart: <BarChart/>},
-    {title: `${props.post.name}のよく釣れる時間`, chart: <LineChart/>},
-    {title: `${props.post.name}のサイズ分布`, chart: <HorizontalBarChart/>},
+    {
+      title: 
+        `${props.post.name}のよく釣れる時期`, 
+      chart: 
+        <BarChart/>
+    },
+    {
+      title: 
+        `${props.post.name}のよく釣れる時間`, 
+      chart: 
+        <LineChart/>
+    },
+    {
+      title: 
+        `${props.post.name}のサイズ分布`, 
+      chart: 
+        <HorizontalBarChart/>
+    },
   ]
 
   return(
