@@ -31,8 +31,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-
-
 const PostsShow = (props: any) => {
 
   const classes = useStyles();
@@ -65,7 +63,6 @@ const PostsShow = (props: any) => {
     setLike(myLike);
   }
   
-
   const getPost = async() => {
     try { 
     await
@@ -105,7 +102,7 @@ const PostsShow = (props: any) => {
 
   const getLikes = async() => {
     try { 
-    await
+      await
       axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
         .then((results) => {
         console.log(results)

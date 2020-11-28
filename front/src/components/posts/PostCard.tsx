@@ -29,8 +29,6 @@ interface Props {
 	post: PostModel;
 }
 
-
-
 export default function PostCard(props: any) {
   const classes = useStyles();
 

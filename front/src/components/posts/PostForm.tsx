@@ -69,7 +69,7 @@ export default function PostNewForm(props: any) {
       ref.current.click()
     }
   }
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>, setFieldValue: any) => {
     if (event.target.files === null) {
       return
     }
@@ -82,10 +82,11 @@ export default function PostNewForm(props: any) {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
+    setFieldValue("file", event.currentTarget.files?.[0]);
   }
-
+  
   const clear = () => {
-    setSrc('');
+    setSrc('')
   };
 
   const forms=[
@@ -126,6 +127,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
+                  image: value.image, 
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -146,7 +148,7 @@ export default function PostNewForm(props: any) {
                 alert(error.message);
               }
             }}
-            render={({ submitForm, isSubmitting, isValid}) => (
+            render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
               <Form>
                 <Grid container className={classes.root} spacing={2}>
                 {isSubmitting && <LinearProgress />}
@@ -157,7 +159,7 @@ export default function PostNewForm(props: any) {
                       className={classes.input} 
                       id="icon-button-file" 
                       type="file"
-                      onChange={onChange}
+                      onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
                       onClick={onClick}
                     />
                     <label htmlFor="icon-button-file">
