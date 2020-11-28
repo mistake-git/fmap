@@ -32,7 +32,7 @@ const PostsEdit = (props: any) => {
     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
 		.then((results) => {
 			console.log(results)
-      setPost(results.data)
+      setPost(results.data.post)
       })
     }
     catch (error) {

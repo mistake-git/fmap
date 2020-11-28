@@ -7,12 +7,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    #same_name_post = Post.where(name: @post.name)
-    #feed_data = Post.where.not(feed: "").group(:feed).sum(:number)
-    #time_data= Post.where.not(time "").group(:time).sum(:number)
-    #date_data= Post.where.not(date "").group(:date).sum(:number)
+    same_name_post = Post.where(name: @post.name)
+    feed_data =  same_name_post.where.not(feed: "").group(:feed).sum(:number)
+    time_data =  same_name_post.where.not(time: "").group("HOUR(time)").sum(:number)
+    date_data =  same_name_post.where.not(date: "").group("MONTH(date)").sum(:number)
     #size_data= Post.where.not(size "").group(:size).sum(:number)
-    render json: @post
+    render json: {post: @post, feed_data: feed_data, time_data: time_data, date_data: date_data}
   end
 
   def create
