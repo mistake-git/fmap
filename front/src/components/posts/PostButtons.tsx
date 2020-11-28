@@ -8,6 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
 import { AuthContext } from '../../Auth'
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -57,35 +58,43 @@ export default function PostCard(props: any) {
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
           {props.like === null ?
-          <Fab
-           color="default" 
-           className={classes.icon}
-           onClick={createLike}
-          >
-            <FavoriteIcon />
-          </Fab>:
-           <Fab
-           color="secondary" 
-           className={classes.icon}
-           onClick={destroyLike}
-          >
-            <FavoriteIcon />
-          </Fab>
+          <Tooltip title="いいね"　placement="right">
+            <Fab
+              color="default" 
+              className={classes.icon}
+              onClick={createLike}
+            >
+              <FavoriteIcon />
+            </Fab>
+          </Tooltip>:
+           <Tooltip title="いいねを削除"　placement="right">
+            <Fab
+              color="secondary" 
+              className={classes.icon}
+              onClick={destroyLike}
+            >
+              <FavoriteIcon />
+            </Fab>
+          </Tooltip>
           }
         </Box>
         {currentUser && currentUser.uid === props.postUser.uid &&
          <Fragment>
           <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
             <Link to={`/posts/${props.post.id}/edit`}>
-              <Fab color="primary" className={classes.icon}>
-                <EditIcon/>
-              </Fab>
+              <Tooltip title="投稿を編集"　placement="right">
+                <Fab color="primary" className={classes.icon}>
+                  <EditIcon/>
+                </Fab>
+              </Tooltip>
             </Link>
           </Box>
           <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-            <Fab onClick={handleDeleate} className={classes.icon}>
-              <DeleteIcon/>
-            </Fab>
+            <Tooltip title="投稿を削除"　placement="right">
+              <Fab onClick={handleDeleate} className={classes.icon}>
+                <DeleteIcon/>
+              </Fab>
+            </Tooltip>
           </Box>
         </Fragment>
        }
