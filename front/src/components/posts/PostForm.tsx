@@ -25,7 +25,8 @@ export const PostSchema = Yup.object().shape({
   name: Yup.string()
     .required('魚種を入力してください'),
   number: Yup.number()
-    .required('数量を入力してください'),
+  .min(1,'数量は1以上で入力してください')
+  .required('数量を入力してください'),
 });
 
 const useStyles = makeStyles({
