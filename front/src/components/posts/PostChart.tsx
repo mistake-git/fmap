@@ -4,7 +4,6 @@ import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
 import LineChart  from "../chart/LineChart";
 import {  Divider, Grid, Typography } from "@material-ui/core";
-import Box from '@material-ui/core/Box';
 import PostModel from "../../models/PostModel";
 
 
@@ -14,9 +13,17 @@ interface Props {
 
 
 export default function PostData(props: any) {
+
+  console.log(props.feedData)
 　
   const datalist =[
-    {title: `${props.post.name}のよく釣れる餌`, chart: <PieChart/>},
+    {
+    title: `${props.post.name}のよく釣れる餌`, 
+    chart:
+    <PieChart
+      data={props.feedData}
+    />
+    },
     {title: `${props.post.name}のよく釣れる時期`, chart: <BarChart/>},
     {title: `${props.post.name}のよく釣れる時間`, chart: <LineChart/>},
     {title: `${props.post.name}のサイズ分布`, chart: <HorizontalBarChart/>},

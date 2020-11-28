@@ -19,12 +19,15 @@ import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
+import { User } from "firebase";
 
 
 const PostsShow = (props: any) => {
 
   const [user, setUser] = React.useState<UserModel | null>(null);
   const [post, setPost] = React.useState<PostModel | null>(null);
+  const [feedData, setFeedData] = React.useState<any | null>(null);
+  const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likes, setLikes] = React.useState<any>([]);
@@ -59,7 +62,11 @@ const PostsShow = (props: any) => {
         .then((results) => {
         console.log(results)
         setPost(results.data.post);
+        setFeedData(results.data.feed_data)
+        console.log(results.data.feed_data);
+        setPostUser(results.data.user);
         setLikesUsers(results.data.likes_users);
+        console.log('set post')
       })
     }
     catch (error) {
@@ -226,7 +233,7 @@ const PostsShow = (props: any) => {
 
   return (
     <React.Fragment>
-      {post ? 
+      {post && postUser && feedData ? 
       <Template>
         {showFlash && message && severity &&
           <FlashAlert
@@ -242,7 +249,7 @@ const PostsShow = (props: any) => {
                 post={post}
                 user={user}
                 like={like}
-                postUser={post.user}
+                postUser={postUser}
                 destroyPost={destroyPost} 
                 createLike={createLike} 
                 destroyLike={destroyLike} 
@@ -261,7 +268,10 @@ const PostsShow = (props: any) => {
               <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
                 {post.name}のデータ分析
               </Box>
-              <PostChart post={post} />
+              <PostChart 
+                post={post} 
+                feedData={feedData}
+              />
               <Divider/>
               <Box my={5}>
                 <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
@@ -269,14 +279,14 @@ const PostsShow = (props: any) => {
                 </Box>
                 <GoogleMap/>
               </Box>
-              <UserBar user={post.user}/>
+              <UserBar user={postUser}/>
               {post.memo}
               <CommentContainer
-              post={post}
-              user={user}
-              comments={comments}
-              createComment={createComment}
-              destroyComment={destroyComment}
+                post={post}
+                user={user}
+                comments={comments}
+                createComment={createComment}
+                destroyComment={destroyComment}
               />
             </Grid>
           </Grid>
