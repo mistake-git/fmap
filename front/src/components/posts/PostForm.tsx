@@ -27,6 +27,8 @@ export const PostSchema = Yup.object().shape({
   number: Yup.number()
   .min(1,'数量は1以上で入力してください')
   .required('数量を入力してください'),
+  size: Yup.number()
+  .min(1,'サイズは1以上で入力してください')
 });
 
 const useStyles = makeStyles({
@@ -92,7 +94,7 @@ export default function PostNewForm(props: any) {
 
   const forms=[
     {name: "name", label: "魚種(必須)",type: "text"},
-    {name: "size", label: "サイズ",type: "number"},
+    {name: "size", label: "サイズ(cm)",type: "number"},
     {name: "weight", label: "重さ",type: "weight"},
     {name: "number", label: "数量(必須)",type: "number"},
     {name: "date", label: "日付",type: "date"},

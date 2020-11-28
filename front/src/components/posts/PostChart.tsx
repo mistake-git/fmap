@@ -5,6 +5,20 @@ import HorizontalBarChart  from "../chart/HorizontalBarChart";
 import LineChart  from "../chart/LineChart";
 import {  Divider, Grid, Typography } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
+import { makeStyles } from '@material-ui/core/styles';
+import classes from "*.module.css";
+
+
+const useStyles = makeStyles(() => ({
+  objectBlank: {
+    width: "100%", 
+    height: "200px", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center",
+    zIndex:10,
+  }
+}));
 
 
 interface Props {
@@ -13,38 +27,49 @@ interface Props {
 
 
 export default function PostData(props: any) {
-  
-　
+  const classes = useStyles();
   const datalist =[
     {
     title: 
       `${props.post.name}のよく釣れる餌`, 
     chart:
+      Object.keys(props.feedData).length ? 
       <PieChart
         data={props.feedData}
-      />
+      />: 
+      <div className={classes.objectBlank}>データがありません</div> 
+  
+      
     },
     {
       title: 
         `${props.post.name}のよく釣れる時期`, 
       chart:
+        Object.keys(props.dateData).length ?
         <BarChart
           data={props.dateData}
-        />
+        />: 
+        <div className={classes.objectBlank}>データがありません</div> 
     },
     {
       title: 
         `${props.post.name}のよく釣れる時間`, 
       chart:
+        Object.keys(props.timeData).length ?
         <LineChart
           data={props.timeData}
-        />
+        />:
+        <div className={classes.objectBlank}>データがありません</div> 
     },
     {
       title: 
         `${props.post.name}のサイズ分布`, 
       chart: 
-       <div></div>
+        Object.keys(props.sizeData).length ?
+        <HorizontalBarChart
+        data={props.sizeData}
+        />:
+        <div className={classes.objectBlank}>データがありません</div> 
     },
   ]
 
