@@ -27,7 +27,7 @@ export default function PostData(props: any) {
     {
       title: 
         `${props.post.name}のよく釣れる時期`, 
-      chart: 
+      chart:
         <BarChart
           data={props.dateData}
         />
@@ -35,7 +35,7 @@ export default function PostData(props: any) {
     {
       title: 
         `${props.post.name}のよく釣れる時間`, 
-      chart: 
+      chart:
         <LineChart
           data={props.timeData}
         />
