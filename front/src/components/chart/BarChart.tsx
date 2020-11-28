@@ -14,12 +14,31 @@ export default function BarChart(props: any) {
   // const  numbers = Array.from(new Array(12)).map((v,i)=> i + 1)
   // const month = numbers.map(x => x.toString() + "月")
 
-  const month = Object.keys(props.data).map(x => x + "月")
+  const labels = Object.keys(props.data)
+
+  const numbers: number[] = Array.from(new Array(12)).map((v,i)=> i + 1)
+
+  const month = numbers.map(x => x + "月")
+
+  console.log(props.data)
+
+  const values: any = numbers.map(((number: any) => {
+    console.log(number)
+    console.log(Object.keys(props.data));
+    if (number.toString() == Object.keys(props.data)){
+      return Object.values(props.data)[0]
+    } else{
+      return 0
+    }
+
+  }))
+
+  console.log(values)
 
   const data = {
     labels: month,
     datasets: [{
-      data: chartVal,
+      data: values,
       backgroundColor: [
         '#FF6384',
         '#36A2EB',

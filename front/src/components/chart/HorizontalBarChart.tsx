@@ -10,6 +10,8 @@ export default function HorizontalChart(props: any){
     return <div></div>
   }
 
+  console.log(props.data)
+
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
  
   const data = {
