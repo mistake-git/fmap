@@ -21,7 +21,7 @@ export default function PostData(props: any) {
       `${props.post.name}のよく釣れる餌`, 
     chart:
       <PieChart
-        data={props.dateData}
+        data={props.feedData}
       />
     },
     {
