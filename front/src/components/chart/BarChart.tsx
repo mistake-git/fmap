@@ -11,8 +11,13 @@ export default function BarChart(props: any) {
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
+  // const  numbers = Array.from(new Array(12)).map((v,i)=> i + 1)
+  // const month = numbers.map(x => x.toString() + "月")
+
+  const month = Object.keys(props.data).map(x => x + "月")
+
   const data = {
-    labels: Object.keys(props.data),
+    labels: month,
     datasets: [{
       data: chartVal,
       backgroundColor: [

@@ -11,8 +11,10 @@ export default function LineChart(props: any){
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
+  const times = Object.keys(props.data).map(x => x + "時")
+
   const data = {
-    labels: Object.keys(props.data),
+    labels: times,
     datasets: [{
       data: chartVal,
       backgroundColor: [
