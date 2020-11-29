@@ -19,7 +19,7 @@ import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
-import { User } from "firebase";
+
 
 
 const PostsShow = (props: any) => {
