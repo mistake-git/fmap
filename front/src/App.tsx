@@ -14,7 +14,7 @@ import Mypage from "./pages/users/MyPage";
 import Users from "./pages/users/Users";
 import PostsEdit from "./pages/posts/PostsEdit";
 
-const App: React.FC = (props: any) => {
+const App: React.FC = () => {
   return (
     <Router>
       <Switch>
@@ -28,14 +28,7 @@ const App: React.FC = (props: any) => {
           <Route exact path="/mypage/:id" component={Mypage} />
           <Switch>
             <Route exact path="/posts/new" component={PostsNew} />
-            <Route exact 
-              path="/posts/:id"
-              render={({ 
-                match 
-              }) => (
-                  <PostsShow match={match} />
-              )} 
-            />
+            <Route exact path="/posts/:id" component={PostsShow} />
           </Switch>
         </AuthProvider>
       </Switch>
