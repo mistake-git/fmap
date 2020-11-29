@@ -15,7 +15,7 @@ import {
   Grid,
   LinearProgress,
 } from "@material-ui/core";
-import CancelIcon from '@material-ui/icons/Cancel';
+import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
 import Switch from '@material-ui/core/Switch';
 
@@ -57,7 +57,6 @@ export default function PostNewForm(props: any) {
   const classes = useStyles();
 
   const [src, setSrc] = React.useState('')
-
   const ref = createRef<HTMLInputElement>()
   const [state, setState] = React.useState({
     status: true,
@@ -85,7 +84,6 @@ export default function PostNewForm(props: any) {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
-    setFieldValue("file", event.currentTarget.files?.[0]);
   }
   
   const clear = () => {
@@ -108,18 +106,18 @@ export default function PostNewForm(props: any) {
           {src &&
             <React.Fragment>
               <Grid container spacing={3}>
-                <Grid item xs={2}></Grid>
-                <Grid item xs={8}>
+                <Grid item xs={3}></Grid>
+                <Grid item xs={6}>
                   <div className={classes.imageWrapper} >
-                    <CancelIcon
-                      color="primary"
+                    <CancelTwoToneIcon
+                      color="inherit"
                       onClick={clear}
                       className={classes.cancelButton}
                     />
                     <img src={src} style={{width: '100%'}}/>
                   </div>
                 </Grid>
-                <Grid item xs={2}></Grid>
+                <Grid item xs={3}></Grid>
               </Grid>
             </React.Fragment> 
           }
@@ -130,7 +128,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  
+                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
