@@ -11,11 +11,6 @@ export default function BarChart(props: any) {
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
-  // const  numbers = Array.from(new Array(12)).map((v,i)=> i + 1)
-  // const month = numbers.map(x => x.toString() + "月")
-
-  const labels = Object.keys(props.data)
-
   const numbers: number[] = Array.from(new Array(12)).map((v,i)=> i + 1)
 
   const month = numbers.map(x => x + "月")
@@ -23,19 +18,12 @@ export default function BarChart(props: any) {
   console.log(props.data)
 
   //1から12までの数字を出力
-  //dataのkeyを1から12と比べて一致すればdataのvalueを返して一致しなければ0を返す
+  //1から12をdataのkeyと比べて一致すればdataのvalueを返して一致しなければ0を返す
   //これを12回行う
 
   const values: any = numbers.map(((number: any) => {
-    var index = 0
-    for (let i = 0; Object.keys(props.data).length; i++ ){
-      if (number.toString() == Object.keys(props.data)[index]){
-        return Object.values(props.data)[index]
-      } else {
-        return 0
-      }
-    }
-    index++
+
+    
   }))
   
 
