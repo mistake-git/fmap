@@ -31,8 +31,7 @@ const PostsShow = (props: any) => {
   const [sizeData, setSizeData] = React.useState<any | null>(null);
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
-  const [like, setLike] = React.useState<any | null>(null);
-  const [likes, setLikes] = React.useState<LikeModel[] | null>(null);
+  const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
   const [showFlash, setShowFlash] = React.useState(true);
   const [message, setMessage] = React.useState<string>('');
@@ -103,23 +102,23 @@ const PostsShow = (props: any) => {
   //   console.log(like)
   // })
 
-  const getLikes = async() => {
-    try { 
-    await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
-        .then((results) => {
-        console.log(results)
-        setLikes(results.data);
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
+  // const getLikes = async() => {
+  //   try { 
+  //   await
+  //     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
+  //       .then((results) => {
+  //       console.log(results)
+  //       setLikes(results.data);
+  //     })
+  //   }
+  //   catch (error) {
+  //     alert(error.message);
+  //   }
+  // }
 
-  useEffect(() => {
-    getLikes();
-  },[setLikes]);
+  // useEffect(() => {
+  //   getLikes();
+  // },[setLikes]);
 
 
   const createLike = async(like: LikeModel ) => {
@@ -148,6 +147,7 @@ const PostsShow = (props: any) => {
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
       .then((response) => {
+        setLike(null)
         setLikesUsers(response.data.likes_users)
         console.log('destroy like')
         setShowFlash(true)
