@@ -111,7 +111,7 @@ const PostsShow = (props: any) => {
 
   useEffect(() => {
     getLikes();
-  },[getLikes]);
+  },[setLikes]);
 
   const createLike = async(like: LikeModel ) => {
     try { 
