@@ -20,7 +20,6 @@ interface State {
   post: PostModel
 }
 
-
 const MyPage = (props: any) => {
 
   const [user, setUser] = React.useState<UserModel | null>(null);
