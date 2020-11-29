@@ -6,8 +6,6 @@ import LineChart  from "../chart/LineChart";
 import {  Divider, Grid, Typography } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
 import { makeStyles } from '@material-ui/core/styles';
-import classes from "*.module.css";
-
 
 const useStyles = makeStyles(() => ({
   objectBlank: {
@@ -20,11 +18,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-
 interface Props {
   post: PostModel;
 }
-
 
 export default function PostData(props: any) {
   const classes = useStyles();
@@ -38,8 +34,6 @@ export default function PostData(props: any) {
         data={props.feedData}
       />: 
       <div className={classes.objectBlank}>データがありません</div> 
-  
-      
     },
     {
       title: 

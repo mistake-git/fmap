@@ -13,9 +13,6 @@ import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import FlashAlert from "../../components/layouts/FlashAlert";
 
 interface State {
@@ -23,18 +20,9 @@ interface State {
   post: PostModel
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  flash: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
 
 const MyPage = (props: any) => {
 
-  const classes = useStyles();
   const [user, setUser] = React.useState<UserModel | null>(null);
   const [posts, setPosts] = React.useState<PostModel | null>(null);
   const [likesPosts, setLikesPosts] = React.useState<PostModel | null>(null);
@@ -90,9 +78,6 @@ const MyPage = (props: any) => {
    getUser();
   },[setUser]);
 
-  const Alert = (props: AlertProps) => {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;

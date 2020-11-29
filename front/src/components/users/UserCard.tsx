@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import UserModel from '../../models/UserModel';
-import { Avatar, Box, Grid } from '@material-ui/core';
+import { Avatar, Box} from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 

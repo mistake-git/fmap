@@ -9,7 +9,6 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ProfileUserModal from './ProfileImageModal';
 import UserModel from '../../models/UserModel';
 import { AuthContext } from '../../Auth'
-import Tooltip from '@material-ui/core/Tooltip';
 
 
 interface Props {
