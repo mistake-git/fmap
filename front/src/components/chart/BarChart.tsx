@@ -15,19 +15,12 @@ export default function BarChart(props: any) {
 
   const month = numbers.map(x => x + "月")
 
-  console.log(props.data)
 
   //1から12までの数字を出力
   //1から12をdataのkeyと比べて一致すればdataのvalueを返して一致しなければ0を返す
   //これを12回行う
-
-  const values: any = numbers.map(((number: any) => {
-
-    
-  }))
-  
-
-  console.log(values)
+  // const values: any = numbers.map(((number: any) => {
+  // }))
 
   const data = {
     labels: month,

@@ -19,6 +19,7 @@ import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
+import { analytics } from "firebase";
 
 
 const PostsShow = (props: any) => {
@@ -31,11 +32,46 @@ const PostsShow = (props: any) => {
   const [sizeData, setSizeData] = React.useState<any | null>(null);
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
+  const [likes, setLikes] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
   const [showFlash, setShowFlash] = React.useState(true);
   const [message, setMessage] = React.useState<string>('');
   const [severity, setSeverity] = React.useState<undefined | 'success' | 'error' >(undefined);
+
+
+  const getPost = async() => {
+    try { 
+    await
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
+        .then((results) => {
+        console.log(results)
+        console.log('get post')
+        setPost(results.data.post);
+        setDateData(results.data.date_data)
+        setTimeData(results.data.time_data)
+        setFeedData(results.data.feed_data)
+        setSizeData(results.data.size_data)
+        setPostUser(results.data.user);
+        setLikesUsers(results.data.likes_users);
+        setLikes(results.data.likes);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getPost();
+  },[setPost]);
+
+  // const getMyLike = ( user: any) =>{
+  //   const like = likes.find((x: any) => x.user_id === user.id)
+  //   console.log(likes)
+  //   setLike(like)
+  //   console.log('like')
+  // }
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -49,77 +85,6 @@ const PostsShow = (props: any) => {
       })
     });
   }, []);
-  
-  const getPost = async() => {
-    try { 
-    await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
-        .then((results) => {
-        console.log(results)
-        setPost(results.data.post);
-        setDateData(results.data.date_data)
-        console.log(results.data.date_data)
-        setTimeData(results.data.time_data)
-        setFeedData(results.data.feed_data)
-        setSizeData(results.data.size_data)
-        setPostUser(results.data.user);
-        setLikesUsers(results.data.likes_users);
-        console.log('set post')
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
-  
-  useEffect(() => {
-    getPost();
-  },[setPost]);
-
-  const getComments = async() => {
-    try { 
-    await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`)
-        .then((results) => {
-        console.log(results)
-        setComments(results.data);
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
-
-  useEffect(() => {
-    getComments();
-  },[setComments]);
-
-
-  // const getMyLike = ((likes: LikeModel[]) =>{
-  //   console.log(likes)
-  //   const like = likes?.find((like: any) => like.user_id === user?.id);
-  //   setLike(like);
-  //   console.log(like)
-  // })
-
-  // const getLikes = async() => {
-  //   try { 
-  //   await
-  //     axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
-  //       .then((results) => {
-  //       console.log(results)
-  //       setLikes(results.data);
-  //     })
-  //   }
-  //   catch (error) {
-  //     alert(error.message);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getLikes();
-  // },[setLikes]);
-
 
   const createLike = async(like: LikeModel ) => {
     try { 
@@ -162,8 +127,25 @@ const PostsShow = (props: any) => {
       setSeverity('error')
     }
   }
- 
 
+  const getComments = async() => {
+    try { 
+    await
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`)
+        .then((results) => {
+        console.log(results)
+        setComments(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getComments();
+  },[setComments]);
+ 
   const createComment = async(comment: CommentModel) => {
     try { 
       await 
@@ -291,6 +273,7 @@ const PostsShow = (props: any) => {
               </Box>
               <UserBar user={postUser}/>
               {post.memo}
+              { comments &&
               <CommentContainer
                 post={post}
                 user={user}
@@ -298,6 +281,7 @@ const PostsShow = (props: any) => {
                 createComment={createComment}
                 destroyComment={destroyComment}
               />
+              }
             </Grid>
           </Grid>
         </Container>
