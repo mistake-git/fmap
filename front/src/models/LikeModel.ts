@@ -6,7 +6,7 @@ interface LikeModel {
   post_id: number
   user_id: number
   user: UserModel
-  posts: PostModel
+  posts: PostModel[]
 }
 
 export default LikeModel

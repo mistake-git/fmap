@@ -32,7 +32,7 @@ export default function BarChart(props: any) {
   const data = {
     labels: month,
     datasets: [{
-      data: values,
+      data: chartVal,
       backgroundColor: [
         '#FF6384',
         '#36A2EB',

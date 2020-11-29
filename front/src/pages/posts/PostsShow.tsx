@@ -31,7 +31,7 @@ const PostsShow = (props: any) => {
   const [sizeData, setSizeData] = React.useState<any | null>(null);
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
-  const [like, setLike] = React.useState<LikeModel | null>(null);
+  const [like, setLike] = React.useState<any | null>(null);
   const [likes, setLikes] = React.useState<LikeModel[] | null>(null);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
   const [showFlash, setShowFlash] = React.useState(true);
@@ -113,6 +113,20 @@ const PostsShow = (props: any) => {
     getLikes();
   },[setLikes]);
 
+ 
+  const getMyLike = (() =>{
+    likes?.find((like: any) => like.user_id === user?.id);
+    setLike(like);
+    console.log(like)
+    console.log('set like')
+  })
+
+  useEffect(() => {
+    getMyLike();
+  },[setLike]);
+
+
+
   const createLike = async(like: LikeModel ) => {
     try { 
       await
@@ -139,7 +153,6 @@ const PostsShow = (props: any) => {
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
       .then((response) => {
-        setLike(null)
         setLikesUsers(response.data.likes_users)
         console.log('destroy like')
         setShowFlash(true)
