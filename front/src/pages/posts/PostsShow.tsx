@@ -32,7 +32,6 @@ const PostsShow = (props: any) => {
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
-  const [likes, setLikes] = React.useState<any>([]);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
   const [showFlash, setShowFlash] = React.useState(true);
   const [message, setMessage] = React.useState<string>('');
@@ -95,23 +94,6 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
 
-  const getLikes = async() => {
-    try { 
-      await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
-        .then((results) => {
-        console.log(results)
-        console.log('get likes')
-        setLikes(results.data);
-      })
-    }
-    catch (error) {
-      alert(error.message);
-    }
-  }
-  useEffect(() => {
-    getLikes();
-  },[setLikes]);
   
  
   // const getMyLike = (user?: any) =>{
@@ -148,9 +130,6 @@ const PostsShow = (props: any) => {
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
       .then((response) => {
-        const likeIndex = likes.findIndex((x: any) => x.id === id)
-        const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
-        setLikes(deleteLikes)
         setLike(null)
         setLikesUsers(response.data.likes_users)
         console.log('destroy like')

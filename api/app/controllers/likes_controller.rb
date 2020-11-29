@@ -2,11 +2,6 @@ class LikesController < ApplicationController
   before_action :set_post
   before_action :set_like, except: [:index, :create]
 
-  def index
-    likes = @post.likes
-    render json: likes
-  end
-
   def create
     like = Like.new(like_params)
     like.save
