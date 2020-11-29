@@ -57,7 +57,7 @@ export default function PostCard(props: any) {
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-          {props.like ?
+          {props.like === null ?
           <Tooltip title="いいね"　placement="right">
             <Fab
               color="default" 

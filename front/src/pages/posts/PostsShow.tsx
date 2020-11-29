@@ -95,6 +95,14 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
 
+
+  // const getMyLike = ((likes: LikeModel[]) =>{
+  //   console.log(likes)
+  //   const like = likes?.find((like: any) => like.user_id === user?.id);
+  //   setLike(like);
+  //   console.log(like)
+  // })
+
   const getLikes = async() => {
     try { 
     await
@@ -112,19 +120,6 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getLikes();
   },[setLikes]);
-
- 
-  const getMyLike = (() =>{
-    likes?.find((like: any) => like.user_id === user?.id);
-    setLike(like);
-    console.log(like)
-    console.log('set like')
-  })
-
-  useEffect(() => {
-    getMyLike();
-  },[setLike]);
-
 
 
   const createLike = async(like: LikeModel ) => {
