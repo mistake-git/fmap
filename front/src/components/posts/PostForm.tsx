@@ -143,8 +143,9 @@ export default function PostNewForm(props: any) {
                 }
 
                 await
-                props.action(post);
                 console.log(post);
+                console.log('post value')
+                props.action(post);
               } catch (error) {
                 alert(error.message);
               }

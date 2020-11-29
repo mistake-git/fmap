@@ -19,8 +19,25 @@ export default function BarChart(props: any) {
   //1から12までの数字を出力
   //1から12をdataのkeyと比べて一致すればdataのvalueを返して一致しなければ0を返す
   //これを12回行う
-  // const values: any = numbers.map(((number: any) => {
-  // }))
+
+  const obj = props.data
+
+  console.log(obj)
+
+  const result: any = numbers.map(((number: any) => {
+    var index = 0
+    for (let i = 0; Object.keys(obj).length; i++ ){
+      if (number.toString() == Object.keys(obj)[index]){
+        return Object.values(props.data)[index]
+      } else {
+        return 0
+      }
+    }
+    index++
+  }))
+
+  console.log(result)
+
 
   const data = {
     labels: month,
