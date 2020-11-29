@@ -2,12 +2,10 @@ class CommentsController < ApplicationController
   before_action :set_post, only: [:index, :create, :destroy]
   before_action :set_comment, only: [:destroy]
 
-
   def index 
     comments =  @post.comments.order(created_at: :desc)
     render json: comments
   end
-
 
   def create
     comment = Comment.new(

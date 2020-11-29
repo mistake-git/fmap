@@ -14,7 +14,18 @@ class PostsController < ApplicationController
     time_data = same_name_post.where.not(time: nil).group("HOUR(time)").sum(:number)
     user = @post.user
     likes_users = @post.likes_users
-    render json: {post: @post, user: user, feed_data: feed_data, time_data: time_data, date_data: date_data, size_data: size_data, likes_users: likes_users}
+    likes = @post.likes
+    render json: 
+    {
+      post: @post, 
+      user: user, 
+      feed_data: feed_data, 
+      time_data: time_data, 
+      date_data: date_data, 
+      size_data: size_data, 
+      likes_users: likes_users,
+      likes: likes,
+    }
   end
 
   def create
