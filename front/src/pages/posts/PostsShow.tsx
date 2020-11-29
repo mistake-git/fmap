@@ -51,12 +51,6 @@ const PostsShow = (props: any) => {
       })
     });
   }, []);
-
-  //自分がいいねしていた場合、そのいいねを取得したい
-  const getMyLike = (user: UserModel) =>{
-    const myLike = likes.find((like: any) => like.user_id === user.id);
-    setLike(myLike);
-  }
   
   const getPost = async() => {
     try { 
@@ -119,7 +113,14 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getLikes();
   },[setLikes]);
+  
+ 
+  // const getMyLike = (user?: any) =>{
+  //   const myLike = likes.find((like: any) => like.user_id === user.id);
+  //   setLike(myLike);
+  // }
 
+  // getMyLike(user)
 
 
   const createLike = async(like: LikeModel ) => {
@@ -147,6 +148,9 @@ const PostsShow = (props: any) => {
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
       .then(() => {
+        const likeIndex = likes.findIndex((x: any) => x.id === id)
+        const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
+        setLikes(deleteLikes)
         setLike(null)
         console.log('destroy like')
         setShowFlash(true)
