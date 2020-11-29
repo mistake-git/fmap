@@ -32,6 +32,7 @@ const PostsShow = (props: any) => {
   const [postUser, setPostUser] = React.useState<UserModel | null>(null);
   const [comments, setComments] = React.useState<any>([]);
   const [like, setLike] = React.useState<LikeModel | null>(null);
+  const [likes, setLikes] = React.useState<LikeModel[] | null>(null);
   const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
   const [showFlash, setShowFlash] = React.useState(true);
   const [message, setMessage] = React.useState<string>('');
@@ -94,15 +95,23 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
 
-  
- 
-  // const getMyLike = (user?: any) =>{
-  //   const myLike = likes.find((like: any) => like.user_id === user.id);
-  //   setLike(myLike);
-  // }
+  const getLikes = async() => {
+    try { 
+    await
+      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`)
+        .then((results) => {
+        console.log(results)
+        setLikes(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
 
-  // getMyLike(user)
-
+  useEffect(() => {
+    getLikes();
+  },[getLikes]);
 
   const createLike = async(like: LikeModel ) => {
     try { 
