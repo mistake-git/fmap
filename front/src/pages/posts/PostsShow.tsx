@@ -21,7 +21,6 @@ import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
 
 
-
 const PostsShow = (props: any) => {
 
   const [user, setUser] = React.useState<UserModel | null>(null);
@@ -128,7 +127,8 @@ const PostsShow = (props: any) => {
       await
     　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`,{like: like} )
         .then((response) => {
-        setLike(response.data)
+        setLike(response.data.like)
+        setLikesUsers(response.data.likes_users)
         console.log('create like')
         setShowFlash(true)
         setMessage('いいねしました')
@@ -147,11 +147,12 @@ const PostsShow = (props: any) => {
     try { 
     await
     　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
-      .then(() => {
+      .then((response) => {
         const likeIndex = likes.findIndex((x: any) => x.id === id)
         const deleteLikes = update(likes, {$splice: [[likeIndex, 1]]})
         setLikes(deleteLikes)
         setLike(null)
+        setLikesUsers(response.data.likes_users)
         console.log('destroy like')
         setShowFlash(true)
         setMessage('いいねを取り消しました')
