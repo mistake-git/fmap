@@ -28,11 +28,12 @@ const SignInForm = (props: any) => {
       validationSchema={AuthSchema}
       onSubmit={async value => {
         try {
-          await auth.signInWithEmailAndPassword(
+        await auth.signInWithEmailAndPassword(
             value.email,
             value.password
           );
-        } catch (error) {
+        } 
+        catch (error) {
           alert(error.message);
         }
       }}

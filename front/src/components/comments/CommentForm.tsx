@@ -68,11 +68,12 @@ export default function CommentForm(props: any) {
                 content: value.content,
                 user_id: props.user.id
               }
-              await 
+            await 
               props.createComment(comment, props.post, props.comments);
               setButtonOpen(false);
               resetForm({})
-            } catch (error) {
+            } 
+            catch (error) {
               alert(error.message);
             }
           }}

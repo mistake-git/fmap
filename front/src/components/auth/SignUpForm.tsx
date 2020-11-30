@@ -51,7 +51,7 @@ const SignUpForm = (props: any) => {
       validationSchema={AuthSchema}
       onSubmit={async value => {
         try {
-          await auth.createUserWithEmailAndPassword(
+        await auth.createUserWithEmailAndPassword(
             value.email,
             value.password
           )
@@ -67,7 +67,8 @@ const SignUpForm = (props: any) => {
           .catch((data) =>{
            　console.log(data)
           })
-        } catch (error) {
+        } 
+        catch (error) {
           alert(error.message);
         }
       }}

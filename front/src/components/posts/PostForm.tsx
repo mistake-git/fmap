@@ -145,7 +145,8 @@ export default function PostNewForm(props: any) {
                 props.action(post);
                 console.log(post);
                 console.log('post value')
-              } catch (error) {
+              } 
+              catch (error) {
                 alert(error.message);
               }
             }}

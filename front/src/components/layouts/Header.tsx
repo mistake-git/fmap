@@ -103,8 +103,9 @@ return (
         className={classes.link}
         onClick={async event => {
           try {
-            await auth.signOut();
-          } catch (error) {
+          await auth.signOut();
+          } 
+          catch (error) {
             alert(error.message);
           }
         }}
