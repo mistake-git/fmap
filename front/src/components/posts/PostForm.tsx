@@ -85,7 +85,7 @@ export default function PostNewForm(props: any) {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
-    setFieldValue('image',reader.result as string)
+    setFieldValue("image",reader.result as string)
   }
   
   const clear = () => {
@@ -106,8 +106,8 @@ export default function PostNewForm(props: any) {
           {src &&
             <React.Fragment>
               <Grid container spacing={3}>
-                <Grid item xs={3}></Grid>
-                <Grid item xs={6}>
+                <Grid item md={3}></Grid>
+                <Grid item md={6}>
                   <div className={classes.imageWrapper} >
                     <CancelTwoToneIcon
                       color="inherit"
@@ -117,7 +117,7 @@ export default function PostNewForm(props: any) {
                     <img src={src} style={{width: '100%'}}/>
                   </div>
                 </Grid>
-                <Grid item xs={3}></Grid>
+                <Grid item md={3}></Grid>
               </Grid>
             </React.Fragment> 
           }
@@ -128,7 +128,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: img,
+                  image: value.image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -143,7 +143,7 @@ export default function PostNewForm(props: any) {
                 }
               await
                 props.action(post);
-                console.log(post);
+                console.log(post.image);
                 console.log('post value')
               } 
               catch (error) {
