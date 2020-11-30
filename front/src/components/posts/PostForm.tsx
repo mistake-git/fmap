@@ -52,17 +52,10 @@ interface State {
 
 export default function PostNewForm(props: any) {
   const classes = useStyles();
-
+  const [image, setImage] = React.useState<any>('')
   const [src, setSrc] = React.useState('')
   const ref = createRef<HTMLInputElement>()
-  const [state, setState] = React.useState({
-    status: true,
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
+ 
   const onClick = () => {
     if (ref.current) {
       ref.current.click()
@@ -76,6 +69,9 @@ export default function PostNewForm(props: any) {
       return
     }
     const file = event.target.files.item(0)
+
+    setImage(file)
+
     if (file === null) {
       return
     }
@@ -127,7 +123,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: value.file,
+                  image: image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
