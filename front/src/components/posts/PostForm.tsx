@@ -105,7 +105,7 @@ export default function PostNewForm(props: any) {
         <CardContent>
           {src &&
             <React.Fragment>
-              <Grid container spacing={3}>
+              <Grid container spacing={5}>
                 <Grid item md={3}></Grid>
                 <Grid item md={6}>
                   <div className={classes.imageWrapper} >
