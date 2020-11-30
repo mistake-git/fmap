@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import * as Yup from "yup";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, setNestedObjectValues } from "formik";
 import { TextField } from "formik-material-ui";
 import IconButton from '@material-ui/core/IconButton';
 import AttachmentIcon from '@material-ui/icons/Attachment';
@@ -18,7 +18,6 @@ import {
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
 import Switch from '@material-ui/core/Switch';
-
 
 
 export const PostSchema = Yup.object().shape({
@@ -128,7 +127,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: value.image,
+                  image: value.file,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -268,15 +267,6 @@ export default function PostNewForm(props: any) {
                       InputLabelProps={{
                         shrink: true,
                       }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Switch
-                      checked={state.status}
-                      onChange={handleChange}
-                      color="primary"
-                      name="status"
-                      inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                   </Grid>
                   <Grid item xs={12}>
