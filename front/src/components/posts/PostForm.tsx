@@ -85,7 +85,7 @@ export default function PostNewForm(props: any) {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
-    img.src = URL.createObjectURL(event.target.files[0]);
+    setFieldValue('image',reader.result as string)
   }
   
   const clear = () => {
