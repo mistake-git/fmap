@@ -27,8 +27,6 @@ export const PostSchema = Yup.object().shape({
   number: Yup.number()
   .min(1,'数量は1以上で入力してください')
   .required('数量を入力してください'),
-  size: Yup.number()
-  .min(1,'サイズは1以上で入力してください')
 });
 
 const useStyles = makeStyles({
@@ -96,9 +94,7 @@ export default function PostNewForm(props: any) {
 
   const forms=[
     {name: "name", label: "魚種(必須)",type: "text"},
-    {name: "size", label: "サイズ(cm)",type: "number"},
     {name: "weight", label: "重さ",type: "weight"},
-    {name: "number", label: "数量(必須)",type: "number"},
     {name: "date", label: "日付",type: "date"},
     {name: "time", label: "時間",type: "time"},
   ]
@@ -208,11 +204,49 @@ export default function PostNewForm(props: any) {
                   <Grid item xs={12} md={6}>
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="number"
+                      label="数量(匹)"
+                      fullWidth
+                      variant="outlined"
+                      type="number"
+                      component={TextField}
+                      InputProps={{
+                        inputProps: { 
+                            min: 1
+                        }
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      name="size"
+                      label="サイズ(cm)"
+                      fullWidth
+                      variant="outlined"
+                      type="number"
+                      component={TextField}
+                      InputProps={{
+                        inputProps: { 
+                          min: 1
+                        }
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Field
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
                       name="weather"
                       label="天気"
                       fullWidth
                       variant="outlined"
-                      type="text"
+                      type="number"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,
