@@ -101,16 +101,19 @@ const MyPage = (props: any) => {
         <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
-              <UserMain
-                user={user}
-              />
-              {user.introduction}
-              {currentUser && user.uid === currentUser.uid &&
-                <IntroductionForm
-                  value={user.introduction}
-                  updateUser={updateUser}
+             
+                <UserMain
+                  user={user}
                 />
-              }
+              <Box my={2}>
+                {user.introduction}
+                {currentUser && user.uid === currentUser.uid &&
+                  <IntroductionForm
+                    value={user.introduction}
+                    updateUser={updateUser}
+                  />
+                }
+              </Box>
             </Grid>
             <Grid item xs={12} >
               <Box my={2}>
