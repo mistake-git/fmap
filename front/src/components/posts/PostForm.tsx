@@ -128,7 +128,6 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: src,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
