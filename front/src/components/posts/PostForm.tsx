@@ -71,6 +71,9 @@ export default function PostNewForm(props: any) {
       ref.current.click()
     }
   }
+
+  let img = new Image();
+
   const onChange = (event: ChangeEvent<HTMLInputElement>, setFieldValue: any) => {
     if (event.target.files === null) {
       return
@@ -84,6 +87,7 @@ export default function PostNewForm(props: any) {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
+    img.src = URL.createObjectURL(event.target.files[0]);
   }
   
   const clear = () => {
@@ -128,6 +132,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
+                  image: img,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
