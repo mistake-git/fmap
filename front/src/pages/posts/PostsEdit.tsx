@@ -75,7 +75,7 @@ const PostsEdit = (props: any) => {
   return (
     <Fragment>
       <Template>
-        <Container maxWidth="md">
+        <Container maxWidth="md" style={{marginTop: "3rem"}}>
           <PostForm 
             post={post} 
             user={user}
