@@ -141,11 +141,10 @@ export default function PostNewForm(props: any) {
                   status: value.status,
                   user_id: props.user.id,
                 }
-
-                await
+              await
+                props.action(post);
                 console.log(post);
                 console.log('post value')
-                props.action(post);
               } catch (error) {
                 alert(error.message);
               }
@@ -159,6 +158,7 @@ export default function PostNewForm(props: any) {
                       name="image"
                       accept="image" 
                       className={classes.input} 
+                      multiple={false}
                       id="icon-button-file" 
                       type="file"
                       onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
