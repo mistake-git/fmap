@@ -139,7 +139,9 @@ export default function PostNewForm(props: any) {
               await
                 props.action(post);
                 console.log(post.image);
-                console.log('post value')
+                console.log('post value');
+                let str = JSON.stringify(post);
+                console.log("ENTITY IS  " + str);
               } 
               catch (error) {
                 alert(error.message);
