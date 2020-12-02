@@ -17,9 +17,10 @@ import {
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import axios from 'axios'
 
 
-export const PostSchema = Yup.object().shape({
+export const UserSchema = Yup.object().shape({
   image: Yup.string()
     .required('画像を選択してください'),
 });
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function ProfileUserModal() {
+export default function ProfileUserModal(props: any) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -62,6 +63,10 @@ export default function ProfileUserModal() {
       ref.current.click()
     }
   }
+
+  const values ={
+    image: '',
+  }
   
   const onChange = (event: ChangeEvent<HTMLInputElement>, setFieldValue: any) => {
     if (event.target.files === null) {
@@ -81,7 +86,6 @@ export default function ProfileUserModal() {
     }
     setFieldValue("image",reader.result as string)
   }
-  
 
   const clear = () => {
     setSrc('');
@@ -101,38 +105,41 @@ export default function ProfileUserModal() {
       >
         <DialogTitle id="alert-dialog-title">プロフィールイメージを編集</DialogTitle>
         {src &&
-            <React.Fragment>
-              <Grid container spacing={3}>
-                <Grid item xs={2}></Grid>
-                <Grid item xs={8}>
-                  <div className={classes.imageWrapper} >
-                    <CancelIcon
-                      color="primary"
-                      onClick={clear}
-                      className={classes.cancelButton}
-                    />
-                    <img src={src} style={{width: '100%'}}/>
-                  </div>
-                </Grid>
-                <Grid item xs={2}></Grid>
+          <React.Fragment>
+            <Grid container spacing={3}>
+              <Grid item xs={2}></Grid>
+              <Grid item xs={8}>
+                <div className={classes.imageWrapper} >
+                  <CancelIcon
+                    color="primary"
+                    onClick={clear}
+                    className={classes.cancelButton}
+                  />
+                  <img src={src} style={{width: '100%'}}/>
+                </div>
               </Grid>
-            </React.Fragment> 
-          }
+              <Grid item xs={2}></Grid>
+            </Grid>
+          </React.Fragment> 
+        }
          <Formik
-        　enableReinitialize={true}
-          initialValues={{image: ''}}
-          validationSchema={PostSchema}
+        　 enableReinitialize={true}
+          initialValues={values}
+          validationSchema={UserSchema}
           onSubmit={async value => {
+            const user ={
+              image: image,
+            }
             try {
-              
             await
-              console.log('post value');
+              axios.patch(`http://localhost:3000/api/v1/users/${props.match.params.id}`,{user: user} ) 
+              handleClose();
             } 
             catch (error) {
               alert(error.message);
             }
           }}
-          render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
+          render={({ submitForm, setFieldValue}) => (
           <Form>
             <DialogContent>
               <Field 
@@ -156,7 +163,12 @@ export default function ProfileUserModal() {
               <Button variant="contained"　onClick={handleClose}>
                 キャンセル
               </Button>
-              <Button variant="contained" color="primary" autoFocus　onClick={handleClose}　>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                autoFocus　
+                onClick={submitForm}　
+              >
                 更新
               </Button>
             </DialogActions>
