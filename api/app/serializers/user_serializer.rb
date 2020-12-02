@@ -4,4 +4,11 @@ class UserSerializer < ActiveModel::Serializer
     object.posts.order(created_at: :desc)
   end
   has_many :likes_posts
+  def image
+    if object.image.attached?
+      {
+        url: rails_blob_url(object.image)
+      }
+    end
+  end
 end
