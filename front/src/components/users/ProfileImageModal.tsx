@@ -133,7 +133,7 @@ export default function ProfileUserModal(props: any) {
             await
               myHttpClient.put(`/user_images/${props.user.uid}`,{user: user},{
                 headers: {
-                    'content-type': 'multipart/form-data',
+                  'content-type': 'multipart/form-data',
                 },
               }) 
               handleClose();
