@@ -53,7 +53,9 @@ export default function UserMain(props: any) {
           </ListItemAvatar>
           {currentUser && currentUser.uid === props.user.uid &&
             <div className={classes.cameraIcon}>
-              <ProfileUserModal/>
+              <ProfileUserModal
+                user={currentUser}
+              />
             </div>
           }
         </div>

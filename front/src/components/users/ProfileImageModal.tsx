@@ -20,9 +20,7 @@ import * as Yup from "yup";
 import axios from 'axios'
 
 
-export const UserSchema = Yup.object().shape({
-  image: Yup.string()
-    .required('画像を選択してください'),
+const UserSchema = Yup.object().shape({
 });
 
 
@@ -127,22 +125,25 @@ export default function ProfileUserModal(props: any) {
           initialValues={values}
           validationSchema={UserSchema}
           onSubmit={async value => {
-            const user ={
-              image: image,
-            }
             try {
+              const user ={
+                image: image,
+              }
             await
-              axios.patch(`http://localhost:3000/api/v1/users/${props.match.params.id}`,{user: user} ) 
+              axios.patch(`http://localhost:3000/api/v1/user_images/${props.user.uid}`,{user: user} ) 
               handleClose();
+              clear();
+
             } 
             catch (error) {
               alert(error.message);
             }
           }}
-          render={({ submitForm, setFieldValue}) => (
+          render={({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
           <Form>
             <DialogContent>
               <Field 
+                required
                 name="image"
                 accept="image" 
                 className={classes.input} 
@@ -167,7 +168,8 @@ export default function ProfileUserModal(props: any) {
                 variant="contained" 
                 color="primary" 
                 autoFocus　
-                onClick={submitForm}　
+                onClick={submitForm}
+                disabled={!isValid || isSubmitting}　
               >
                 更新
               </Button>
