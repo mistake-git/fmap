@@ -5,6 +5,7 @@ import axios from 'axios'
 import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import Loading from "../../components/layouts/Loading";
+import { myHttpClient } from "../../plugins/axios";
 
 interface State {
   users: UserModel[]
@@ -19,7 +20,7 @@ const Users = (props: any) => {
   const getUsers = async() => {
     try { 
     await
-      axios.get('http://localhost:3000/api/v1/users')
+      myHttpClient.get('/users')
       .then((results) => {
         console.log(results)
         setUsers(results.data)

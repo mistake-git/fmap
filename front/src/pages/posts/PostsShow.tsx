@@ -19,6 +19,8 @@ import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
+import { myHttpClient } from "../../plugins/axios";
+
 
 
 const PostsShow = (props: any) => {
@@ -39,10 +41,11 @@ const PostsShow = (props: any) => {
   const [severity, setSeverity] = React.useState<undefined | 'success' | 'error' >(undefined);
 
 
+
   const getPost = async() => {
     try { 
     await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
+      myHttpClient.get(`/posts/${props.match.params.id}`)
         .then((results) => {
         console.log(results)
         console.log('get post')
@@ -74,7 +77,7 @@ const PostsShow = (props: any) => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
-      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      myHttpClient.get(`/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
         setUser(results.data.user)
@@ -88,7 +91,7 @@ const PostsShow = (props: any) => {
   const createLike = async(like: LikeModel ) => {
     try { 
       await
-    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes`,{like: like} )
+    　 myHttpClient.post(`/posts/${props.match.params.id}/likes`,{like: like} )
         .then((response) => {
         setLike(response.data.like)
         setLikesUsers(response.data.likes_users)
@@ -109,7 +112,7 @@ const PostsShow = (props: any) => {
   const destroyLike = async(id: number) => {
     try { 
     await
-    　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/likes/${id}`)
+    　 myHttpClient.delete(`/posts/${props.match.params.id}/likes/${id}`)
       .then((response) => {
         setLike(null)
         setLikesUsers(response.data.likes_users)
@@ -130,7 +133,7 @@ const PostsShow = (props: any) => {
   const getComments = async() => {
     try { 
     await
-      axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`)
+      myHttpClient.get(`/posts/${props.match.params.id}/comments`)
         .then((results) => {
         console.log(results)
         setComments(results.data);
@@ -148,7 +151,7 @@ const PostsShow = (props: any) => {
   const createComment = async(comment: CommentModel) => {
     try { 
       await 
-    　 axios.post(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments`,{comment: comment} )
+    　 myHttpClient.post(`/posts/${props.match.params.id}/comments`,{comment: comment} )
         .then((response) => {
         const newData = update(comments, {$unshift:[response.data]})
         setComments(newData)
@@ -169,7 +172,7 @@ const PostsShow = (props: any) => {
   const destroyComment = async(id: number) => {
     try { 
     await
-    　 axios.delete(`http://localhost:3000/api/v1/posts/${props.match.params.id}/comments/${id}`)
+    　 myHttpClient.delete(`/posts/${props.match.params.id}/comments/${id}`)
       .then(() => {
         const commentIndex = comments.findIndex((x: any) => x.id === id)
         const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
@@ -191,7 +194,7 @@ const PostsShow = (props: any) => {
   const destroyPost = async(id: number) => {
     try { 
     await
-    　 axios.delete(`http://localhost:3000/api/v1/posts/${id}`)
+    　 myHttpClient.delete(`/posts/${id}`)
       .then(() => {
         console.log('set')
         props.history.push("/posts");

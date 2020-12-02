@@ -3,7 +3,6 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import axios from 'axios'
-
 import {
   Button,
   FormControl,
@@ -14,6 +13,7 @@ import {
 
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
+import { myHttpClient } from "../../plugins/axios";
 
 const AuthSchema = Yup.object().shape({
   name: Yup.string()
@@ -61,7 +61,7 @@ const SignUpForm = (props: any) => {
               email: value.email,
               uid: results.user?.uid
             }
-            axios.post('http://localhost:3000/api/v1/users',{user: user})
+            myHttpClient.post('/users',{user: user})
             console.log(results)
           })
           .catch((data) =>{

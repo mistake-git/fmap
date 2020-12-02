@@ -5,6 +5,7 @@ import PostCard from "../../components/posts/PostCard"
 import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import Loading from "../../components/layouts/Loading";
+import { myHttpClient } from "../../plugins/axios";
 
 interface State {
   posts: PostModel[]
@@ -19,7 +20,7 @@ const Posts = (props: any) => {
   const getPosts = async() => {
     try { 
     await
-      axios.get('http://localhost:3000/api/v1/posts')
+      myHttpClient.get('/posts')
       .then((results) => {
         console.log(results)
         setPosts(results.data)

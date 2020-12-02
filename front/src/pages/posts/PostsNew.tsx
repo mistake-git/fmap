@@ -5,13 +5,14 @@ import PostForm from "../../components/posts/PostForm"
 import axios from 'axios'
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
+import { myHttpClient } from "../../plugins/axios";
 
 const PostsNew = (props: any) => {
   const [user, setUser] = React.useState<UserModel | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
-      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      myHttpClient.get(`/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
         setUser(results.data.user)
@@ -25,7 +26,7 @@ const PostsNew = (props: any) => {
   const createPost = async(post: any) => {
     try { 
     await
-    axios.post('http://localhost:3000/api/v1/posts',{post: post} ) 
+    myHttpClient.post('/posts',{post: post} ) 
     .then((response) => {
       console.log(response.data)
       console.log('create post')

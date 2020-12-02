@@ -6,6 +6,7 @@ import axios from 'axios'
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 import PostModel from "../../models/PostModel";
+import { myHttpClient } from "../../plugins/axios";
 
 const PostsEdit = (props: any) => {
 
@@ -14,7 +15,7 @@ const PostsEdit = (props: any) => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
-      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      myHttpClient.get(`/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
         setUser(results.data.user)
@@ -29,7 +30,7 @@ const PostsEdit = (props: any) => {
   const getPost = async() => {
     try { 
     await
-    axios.get(`http://localhost:3000/api/v1/posts/${props.match.params.id}`)
+    myHttpClient.get(`/posts/${props.match.params.id}`)
 		.then((results) => {
 			console.log(results)
       setPost(results.data.post)
@@ -47,7 +48,7 @@ const PostsEdit = (props: any) => {
   const updatePost = async(post: PostModel) => {
     try { 
     await
-    axios.patch(`http://localhost:3000/api/v1/posts/${props.match.params.id}`,{post: post} ) 
+    myHttpClient.patch(`/posts/${props.match.params.id}`,{post: post} ) 
     .then((response) => {
       console.log(response)
       props.history.push(`/posts/${response.data.id}`);

@@ -14,6 +14,7 @@ import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
 import FlashAlert from "../../components/layouts/FlashAlert";
+import { myHttpClient } from "../../plugins/axios";
 
 interface State {
   posts: PostModel[]
@@ -36,7 +37,7 @@ const MyPage = (props: any) => {
   const getUser = async() => {
     try { 
     await
-      axios.get(`http://localhost:3000/api/v1/users/${props.match.params.id}`)
+      myHttpClient.get(`/users/${props.match.params.id}`)
       .then((results) => {
       console.log(results)
       setUser(results.data.user);
@@ -55,7 +56,7 @@ const MyPage = (props: any) => {
   const updateUser = async(user: UserModel) => {
     try { 
     await
-    axios.patch(`http://localhost:3000/api/v1/users/${props.match.params.id}`,{user: user} ) 
+    myHttpClient.patch(`/users/${props.match.params.id}`,{user: user} ) 
     .then((response) => {
       console.log(response)
       setUser(response.data);

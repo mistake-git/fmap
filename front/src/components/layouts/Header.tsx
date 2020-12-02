@@ -14,6 +14,7 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import CreateIcon from '@material-ui/icons/Create';
 import GroupIcon from '@material-ui/icons/Group';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import { myHttpClient } from "../../plugins/axios";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,7 @@ export default function Header(props: any) {
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
-      axios.get(`http://localhost:3000/api/v1/users/${user?.uid}`)
+      myHttpClient.get(`/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
         setUser(results.data.user)
