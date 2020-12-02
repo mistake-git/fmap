@@ -26,12 +26,7 @@ const PostsNew = (props: any) => {
   const createPost = async(post: any) => {
     try { 
     await
-    myHttpClient.post('/posts',{post: post}, 
-    {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    }) 
+    myHttpClient.post('/posts',{post: post}) 
     .then((response) => {
       console.log(response.data)
       console.log('create post')
