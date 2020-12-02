@@ -15,6 +15,14 @@ import {
   Grid,
 } from "@material-ui/core";
 import CancelIcon from '@material-ui/icons/Cancel';
+import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+
+
+export const PostSchema = Yup.object().shape({
+  image: Yup.string()
+    .required('画像を選択してください'),
+});
 
 
 const useStyles = makeStyles({
@@ -44,22 +52,25 @@ export default function ProfileUserModal() {
   const handleClose = () => {
     setOpen(false);
   };
-
   const [src, setSrc] = React.useState('')
 
   const ref = createRef<HTMLInputElement>()
-
+  const [image, setImage] = React.useState<File | null>(null)
 
   const onClick = () => {
     if (ref.current) {
       ref.current.click()
     }
   }
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+  
+  const onChange = (event: ChangeEvent<HTMLInputElement>, setFieldValue: any) => {
     if (event.target.files === null) {
       return
     }
     const file = event.target.files.item(0)
+
+    setImage(file)
+
     if (file === null) {
       return
     }
@@ -68,7 +79,9 @@ export default function ProfileUserModal() {
     reader.onload = () => {
       setSrc(reader.result as string)
     }
+    setFieldValue("image",reader.result as string)
   }
+  
 
   const clear = () => {
     setSrc('');
@@ -87,8 +100,7 @@ export default function ProfileUserModal() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">プロフィールイメージを編集</DialogTitle>
-        <DialogContent>
-          {src &&
+        {src &&
             <React.Fragment>
               <Grid container spacing={3}>
                 <Grid item xs={2}></Grid>
@@ -106,30 +118,51 @@ export default function ProfileUserModal() {
               </Grid>
             </React.Fragment> 
           }
-          <input 
-            name="image"
-            accept="image" 
-            className={classes.input} 
-            id="icon-button-file" 
-            type="file"
-            onChange={onChange}
-            onClick={onClick}
-          />
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span">
-              <AttachmentIcon />
-            </IconButton>
-            ファイルを選択
-          </label>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained"　onClick={handleClose}>
-            キャンセル
-          </Button>
-          <Button variant="contained" color="primary" autoFocus　onClick={handleClose}　>
-            更新
-          </Button>
-        </DialogActions>
+         <Formik
+        　enableReinitialize={true}
+          initialValues={{image: ''}}
+          validationSchema={PostSchema}
+          onSubmit={async value => {
+            try {
+              
+            await
+              console.log('post value');
+            } 
+            catch (error) {
+              alert(error.message);
+            }
+          }}
+          render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
+          <Form>
+            <DialogContent>
+              <Field 
+                name="image"
+                accept="image" 
+                className={classes.input} 
+                multiple={false}
+                id="icon-button-file" 
+                type="file"
+                onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
+                onClick={onClick}
+              />
+              <label htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                  <AttachmentIcon />
+                </IconButton>
+                ファイルを選択
+              </label>
+            </DialogContent>
+            <DialogActions>
+              <Button variant="contained"　onClick={handleClose}>
+                キャンセル
+              </Button>
+              <Button variant="contained" color="primary" autoFocus　onClick={handleClose}　>
+                更新
+              </Button>
+            </DialogActions>
+          </Form>
+          )}
+        />
       </Dialog>
     </div>
   );
