@@ -131,10 +131,15 @@ export default function ProfileUserModal(props: any) {
                 image: image,
               }
             await
-              myHttpClient.patch(`/user_images/${props.user.uid}`,{user: user} ) 
+              myHttpClient.put(`/user_images/${props.user.uid}`,{user: user},{
+                headers: {
+                    'content-type': 'multipart/form-data',
+                },
+              }) 
               handleClose();
               clear();
-
+              console.log('image')
+              console.log(image)
             } 
             catch (error) {
               alert(error.message);
