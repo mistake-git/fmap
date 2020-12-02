@@ -17,9 +17,9 @@ class UserImagesController < ApplicationController
     else
       image = params[:image]
     end
-    pp "#{image}"
-    if @user.update(image: image)
+    if @user.image.attach(params[:image])
       render json: @user
     end
   end
+
 end
