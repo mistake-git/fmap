@@ -48,7 +48,11 @@ const PostsEdit = (props: any) => {
   const updatePost = async(post: PostModel) => {
     try { 
     await
-    myHttpClient.patch(`/posts/${props.match.params.id}`,{post: post} ) 
+    myHttpClient.patch(`/posts/${props.match.params.id}`,{post: post},{
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    })  
     .then((response) => {
       console.log(response)
       props.history.push(`/posts/${response.data.id}`);
