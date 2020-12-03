@@ -19,6 +19,7 @@ import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
 import LocatePickerModal from './LocatePickerModal';
 import MapPicker from 'react-google-map-picker'
+import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
  
 
 
@@ -52,10 +53,16 @@ interface State {
   image?: string;
 }
 
-const DefaultLocation = { lat: 35, lng: 135};
-const DefaultZoom = 10;
+
 
 export default function PostNewForm(props: any) {
+
+  const DefaultLocation = { 
+    lat: 35, 
+    lng: 135
+  };
+  
+  const DefaultZoom = 10;
 
   const classes = useStyles();
   const [image, setImage] = React.useState<File | null>(null)
