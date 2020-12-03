@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import CommentMenu from './CommentMenu';
 import CommentModel from '../../models/CommentModel';
+import CommentEditForm from './CommentEditForm'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,13 +22,25 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+
+
 export default function Comments(props: any) {
   const classes = useStyles();
+  const [formOpen, setFormOpen]= React.useState<boolean>(false);
+
+  const handleFormOpen = () =>{
+    setFormOpen(true)
+  }
+  
+  const handleFormClose = () =>{
+    setFormOpen(false)
+  }
   
   return (
     <React.Fragment>
       {props.comments.map((comment: CommentModel) => {
         return(
+          <React.Fragment>
           <List className={classes.root} key={comment.id}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
@@ -50,9 +63,17 @@ export default function Comments(props: any) {
                 post={props.post} 
                 comment={comment} 
                 destroyComment={props.destroyComment}
+                handleFormOpen={handleFormOpen}
               />
             </ListItem>   
           </List>
+          {formOpen &&
+            <CommentEditForm
+              handleFormClose={handleFormClose}
+              comment={comment} 
+            />
+          }
+        </React.Fragment>
         )
       })}
     </React.Fragment>

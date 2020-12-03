@@ -22,11 +22,16 @@ export default function CommentMenu(props: any) {
     props.destroyComment(props.comment.id)
   };
 
+  const handleFormOpen = () =>{
+    props.handleFormOpen()
+    setAnchorEl(null);
+  }
+
   const options = [
     {
     id: 1,
     item:
-    <MenuItem> 
+    <MenuItem onClick={handleFormOpen}> 
         <Edit color="action" />編集
     </MenuItem>
     },
@@ -39,7 +44,6 @@ export default function CommentMenu(props: any) {
       </MenuItem>
     }
   ];
-
   return (
     <div>
       <IconButton
