@@ -169,7 +169,7 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const updateComment = async(id: number, comment: any) => {
+  const updateComment = async(id: number, comment: CommentModel) => {
     try { 
       await
     　  myHttpClient.patch(`/posts/${props.match.params.id}/comments/${id}`,{comment: comment})
