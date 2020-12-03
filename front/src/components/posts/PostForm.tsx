@@ -146,7 +146,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: image,
+                  
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -159,11 +159,10 @@ export default function PostNewForm(props: any) {
                   status: value.status,
                   user_id: props.user.id,
                   latitude: location.lat,
-                  longitude: location.lng
+                  longitude: location.lng,
                 }
               await
                 props.action(post);
-                console.log(post.image);
                 console.log('post value');
                 let str = JSON.stringify(post);
                 console.log("ENTITY IS  " + str);
