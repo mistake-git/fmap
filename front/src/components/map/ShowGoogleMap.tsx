@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 interface PinProps {
   lat: number,
   lng: number,
@@ -51,15 +50,15 @@ const ShowGoogleMap = (props: any) => {
     //サイズ空ピンの大きさを求める
     　　const getPinSize = (size: number) =>{
       switch (size){
-        case (size && size > 1 ):
+        case (size && size > 80 ):
           return classes.PinXs
-        case (size && size > 20 ):
+        case (size && size > 60 ):
           return classes.PinSm
         case (size && size > 40 ):
           return classes.PinMd
-        case (size && size > 60 ):
+        case (size && size > 20 ):
           return classes.PinLg
-        case (size && size > 80):
+        case (size && size > 10):
           return classes.PinXl
         default: 
           return classes.PinXs

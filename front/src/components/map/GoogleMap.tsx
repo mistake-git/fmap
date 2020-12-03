@@ -58,24 +58,26 @@ const GoogleMap = (props: any) => {
       setCurrentKey(keyNumber)
     }
   }
+
   
   //サイズ空ピンの大きさを求める
 　const getPinSize = (size: number) =>{
     switch (size){
-      case (size && size > 1 ):
+      case (size && size >= 1 && 20 >= size):
         return classes.PinXs
-      case (size && size > 20 ):
+      case (size && size >= 21 && 40 >= size):
         return classes.PinSm
-      case (size && size > 40 ):
+      case (size && size >= 41  && 60 >= size):
         return classes.PinMd
-      case (size && size > 60 ):
+      case (size && size >= 61 && 80 >= size):
         return classes.PinLg
-      case (size && size > 80):
+      case (size && size >= 81 ):
         return classes.PinXl
       default: 
         return classes.PinXs
     }
   }
+
 
   const createMapOptions = (maps: Maps): MapOptions => {
     return {
