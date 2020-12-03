@@ -71,6 +71,7 @@ export default function Comments(props: any) {
             <CommentEditForm
               handleFormClose={handleFormClose}
               comment={comment} 
+              updateComment={props.updateComment}
             />
           }
         </React.Fragment>

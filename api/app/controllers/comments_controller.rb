@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post, only: [:index, :create, :destroy]
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:update, :destroy]
 
   def index 
     comments =  @post.comments.order(created_at: :desc)
@@ -19,6 +19,11 @@ class CommentsController < ApplicationController
   end
 
   def update
+    if @comment = Comment.update(comment_params)
+      render json: @comment
+    else
+      render json: @comment.error
+    end
   end
 
   def destroy

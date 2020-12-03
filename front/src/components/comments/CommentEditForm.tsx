@@ -36,7 +36,7 @@ export default function CommentEditForm(props: any) {
               const comment ={
                 content: value.content
               }
-             
+              props.updateComment(props.comment.id,comment)
             } catch (error) {
               alert(error.message);
             }
