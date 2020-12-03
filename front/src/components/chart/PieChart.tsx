@@ -2,8 +2,6 @@ import React from 'react';
 import * as ReactDOM from "react-dom"
 import { Pie } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { string } from 'yup';
 
 export default function PieChart(props: any) {
 
