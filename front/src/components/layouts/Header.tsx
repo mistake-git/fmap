@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { AccountCircle} from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 import auth from "../../plugins/firebase";
-import axios from 'axios'
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import CreateIcon from '@material-ui/icons/Create';
 import GroupIcon from '@material-ui/icons/Group';

@@ -7,7 +7,6 @@ import {
 import Template from "../../components/layouts/Template";
 import UserMain from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
-import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";

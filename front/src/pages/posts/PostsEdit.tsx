@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from "react";
 import { Container} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
-import axios from 'axios'
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 import PostModel from "../../models/PostModel";

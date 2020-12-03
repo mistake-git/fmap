@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from "react";
 import { Container, Grid } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
-import axios from 'axios'
 import PostModel from "../../models/PostModel";
 import Loading from "../../components/layouts/Loading";
 import { myHttpClient } from "../../plugins/axios";

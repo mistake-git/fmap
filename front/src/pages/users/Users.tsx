@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import {　Container, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
-import axios from 'axios'
 import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import Loading from "../../components/layouts/Loading";

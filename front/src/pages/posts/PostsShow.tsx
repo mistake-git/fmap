@@ -3,7 +3,6 @@ import { Container, Divider, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
-import axios from 'axios'
 import PostData from "../../components/posts/PostData";
 import PostChart from "../../components/posts/PostChart";
 import UserBar from "../../components/users/UserBar";
