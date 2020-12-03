@@ -17,6 +17,7 @@ export default function CommentContainer(props: any) {
       comments={props.comments}
       post={props.post} 
       destroyComment={props.destroyComment}
+      updateComment={props.updateComment}
       user={props.user}
      />
     </React.Fragment>

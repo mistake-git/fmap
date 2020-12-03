@@ -38,6 +38,7 @@ export default function Comments(props: any) {
   
   return (
     <React.Fragment>
+      
       {props.comments.map((comment: CommentModel) => {
         return(
           <React.Fragment>

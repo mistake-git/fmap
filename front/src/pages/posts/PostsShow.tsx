@@ -169,15 +169,16 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const updateComment = async(id: number, comment: CommentModel) => {
+  const updateComment = async(id: number, comment: any) => {
     try { 
-    await
-    　  myHttpClient.patch(`/posts/${props.match.params.id}/comments${id}`,{comment: comment})
+      await
+    　  myHttpClient.patch(`/posts/${props.match.params.id}/comments/${id}`,{comment: comment})
       .then((response) => {
         const commentIndex = comments.findIndex((x: any) => x.id === id)
         const updateComments = update(comments, {[commentIndex]: {$set: response.data}})
         setComments(updateComments)
         console.log('update comment')
+        console.log(updateComments)
         setShowFlash(true)
         setMessage('コメントを編集しました')
         setSeverity('success')
@@ -246,7 +247,7 @@ const PostsShow = (props: any) => {
 
   return (
     <React.Fragment>
-      {post && postUser && feedData && dateData && timeData && sizeData ? 
+      {post && postUser && feedData && dateData && timeData && sizeData  ? 
       <Template>
         {showFlash && message && severity &&
           <FlashAlert
