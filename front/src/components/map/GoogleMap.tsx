@@ -10,27 +10,27 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    xs: {
+    PinXs: {
       width: theme.spacing(3),
       height: theme.spacing(3),
       border: '2px solid #FF0000'
     },
-    sm: {
+    PinSm: {
       width: theme.spacing(3.5),
       height: theme.spacing(3.5),
       border: '2px solid #0000FF'
     },
-    md: {
+    PinMd: {
       width: theme.spacing(4),
       height: theme.spacing(4),
       border: '2px solid  #C47222'
     },
-    lg: {
+    PinLg: {
       width: theme.spacing(4.5),
       height: theme.spacing(4.5),
       border: '2px solid #C0C0C0'
     },
-    xl: {
+    PinXl: {
       width: theme.spacing(5),
       height: theme.spacing(5),
       border: '2px solid #FFD700'
@@ -63,16 +63,17 @@ const GoogleMap = (props: any) => {
 　const getPinSize = (size: number) =>{
     switch (size){
       case (size && size > 1 ):
-        return classes.xs; 
+        return classes.PinXs
       case (size && size > 20 ):
-        return classes.sm;
+        return classes.PinSm
       case (size && size > 40 ):
-        return classes.md;
+        return classes.PinMd
       case (size && size > 60 ):
-        return classes.lg;
+        return classes.PinLg
       case (size && size > 80):
-        return classes.xl;
-      default: return classes.xs
+        return classes.PinXl
+      default: 
+        return classes.PinXs
     }
   }
 
