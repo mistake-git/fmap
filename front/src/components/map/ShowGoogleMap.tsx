@@ -37,55 +37,19 @@ interface PinProps {
   lng: number,
   icon: any
 }
-const GoogleMap = (props: any) => {
+const ShowGoogleMap = (props: any) => {
   const [currentKey, setCurrentKey] = useState(-1)
   const classes = useStyles();
 
   const pins: PinProps[] = [
     {
-      lat: 43.4543412,
-      lng: 143.355018,
+      lat: props.post.latitude,
+      lng: props.post.longitude,
       icon:
         <Link to={"/posts/1"}>
           <Avatar alt="R" src="./fish.jpg" className={classes.sm}/>
         </Link>
     },
-    {
-      lat: 45.0543451,
-      lng: 143.4293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.xs} />
-        </Link>
-    },
-    {
-      lat: 46.0543451,
-      lng: 143.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.lg} />
-        </Link>
-    },
-    {
-      lat: 48.0543451,
-      lng: 141.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.xl} />
-        </Link>
-    },
-    {
-      lat: 46.0543451,
-      lng: 144.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.md} />
-        </Link>
-    }
   ]
 
   const apiLoaded = (map: any, maps: any, pins: any) => {
@@ -361,4 +325,4 @@ const GoogleMapWrapper = styled.div`
   width: 100%;
 `
 
-export default GoogleMap
+export default ShowGoogleMap

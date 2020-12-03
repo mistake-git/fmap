@@ -19,6 +19,7 @@ import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import FlashAlert from "../../components/layouts/FlashAlert";
 import { myHttpClient } from "../../plugins/axios";
+import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 
 
 
@@ -293,7 +294,9 @@ const PostsShow = (props: any) => {
                 <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
                   {post.name}の釣れた場所
                 </Box>
-                <GoogleMap/>
+                <ShowGoogleMap
+                  post={post}
+                />
               </Box>
               <UserBar user={postUser}/>
               {post.memo}
