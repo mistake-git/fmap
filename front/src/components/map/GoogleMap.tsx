@@ -7,30 +7,37 @@ import { Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     xs: {
       width: theme.spacing(3),
       height: theme.spacing(3),
+      border: '2px solid #FF0000'
     },
     sm: {
       width: theme.spacing(3.5),
       height: theme.spacing(3.5),
+      border: '2px solid #0000FF'
     },
     md: {
       width: theme.spacing(4),
       height: theme.spacing(4),
+      border: '2px solid  #C47222'
     },
     lg: {
       width: theme.spacing(4.5),
       height: theme.spacing(4.5),
+      border: '2px solid #C0C0C0'
     },
     xl: {
       width: theme.spacing(5),
       height: theme.spacing(5),
+      border: '2px solid #FFD700'
     },
   }),
 );
+
 
 interface PinProps {
   lat: number,
@@ -40,53 +47,6 @@ interface PinProps {
 const GoogleMap = (props: any) => {
   const [currentKey, setCurrentKey] = useState(-1)
   const classes = useStyles();
-
-  const pins: PinProps[] = [
-    {
-      lat: 43.4543412,
-      lng: 143.355018,
-      icon:
-        <Link to={"/posts/1"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.sm}/>
-        </Link>
-    },
-    {
-      lat: 45.0543451,
-      lng: 143.4293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.xs} />
-        </Link>
-    },
-    {
-      lat: 46.0543451,
-      lng: 143.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.lg} />
-        </Link>
-    },
-    {
-      lat: 48.0543451,
-      lng: 141.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.xl} />
-        </Link>
-    },
-    {
-      lat: 46.0543451,
-      lng: 144.3528293,
-      
-      icon:
-        <Link to={"/posts/2"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.md} />
-        </Link>
-    }
-  ]
 
   const apiLoaded = (map: any, maps: any, pins: any) => {
   }
@@ -102,21 +62,17 @@ const GoogleMap = (props: any) => {
   //サイズ空ピンの大きさを求める
 　const getPinSize = (size: number) =>{
     switch (size){
-      case (size && size >= 0 && size <= 20 ):
-        console.log('xs');
-        break;
-      case  (size && size >= 21 && size <= 40 ):
-        console.log('sm');
-        break;
-      case  (size && size >= 41 && size <= 60 ):
-        console.log('md');
-        break;
-      case  (size && size >= 61 && size <= 80 ):
-        console.log('lg');
-        break;
-      case  (size && size >= 81):
-        console.log('xl');
-        break;
+      case (size && size > 1 ):
+        return classes.xs; 
+      case (size && size > 20 ):
+        return classes.sm;
+      case (size && size > 40 ):
+        return classes.md;
+      case (size && size > 60 ):
+        return classes.lg;
+      case (size && size > 80):
+        return classes.xl;
+      default: return classes.xs
     }
   }
 
@@ -321,22 +277,20 @@ const GoogleMap = (props: any) => {
           }}
           defaultZoom={8}
           options={createMapOptions}
-          onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, pins)}
+          onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, props.posts)}
           onChildClick={(key: string) => changeBalloon(key)}
         >
         {
-          pins.map((
-            pin: {
-              lat: number,
-              lng: number,
-              icon: any
-            },
-            index: number) => (
+          props.posts.map((
+            post: any) => (
             <Pin
-              lat={pin.lat}
-              lng={pin.lng}
+              key={post.id}
+              lat={post.latitude}
+              lng={post.longitude}
             >
-            {pin.icon}
+              <Link to={`/posts/${post.id}`}>
+                <Avatar alt={post.name} src="./fish.jpg" className={getPinSize(post.size)}/>
+              </Link>
             </Pin>
           ))
         }
