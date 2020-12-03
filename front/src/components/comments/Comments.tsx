@@ -22,8 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
 export default function Comments(props: any) {
   const classes = useStyles();
   const [formOpen, setFormOpen]= React.useState<boolean>(false);
