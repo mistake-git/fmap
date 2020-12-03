@@ -50,6 +50,8 @@ const PostsNew = (props: any) => {
     time: "",
     status: "",
     user_id: "",
+    latitude: "",
+    longitude: ""
   }
 
   return (

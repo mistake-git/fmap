@@ -69,7 +69,8 @@ const PostsEdit = (props: any) => {
     date: post.date,
     time: post.time,
     status: post.statu,
-    user_id: 1,
+    latitude: post.latitude,
+    longitude: post.longitude
   }
   
   return (

@@ -17,8 +17,9 @@ import {
 } from "@material-ui/core";
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
-import LocatePicker from './LocatePicker';
 import LocatePickerModal from './LocatePickerModal';
+import MapPicker from 'react-google-map-picker'
+ 
 
 
 export const PostSchema = Yup.object().shape({
@@ -157,6 +158,8 @@ export default function PostNewForm(props: any) {
                   time: value.time,  
                   status: value.status,
                   user_id: props.user.id,
+                  latitude: location.lat,
+                  longitude: location.lng
                 }
               await
                 props.action(post);
@@ -311,6 +314,19 @@ export default function PostNewForm(props: any) {
           />
         </CardContent>   
 			</Card>
+        <React.Fragment>
+        <button onClick={handleResetLocation}>Reset Location</button>
+        <label>Latitute:</label><input type='text' value={location.lat} disabled/>
+        <label>Longitute:</label><input type='text' value={location.lng} disabled/>
+        <label>Zoom:</label><input type='text' value={zoom} disabled/>
+        <MapPicker defaultLocation={defaultLocation}
+          zoom={zoom}
+          style={{height:'700px'}}
+          onChangeLocation={handleChangeLocation} 
+          onChangeZoom={handleChangeZoom}
+          apiKey='AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
+        />
+      </React.Fragment>
 		</React.Fragment>
 	);
 }

@@ -10,6 +10,9 @@ interface PostModel {
   feed?: string
   memo?: string
   status?: string
+  latitude?:number
+  longitude?:number
+  
   comments: CommentModel[]
   user: UserModel
 }
