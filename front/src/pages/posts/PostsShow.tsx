@@ -298,7 +298,7 @@ const PostsShow = (props: any) => {
               </Box>
               <UserBar user={postUser}/>
               {post.memo}
-              {comments &&
+              { comments &&
               <CommentContainer
                 post={post}
                 user={user}

@@ -30,7 +30,6 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
-
   private
 
   def comment_params
