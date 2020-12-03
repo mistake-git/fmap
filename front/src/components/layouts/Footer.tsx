@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -32,7 +32,7 @@ export default function Footer(props: any) {
   const { description, title } = props;
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Divider />
       <footer className={classes.footer}>
         <Container maxWidth="lg">
@@ -45,7 +45,7 @@ export default function Footer(props: any) {
           <Copyright />
         </Container>
       </footer>
-    </React.Fragment>
+    </Fragment>
     
   );
 }

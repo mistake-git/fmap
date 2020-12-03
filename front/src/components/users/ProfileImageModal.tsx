@@ -1,6 +1,7 @@
 import React, {
   ChangeEvent,
   createRef,
+  Fragment
 } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -103,7 +104,7 @@ export default function ProfileUserModal(props: any) {
       >
         <DialogTitle id="alert-dialog-title">プロフィールイメージを編集</DialogTitle>
         {src &&
-          <React.Fragment>
+          <Fragment>
             <Grid container spacing={3}>
               <Grid item xs={2}></Grid>
               <Grid item xs={8}>
@@ -118,7 +119,7 @@ export default function ProfileUserModal(props: any) {
               </Grid>
               <Grid item xs={2}></Grid>
             </Grid>
-          </React.Fragment> 
+          </Fragment> 
         }
          <Formik
         　 enableReinitialize={true}

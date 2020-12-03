@@ -1,6 +1,7 @@
 import React, {
   ChangeEvent,
   createRef,
+  Fragment
 } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -125,11 +126,11 @@ export default function PostNewForm(props: any) {
   ]
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			<Card className={classes.root}>
         <CardContent>
           {src &&
-            <React.Fragment>
+            <Fragment>
               <Grid container spacing={5}>
                 <Grid item md={3}></Grid>
                 <Grid item md={6}>
@@ -144,7 +145,7 @@ export default function PostNewForm(props: any) {
                 </Grid>
                 <Grid item md={3}></Grid>
               </Grid>
-            </React.Fragment> 
+            </Fragment> 
           }
           <Formik
           　enableReinitialize={true}
@@ -320,7 +321,7 @@ export default function PostNewForm(props: any) {
           />
         </CardContent>   
 			</Card>
-      <React.Fragment>
+      <Fragment>
         <button onClick={handleResetLocation}>Reset Location</button>
         <label>Latitute:</label><input type='text' value={location.lat} disabled/>
         <label>Longitute:</label><input type='text' value={location.lng} disabled/>
@@ -332,7 +333,7 @@ export default function PostNewForm(props: any) {
           onChangeZoom={handleChangeZoom}
           apiKey='AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
         />
-      </React.Fragment>
-		</React.Fragment>
+      </Fragment>
+		</Fragment>
 	);
 }

@@ -1,11 +1,11 @@
-import React　from "react";
+import React, {Fragment}　from "react";
 import CommentForm from './CommentForm';
 import Comments from './Comments';
 
 
 export default function CommentContainer(props: any) {
   return (
-    <React.Fragment>
+    <Fragment>
      <CommentForm 
       comments={props.comments}
       commentsCount={props.comments.length}
@@ -20,6 +20,6 @@ export default function CommentContainer(props: any) {
       updateComment={props.updateComment}
       user={props.user}
      />
-    </React.Fragment>
+    </Fragment>
   );
 }

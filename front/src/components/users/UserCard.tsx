@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{Fragment} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import UserModel from '../../models/UserModel';
 import { Avatar, Box} from '@material-ui/core';
@@ -39,7 +39,7 @@ interface Props {
 export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
-    <React.Fragment>
+    <Fragment>
       <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
         <Avatar alt={props.user.name} src={props.user.image} className={classes.avater} />
         <Box fontWeight="bold" className={classes.userName} my={1}>
@@ -54,7 +54,7 @@ export default function PostCard(props: any) {
           }
         </Box>
       </Link>
-    </React.Fragment>  
+    </Fragment>  
 	);
 }
 

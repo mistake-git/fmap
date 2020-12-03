@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -35,11 +35,11 @@ export default function Comments(props: any) {
   }
   
   return (
-    <React.Fragment>
+    <Fragment>
       
       {props.comments.map((comment: CommentModel) => {
         return(
-          <React.Fragment>
+          <Fragment>
           <List className={classes.root} key={comment.id}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
@@ -73,10 +73,10 @@ export default function Comments(props: any) {
               updateComment={props.updateComment}
             />
           }
-        </React.Fragment>
+        </Fragment>
         )
       })}
-    </React.Fragment>
+    </Fragment>
   );
 }
 

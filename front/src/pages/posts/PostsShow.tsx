@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Container, Divider, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
@@ -246,7 +246,7 @@ const PostsShow = (props: any) => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       {post && postUser && feedData && dateData && timeData && sizeData  ? 
       <Template>
         {showFlash && message && severity &&
@@ -316,7 +316,7 @@ const PostsShow = (props: any) => {
       </Template>: 
       <Loading/>
       }
-    </React.Fragment>
+    </Fragment>
     
   );
 };

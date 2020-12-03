@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import Divider from '@material-ui/core/Divider';
 import { Box, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
@@ -24,7 +24,7 @@ export default function PostData(props: any) {
   ];
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Box fontWeight="fontWeightBold" mb={2}　fontSize={16}>
         {props.post.name}のデータ
       </Box>
@@ -41,6 +41,6 @@ export default function PostData(props: any) {
           </Grid>
         </Grid>
       ))}
-    </React.Fragment>
+    </Fragment>
   );
 }

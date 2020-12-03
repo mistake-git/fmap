@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
@@ -70,7 +70,7 @@ export default function IntroductionForm(props: any) {
               />
               <Grid container justify="flex-end">
                 <Grid>
-                  <React.Fragment>
+                  <Fragment>
                     <Button
                       className={classes.marginRight}
                       variant="contained"
@@ -90,7 +90,7 @@ export default function IntroductionForm(props: any) {
                     >
                       登録
                     </Button>                    
-                  </React.Fragment>
+                  </Fragment>
                 </Grid>
               </Grid>
             </Form>

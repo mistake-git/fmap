@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PieChart from "../chart/PieChart"
 import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
@@ -68,7 +68,7 @@ export default function PostData(props: any) {
   ]
 
   return(
-    <React.Fragment>
+    <Fragment>
       <Divider/>
       <Grid container style={{ marginTop: "1em" }}>
         {datalist.map((data) => (
@@ -80,6 +80,6 @@ export default function PostData(props: any) {
           </Grid>
         ))}
       </Grid>
-    </React.Fragment>
+    </Fragment>
   )
 }

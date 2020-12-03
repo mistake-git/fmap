@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -60,7 +60,7 @@ export default function Header(props: any) {
   }, []);
 
 return (
-  <React.Fragment>
+  <Fragment>
     <Toolbar className={classes.toolbar}>
       <Typography
         align="left"
@@ -112,7 +112,7 @@ return (
         /><Box display={{ xs: 'none', md: 'inline' }}>ログアウト</Box>
       </Button>
     </Toolbar>
-  </React.Fragment>
+  </Fragment>
   );
 }
 Header.propTypes = {

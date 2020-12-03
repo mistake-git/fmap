@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -72,9 +72,9 @@ export default function CommentMenu(props: any) {
         }}
       >
         {options.map((option) => (
-          <React.Fragment key={option.id}>
+          <Fragment key={option.id}>
              {option.item}
-          </React.Fragment>
+          </Fragment>
         ))}
       </Menu>
     </div>

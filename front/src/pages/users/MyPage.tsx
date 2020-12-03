@@ -1,4 +1,4 @@
-import React, {useEffect,useContext } from "react";
+import React, {useEffect, useContext, Fragment } from "react";
 import {
   Container,
   Grid,
@@ -85,7 +85,7 @@ const MyPage = (props: any) => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       { loading &&
         <Loading/>
       }
@@ -128,7 +128,7 @@ const MyPage = (props: any) => {
         </Container>
       </Template>
       }
-    </React.Fragment>
+    </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React　from "react";
+import React, {Fragment}　from "react";
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import * as Yup from "yup";
@@ -93,7 +93,7 @@ export default function CommentForm(props: any) {
               <Grid container justify="flex-end">
                 <Grid>
                   {buttonOpen &&
-                  <React.Fragment>
+                  <Fragment>
                     <Button
                       className={classes.marginRight}
                       variant="contained"
@@ -113,7 +113,7 @@ export default function CommentForm(props: any) {
                     >
                       コメント
                     </Button>                    
-                  </React.Fragment>
+                  </Fragment>
                   }
                 </Grid>
               </Grid>

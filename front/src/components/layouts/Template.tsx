@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, Fragment } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -27,14 +27,14 @@ const Template =(props: any) => {
 	}, [currentUser]);
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			<CssBaseline />
 			<Header title="Fishing Map" />
         <Container maxWidth="xl" className={classes.mainGrid}>
           {props.children}
         </Container>
 			<Footer title="Fishing Map" />
-		</React.Fragment>
+		</Fragment>
 	);
 }
 

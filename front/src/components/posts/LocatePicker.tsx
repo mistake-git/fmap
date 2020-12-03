@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import MapPicker from 'react-google-map-picker'
  
 const DefaultLocation = { lat: 35, lng: 135};
@@ -25,7 +25,7 @@ const LocatePicker = () => {
   }
  
   return (
-    <React.Fragment>
+    <Fragment>
       <button onClick={handleResetLocation}>Reset Location</button>
       <label>Latitute:</label><input type='text' value={location.lat} disabled/>
       <label>Longitute:</label><input type='text' value={location.lng} disabled/>
@@ -37,7 +37,7 @@ const LocatePicker = () => {
         onChangeZoom={handleChangeZoom}
         apiKey='AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
       />
-    </React.Fragment>
+    </Fragment>
   );
 }
  

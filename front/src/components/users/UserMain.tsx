@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@material-ui/core/Box';
@@ -60,15 +60,15 @@ export default function UserMain(props: any) {
           }
         </div>
         <ListItemText primary={
-        <React.Fragment>
-        <Box
-          fontSize="h6.fontSize"
-          fontWeight="fontWeightBold"
-          ml={2}
-        >
-        {props.user.name}
-        </Box>
-      </React.Fragment>
+        <Fragment>
+          <Box
+            fontSize="h6.fontSize"
+            fontWeight="fontWeightBold"
+            ml={2}
+          >
+          {props.user.name}
+          </Box>
+        </Fragment>
         }/>
       </ListItem>
     </List>
