@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container, Grid } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
@@ -12,8 +12,8 @@ interface State {
 }
 const Posts = (props: any) => {
  
-  const [posts, setPosts] = React.useState<PostModel[] | null>(null)
-  const [loading, setLoading] = React.useState(true);
+  const [posts, setPosts] = useState<PostModel[] | null>(null)
+  const [loading, setLoading] = useState(true);
 　
   //非同期で投稿をAPIから取得
   const getPosts = async() => {

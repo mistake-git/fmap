@@ -1,7 +1,8 @@
 import React, {
   ChangeEvent,
   createRef,
-  Fragment
+  Fragment,
+  useState
 } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
 
 
 export default function ProfileUserModal(props: any) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -52,10 +53,10 @@ export default function ProfileUserModal(props: any) {
   const handleClose = () => {
     setOpen(false);
   };
-  const [src, setSrc] = React.useState('')
+  const [src, setSrc] = useState('')
 
   const ref = createRef<HTMLInputElement>()
-  const [image, setImage] = React.useState<File | null>(null)
+  const [image, setImage] = useState<File | null>(null)
 
   const onClick = () => {
     if (ref.current) {

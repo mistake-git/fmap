@@ -1,4 +1,4 @@
-import React, {Fragment}　from "react";
+import React, {Fragment, useState}　from "react";
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import * as Yup from "yup";
@@ -44,7 +44,7 @@ export const CommentSchema = Yup.object().shape({
 export default function CommentForm(props: any) {
 
   const classes = useStyles();
-  const [buttonOpen, setButtonOpen]= React.useState(false);
+  const [buttonOpen, setButtonOpen]= useState(false);
 
   
   return (

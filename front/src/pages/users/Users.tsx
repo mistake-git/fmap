@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {　Container, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserModel from "../../models/UserModel";
@@ -13,8 +13,8 @@ interface State {
 
 const Users = (props: any) => {
  
-  const [users, setUsers] = React.useState<UserModel[] | null>(null)
-  const [loading, setLoading] = React.useState(true);
+  const [users, setUsers] = useState<UserModel[] | null>(null)
+  const [loading, setLoading] = useState(true);
 
   const getUsers = async() => {
     try { 

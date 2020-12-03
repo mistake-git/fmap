@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
@@ -7,7 +7,7 @@ import UserModel from "../../models/UserModel";
 import { myHttpClient } from "../../plugins/axios";
 
 const PostsNew = (props: any) => {
-  const [user, setUser] = React.useState<UserModel | null>(null);
+  const [user, setUser] = useState<UserModel | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {

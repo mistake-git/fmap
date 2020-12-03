@@ -1,7 +1,8 @@
 import React, {
   ChangeEvent,
   createRef,
-  Fragment
+  Fragment,
+  useState,
 } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -66,12 +67,12 @@ export default function PostNewForm(props: any) {
   const DefaultZoom = 10;
 
   const classes = useStyles();
-  const [image, setImage] = React.useState<File | null>(null)
-  const [src, setSrc] = React.useState('')
+  const [image, setImage] = useState<File | null>(null)
+  const [src, setSrc] = useState('')
   const ref = createRef<HTMLInputElement>()
-  const [defaultLocation, setDefaultLocation] = React.useState(DefaultLocation);
-  const [location, setLocation] = React.useState(defaultLocation);
-  const [zoom, setZoom] = React.useState(DefaultZoom);
+  const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
+  const [location, setLocation] = useState(defaultLocation);
+  const [zoom, setZoom] = useState(DefaultZoom);
  
 
   const handleChangeLocation = (lat: number, lng: number) => {

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Template from '../components/layouts/Template'
 import GoogleMap from '../components/map/GoogleMap'
 import PostModel from "../models/PostModel";
@@ -8,8 +8,8 @@ import { myHttpClient } from "../plugins/axios";
 
 const Home = (props: any) => {
 
-  const [posts, setPosts] = React.useState<PostModel[] | null>(null)
-  const [loading, setLoading] = React.useState(true);
+  const [posts, setPosts] = useState<PostModel[] | null>(null)
+  const [loading, setLoading] = useState(true);
 　
   //非同期で投稿をAPIから取得
   const getPosts = async() => {

@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import { Container, Divider, Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
@@ -9,7 +9,6 @@ import UserBar from "../../components/users/UserBar";
 import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
-import GoogleMap from "../../components/map/GoogleMap";
 import PostModel from "../../models/PostModel";
 import CommentModel from "../../models/CommentModel";
 import UserModel from "../../models/UserModel";
@@ -25,20 +24,20 @@ import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 
 const PostsShow = (props: any) => {
 
-  const [user, setUser] = React.useState<UserModel | null>(null);
-  const [post, setPost] = React.useState<PostModel | null>(null);
-  const [feedData, setFeedData] = React.useState<any | null>(null);
-  const [timeData, setTimeData] = React.useState<any | null>(null);
-  const [dateData, setDateData] = React.useState<any | null>(null);
-  const [sizeData, setSizeData] = React.useState<any | null>(null);
-  const [postUser, setPostUser] = React.useState<UserModel | null>(null);
-  const [comments, setComments] = React.useState<any>([]);
-  const [likes, setLikes] = React.useState<any>([]);
-  const [like, setLike] = React.useState<LikeModel | null>(null);
-  const [likesUsers, setLikesUsers] = React.useState<UserModel[] | null>(null);
-  const [showFlash, setShowFlash] = React.useState(true);
-  const [message, setMessage] = React.useState<string>('');
-  const [severity, setSeverity] = React.useState<undefined | 'success' | 'error' >(undefined);
+  const [user, setUser] = useState<UserModel | null>(null);
+  const [post, setPost] = useState<PostModel | null>(null);
+  const [feedData, setFeedData] = useState<any | null>(null);
+  const [timeData, setTimeData] = useState<any | null>(null);
+  const [dateData, setDateData] = useState<any | null>(null);
+  const [sizeData, setSizeData] = useState<any | null>(null);
+  const [postUser, setPostUser] = useState<UserModel | null>(null);
+  const [comments, setComments] = useState<any>([]);
+  const [likes, setLikes] = useState<any>([]);
+  const [like, setLike] = useState<LikeModel | null>(null);
+  const [likesUsers, setLikesUsers] = useState<UserModel[] | null>(null);
+  const [showFlash, setShowFlash] = useState(true);
+  const [message, setMessage] = useState<string>('');
+  const [severity, setSeverity] = useState<undefined | 'success' | 'error' >(undefined);
 
 
 

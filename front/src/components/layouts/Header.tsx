@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props: any) {
   const classes = useStyles();
-  const [user, setUser] = React.useState<any>('');
+  const [user, setUser] = useState<any>('');
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {

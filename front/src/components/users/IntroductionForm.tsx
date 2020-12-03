@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment, useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 export default function IntroductionForm(props: any) {
 
   const classes = useStyles();
-  const [FormOpen, setFormOpen]= React.useState(false);
+  const [FormOpen, setFormOpen]= useState(false);
 
   return (
     <div>
