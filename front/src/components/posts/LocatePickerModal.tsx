@@ -61,8 +61,8 @@ export default function LocatePickerModal() {
               地図で釣った場所を選択してください
             </Typography>
           </Toolbar>
-          <LocatePicker/>
         </AppBar>
+        <LocatePicker/>
       </Dialog>
     </div>
   );

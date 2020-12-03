@@ -320,7 +320,7 @@ export default function PostNewForm(props: any) {
           />
         </CardContent>   
 			</Card>
-        <React.Fragment>
+      <React.Fragment>
         <button onClick={handleResetLocation}>Reset Location</button>
         <label>Latitute:</label><input type='text' value={location.lat} disabled/>
         <label>Longitute:</label><input type='text' value={location.lng} disabled/>
