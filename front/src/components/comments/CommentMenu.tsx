@@ -19,11 +19,15 @@ export default function CommentMenu(props: any) {
 
   const handleClose = () => {
     setAnchorEl(null);
-    props.destroyComment(props.comment.id)
   };
 
   const handleFormOpen = () =>{
     props.handleFormOpen()
+    setAnchorEl(null);
+  }
+
+  const handleDelete = () =>{
+    props.destroyComment(props.comment.id)
     setAnchorEl(null);
   }
 
@@ -38,7 +42,7 @@ export default function CommentMenu(props: any) {
     {
       id:2,
       item:
-      <MenuItem onClick={handleClose}>
+      <MenuItem onClick={handleDelete}>
         <Delete color="action"
         />削除
       </MenuItem>
