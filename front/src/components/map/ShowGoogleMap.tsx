@@ -9,28 +9,34 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    xs: {
+    PinXs: {
       width: theme.spacing(3),
       height: theme.spacing(3),
+      border: '2px solid #FF0000'
     },
-    sm: {
+    PinSm: {
       width: theme.spacing(3.5),
       height: theme.spacing(3.5),
+      border: '2px solid #0000FF'
     },
-    md: {
+    PinMd: {
       width: theme.spacing(4),
       height: theme.spacing(4),
+      border: '2px solid  #C47222'
     },
-    lg: {
+    PinLg: {
       width: theme.spacing(4.5),
       height: theme.spacing(4.5),
+      border: '2px solid #C0C0C0'
     },
-    xl: {
+    PinXl: {
       width: theme.spacing(5),
       height: theme.spacing(5),
+      border: '2px solid #FFD700'
     },
   }),
 );
+
 
 interface PinProps {
   lat: number,
@@ -41,13 +47,32 @@ const ShowGoogleMap = (props: any) => {
   const [currentKey, setCurrentKey] = useState(-1)
   const classes = useStyles();
 
+
+    //サイズ空ピンの大きさを求める
+    　　const getPinSize = (size: number) =>{
+      switch (size){
+        case (size && size > 1 ):
+          return classes.PinXs
+        case (size && size > 20 ):
+          return classes.PinSm
+        case (size && size > 40 ):
+          return classes.PinMd
+        case (size && size > 60 ):
+          return classes.PinLg
+        case (size && size > 80):
+          return classes.PinXl
+        default: 
+          return classes.PinXs
+      }
+    }
+
   const pins: PinProps[] = [
     {
       lat: props.post.latitude,
       lng: props.post.longitude,
       icon:
         <Link to={"/posts/1"}>
-          <Avatar alt="R" src="./fish.jpg" className={classes.sm}/>
+          <Avatar alt="R" src="../fish.jpg" className={getPinSize(props.post.size)}/>
         </Link>
     },
   ]
@@ -63,26 +88,7 @@ const ShowGoogleMap = (props: any) => {
     }
   }
   
-  //サイズ空ピンの大きさを求める
-　const getPinSize = (size: number) =>{
-    switch (size){
-      case (size && size >= 0 && size <= 20 ):
-        console.log('xs');
-        break;
-      case  (size && size >= 21 && size <= 40 ):
-        console.log('sm');
-        break;
-      case  (size && size >= 41 && size <= 60 ):
-        console.log('md');
-        break;
-      case  (size && size >= 61 && size <= 80 ):
-        console.log('lg');
-        break;
-      case  (size && size >= 81):
-        console.log('xl');
-        break;
-    }
-  }
+
 
   const createMapOptions = (maps: Maps): MapOptions => {
     return {
