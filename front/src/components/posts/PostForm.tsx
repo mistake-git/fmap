@@ -17,6 +17,9 @@ import {
 } from "@material-ui/core";
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
+import LocatePicker from './LocatePicker';
+import LocatePickerModal from './LocatePickerModal';
+
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
@@ -45,14 +48,37 @@ const useStyles = makeStyles({
 });
 
 interface State {
-	image?: string;
+  image?: string;
 }
 
+const DefaultLocation = { lat: 35, lng: 135};
+const DefaultZoom = 10;
+
 export default function PostNewForm(props: any) {
+
   const classes = useStyles();
   const [image, setImage] = React.useState<File | null>(null)
   const [src, setSrc] = React.useState('')
   const ref = createRef<HTMLInputElement>()
+  const [defaultLocation, setDefaultLocation] = React.useState(DefaultLocation);
+  const [location, setLocation] = React.useState(defaultLocation);
+  const [zoom, setZoom] = React.useState(DefaultZoom);
+ 
+
+  const handleChangeLocation = (lat: number, lng: number) => {
+    setLocation({lat:lat, lng:lng}) 
+  }
+  
+  const handleChangeZoom = (newZoom: number) =>{
+    setZoom(newZoom);
+  }
+ 
+  const handleResetLocation =() =>{
+    setDefaultLocation({ ... DefaultLocation});
+    setZoom(DefaultZoom);
+  }
+ 
+  
  
   const onClick = () => {
     if (ref.current) {
@@ -262,6 +288,9 @@ export default function PostNewForm(props: any) {
                         shrink: true,
                       }}
                     />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <LocatePickerModal/>
                   </Grid>
                   <Grid item xs={12}>
                     <Button
