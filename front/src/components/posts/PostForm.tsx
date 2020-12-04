@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 interface State {
 
 }
@@ -79,8 +78,8 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function PostNewForm(props: any) {
 
+export default function PostNewForm(props: any) {
   const DefaultLocation = { 
     lat: 35, 
     lng: 135
@@ -91,9 +90,7 @@ export default function PostNewForm(props: any) {
     lng: number
   }
 
-  
   const DefaultZoom = 10;
-
   const classes = useStyles();
   const [image, setImage] = useState<File | null>(null)
   const [src, setSrc] = useState('')
@@ -346,12 +343,11 @@ export default function PostNewForm(props: any) {
                               <CloseIcon />
                             </IconButton>
                             <Typography variant="h6" className={classes.title}>
-                              地図で釣った場所を選択してください
+                              地図で釣った場所を選択してください(必須)
                             </Typography>
                           </Toolbar>
                         </AppBar>
                         <Fragment>
-
                           緯度:{location.lat}
                           経度:{location.lng}
                           拡大率:{zoom} 
