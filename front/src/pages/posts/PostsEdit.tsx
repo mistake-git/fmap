@@ -72,22 +72,21 @@ const PostsEdit = (props: any) => {
     latitude: post.latitude,
     longitude: post.longitude
   }
-
-  const lat = 35;
-  const lng = 135;
   
   return (
     <Fragment>
       <Template>
         <Container maxWidth="md" style={{marginTop: "3rem"}}>
+          {post &&
           <PostForm 
             post={post} 
             user={user}
             action={updatePost}
             values={values}
-            lat={lat}
-            lng={lng}
+            lat={post.latitude}
+            lng={post.longitude}
           />
+          }
         </Container>
       </Template>
     </Fragment>
