@@ -91,7 +91,7 @@ return (
           <GroupIcon/><Box>ユーザー一覧</Box>
         </Button>
       </Link>
-      <Link to={`/mypage/${user.uid}`} className={classes.link}>
+      <Link to={`/mypages/${user.uid}`} className={classes.link}>
       　<Button className={classes.linkColor}>
           <AccountCircle /><Box>マイページ</Box>
         </Button>

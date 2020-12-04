@@ -40,7 +40,7 @@ export default function PostCard(props: any) {
   const classes = useStyles();
 	return (
     <Fragment>
-      <Link to={`/mypage/${props.user.uid}`} className={classes.topLink}>
+      <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
         <Avatar alt={props.user.name} src={props.user.image} className={classes.avater} />
         <Box fontWeight="bold" className={classes.userName} my={1}>
           {props.user.name}
