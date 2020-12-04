@@ -8,7 +8,6 @@ export default function PieChart(props: any) {
   if (props.data == null){
    return <div></div>
   }
-
   
   // オブジェクトの数だけcolorを作成
   const colors: any[]  = []
@@ -22,7 +21,6 @@ export default function PieChart(props: any) {
     }
     colors.push(color[index])
   }
-
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
 
