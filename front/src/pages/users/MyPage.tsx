@@ -76,31 +76,26 @@ const MyPage = (props: any) => {
     }
   }
 
-
   const updateProfileImage = async(user: UserModel) => {
     try { 
     await
-    myHttpClient.put(`/user_images/${props.user.uid}`,{user: user},{
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    }) 
+    myHttpClient.patch(`/user_images/${props.match.params.id}`,{user: user}) 
     .then((response) => {
       console.log(response)
       setUser(response.data);
-      props.history.push(`/mypage/${response.data.uid}`);
       setShowFlash(true)
-      setMessage('プロフィールイメージを編集しました')
+      setMessage('自己紹介を更新しました')
       setSeverity('success')
     })
     }
     catch (error) {
       alert(error.message);
       setShowFlash(true)
-      setMessage('プロフィールの編集に失敗しました')
+      setMessage('自己紹介の更新に失敗しました')
       setSeverity('error')
     }
   }
+
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -114,7 +109,7 @@ const MyPage = (props: any) => {
       { loading &&
         <Loading/>
       }
-      {user && posts && likesPosts && userData &&
+      {user && posts && likesPosts && userData && currentUser &&
        <Template>
         {showFlash && message && severity &&
           <FlashAlert
@@ -132,7 +127,7 @@ const MyPage = (props: any) => {
                 />
               <Box my={2}>
                 {user.introduction}
-                {currentUser && user.uid === currentUser.uid &&
+                {user.uid === currentUser.uid &&
                   <IntroductionForm
                     value={user.introduction}
                     updateUser={updateUser}
