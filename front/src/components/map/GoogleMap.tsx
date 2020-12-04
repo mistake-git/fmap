@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
     PinXs: {
       width: theme.spacing(3),
       height: theme.spacing(3),
-      border: '2px solid #FF0000'
+      border: '2px solid #FFFFFF'
     },
     PinSm: {
       width: theme.spacing(3.5),
