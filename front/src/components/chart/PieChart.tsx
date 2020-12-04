@@ -14,7 +14,7 @@ export default function PieChart(props: any) {
   const colors: any[]  = []
   let index :number = 0
   for (let i = 1; i <= Object.keys(props.data).length; i++) {
-    const color :any[] = ['#FF6384','#36A2EB','#FFCE56']
+    const color :any[] = ['#FF6384','#36A2EB','#FFCE56','#FFFF00']
     if (index === 3){
       index = 0
     } else {
@@ -22,7 +22,6 @@ export default function PieChart(props: any) {
     }
     colors.push(color[index])
   }
-
 
 
   const chartVal: any = Object.values(props.data); // グラフデータ（描画するデータ）
