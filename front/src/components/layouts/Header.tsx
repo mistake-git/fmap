@@ -15,7 +15,6 @@ import GroupIcon from '@material-ui/icons/Group';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import { myHttpClient } from "../../plugins/axios";
 
-
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -71,31 +70,30 @@ return (
         <img src="../../logo.png" className={classes.logo}/>
       </Link>
       </Typography>
-  
       <Link to={'/'}　className={classes.link}>
       　<Button className={classes.linkColor}>
           <PinDropIcon/>
-          <Box display={{ xs: 'none', md: 'inline' }}>地図でみる</Box>
+          <Box>地図でみる</Box>
         </Button>
       </Link>
       <Link to={'/posts'}　className={classes.link}>
       　<Button className={classes.linkColor}>
-          <ViewModuleIcon/><Box display={{ xs: 'none', md: 'inline' }}>釣果一覧</Box>
+          <ViewModuleIcon/><Box>釣果一覧</Box>
         </Button>
       </Link>
       <Link to={'/posts/new'}　className={classes.link}>
         <Button className={classes.linkColor}>
-          <CreateIcon/><Box display={{ xs: 'none', md: 'inline' }}>投稿する</Box>
+          <CreateIcon/><Box>投稿する</Box>
         </Button>
       </Link>
       <Link to={'/users'}　className={classes.link}>
         <Button className={classes.linkColor}>
-          <GroupIcon/><Box display={{ xs: 'none', md: 'inline' }}>ユーザー一覧</Box>
+          <GroupIcon/><Box>ユーザー一覧</Box>
         </Button>
       </Link>
       <Link to={`/mypage/${user.uid}`} className={classes.link}>
       　<Button className={classes.linkColor}>
-          <AccountCircle /><Box display={{ xs: 'none', md: 'inline' }}>マイページ</Box>
+          <AccountCircle /><Box>マイページ</Box>
         </Button>
       </Link>
       <Button className={classes.linkColor}>
