@@ -107,7 +107,9 @@ export default function UserTab(props: any) {
           />
       </TabPanel>
       <TabPanel value={value} index={3}>
-          <GoogleMap/>
+          <GoogleMap
+            posts={props.posts}
+          />
       </TabPanel>
     </div>
   );
