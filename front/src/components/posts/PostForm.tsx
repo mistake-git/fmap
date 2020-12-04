@@ -15,6 +15,7 @@ import {
   Button,
   Grid,
   LinearProgress,
+  MenuItem,
 } from "@material-ui/core";
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
@@ -305,15 +306,22 @@ export default function PostNewForm(props: any) {
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
                       name="weather"
+                      select={true}
                       label="天気"
                       fullWidth
                       variant="outlined"
-                      type="number"
+                      as="select"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,
                       }}
-                    />
+                    >
+                      {['晴天', '晴れ', '雨', '大雨', '曇り', '雪', 'その他'].map((value, index) => (
+                        <MenuItem key={index} value={value}>
+                          {value}
+                        </MenuItem>
+                      ))}
+                    </Field>
                   </Grid>
                   <Grid item xs={12}>
                     <Field
@@ -334,7 +342,7 @@ export default function PostNewForm(props: any) {
                   <Grid item xs={12}>
                     <Fragment>
                       <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth>
-                        地図で場所を選択してください
+                        地図で場所を選択してください(必須)
                       </Button>
                       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                         <AppBar className={classes.appBar}>
