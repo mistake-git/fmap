@@ -19,7 +19,6 @@ import {
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { myHttpClient } from '../../plugins/axios';
 
 
 const UserSchema = Yup.object().shape({
@@ -90,6 +89,9 @@ export default function ProfileUserModal(props: any) {
   const clear = () => {
     setSrc('');
   };
+
+  console.log(image)
+  console.log('image')
 
   return (
     <div>
