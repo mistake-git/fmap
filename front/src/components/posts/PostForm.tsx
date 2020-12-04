@@ -21,9 +21,7 @@ import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
 import LocatePickerModal from './LocatePickerModal';
 import MapPicker from 'react-google-map-picker'
-import { datePickerDefaultProps } from '@material-ui/pickers/constants/prop-types';
  
-
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
@@ -52,10 +50,8 @@ const useStyles = makeStyles({
 });
 
 interface State {
-  image?: string;
+
 }
-
-
 
 export default function PostNewForm(props: any) {
 
@@ -63,6 +59,16 @@ export default function PostNewForm(props: any) {
     lat: 35, 
     lng: 135
   };
+
+  interface Location {
+    lat: number,
+    lng: number
+  }
+
+
+
+  
+
   
   const DefaultZoom = 10;
 
@@ -87,8 +93,6 @@ export default function PostNewForm(props: any) {
     setDefaultLocation({ ... DefaultLocation});
     setZoom(DefaultZoom);
   }
- 
-  
  
   const onClick = () => {
     if (ref.current) {
@@ -301,7 +305,9 @@ export default function PostNewForm(props: any) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <LocatePickerModal/>
+                    <LocatePickerModal
+                      
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <Button
