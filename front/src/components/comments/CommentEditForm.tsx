@@ -36,7 +36,7 @@ export default function CommentEditForm(props: any) {
                 content: value.content
               }
               props.handleFormClose()
-              props.updateComment(props.comment.id,comment)
+              props.updateComment(props.comment.id, comment)
             } catch (error) {
               alert(error.message);
             }

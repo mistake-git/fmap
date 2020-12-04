@@ -65,10 +65,6 @@ export default function PostNewForm(props: any) {
     lng: number
   }
 
-
-
-  
-
   
   const DefaultZoom = 10;
 
@@ -89,7 +85,7 @@ export default function PostNewForm(props: any) {
     setZoom(newZoom);
   }
  
-  const handleResetLocation =() =>{
+  const handleResetLocation = () =>{
     setDefaultLocation({ ... DefaultLocation});
     setZoom(DefaultZoom);
   }

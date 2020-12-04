@@ -46,7 +46,6 @@ export default function CommentForm(props: any) {
   const classes = useStyles();
   const [buttonOpen, setButtonOpen]= useState(false);
 
-  
   return (
     <div>
       <Box my={3}>
