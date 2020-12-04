@@ -72,6 +72,9 @@ const PostsEdit = (props: any) => {
     latitude: post.latitude,
     longitude: post.longitude
   }
+
+  const lat = 35;
+  const lng = 135;
   
   return (
     <Fragment>
@@ -82,6 +85,8 @@ const PostsEdit = (props: any) => {
             user={user}
             action={updatePost}
             values={values}
+            lat={lat}
+            lng={lng}
           />
         </Container>
       </Template>

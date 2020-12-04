@@ -52,8 +52,10 @@ const PostsNew = (props: any) => {
     user_id: "",
     latitude: "",
     longitude: ""
-
   }
+
+  const lat = 35;
+  const lng = 135;
 
   return (
     <Fragment>
@@ -63,6 +65,8 @@ const PostsNew = (props: any) => {
             action={createPost} 
             values={values}
             user={user}
+            lat={lat}
+            lng={lng}
           />
         </Container>
       </Template>

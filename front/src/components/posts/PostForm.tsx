@@ -81,9 +81,10 @@ const Transition = React.forwardRef(function Transition(
 
 
 export default function PostNewForm(props: any) {
+  
   const DefaultLocation = { 
-    lat: 35, 
-    lng: 135
+    lat: props.lat , 
+    lng: props.lng, 
   };
 
   interface Location {
