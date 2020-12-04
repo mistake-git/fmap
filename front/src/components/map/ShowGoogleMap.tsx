@@ -48,7 +48,7 @@ const ShowGoogleMap = (props: any) => {
 
 
   //サイズからピンの大きさを求める
-  const getPinSize = (size: any) =>{
+  const getPinSize = (size: number) =>{
     if (1<= size && size <= 20) {
       return classes.PinXs
     } else if (21<= size && size <= 40) {
