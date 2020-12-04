@@ -4,7 +4,6 @@ import React, {
   Fragment,
   useState,
 } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import * as Yup from "yup";
@@ -19,8 +18,16 @@ import {
 } from "@material-ui/core";
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import 'date-fns';
-import LocatePickerModal from './LocatePickerModal';
+import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
+
  
 
 export const PostSchema = Yup.object().shape({
@@ -31,27 +38,46 @@ export const PostSchema = Yup.object().shape({
   .required('数量を入力してください'),
 });
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 150,
-  },
-  input: {
-    display: 'none',
-  },
-  imageWrapper: {
-    position: 'relative',
-  },
-  cancelButton: {
-    position: 'absolute',
-    top: '-5px',
-    right: '-5px',
-    cursor: 'pointer',
-  }
-});
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    appBar: {
+      position: 'relative',
+    },
+    title: {
+      marginLeft: theme.spacing(2),
+      flex: 1,
+    },
+    root: {
+      minWidth: 150,
+    },
+    input: {
+      display: 'none',
+    },
+    imageWrapper: {
+      position: 'relative',
+    },
+    cancelButton: {
+      position: 'absolute',
+      top: '-5px',
+      right: '-5px',
+      cursor: 'pointer',
+    }
+  }),
+);
+
 
 interface State {
 
 }
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & { children?: React.ReactElement },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function PostNewForm(props: any) {
 
@@ -75,8 +101,16 @@ export default function PostNewForm(props: any) {
   const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
   const [location, setLocation] = useState(defaultLocation);
   const [zoom, setZoom] = useState(DefaultZoom);
- 
+  const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   const handleChangeLocation = (lat: number, lng: number) => {
     setLocation({lat:lat, lng:lng}) 
   }
@@ -301,9 +335,43 @@ export default function PostNewForm(props: any) {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <LocatePickerModal
-                      
-                    />
+                    <Fragment>
+                      <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth>
+                        地図で場所を選択してください
+                      </Button>
+                      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+                        <AppBar className={classes.appBar}>
+                          <Toolbar>
+                            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                              <CloseIcon />
+                            </IconButton>
+                            <Typography variant="h6" className={classes.title}>
+                              地図で釣った場所を選択してください
+                            </Typography>
+                          </Toolbar>
+                        </AppBar>
+                        <Fragment>
+
+                          緯度:{location.lat}
+                          経度:{location.lng}
+                          拡大率:{zoom} 
+                          <MapPicker defaultLocation={defaultLocation}
+                            zoom={zoom}
+                            style={{height:'700px'}}
+                            onChangeLocation={handleChangeLocation} 
+                            onChangeZoom={handleChangeZoom}
+                            apiKey='AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
+                          />
+                           <Button 
+                            variant="contained" 
+                            color="primary"
+                            onClick={handleResetLocation}
+                          >
+                            場所をリセット
+                          </Button>
+                        </Fragment>
+                      </Dialog>
+                    </Fragment>
                   </Grid>
                   <Grid item xs={12}>
                     <Button
@@ -324,19 +392,6 @@ export default function PostNewForm(props: any) {
           />
         </CardContent>   
 			</Card>
-      <Fragment>
-        <button onClick={handleResetLocation}>Reset Location</button>
-        <label>Latitute:</label><input type='text' value={location.lat} disabled/>
-        <label>Longitute:</label><input type='text' value={location.lng} disabled/>
-        <label>Zoom:</label><input type='text' value={zoom} disabled/>
-        <MapPicker defaultLocation={defaultLocation}
-          zoom={zoom}
-          style={{height:'700px'}}
-          onChangeLocation={handleChangeLocation} 
-          onChangeZoom={handleChangeZoom}
-          apiKey='AIzaSyDWr8k_Rxo4UwSFde8mcgUiLs2BwXh3qCM'
-        />
-      </Fragment>
 		</Fragment>
 	);
 }
