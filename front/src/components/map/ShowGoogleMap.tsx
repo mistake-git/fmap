@@ -47,23 +47,22 @@ const ShowGoogleMap = (props: any) => {
   const classes = useStyles();
 
 
-    //サイズ空ピンの大きさを求める
-    　　const getPinSize = (size: number) =>{
-      switch (size){
-        case (size && size > 80 ):
-          return classes.PinXs
-        case (size && size > 60 ):
-          return classes.PinSm
-        case (size && size > 40 ):
-          return classes.PinMd
-        case (size && size > 20 ):
-          return classes.PinLg
-        case (size && size > 10):
-          return classes.PinXl
-        default: 
-          return classes.PinXs
-      }
+  //サイズからピンの大きさを求める
+  const getPinSize = (size: any) =>{
+    if (1<= size && size <= 20) {
+      return classes.PinXs
+    } else if (21<= size && size <= 40) {
+      return classes.PinSm
+    } else if (41<= size && size <= 61) {
+      return classes.PinMd
+    }　else if (61<= size && size <= 80) {
+      return classes.PinLg
+    }  else if (81<= size) {
+      return classes.PinXl
+    } else {
+      return classes.PinXs
     }
+  }
 
   const pins: PinProps[] = [
     {

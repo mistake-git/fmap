@@ -60,21 +60,20 @@ const GoogleMap = (props: any) => {
   }
 
   
-  //サイズ空ピンの大きさを求める
-　const getPinSize = (size: number) =>{
-    switch (size){
-      case (size && size >= 1 && 20 >= size):
-        return classes.PinXs
-      case (size && size >= 21 && 40 >= size):
-        return classes.PinSm
-      case (size && size >= 41  && 60 >= size):
-        return classes.PinMd
-      case (size && size >= 61 && 80 >= size):
-        return classes.PinLg
-      case (size && size >= 81 ):
-        return classes.PinXl
-      default: 
-        return classes.PinXs
+  //サイズからピンの大きさを求める
+  const getPinSize = (size: any) =>{
+    if (1<= size && size <= 20) {
+      return classes.PinXs
+    } else if (21<= size && size <= 40) {
+      return classes.PinSm
+    } else if (41<= size && size <= 61) {
+      return classes.PinMd
+    }　else if (61<= size && size <= 80) {
+      return classes.PinLg
+    }  else if (81<= size) {
+      return classes.PinXl
+    } else {
+      return classes.PinXs
     }
   }
 
