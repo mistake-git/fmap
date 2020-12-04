@@ -52,6 +52,10 @@ const MyPage = (props: any) => {
     　setLoading(false);
   }
 
+  useEffect(() => {
+    getUser();
+   },[setUser]);
+
   const updateUser = async(user: UserModel) => {
     try { 
     await
@@ -59,7 +63,6 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
-      props.history.push(`/mypage/${response.data.uid}`);
       setShowFlash(true)
       setMessage('自己紹介を更新しました')
       setSeverity('success')
@@ -72,10 +75,32 @@ const MyPage = (props: any) => {
       setSeverity('error')
     }
   }
-  
-  useEffect(() => {
-   getUser();
-  },[setUser]);
+
+
+  const updateProfileImage = async(user: UserModel) => {
+    try { 
+    await
+    myHttpClient.put(`/user_images/${props.user.uid}`,{user: user},{
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    }) 
+    .then((response) => {
+      console.log(response)
+      setUser(response.data);
+      props.history.push(`/mypage/${response.data.uid}`);
+      setShowFlash(true)
+      setMessage('プロフィールイメージを編集しました')
+      setSeverity('success')
+    })
+    }
+    catch (error) {
+      alert(error.message);
+      setShowFlash(true)
+      setMessage('プロフィールの編集に失敗しました')
+      setSeverity('error')
+    }
+  }
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -101,9 +126,9 @@ const MyPage = (props: any) => {
         <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
-             
                 <UserMain
                   user={user}
+                  updateProfileImage={updateProfileImage}
                 />
               <Box my={2}>
                 {user.introduction}

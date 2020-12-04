@@ -132,11 +132,7 @@ export default function ProfileUserModal(props: any) {
                 image: image,
               }
             await
-              myHttpClient.put(`/user_images/${props.user.uid}`,{user: user},{
-                headers: {
-                  'content-type': 'multipart/form-data',
-                },
-              }) 
+              props.updateProfileImage(user)
               handleClose();
               clear();
               console.log('image')

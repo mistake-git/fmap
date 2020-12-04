@@ -55,6 +55,7 @@ export default function UserMain(props: any) {
             <div className={classes.cameraIcon}>
               <ProfileUserModal
                 user={currentUser}
+                updateProfileImage={props.updateProfileImage}
               />
             </div>
           }
