@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment, useState } from "react";
-import { Container, Divider, Grid} from "@material-ui/core";
+import { Container, createStyles, Divider, Grid, makeStyles, Theme} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
@@ -21,9 +21,19 @@ import { myHttpClient } from "../../plugins/axios";
 import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    image: {
+      width: '100%',
+      paddingBottom: theme.spacing(5)
+    }
+  }),
+);
+
+
 
 const PostsShow = (props: any) => {
-
+  const classes = useStyles();
   const [user, setUser] = useState<UserModel | null>(null);
   const [post, setPost] = useState<PostModel | null>(null);
   const [feedData, setFeedData] = useState<any | null>(null);
@@ -269,6 +279,7 @@ const PostsShow = (props: any) => {
               />
             </Grid>
             <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
+              <img src="../../fish.jpg" className={classes.image}/>
               <Box display="flex" justifyContent="flex-end">
                 <Favorite fontSize="large" color="secondary"/>
                 {likesUsers &&
