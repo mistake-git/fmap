@@ -1,30 +1,35 @@
-import React, { Fragment} from "react";
-import { Box, Container, Grid, Typography } from "@material-ui/core";
-import Template from "../components/layouts/Template";
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Fragment } from 'react'
+import { Box, Container, Grid, Typography } from '@material-ui/core'
+import Template from '../components/layouts/Template'
+import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
-  errorText :{
+  errorText: {
     color: '#3f51b5;',
   },
-  textCenter :{
-    textAlign: 'center'
-  }
-}));
-
+  textCenter: {
+    textAlign: 'center',
+  },
+}))
 
 const NotFound = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Fragment>
       <Template>
         <Container maxWidth="md" className={classes.textCenter}>
-          <Box style={{marginTop: '11rem', marginBottom: '11rem'}}>
+          <Box style={{ marginTop: '11rem', marginBottom: '11rem' }}>
             <Box mt={3}>
-              <Typography variant="h2" gutterBottom className={classes.errorText}>404</Typography>
-            </Box> 
+              <Typography
+                variant="h2"
+                gutterBottom
+                className={classes.errorText}
+              >
+                404
+              </Typography>
+            </Box>
             <Box mb={3}>
               <Typography>お探しのページは見つかりませんでした</Typography>
             </Box>
@@ -35,8 +40,8 @@ const NotFound = (props: any) => {
             </Box>
           </Box>
         </Container>
-        </Template>
+      </Template>
     </Fragment>
-  );
-};
-export default NotFound;
+  )
+}
+export default NotFound
