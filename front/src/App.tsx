@@ -17,7 +17,7 @@ import FlashAlert from "./components/layouts/FlashAlert";
 
 const App: React.FC = () => {
 
-  const handleFlash = (flashMessage: string, flashSeverity: any)  =>{
+  const handleFlash = (flashMessage: string, flashSeverity: any)  =>　{
     setShowFlash(true)
     setMessage(flashMessage)
     setSeverity(flashSeverity)
