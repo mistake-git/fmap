@@ -25,7 +25,6 @@ const App: React.FC = () => {
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/posts/:id/edit" component={PostsEdit} />
           <Route exact path="/mypages/:id" component={Mypage} />
-          <Route component={NotFound} />
           <Switch>
             <Route exact path="/posts/new" component={PostsNew} />
             <Route exact path="/posts/:id" component={PostsShow} />
