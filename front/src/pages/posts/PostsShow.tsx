@@ -105,9 +105,9 @@ const PostsShow = (props: any) => {
         setLike(response.data.like)
         setLikesUsers(response.data.likes_users)
         console.log('create like')
-        setShowFlash(true)
-        setMessage('いいねしました')
-        setSeverity('success')
+        const message = 'いいねしました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {

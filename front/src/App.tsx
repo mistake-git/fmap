@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React ,{ useState,} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./Auth";
 import {UserProvider} from "./User"
@@ -12,11 +12,29 @@ import PostsNew from "./pages/posts/PostsNew";
 import Mypage from "./pages/users/MyPage";
 import Users from "./pages/users/Users";
 import PostsEdit from "./pages/posts/PostsEdit";
+import FlashAlert from "./components/layouts/FlashAlert";
 
 
 const App: React.FC = () => {
+
+  const handleFlash = (flashMessage: string, flashSeverity: any)  =>{
+    setShowFlash(true)
+    setMessage(flashMessage)
+    setSeverity(flashSeverity)
+  }
+
+  const [showFlash, setShowFlash] = useState(false);
+  const [message, setMessage] = useState<string>('');
+  const [severity, setSeverity] = useState<undefined | 'success' | 'error' >(undefined);
+
   return (
     <Router>
+      {showFlash &&
+        <FlashAlert
+        message={message}
+        severity={severity}
+        />
+      }
       <AuthProvider>
         <UserProvider>
           <Switch>
@@ -29,7 +47,11 @@ const App: React.FC = () => {
             <Route exact path="/mypages/:id" component={Mypage} />
             <Switch>
               <Route exact path="/posts/new" component={PostsNew} />
-              <Route exact path="/posts/:id" component={PostsShow} />
+              <Route 
+                exact path="/posts/:id" 
+                component={PostsShow} 
+                handleFlash={handleFlash}
+              />
             </Switch>
           </Switch>
         </UserProvider>
