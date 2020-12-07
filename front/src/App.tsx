@@ -18,7 +18,12 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <AuthProvider>
-          <Route exact path="/" component={Map} />
+          <Switch>
+            <Route exact path="/" component={Map} />
+            <Route>
+              <NotFound/>
+            </Route>
+          </Switch>
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/users" component={Users} />
@@ -31,9 +36,6 @@ const App: React.FC = () => {
           </Switch>
         </AuthProvider>
       </Switch>
-      <Route>
-        <NotFound/>
-      </Route>
     </Router>
   );
 };
