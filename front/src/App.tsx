@@ -11,7 +11,7 @@ import PostsNew from "./pages/posts/PostsNew";
 import Mypage from "./pages/users/MyPage";
 import Users from "./pages/users/Users";
 import PostsEdit from "./pages/posts/PostsEdit";
-import NotFound from "./pages/NotFound"
+
 
 const App: React.FC = () => {
   return (
