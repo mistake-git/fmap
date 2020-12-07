@@ -47,7 +47,7 @@ const Users = (props: any) => {
             {users.map((user) => {
               return(
                 <Grid xs={6} sm={4} md={3} lg={2} style={{ marginTop: "2em" }}>
-                  <UserCard user={user}/>
+                  <UserCard user={user} key={user.id}/>
                 </Grid>
               )
             })}
