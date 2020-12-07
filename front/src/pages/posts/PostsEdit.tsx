@@ -50,11 +50,17 @@ const PostsEdit = (props: any) => {
     myHttpClient.patch(`/posts/${props.match.params.id}`,{post: post})  
     .then((response) => {
       console.log(response)
+      const message = '釣果を編集しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
       props.history.push(`/posts/${response.data.id}`);
     })
     }
     catch (error) {
       alert(error.message);
+      const message = '釣果の編集に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 

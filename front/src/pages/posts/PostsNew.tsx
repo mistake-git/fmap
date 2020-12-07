@@ -30,10 +30,16 @@ const PostsNew = (props: any) => {
       console.log(response.data)
       console.log('create post')
       props.history.push(`/posts/${response.data.id}`);
+      const message = '釣果を投稿しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
     })
     }
     catch (error) {
       alert(error.message);
+      const message = '釣果の投稿に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 

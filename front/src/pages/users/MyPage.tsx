@@ -67,7 +67,7 @@ const MyPage = (props: any) => {
     catch (error) {
       alert(error.message);
       const message = '自己紹介の編集に失敗しました'
-      const severity = 'success'
+      const severity = 'error'
       props.handleFlash(message,severity)
     }
   }

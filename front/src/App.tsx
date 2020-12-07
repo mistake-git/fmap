@@ -51,7 +51,19 @@ const App: React.FC = () => {
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/users" component={Users} />
             <Route exact path="/posts" component={Posts} />
-            <Route exact path="/posts/:id/edit" component={PostsEdit} />
+            <Route 
+              exact path="/posts/:id/edit" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <PostsEdit 
+                  match={match} 
+                  handleFlash={handleFlash}
+                  history={history}
+                />
+              )} 
+            />
             <Route 
                 exact path="/mypages/:id" 
                 render={({ 
@@ -66,7 +78,19 @@ const App: React.FC = () => {
                 )} 
               />
             <Switch>
-              <Route exact path="/posts/new" component={PostsNew} />
+              <Route 
+                exact path="/posts/new" 
+                render={({ 
+                  match,
+                  history 
+                }) => (
+                  <PostsNew
+                    match={match} 
+                    handleFlash={handleFlash}
+                    history={history}
+                  />
+                )} 
+              />
               <Route 
                 exact path="/posts/:id" 
                 render={({ 
