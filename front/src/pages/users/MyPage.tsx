@@ -12,7 +12,6 @@ import IntroductionForm from "../../components/users/IntroductionForm";
 import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
-import FlashAlert from "../../components/layouts/FlashAlert";
 import { myHttpClient } from "../../plugins/axios";
 
 interface State {
@@ -28,9 +27,6 @@ const MyPage = (props: any) => {
   const [userData, setUserData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const { currentUser } = useContext(AuthContext)
-  const [showFlash, setShowFlash] = useState(true);
-  const [message, setMessage] = useState<string>('');
-  const [severity, setSeverity] = useState<undefined | 'success' | 'error' >(undefined);
 
 
   const getUser = async() => {
@@ -63,16 +59,16 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
-      setShowFlash(true)
-      setMessage('自己紹介を更新しました')
-      setSeverity('success')
+      const message = '自己紹介を編集しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
     })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('自己紹介の更新に失敗しました')
-      setSeverity('error')
+      const message = '自己紹介の編集に失敗しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
     }
   }
 
@@ -83,26 +79,12 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
-      setShowFlash(true)
-      setMessage('自己紹介を更新しました')
-      setSeverity('success')
     })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('自己紹介の更新に失敗しました')
-      setSeverity('error')
     }
   }
-
-
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setShowFlash(false);
-  };
 
   return (
     <Fragment>
@@ -110,14 +92,7 @@ const MyPage = (props: any) => {
         <Loading/>
       }
       {user && posts && likesPosts && userData && currentUser &&
-       <Template>
-        {showFlash && message && severity &&
-          <FlashAlert
-            handleClose={handleClose}
-            message={message}
-            severity={severity}
-          />
-        }     
+       <Template>    
         <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>

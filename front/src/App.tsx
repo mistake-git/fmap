@@ -52,7 +52,19 @@ const App: React.FC = () => {
             <Route exact path="/users" component={Users} />
             <Route exact path="/posts" component={Posts} />
             <Route exact path="/posts/:id/edit" component={PostsEdit} />
-            <Route exact path="/mypages/:id" component={Mypage} />
+            <Route 
+                exact path="/mypages/:id" 
+                render={({ 
+                  match,
+                  history 
+                }) => (
+                  <Mypage 
+                    match={match} 
+                    handleFlash={handleFlash}
+                    history={history}
+                  />
+                )} 
+              />
             <Switch>
               <Route exact path="/posts/new" component={PostsNew} />
               <Route 
@@ -61,11 +73,11 @@ const App: React.FC = () => {
                   match,
                   history 
                 }) => (
-                    <PostsShow 
-                      match={match} 
-                      handleFlash={handleFlash}
-                      history={history}
-                    />
+                  <PostsShow 
+                    match={match} 
+                    handleFlash={handleFlash}
+                    history={history}
+                  />
                 )} 
               />
             </Switch>

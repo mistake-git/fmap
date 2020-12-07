@@ -16,7 +16,6 @@ import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
-import FlashAlert from "../../components/layouts/FlashAlert";
 import { myHttpClient } from "../../plugins/axios";
 import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 
