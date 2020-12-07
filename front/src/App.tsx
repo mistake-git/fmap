@@ -1,8 +1,6 @@
 import "./App.css";
-
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import { AuthProvider } from "./Auth";
 import Map from "./pages/Map";
 import SignIn from "./pages/SignIn";
@@ -13,6 +11,7 @@ import PostsNew from "./pages/posts/PostsNew";
 import Mypage from "./pages/users/MyPage";
 import Users from "./pages/users/Users";
 import PostsEdit from "./pages/posts/PostsEdit";
+import NotFound from "./pages/NotFound"
 
 const App: React.FC = () => {
   return (
@@ -33,7 +32,7 @@ const App: React.FC = () => {
         </AuthProvider>
       </Switch>
       <Route>
-        <div>ページが見つかりません</div>
+        <NotFound/>
       </Route>
     </Router>
   );
