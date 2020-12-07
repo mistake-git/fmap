@@ -45,10 +45,6 @@ const PostsShow = (props: any) => {
   const [likes, setLikes] = useState<any>([]);
   const [like, setLike] = useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = useState<UserModel[] | null>(null);
-  const [showFlash, setShowFlash] = useState(true);
-  const [message, setMessage] = useState<string>('');
-  const [severity, setSeverity] = useState<undefined | 'success' | 'error' >(undefined);
-
 
 
   const getPost = async() => {
@@ -112,9 +108,9 @@ const PostsShow = (props: any) => {
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('いいねに失敗しました')
-      setSeverity('error')
+      const message = 'いいねに失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 
@@ -126,16 +122,16 @@ const PostsShow = (props: any) => {
         setLike(null)
         setLikesUsers(response.data.likes_users)
         console.log('destroy like')
-        setShowFlash(true)
-        setMessage('いいねを取り消しました')
-        setSeverity('success')
+        const message = 'いいねを取り消しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('いいねの取り消しに失敗しました')
-      setSeverity('error')
+      const message = 'いいねの取り消しに失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 
@@ -165,16 +161,16 @@ const PostsShow = (props: any) => {
         const newData = update(comments, {$unshift:[response.data]})
         setComments(newData)
         console.log('create comment')
-        setShowFlash(true)
-        setMessage('コメントを投稿しました')
-        setSeverity('success')
+        const message = 'コメントを投稿しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('コメントの投稿に失敗しました')
-      setSeverity('error')
+      const message = 'いいねの取り消しに失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 
@@ -188,17 +184,17 @@ const PostsShow = (props: any) => {
         setComments(updateComments)
         console.log('update comment')
         console.log(updateComments)
-        setShowFlash(true)
-        setMessage('コメントを編集しました')
-        setSeverity('success')
+        const message = 'コメントを編集しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('コメントの編集に失敗しました')
-      setSeverity('error')
-    }
+      const message = 'コメントの編集に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+  }
   }
 
   const destroyComment = async(id: number) => {
@@ -210,16 +206,16 @@ const PostsShow = (props: any) => {
         const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
         setComments(deleteComments)
         console.log('destroy comment')
-        setShowFlash(true)
-        setMessage('コメントを削除しました')
-        setSeverity('success')
+        const message = 'コメントを削除しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {
       alert(error.message);
-      setShowFlash(true)
-      setMessage('コメントの削除に失敗しました')
-      setSeverity('error')
+      const message = ' コメントの削除に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 
@@ -230,41 +226,23 @@ const PostsShow = (props: any) => {
       .then(() => {
         console.log('set')
         props.history.push("/posts");
-        setShowFlash(true)
-      })
-      .catch((data) =>{
-        console.log(data)
-        console.log('get post')
-        setShowFlash(true)
-        setMessage('投稿を削除しました')
-        setSeverity('success')
+        const message = '釣果を削除しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
       })
     }
     catch (error) {
       alert(error.message);
-      setMessage('投稿の削除に失敗しました')
-      setSeverity('error')
+      const message = '釣果を削除しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
-
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setShowFlash(false);
-  };
 
   return (
     <Fragment>
       {post && postUser && feedData && dateData && timeData && sizeData  ? 
       <Template>
-        {showFlash && message && severity &&
-          <FlashAlert
-            handleClose={handleClose}
-            message={message}
-            severity={severity}
-          />
-        }     
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
             <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>

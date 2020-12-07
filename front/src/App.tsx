@@ -23,6 +23,13 @@ const App: React.FC = () => {
     setSeverity(flashSeverity)
   }
 
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setShowFlash(false);
+  };
+
   const [showFlash, setShowFlash] = useState(false);
   const [message, setMessage] = useState<string>('');
   const [severity, setSeverity] = useState<undefined | 'success' | 'error' >(undefined);
@@ -33,6 +40,7 @@ const App: React.FC = () => {
         <FlashAlert
         message={message}
         severity={severity}
+        handleClose={handleClose}
         />
       }
       <AuthProvider>
@@ -49,8 +57,16 @@ const App: React.FC = () => {
               <Route exact path="/posts/new" component={PostsNew} />
               <Route 
                 exact path="/posts/:id" 
-                component={PostsShow} 
-                handleFlash={handleFlash}
+                render={({ 
+                  match,
+                  history 
+                }) => (
+                    <PostsShow 
+                      match={match} 
+                      handleFlash={handleFlash}
+                      history={history}
+                    />
+                )} 
               />
             </Switch>
           </Switch>
