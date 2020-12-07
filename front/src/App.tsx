@@ -32,6 +32,9 @@ const App: React.FC = () => {
           </Switch>
         </AuthProvider>
       </Switch>
+      <Route>
+        <div>ページが見つかりません</div>
+      </Route>
     </Router>
   );
 };
