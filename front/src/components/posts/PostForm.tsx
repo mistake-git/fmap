@@ -29,8 +29,6 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
 
- 
-
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
     .required('魚種を入力してください'),
@@ -38,8 +36,6 @@ export const PostSchema = Yup.object().shape({
   .min(1,'数量は1以上で入力してください')
   .required('数量を入力してください'),
 });
-
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

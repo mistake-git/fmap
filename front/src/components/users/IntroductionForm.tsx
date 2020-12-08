@@ -54,6 +54,9 @@ export default function IntroductionForm(props: any) {
              setFormOpen(false)
             } catch (error) {
               alert(error.message);
+              const message = '自己紹介の編集に失敗しました'
+              const severity = 'error'
+              props.handleFlash(message,severity)
             }
           }}
           render={({ submitForm, isSubmitting, isValid }) => (

@@ -92,7 +92,10 @@ const MyPage = (props: any) => {
             <Grid item xs={12}>
                 <UserMain
                   user={user}
+                  currentUser={currentUser}
                   updateProfileImage={updateProfileImage}
+                  updateUser={updateUser}
+                  handleFlash={props.handleFlash}
                 />
               <Box my={2}>
                 {user.introduction}

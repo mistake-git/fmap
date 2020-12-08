@@ -15,10 +15,12 @@ import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Button,
   Grid,
+  Typography,
 } from "@material-ui/core";
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import { TextField } from "formik-material-ui";
 
 
 const UserSchema = Yup.object().shape({
@@ -47,57 +49,25 @@ export default function NameEditModal(props: any) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const classes = useStyles();
 
   const handleClose = () => {
     setOpen(false);
   };
-  const [src, setSrc] = useState('')
-
-  const ref = createRef<HTMLInputElement>()
-  const [image, setImage] = useState<File | null>(null)
-
-  const onClick = () => {
-    if (ref.current) {
-      ref.current.click()
-    }
-  }
 
   const values ={
-    image: '',
+    name: props.user.name,
   }
   
-  const onChange = (event: ChangeEvent<HTMLInputElement>, setFieldValue: any) => {
-    if (event.target.files === null) {
-      return
-    }
-    const file = event.target.files.item(0)
-
-    setImage(file)
-
-    if (file === null) {
-      return
-    }
-    var reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      setSrc(reader.result as string)
-    }
-    setFieldValue("image",reader.result as string)
-  }
-
-  const clear = () => {
-    setSrc('');
-  };
-
-  console.log(image)
-  console.log('image')
-
   return (
     <div>
-      <IconButton onClick={handleClickOpen}>
-        <CameraAltIcon/>
-      </IconButton>
+       <Button  onClick={handleClickOpen}>
+        <Typography 
+            color='textSecondary'
+            variant='caption'
+          > 
+            名前を編集
+          </Typography>
+       </Button>
       <Dialog
         fullWidth
         open={open}
@@ -105,25 +75,7 @@ export default function NameEditModal(props: any) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">プロフィールイメージを編集</DialogTitle>
-        {src &&
-          <Fragment>
-            <Grid container spacing={3}>
-              <Grid item xs={2}></Grid>
-              <Grid item xs={8}>
-                <div className={classes.imageWrapper} >
-                  <CancelIcon
-                    color="primary"
-                    onClick={clear}
-                    className={classes.cancelButton}
-                  />
-                  <img src={src} style={{width: '100%'}}/>
-                </div>
-              </Grid>
-              <Grid item xs={2}></Grid>
-            </Grid>
-          </Fragment> 
-        }
+        <DialogTitle id="alert-dialog-title">名前を編集</DialogTitle>
          <Formik
         　 enableReinitialize={true}
           initialValues={values}
@@ -131,39 +83,34 @@ export default function NameEditModal(props: any) {
           onSubmit={async value => {
             try {
               const user ={
-                image: image,
+                name: value.name
               }
             await
-              props.updateProfileImage(user)
-              handleClose();
-              clear();
-              console.log('image')
-              console.log(image)
+              props.updateUser(user)
+              const message = '名前を編集しました'
+              const severity = 'success'
+              props.handleFlash(message,severity)
+              handleClose();              
             } 
             catch (error) {
               alert(error.message);
+              const message = '名前の編集に失敗しました'
+              const severity = 'success'
+              props.handleFlash(message,severity)          
             }
           }}
           render={({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
           <Form>
             <DialogContent>
-              <Field 
-                required
-                name="image"
-                accept="image" 
-                className={classes.input} 
-                multiple={false}
-                id="icon-button-file" 
-                type="file"
-                onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
-                onClick={onClick}
+              <Field
+                style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                name='name'
+                label='名前'
+                type='text'
+                fullWidth
+                variant="outlined"
+                component={TextField}
               />
-              <label htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                  <AttachmentIcon />
-                </IconButton>
-                ファイルを選択
-              </label>
             </DialogContent>
             <DialogActions>
               <Button variant="contained"　onClick={handleClose}>
