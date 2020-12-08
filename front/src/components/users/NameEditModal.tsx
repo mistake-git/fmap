@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function ProfileUserModal(props: any) {
+export default function NameEditModal(props: any) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -134,7 +134,7 @@ export default function ProfileUserModal(props: any) {
                 image: image,
               }
             await
-              props.updateUser(user)
+              props.updateProfileImage(user)
               handleClose();
               clear();
               console.log('image')

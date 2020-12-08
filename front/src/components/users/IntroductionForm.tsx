@@ -48,6 +48,9 @@ export default function IntroductionForm(props: any) {
                 introduction: value.introduction
               }
              props.updateUser(user)
+              const message = '自己紹介を編集しました'
+              const severity = 'success'
+              props.handleFlash(message,severity)
              setFormOpen(false)
             } catch (error) {
               alert(error.message);

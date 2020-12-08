@@ -59,16 +59,10 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
-      const message = '自己紹介を編集しました'
-      const severity = 'success'
-      props.handleFlash(message,severity)
     })
     }
     catch (error) {
       alert(error.message);
-      const message = '自己紹介の編集に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
     }
   }
 
@@ -106,6 +100,7 @@ const MyPage = (props: any) => {
                   <IntroductionForm
                     value={user.introduction}
                     updateUser={updateUser}
+                    handleFlash={props.handleFlash}
                   />
                 }
               </Box>
