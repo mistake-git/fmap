@@ -240,7 +240,7 @@ const PostsShow = (props: any) => {
 
   return (
     <Fragment>
-      {post && postUser && feedData && dateData && timeData && sizeData  ? 
+      {post && postUser ? 
       <Template>
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
@@ -269,13 +269,15 @@ const PostsShow = (props: any) => {
               <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
                 {post.name}のデータ分析
               </Box>
+              {feedData && dateData && timeData && sizeData ?
               <PostChart 
                 post={post} 
                 feedData={feedData}
                 dateData={dateData}
                 timeData={timeData}
                 sizeData={sizeData}
-              />
+              />:
+              <div>loading...</div>}
               <Divider/>
               <Box my={5}>
                 <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
@@ -287,7 +289,7 @@ const PostsShow = (props: any) => {
               </Box>
               <UserBar user={postUser}/>
               {post.memo}
-              { comments &&
+              { comments ?
               <CommentContainer
                 post={post}
                 user={user}
@@ -296,7 +298,7 @@ const PostsShow = (props: any) => {
                 updateComment={updateComment}
                 destroyComment={destroyComment}
               />
-              }
+              :<div>lording...</div>}
             </Grid>
           </Grid>
         </Container>
