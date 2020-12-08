@@ -79,6 +79,7 @@ const PostsShow = (props: any) => {
   //   console.log('like')
   // }
 
+
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
       myHttpClient.get(`/users/${user?.uid}`)
@@ -257,8 +258,8 @@ const PostsShow = (props: any) => {
             </Grid>
             <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
               <img src="../../fish.jpg" className={classes.image}/>
-              <Box display="flex" justifyContent="flex-end">
-                <Favorite fontSize="large" color="secondary"/>
+              <Box display="flex" justifyContent="flex-end" mb={3}>
+                <Favorite color="secondary"/>
                 {likesUsers &&
                   <LikesUsersGroup
                     likesUsers={likesUsers}
