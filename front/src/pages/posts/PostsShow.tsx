@@ -19,7 +19,6 @@ import { Favorite } from "@material-ui/icons";
 import { myHttpClient } from "../../plugins/axios";
 import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     image: {
@@ -28,8 +27,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
-
-
 
 const PostsShow = (props: any) => {
   const classes = useStyles();
@@ -44,7 +41,6 @@ const PostsShow = (props: any) => {
   const [likes, setLikes] = useState<any>([]);
   const [like, setLike] = useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = useState<UserModel[] | null>(null);
-
 
   const getPost = async() => {
     try { 
@@ -72,14 +68,6 @@ const PostsShow = (props: any) => {
     getPost();
   },[setPost]);
 
-
-  // const mylike = likes.find((like: any) => {
-  //   return (like.id === user?.id);
-  // });
-
-  // console.log(mylike)
-
-
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
       myHttpClient.get(`/users/${user?.uid}`)
@@ -92,6 +80,13 @@ const PostsShow = (props: any) => {
       })
     });
   }, []);
+
+  // const getMyLike = (user: UserModel) => {
+  //   const mylike = likes.find((like: any) => {
+  //   　return (like.user_id === user.id);
+  //   });
+  //   setLike(mylike)
+  // }
 
   const createLike = async(like: LikeModel ) => {
     try { 
@@ -152,7 +147,8 @@ const PostsShow = (props: any) => {
   useEffect(() => {
     getComments();
   },[setComments]);
- 
+  
+  
   const createComment = async(comment: CommentModel) => {
     try { 
       await 
