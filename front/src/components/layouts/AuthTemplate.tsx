@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box } from '@material-ui/core';
 
 
 function Copyright() {
@@ -62,7 +63,9 @@ export default function AuthTemplate(props: any) {
             {props.title}
           </Typography>
           {props.children}
-          <Copyright />
+          <Box mt={2}>
+            <Copyright />
+          </Box>
         </div>
       </Grid>
     </Grid>

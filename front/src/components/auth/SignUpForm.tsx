@@ -7,7 +7,8 @@ import {
   FormControl,
   Link,
   Typography,
-  LinearProgress
+  LinearProgress,
+  Box
 } from "@material-ui/core";
 
 import auth from "../../plugins/firebase";
@@ -85,7 +86,6 @@ const SignUpForm = (props: any) => {
               name={form.name}
               label={form.label}
               type={form.type}
-              fullWidth
               variant="outlined"
               component={TextField}
             />
@@ -96,7 +96,7 @@ const SignUpForm = (props: any) => {
             <Button
               variant="contained"
               color="primary"
-              fullWidth
+              
               onClick={submitForm}
               style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
               type="submit"
@@ -106,6 +106,9 @@ const SignUpForm = (props: any) => {
             </Button>
             <Typography align="center">
               <Link href="/signin">ログイン</Link>
+            </Typography>
+            <Typography align="center">
+              <Link href="/password">パスワードを忘れましたか？</Link>
             </Typography>
           </FormControl>
         </Form>

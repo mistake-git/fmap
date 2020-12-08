@@ -9,7 +9,6 @@ import {
   Link,
   Typography
 } from "@material-ui/core";
-
 import auth from "../../plugins/firebase";
 
 const AuthSchema = Yup.object().shape({
@@ -81,6 +80,9 @@ const SignInForm = (props: any) => {
             </Button>
             <Typography align="center">
               <Link href="/signup">新規登録</Link>
+            </Typography>
+            <Typography align="center">
+              <Link href="/password">パスワードを忘れましたか？</Link>
             </Typography>
           </FormControl>
         </Form>

@@ -13,6 +13,7 @@ import Mypage from "./pages/users/MyPage";
 import Users from "./pages/users/Users";
 import PostsEdit from "./pages/posts/PostsEdit";
 import FlashAlert from "./components/layouts/FlashAlert";
+import PasswordEdit from "./pages/users/PasswordEdit";
 
 
 const App: React.FC = () => {
@@ -67,6 +68,19 @@ const App: React.FC = () => {
                 history 
               }) => (
                 <SignUp 
+                  match={match} 
+                  handleFlash={handleFlash}
+                  history={history}
+                />
+              )} 
+            />
+            <Route 
+              exact path="/password" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <PasswordEdit 
                   match={match} 
                   handleFlash={handleFlash}
                   history={history}
