@@ -17175,3 +17175,1454 @@ Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.7ms | Allocations: 
 NoMethodError (undefined method `posts' for nil:NilClass):
   
 app/controllers/users_controller.rb:27:in `show'
+Started GET "/api/v1/posts" for 172.18.0.1 at 2020-12-08 20:01:54 +0900
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:01:54 +0900
+  [1m[35m (12.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (17.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by UsersController#show as HTML
+Processing by PostsController#index as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mPost Load (7.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/posts_controller.rb:6:in `index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (42.51ms)
+Completed 200 OK in 257ms (Views: 51.4ms | ActiveRecord: 32.9ms | Allocations: 45394)
+
+
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 7 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 3 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (411.59ms)
+Completed 200 OK in 570ms (Views: 477.8ms | ActiveRecord: 53.0ms | Allocations: 129230)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:01:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.08ms)
+Completed 200 OK in 21ms (Views: 11.0ms | ActiveRecord: 2.0ms | Allocations: 4429)
+
+
+Started GET "/api/v1/posts/5" for 172.18.0.1 at 2020-12-08 20:01:57 +0900
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:01:57 +0900
+Started GET "/api/v1/posts/5/comments" for 172.18.0.1 at 2020-12-08 20:01:57 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+Processing by UsersController#show as HTML
+  [1m[35m (1.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+Processing by CommentsController#index as HTML
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Parameters: {"post_id"=>"5"}
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  ↳ app/controllers/users_controller.rb:27:in `show'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`created_at` DESC[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 19ms (Views: 9.5ms | ActiveRecord: 1.8ms | Allocations: 4460)
+
+
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (18.12ms)
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+Completed 200 OK in 42ms (Views: 17.0ms | ActiveRecord: 5.0ms | Allocations: 8159)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.69ms)
+Completed 200 OK in 87ms (Views: 8.7ms | ActiveRecord: 10.4ms | Allocations: 16395)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:01:57 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.21ms)
+Completed 200 OK in 36ms (Views: 17.1ms | ActiveRecord: 4.2ms | Allocations: 4428)
+
+
+Started POST "/api/v1/posts/5/comments" for 172.18.0.1 at 2020-12-08 20:02:01 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"comment"=>{"content"=>"コメントです", "user_id"=>4}, "post_id"=>"5"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO `comments` (`user_id`, `post_id`, `content`, `created_at`, `updated_at`) VALUES (4, 5, 'コメントです', '2020-12-08 11:02:01.198697', '2020-12-08 11:02:01.198697')[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:15:in `create'
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (21.64ms)
+Completed 200 OK in 79ms (Views: 23.3ms | ActiveRecord: 8.7ms | Allocations: 9712)
+
+
+Started PATCH "/api/v1/posts/5/comments/4" for 172.18.0.1 at 2020-12-08 20:02:09 +0900
+Processing by CommentsController#update as HTML
+  Parameters: {"comment"=>{"content"=>"コメントですkkkkk"}, "post_id"=>"5", "id"=>"4"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments`[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (1.7ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですkkkkk', `comments`.`updated_at` = '2020-12-08 11:02:09.750404' WHERE `comments`.`id` = 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですkkkkk', `comments`.`updated_at` = '2020-12-08 11:02:09.787645' WHERE `comments`.`id` = 2[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですkkkkk', `comments`.`updated_at` = '2020-12-08 11:02:09.808786' WHERE `comments`.`id` = 3[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですkkkkk', `comments`.`updated_at` = '2020-12-08 11:02:09.829338' WHERE `comments`.`id` = 4[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (48.97ms)
+Completed 200 OK in 173ms (Views: 47.5ms | ActiveRecord: 22.7ms | Allocations: 35349)
+
+
+Started GET "/api/v1/posts/5" for 172.18.0.1 at 2020-12-08 20:02:20 +0900
+Started GET "/api/v1/posts/5/comments" for 172.18.0.1 at 2020-12-08 20:02:20 +0900
+Processing by PostsController#show as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"5"}
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`created_at` DESC[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.05ms)
+Completed 200 OK in 53ms (Views: 36.8ms | ActiveRecord: 4.4ms | Allocations: 10370)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.17ms)
+Completed 200 OK in 66ms (Views: 9.5ms | ActiveRecord: 6.0ms | Allocations: 14147)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:21 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.35ms)
+Completed 200 OK in 20ms (Views: 9.6ms | ActiveRecord: 2.9ms | Allocations: 4428)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:21 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.93ms)
+Completed 200 OK in 19ms (Views: 9.4ms | ActiveRecord: 2.0ms | Allocations: 4427)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:21 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.62ms)
+Completed 200 OK in 22ms (Views: 10.4ms | ActiveRecord: 2.6ms | Allocations: 4427)
+
+
+Started POST "/api/v1/posts/5/comments" for 172.18.0.1 at 2020-12-08 20:02:29 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"comment"=>{"content"=>"コメントです", "user_id"=>4}, "post_id"=>"5"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO `comments` (`user_id`, `post_id`, `content`, `created_at`, `updated_at`) VALUES (4, 5, 'コメントです', '2020-12-08 11:02:29.565014', '2020-12-08 11:02:29.565014')[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:15:in `create'
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (13.42ms)
+Completed 200 OK in 51ms (Views: 13.7ms | ActiveRecord: 8.7ms | Allocations: 8858)
+
+
+Started PATCH "/api/v1/posts/5/comments/5" for 172.18.0.1 at 2020-12-08 20:02:39 +0900
+Processing by CommentsController#update as HTML
+  Parameters: {"comment"=>{"content"=>"コメントで"}, "post_id"=>"5", "id"=>"5"}
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments`[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントで', `comments`.`updated_at` = '2020-12-08 11:02:39.505022' WHERE `comments`.`id` = 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.8ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントで', `comments`.`updated_at` = '2020-12-08 11:02:39.527603' WHERE `comments`.`id` = 2[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.5ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントで', `comments`.`updated_at` = '2020-12-08 11:02:39.551293' WHERE `comments`.`id` = 3[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントで', `comments`.`updated_at` = '2020-12-08 11:02:39.571458' WHERE `comments`.`id` = 4[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (1.0ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントで', `comments`.`updated_at` = '2020-12-08 11:02:39.600401' WHERE `comments`.`id` = 5[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (44.36ms)
+Completed 200 OK in 188ms (Views: 43.7ms | ActiveRecord: 26.0ms | Allocations: 43523)
+
+
+Started GET "/api/v1/posts/5" for 172.18.0.1 at 2020-12-08 20:02:44 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+Started GET "/api/v1/posts/5/comments" for 172.18.0.1 at 2020-12-08 20:02:44 +0900
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"5"}
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`created_at` DESC[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.9ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = 'たい' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+Completed 200 OK in 41ms (Views: 31.4ms | ActiveRecord: 4.5ms | Allocations: 11243)
+
+
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.47ms)
+Completed 200 OK in 75ms (Views: 9.8ms | ActiveRecord: 7.2ms | Allocations: 17838)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:45 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.43ms)
+Completed 200 OK in 18ms (Views: 8.6ms | ActiveRecord: 2.3ms | Allocations: 4428)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:45 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.18ms)
+Completed 200 OK in 19ms (Views: 9.7ms | ActiveRecord: 2.0ms | Allocations: 4430)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:02:45 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.07ms)
+Completed 200 OK in 19ms (Views: 9.8ms | ActiveRecord: 2.2ms | Allocations: 4427)
+
+
+Started DELETE "/api/v1/posts/5/comments/5" for 172.18.0.1 at 2020-12-08 20:02:53 +0900
+Processing by CommentsController#destroy as HTML
+  Parameters: {"post_id"=>"5", "id"=>"5"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:30:in `destroy'
+  [1m[36mComment Destroy (0.9ms)[0m  [1m[31mDELETE FROM `comments` WHERE `comments`.`id` = 5[0m
+  ↳ app/controllers/comments_controller.rb:30:in `destroy'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:30:in `destroy'
+Completed 204 No Content in 27ms (ActiveRecord: 5.2ms | Allocations: 3285)
+
+
+Started GET "/api/v1/posts" for 172.18.0.1 at 2020-12-08 20:09:42 +0900
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:09:42 +0900
+  [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (5.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by PostsController#index as HTML
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/posts_controller.rb:6:in `index'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mLike Load (2.0ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (82.08ms)
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+Completed 200 OK in 419ms (Views: 88.9ms | ActiveRecord: 11.3ms | Allocations: 36974)
+
+
+[active_model_serializers]   [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (1.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (2.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (1.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (44.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (11.5ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (2.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (1.1ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 7 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 3 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1317.07ms)
+Completed 200 OK in 1576ms (Views: 1391.5ms | ActiveRecord: 122.1ms | Allocations: 129396)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:09:44 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (3.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (102.94ms)
+Completed 200 OK in 195ms (Views: 137.3ms | ActiveRecord: 12.0ms | Allocations: 4448)
+
+
+Started GET "/api/v1/posts" for 172.18.0.1 at 2020-12-08 20:10:46 +0900
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (9.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` ORDER BY `posts`.`created_at` DESC[0m
+  ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (1.2ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+[active_model_serializers]   [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 7[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 6[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 5[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 3[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 2[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] No serializer found for resource: #<Like id: 1, user_id: 4, post_id: 11, created_at: "2020-12-08 09:38:21", updated_at: "2020-12-08 09:38:21">
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 7 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 6 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 5 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 4 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 3 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 2 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 1 ORDER BY `comments`.`id` DESC[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 7 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 3 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (361.42ms)
+Completed 200 OK in 399ms (Views: 360.8ms | ActiveRecord: 36.9ms | Allocations: 81661)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:10:47 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.55ms)
+Completed 200 OK in 26ms (Views: 13.1ms | ActiveRecord: 2.4ms | Allocations: 4429)
+
+
+Started GET "/api/v1/posts/11" for 172.18.0.1 at 2020-12-08 20:10:48 +0900
+Processing by PostsController#show as HTML
+Started GET "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:10:48 +0900
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:10:48 +0900
+  Parameters: {"id"=>"11"}
+  [1m[36mPost Load (2.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"11"}
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`created_at` DESC[0m
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (29.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+Completed 200 OK in 75ms (Views: 30.3ms | ActiveRecord: 6.4ms | Allocations: 10120)
+
+
+Completed 200 OK in 42ms (Views: 21.2ms | ActiveRecord: 1.7ms | Allocations: 6574)
+
+
+[active_model_serializers]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (15.81ms)
+Completed 200 OK in 122ms (Views: 16.0ms | ActiveRecord: 14.8ms | Allocations: 17468)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:10:48 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (19.24ms)
+Completed 200 OK in 36ms (Views: 19.4ms | ActiveRecord: 4.4ms | Allocations: 4428)
+
+
+Started POST "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:10:54 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"comment"=>{"content"=>"コメントです", "user_id"=>4}, "post_id"=>"11"}
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (4.2ms)[0m  [1m[32mINSERT INTO `comments` (`user_id`, `post_id`, `content`, `created_at`, `updated_at`) VALUES (4, 11, 'コメントです', '2020-12-08 11:10:54.558438', '2020-12-08 11:10:54.558438')[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:15:in `create'
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (12.85ms)
+Completed 200 OK in 103ms (Views: 13.6ms | ActiveRecord: 14.2ms | Allocations: 9712)
+
+
+Started POST "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:10:57 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"comment"=>{"content"=>"コメントです1", "user_id"=>4}, "post_id"=>"11"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (2.4ms)[0m  [1m[32mINSERT INTO `comments` (`user_id`, `post_id`, `content`, `created_at`, `updated_at`) VALUES (4, 11, 'コメントです1', '2020-12-08 11:10:57.671426', '2020-12-08 11:10:57.671426')[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:15:in `create'
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (18.39ms)
+Completed 200 OK in 90ms (Views: 21.1ms | ActiveRecord: 14.6ms | Allocations: 8864)
+
+
+Started POST "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:11:02 +0900
+Processing by CommentsController#create as HTML
+  Parameters: {"comment"=>{"content"=>"コメントですs", "user_id"=>4}, "post_id"=>"11"}
+  [1m[36mPost Load (2.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO `comments` (`user_id`, `post_id`, `content`, `created_at`, `updated_at`) VALUES (4, 11, 'コメントですs', '2020-12-08 11:11:02.580543', '2020-12-08 11:11:02.580543')[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:15:in `create'
+[active_model_serializers] Rendered CommentSerializer with ActiveModelSerializers::Adapter::Attributes (19.67ms)
+Completed 200 OK in 80ms (Views: 20.2ms | ActiveRecord: 12.8ms | Allocations: 8864)
+
+
+Started PATCH "/api/v1/posts/11/comments/[object%20Object]" for 172.18.0.1 at 2020-12-08 20:11:11 +0900
+Processing by CommentsController#update as HTML
+  Parameters: {"comment"=>7, "post_id"=>"11", "id"=>"[object Object]"}
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+Completed 404 Not Found in 11ms (ActiveRecord: 1.6ms | Allocations: 804)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=[object Object]):
+  
+app/controllers/comments_controller.rb:44:in `set_comment'
+Started GET "/api/v1/posts/11" for 172.18.0.1 at 2020-12-08 20:11:16 +0900
+Started GET "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:11:16 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+Processing by CommentsController#index as HTML
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  Parameters: {"post_id"=>"11"}
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+  [1m[36mComment Load (2.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`created_at` DESC[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (60.23ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (23.14ms)
+Completed 200 OK in 95ms (Views: 74.5ms | ActiveRecord: 8.4ms | Allocations: 19244)
+
+
+Completed 200 OK in 111ms (Views: 25.1ms | ActiveRecord: 6.6ms | Allocations: 20331)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:11:17 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.8ms)
+Completed 200 OK in 26ms (Views: 13.4ms | ActiveRecord: 2.6ms | Allocations: 4430)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:11:17 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (14.24ms)
+Completed 200 OK in 33ms (Views: 17.2ms | ActiveRecord: 3.4ms | Allocations: 4427)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:11:17 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.74ms)
+Completed 200 OK in 25ms (Views: 12.6ms | ActiveRecord: 3.0ms | Allocations: 4427)
+
+
+Started PATCH "/api/v1/posts/11/comments/[object%20Object]" for 172.18.0.1 at 2020-12-08 20:11:26 +0900
+Processing by CommentsController#update as HTML
+  Parameters: {"comment"=>7, "post_id"=>"11", "id"=>"[object Object]"}
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = NULL LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+Completed 404 Not Found in 9ms (ActiveRecord: 1.3ms | Allocations: 680)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=[object Object]):
+  
+app/controllers/comments_controller.rb:44:in `set_comment'
+Started GET "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:12:54 +0900
+Started GET "/api/v1/posts/11" for 172.18.0.1 at 2020-12-08 20:12:54 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"11"}
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (43.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  [1m[36mPost Load (50.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  [1m[36mComment Load (4.3ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`created_at` DESC[0m
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (59.45ms)
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+Completed 200 OK in 131ms (Views: 69.4ms | ActiveRecord: 50.0ms | Allocations: 18352)
+
+
+[active_model_serializers]   [1m[36mLike Load (5.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (30.57ms)
+Completed 200 OK in 154ms (Views: 26.5ms | ActiveRecord: 70.8ms | Allocations: 20458)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:12:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.79ms)
+Completed 200 OK in 30ms (Views: 12.7ms | ActiveRecord: 4.7ms | Allocations: 4428)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:12:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.17ms)
+Completed 200 OK in 55ms (Views: 21.3ms | ActiveRecord: 6.7ms | Allocations: 4427)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:12:55 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.97ms)
+Completed 200 OK in 35ms (Views: 15.1ms | ActiveRecord: 3.8ms | Allocations: 4427)
+
+
+Started PATCH "/api/v1/posts/11/comments/7" for 172.18.0.1 at 2020-12-08 20:13:01 +0900
+Processing by CommentsController#update as HTML
+  Parameters: {"comment"=>{"id"=>7, "content"=>"コメントですssss"}, "post_id"=>"11", "id"=>"7"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:44:in `set_comment'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT `comments`.* FROM `comments`[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (5.5ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.668244' WHERE `comments`.`id` = 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (1.3ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.725286' WHERE `comments`.`id` = 2[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.7ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.758657' WHERE `comments`.`id` = 3[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.7ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.782961' WHERE `comments`.`id` = 4[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.819789' WHERE `comments`.`id` = 5[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.7ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.841029' WHERE `comments`.`id` = 6[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[36mComment Update (0.6ms)[0m  [1m[33mUPDATE `comments` SET `comments`.`content` = 'コメントですssss', `comments`.`updated_at` = '2020-12-08 11:13:01.861123' WHERE `comments`.`id` = 7[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:22:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 8 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 6 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 5 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:23:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (71.07ms)
+Completed 200 OK in 307ms (Views: 70.1ms | ActiveRecord: 42.2ms | Allocations: 60363)
+
+
+Started GET "/api/v1/posts/11" for 172.18.0.1 at 2020-12-08 20:13:10 +0900
+Started GET "/api/v1/posts/11/comments" for 172.18.0.1 at 2020-12-08 20:13:10 +0900
+Processing by PostsController#show as HTML
+Processing by CommentsController#index as HTML
+  Parameters: {"id"=>"11"}
+  Parameters: {"post_id"=>"11"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/comments_controller.rb:40:in `set_post'
+  ↳ app/controllers/posts_controller.rb:55:in `set_post'
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 11 ORDER BY `comments`.`created_at` DESC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`size` AS posts_size FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`size` IS NOT NULL GROUP BY `posts`.`size`[0m
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`feed` AS posts_feed FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`feed` != '' GROUP BY `posts`.`feed`[0m
+  ↳ app/controllers/posts_controller.rb:12:in `show'
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, MONTH(date) AS month_date FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`date` IS NOT NULL GROUP BY MONTH(date)[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, HOUR(time) AS hour_time FROM `posts` WHERE `posts`.`name` = '散ってカテゴリー２' AND `posts`.`time` IS NOT NULL GROUP BY HOUR(time)[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+[active_model_serializers]   [1m[36mCACHE ActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 4 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:8:in `image'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'image' LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/comments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (93.17ms)
+Completed 200 OK in 115ms (Views: 103.1ms | ActiveRecord: 5.7ms | Allocations: 17434)
+
+
+[active_model_serializers]   [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers]   [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`post_id` = 11[0m
+[active_model_serializers]   ↳ app/controllers/posts_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (41.85ms)
+Completed 200 OK in 144ms (Views: 41.4ms | ActiveRecord: 10.8ms | Allocations: 20444)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:13:11 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (15.86ms)
+Completed 200 OK in 36ms (Views: 16.6ms | ActiveRecord: 4.4ms | Allocations: 4428)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:13:11 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.48ms)
+Completed 200 OK in 29ms (Views: 12.3ms | ActiveRecord: 4.4ms | Allocations: 4427)
+
+
+Started GET "/api/v1/users/4o4J8Db4mcdlZkhvHLpNu9ejtGF2" for 172.18.0.1 at 2020-12-08 20:13:11 +0900
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4o4J8Db4mcdlZkhvHLpNu9ejtGF2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`uid` = '4o4J8Db4mcdlZkhvHLpNu9ejtGF2' LIMIT 1[0m
+  ↳ app/controllers/users_controller.rb:40:in `set_user'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM(`posts`.`number`) AS sum_number, `posts`.`name` AS posts_name FROM `posts` WHERE `posts`.`user_id` = 4 GROUP BY `posts`.`name`[0m
+  ↳ app/controllers/users_controller.rb:27:in `show'
+[active_model_serializers]   [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers]   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 4[0m
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:30:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (18.8ms)
+Completed 200 OK in 33ms (Views: 19.9ms | ActiveRecord: 3.0ms | Allocations: 4427)
+
+

@@ -76,7 +76,7 @@ export default function CommentForm(props: any) {
               alert(error.message);
             }
           }}
-          render={({ submitForm, resetForm, isSubmitting, isValid }) => (
+          render={({ submitForm, isSubmitting, isValid }) => (
             <Form>
               {isSubmitting &&<LinearProgress/>}
               <Field

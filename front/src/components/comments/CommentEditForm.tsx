@@ -33,10 +33,11 @@ export default function CommentEditForm(props: any) {
           onSubmit={async value => {
             try {
               const comment ={
+                id: props.comment.id,
                 content: value.content
               }
               props.handleFormClose()
-              props.updateComment(props.comment.id, comment)
+              props.updateComment(comment, props.comment.id)
             } catch (error) {
               alert(error.message);
             }

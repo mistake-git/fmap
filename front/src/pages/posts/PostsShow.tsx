@@ -170,12 +170,12 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const updateComment = async(id: number, comment: CommentModel) => {
+  const updateComment = async(comment: CommentModel) => {
     try { 
       await
-    　  myHttpClient.patch(`/posts/${props.match.params.id}/comments/${id}`,{comment: comment})
+    　  myHttpClient.patch(`/posts/${props.match.params.id}/comments/${comment.id}`,{comment: comment})
       .then((response) => {
-        const commentIndex = comments.findIndex((x: any) => x.id === id)
+        const commentIndex = comments.findIndex((x: any) => x.id === comment.id)
         const updateComments = update(comments, {[commentIndex]: {$set: response.data}})
         setComments(updateComments)
         console.log('update comment')
