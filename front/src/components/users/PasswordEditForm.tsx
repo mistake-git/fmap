@@ -24,10 +24,11 @@ const PasswordEditForm = (props: any) => {
     <Formik
     initialValues={{ email: ""}}
     validationSchema={AuthSchema}
-    onSubmit={async value => {
+    onSubmit={async (value, {resetForm}) => {
       try { 
       const email = value.email
       await auth.sendPasswordResetEmail(email).then(function() {
+        resetForm({})
         const message="メールを送信しました"
         const severity = 'success'
         props.handleFlash(message,severity )

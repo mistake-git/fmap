@@ -96,9 +96,7 @@ return (
           <AccountCircle /><Box>マイページ</Box>
         </Button>
       </Link>
-      <Button className={classes.linkColor}>
-      <ExitToAppIcon
-        className={classes.link}
+      <Button className={classes.linkColor}
         onClick={async event => {
           try {
           await auth.signOut();
@@ -107,7 +105,9 @@ return (
             alert(error.message);
           }
         }}
-        /><Box display={{ xs: 'none', md: 'inline' }}>ログアウト</Box>
+      >
+        <ExitToAppIcon className={classes.link}/>
+        <Box display={{ xs: 'none', md: 'inline' }}>ログアウト</Box>
       </Button>
     </Toolbar>
   </Fragment>
