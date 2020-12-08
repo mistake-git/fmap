@@ -62,13 +62,16 @@ const SignUpForm = (props: any) => {
             }
             myHttpClient.post('/users',{user: user})
             console.log(results)
-          })
-          .catch((data) =>{
-           　console.log(data)
+            const message="アカウントを作成しました"
+            const severity = 'success'
+            props.handleFlash(message,severity )
           })
         } 
         catch (error) {
           alert(error.message);
+          const message="アカウントに失敗しました"
+          const severity = 'error'
+          props.handleFlash(message,severity )
         }
       }}
       render={({ submitForm, isSubmitting, isValid }) => (

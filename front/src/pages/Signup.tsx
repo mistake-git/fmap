@@ -13,7 +13,9 @@ export default function SignUp(props: any) {
 
   return (
     <AuthTemplate title="新規登録">
-      <SignUpForm />
+      <SignUpForm
+        handleFlash={props.handleFlash}
+      />
     </AuthTemplate>
   )
 }

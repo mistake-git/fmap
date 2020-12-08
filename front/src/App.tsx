@@ -5,7 +5,7 @@ import { AuthProvider } from "./Auth";
 import {UserProvider} from "./User"
 import Map from "./pages/Map";
 import SignIn from "./pages/SignIn";
-import Signup from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 import Posts from "./pages/posts/Posts";
 import PostsShow from "./pages/posts/PostsShow";
 import PostsNew from "./pages/posts/PostsNew";
@@ -47,8 +47,32 @@ const App: React.FC = () => {
         <UserProvider>
           <Switch>
           　<Route exact path="/" component={Map} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signin" component={SignIn} />
+            <Route 
+              exact path="/signin" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <SignIn 
+                  match={match} 
+                  handleFlash={handleFlash}
+                  history={history}
+                />
+              )} 
+            />
+            <Route 
+              exact path="/signup" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <SignUp 
+                  match={match} 
+                  handleFlash={handleFlash}
+                  history={history}
+                />
+              )} 
+            />
             <Route exact path="/users" component={Users} />
             <Route exact path="/posts" component={Posts} />
             <Route 

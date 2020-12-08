@@ -13,7 +13,9 @@ export default function SiginIn(props: any) {
 
   return (
     <AuthTemplate title="ログイン">
-      <SignInForm />
+      <SignInForm 
+        handleFlash={props.handleFlash}
+      />
     </AuthTemplate>
   )
 }

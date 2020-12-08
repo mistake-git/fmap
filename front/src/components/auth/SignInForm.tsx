@@ -32,9 +32,15 @@ const SignInForm = (props: any) => {
             value.email,
             value.password
           );
+          const message="ログインしました"
+          const severity = 'success'
+          props.handleFlash(message,severity )
         } 
         catch (error) {
           alert(error.message);
+          const message="ログインに失敗しました"
+          const severity = 'error'
+          props.handleFlash(message,severity )
         }
       }}
       render={({ submitForm, isSubmitting, isValid }) => (
