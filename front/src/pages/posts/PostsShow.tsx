@@ -72,12 +72,12 @@ const PostsShow = (props: any) => {
     getPost();
   },[setPost]);
 
-  // const getMyLike = ( user: any) =>{
-  //   const like = likes.find((x: any) => x.user_id === user.id)
-  //   console.log(likes)
-  //   setLike(like)
-  //   console.log('like')
-  // }
+
+  // const mylike = likes.find((like: any) => {
+  //   return (like.id === user?.id);
+  // });
+
+  // console.log(mylike)
 
 
   useEffect(() => {
