@@ -81,12 +81,20 @@ const PostsShow = (props: any) => {
     });
   }, []);
 
-  // const getMyLike = (user: UserModel) => {
+
+  // const getMyLike = () => {
   //   const mylike = likes.find((like: any) => {
-  //   　return (like.user_id === user.id);
+  //   　return (like.user_id === user?.id);
   //   });
   //   setLike(mylike)
+  //   console.log(mylike)
+  //   console.log('mylike')
   // }
+
+  // useEffect(() => {
+  //   getMyLike();
+  // },[setLike]);
+
 
   const createLike = async(like: LikeModel ) => {
     try { 
@@ -148,7 +156,7 @@ const PostsShow = (props: any) => {
     getComments();
   },[setComments]);
   
-  
+
   const createComment = async(comment: CommentModel) => {
     try { 
       await 
@@ -237,7 +245,7 @@ const PostsShow = (props: any) => {
 
   return (
     <Fragment>
-      {post && postUser ? 
+      {user && post && postUser ? 
       <Template>
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
