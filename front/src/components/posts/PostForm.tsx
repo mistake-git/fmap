@@ -165,8 +165,8 @@ export default function PostNewForm(props: any) {
           {src &&
             <Fragment>
               <Grid container spacing={5}>
-                <Grid item md={3}></Grid>
-                <Grid item md={6}>
+                <Grid item xs={2} md={3}></Grid>
+                <Grid item xs={8} md={6}>
                   <div className={classes.imageWrapper} >
                     <CancelTwoToneIcon
                       color="inherit"
@@ -176,7 +176,7 @@ export default function PostNewForm(props: any) {
                     <img src={src} style={{width: '100%'}}/>
                   </div>
                 </Grid>
-                <Grid item md={3}></Grid>
+                <Grid item xs={2} md={3}></Grid>
               </Grid>
             </Fragment> 
           }
