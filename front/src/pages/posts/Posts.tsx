@@ -35,12 +35,6 @@ const Posts = (props: any) => {
     getPosts();
   },[setPosts]);
 
-  // const filter = (event: any, posts: PostModel[]) => {
-  //   const updatePosts = posts.filter((post) => {
-  //     return post.name.search( event.target.value.toLowerCase()) !== -1;
-  //   })
-  //   setPosts(updatePosts)
-  // }
 
   return (
     <Fragment>
@@ -50,7 +44,6 @@ const Posts = (props: any) => {
       {posts &&
       <Template>
         <Container maxWidth="md">
-          <input type="text" placeholder="search"/>
           <Grid container spacing={2} style={{ marginTop: "4em" }}>
             {posts.map((post) => {
               return(
