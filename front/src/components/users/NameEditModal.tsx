@@ -1,23 +1,15 @@
 import React, {
-  ChangeEvent,
-  createRef,
-  Fragment,
   useState
 } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Button,
-  Grid,
   Typography,
 } from "@material-ui/core";
-import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
