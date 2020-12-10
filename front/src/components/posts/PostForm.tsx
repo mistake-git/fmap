@@ -6,7 +6,6 @@ import React, {
 } from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import * as Yup from "yup";
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import IconButton from '@material-ui/core/IconButton';
@@ -28,6 +27,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
+import Yup from '../../plugins/yup'
+
 
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
