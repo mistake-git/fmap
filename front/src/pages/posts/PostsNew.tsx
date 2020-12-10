@@ -25,7 +25,13 @@ const PostsNew = (props: any) => {
   const createPost = async(post: any) => {
     try { 
     await
-    myHttpClient.post('/posts',{post: post}) 
+    myHttpClient.post('/posts',{post: post,
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    ) 
     .then((response) => {
       console.log(response.data)
       console.log('create post')

@@ -130,9 +130,11 @@ export default function PostNewForm(props: any) {
     if (event.target.files === null) {
       return
     }
-    const file = event.target.files.item(0)
+    const file = event.target.files[0]
 
     setImage(file)
+    console.log(file)
+    console.log('file')
 
     if (file === null) {
       return
@@ -185,7 +187,7 @@ export default function PostNewForm(props: any) {
             onSubmit={async value => {
               try {
                 const post ={
-                  image: '',
+                  image: image,
                   name: value.name, 
                   size: value.size ,
                   weight: value.weight,
@@ -202,7 +204,6 @@ export default function PostNewForm(props: any) {
                 }
               await
                 props.action(post);
-                console.log('post value');
                 let str = JSON.stringify(post);
                 console.log("ENTITY IS  " + str);
               } 
@@ -222,6 +223,7 @@ export default function PostNewForm(props: any) {
                       multiple={false}
                       id="icon-button-file" 
                       type="file"
+                      enctype="multipart/form-data"
                       onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
                       onClick={onClick}
                     />
