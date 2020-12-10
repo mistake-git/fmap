@@ -11,6 +11,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import PostModel from '../../models/PostModel';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles({
 	root: {
@@ -38,25 +39,23 @@ export default function PostCard(props: any) {
 				<Link to={`/posts/${props.post.id}`}>
 					<CardMedia
 						className={classes.media}
-						image={props.post.image}
+						image="../fish.jpg"
 						title="Contemplative Reptile"
 					/>
 				</Link>
 				<CardContent>
-				<Typography gutterBottom  component="h2">
-					{props.post.name}
-				</Typography>
+					<Typography  component="h2">
+					<Box fontWeight="fontWeightBold">
+						{props.post.name}
+					</Box>
+					</Typography>
 				</CardContent>
 			</CardActionArea>
-			<CardActions disableSpacing>
+			<CardActions>
 				<IconButton>
 					<FavoriteIcon fontSize="small" />
 				</IconButton>
-				1
-				<IconButton>
-					<VisibilityIcon fontSize="small"/>
-				</IconButton>
-				2
+				{props.post.likes_users.length}
 			</CardActions>
 		</Card>
 	);
