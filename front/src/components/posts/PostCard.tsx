@@ -51,12 +51,6 @@ export default function PostCard(props: any) {
 					</Typography>
 				</CardContent>
 			</CardActionArea>
-			<CardActions>
-				<IconButton>
-					<FavoriteIcon fontSize="small" />
-				</IconButton>
-				{props.post.likes_users.length}
-			</CardActions>
 		</Card>
 	);
 }
