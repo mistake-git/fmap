@@ -11,6 +11,7 @@ import { TextField } from "formik-material-ui";
 import IconButton from '@material-ui/core/IconButton';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
+  Box,
   Button,
   Grid,
   LinearProgress,
@@ -216,9 +217,11 @@ export default function PostNewForm(props: any) {
                 <Grid container className={classes.root} spacing={3}>
                 {isSubmitting && <LinearProgress />}
                   <Grid item xs={12}>
-                    <Typography variant="h5" component="h2" className={classes.formTitle}>
-                    {props.title}
-                    </Typography>
+                    <Box textAlign="center">
+                      <Typography variant="h5" component="h2" className={classes.formTitle}>
+                        {props.title}
+                      </Typography>
+                    </Box>
                   </Grid>
                   <Grid item xs={12}>
                     <Field 
