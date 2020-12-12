@@ -62,6 +62,8 @@ const PostsNew = (props: any) => {
 
   const lat = 35;
   const lng = 135;
+  
+  const title = "釣果を投稿"
 
   return (
     <Fragment>
@@ -73,6 +75,7 @@ const PostsNew = (props: any) => {
             user={user}
             lat={lat}
             lng={lng}
+            title={title}
           />
         </Container>
       </Template>

@@ -78,6 +78,8 @@ const PostsEdit = (props: any) => {
     latitude: post.latitude,
     longitude: post.longitude
   }
+
+  const title = "釣果を編集"
   
   return (
     <Fragment>
@@ -91,6 +93,7 @@ const PostsEdit = (props: any) => {
             values={values}
             lat={post.latitude}
             lng={post.longitude}
+            title={title}
           />
           }
         </Container>

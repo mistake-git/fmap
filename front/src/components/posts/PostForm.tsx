@@ -47,6 +47,10 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: theme.spacing(2),
       flex: 1,
     },
+    formTitle: {
+      color: '#3f51b5;',
+      fontWeight: 'bold'
+    },
     root: {
       minWidth: 150,
     },
@@ -208,8 +212,13 @@ export default function PostNewForm(props: any) {
             }}
             render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
               <Form>
-                <Grid container className={classes.root} spacing={2}>
+                <Grid container className={classes.root} spacing={3}>
                 {isSubmitting && <LinearProgress />}
+                  <Grid item xs={12}>
+                    <Typography variant="h5" component="h2" className={classes.formTitle}>
+                    {props.title}
+                    </Typography>
+                  </Grid>
                   <Grid item xs={12}>
                     <Field 
                       name="image"

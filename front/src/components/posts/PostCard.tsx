@@ -11,7 +11,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import PostModel from '../../models/PostModel';
-import { Box } from '@material-ui/core';
+import { Avatar, Box, CardHeader } from '@material-ui/core';
 
 const useStyles = makeStyles({
 	root: {
