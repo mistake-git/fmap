@@ -6,8 +6,7 @@ Rails.application.routes.draw do
         resources :likes
       end
       resources :users
-      resources :user_images, only: [:update]
+      resources :user_images, only: [:update, :destroy]
     end
-
   end
 end
