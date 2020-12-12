@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function Comments(props: any) {
+export default function Comment(props: any) {
   const classes = useStyles();
   const [formOpen, setFormOpen]= useState<boolean>(false);
   const comment: CommentModel = props.comment;
@@ -36,7 +36,6 @@ export default function Comments(props: any) {
   
   return (
     <Fragment>
-    
         <Fragment>
         <List className={classes.root} key={comment.id}>
           <ListItem alignItems="flex-start">

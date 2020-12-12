@@ -1,7 +1,7 @@
 import React, {Fragment}　from "react";
 import CommentModel from "../../models/CommentModel";
 import CommentForm from './CommentForm';
-import Comments from './Comment';
+import Comment from './Comment';
 
 
 export default function CommentContainer(props: any) {
@@ -15,7 +15,7 @@ export default function CommentContainer(props: any) {
       post={props.post}
       />
       {props.comments.map((comment: CommentModel) => (
-        <Comments
+        <Comment
           comment={comment}
           post={props.post}
           destroyComment={props.destroyComment}
