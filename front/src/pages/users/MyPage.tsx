@@ -66,10 +66,17 @@ const MyPage = (props: any) => {
     }
   }
 
-  const updateProfileImage = async(user: UserModel) => {
+  const updateProfileImage = async(image: File) => {
     try { 
+      const formData = new FormData();
+
+      formData.append("name", user?.name || "hoge")
+      formData.append("image", image)
     await
-    myHttpClient.patch(`/user_images/${props.match.params.id}`,{user: user}) 
+    myHttpClient.patch(`/user_images/${props.match.params.id}`, formData,
+    {headers: {
+      'content-type': 'multipart/form-data'
+    }}) 
     .then((response) => {
       console.log(response)
       setUser(response.data);

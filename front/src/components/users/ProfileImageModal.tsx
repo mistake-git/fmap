@@ -130,11 +130,8 @@ export default function ProfileUserModal(props: any) {
           validationSchema={UserSchema}
           onSubmit={async value => {
             try {
-              const user ={
-                image: image,
-              }
             await
-              props.updateUser(user)
+              props.updateProfileImage(image)
               handleClose();
               clear();
               console.log('image')
