@@ -40,7 +40,7 @@ export default function Comment(props: any) {
         <List className={classes.root} key={comment.id}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt={comment.user.name} src="/static/images/avatar/1.jpg" />
+              <Avatar alt={comment.user.name} src={comment.user.image_url} />
             </ListItemAvatar>
             <ListItemText
               primary={comment.user.name}
