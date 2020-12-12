@@ -41,7 +41,7 @@ export default function PostCard(props: any) {
 	return (
     <Fragment>
       <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
-        <Avatar alt={props.user.name} src={props.user.image} className={classes.avater} />
+        <Avatar alt={props.user.name} src={props.user.image_url} className={classes.avater} />
         <Box fontWeight="bold" className={classes.userName} my={1}>
           {props.user.name}
         </Box>

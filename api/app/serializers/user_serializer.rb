@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :introduction, :uid, :image
+  attributes :id, :name, :email, :introduction, :uid, :image_url
   has_many :posts, serializer: PostSerializer do
     object.posts.order(created_at: :desc)
   end
