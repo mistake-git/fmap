@@ -11,7 +11,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Button,
   Grid,
@@ -24,11 +23,7 @@ import * as Yup from "yup";
 const UserSchema = Yup.object().shape({
 });
 
-
 const useStyles = makeStyles({
-  input: {
-    display: 'none',
-  },
   imageWrapper: {
     position: 'relative',
   },
@@ -52,6 +47,12 @@ export default function ProfileUserModal(props: any) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleDestroyProfile = () =>{
+    props.destroyProfileImage()
+    setOpen(false);
+  }
+
   const [src, setSrc] = useState('')
 
   const ref = createRef<HTMLInputElement>()
@@ -148,25 +149,15 @@ export default function ProfileUserModal(props: any) {
                 required
                 name="image"
                 accept="image" 
-                className={classes.input} 
                 multiple={false}
                 id="icon-button-file" 
                 type="file"
                 onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
                 onClick={onClick}
               />
-              <label htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                  <AttachmentIcon />
-                </IconButton>
-                ファイルを選択
-              </label>
             </DialogContent>
             <DialogActions>
-              <Button variant="contained"　onClick={handleClose}>
-                キャンセル
-              </Button>
-              <Button 
+            <Button 
                 variant="contained" 
                 color="primary" 
                 autoFocus　
@@ -174,6 +165,16 @@ export default function ProfileUserModal(props: any) {
                 disabled={!isValid || isSubmitting}　
               >
                 更新
+              </Button>
+              <Button 
+                variant="contained"　
+                onClick={handleDestroyProfile}
+                color="secondary" 
+              >
+                削除
+              </Button>
+              <Button variant="contained"　onClick={handleClose}>
+                キャンセル
               </Button>
             </DialogActions>
           </Form>

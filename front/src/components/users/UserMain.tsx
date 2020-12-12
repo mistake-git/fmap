@@ -57,6 +57,7 @@ export default function UserMain(props: any) {
               <ProfileUserModal
                 user={currentUser}
                 updateProfileImage={props.updateProfileImage}
+                destroyProfileImage={props.destroyProfileImage}
               />
             </div>
           }

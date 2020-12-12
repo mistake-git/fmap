@@ -85,6 +85,26 @@ const MyPage = (props: any) => {
     }
   }
 
+  const destroyProfileImage = async() => {
+    try { 
+    await
+    myHttpClient.delete(`/user_images/${props.match.params.id}`) 
+    .then((response) => {
+      console.log(response)
+      const message = 'プロフィール画像を削除しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
+      setUser(response.data);
+    })
+    }
+    catch (error) {
+      alert(error.message);
+      const message = 'プロフィール画像の削除に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+    }
+  }
+
   return (
     <Fragment>
       { loading &&
@@ -99,6 +119,7 @@ const MyPage = (props: any) => {
                   user={user}
                   currentUser={currentUser}
                   updateProfileImage={updateProfileImage}
+                  destroyProfileImage={destroyProfileImage}
                   updateUser={updateUser}
                   handleFlash={props.handleFlash}
                 />

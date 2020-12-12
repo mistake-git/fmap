@@ -50,9 +50,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       minWidth: 150,
     },
-    input: {
-      display: 'none',
-    },
     imageWrapper: {
       position: 'relative',
     },
@@ -204,7 +201,6 @@ export default function PostNewForm(props: any) {
               await
                 props.action(post);
                 let str = JSON.stringify(post);
-                console.log("ENTITY IS  " + str);
               } 
               catch (error) {
                 alert(error.message);
@@ -218,7 +214,6 @@ export default function PostNewForm(props: any) {
                     <Field 
                       name="image"
                       accept="image" 
-                      className={classes.input} 
                       multiple={false}
                       id="icon-button-file" 
                       type="file"
@@ -226,12 +221,6 @@ export default function PostNewForm(props: any) {
                       onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
                       onClick={onClick}
                     />
-                    <label htmlFor="icon-button-file">
-                      <IconButton color="primary" aria-label="upload picture" component="span">
-                        <AttachmentIcon />
-                      </IconButton>
-                      ファイルを選択
-                    </label>
                   </Grid>
                   {forms.map((form) => (
                     <Grid item xs={12} md={6}>
