@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment = Comment.update(comment_params)
+    if @comment.update(comment_params)
       render json: @comment
     else
       render json: @comment.error

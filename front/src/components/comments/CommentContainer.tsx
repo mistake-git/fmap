@@ -1,6 +1,7 @@
 import React, {Fragment}　from "react";
+import CommentModel from "../../models/CommentModel";
 import CommentForm from './CommentForm';
-import Comments from './Comments';
+import Comments from './Comment';
 
 
 export default function CommentContainer(props: any) {
@@ -13,13 +14,15 @@ export default function CommentContainer(props: any) {
       user={props.user}
       post={props.post}
       />
-     <Comments 
-      comments={props.comments}
-      post={props.post} 
-      destroyComment={props.destroyComment}
-      updateComment={props.updateComment}
-      user={props.user}
-     />
+      {props.comments.map((comment: CommentModel) => (
+        <Comments
+          comment={comment}
+          post={props.post}
+          destroyComment={props.destroyComment}
+          updateComment={props.updateComment}
+          user={props.user}
+        />
+      ))}
     </Fragment>
   );
 }
