@@ -75,7 +75,7 @@ export default function CommentEditForm(props: any) {
                       type="submit"
                       disabled={!isValid || isSubmitting}
                     >
-                      登録
+                      更新
                     </Button>                    
                   </Fragment>
                 </Grid>
