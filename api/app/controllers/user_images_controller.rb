@@ -9,6 +9,13 @@ class UserImagesController < ApplicationController
     render json: @user
   end
 
+  def destroy
+    if @user.image.attached?
+      @user.image.purge
+    end
+    render json: @user
+  end
+
   private
 
   def user_params
