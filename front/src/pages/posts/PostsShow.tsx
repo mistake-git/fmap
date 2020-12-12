@@ -82,7 +82,6 @@ const PostsShow = (props: any) => {
     });
   }, []);
 
-
   const getMyLike = () => {
     const mylike = likes.find((like: any) => {
     　return (like.user_id === user?.id);

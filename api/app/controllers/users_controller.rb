@@ -27,8 +27,8 @@ class UsersController < ApplicationController
 
   def show
     user_data = @user.posts.group(:name).sum(:number)
-    posts = @user.posts.order(created_at: :desc)
-    likes_posts = @user.likes_posts.order(created_at: :desc)
+    posts = @user.posts.order(created_at: :desc).as_json(include: [:user, :likes_users])
+    likes_posts = @user.likes_posts.order(created_at: :desc).as_json(include: [:user, :likes_users])
     render json: {
       user: @user, 
       user_data: user_data,
