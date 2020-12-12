@@ -6,12 +6,11 @@ class UserImagesController < ApplicationController
     @user.update(user_params)
     render json: @user
   end
-  
 
   private
 
   def user_params
-    params.permit(:name, :email, :uid, :introduction, :image)
+    params.permit(:uid, :image)
   end
 
   def set_user

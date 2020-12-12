@@ -69,8 +69,6 @@ const MyPage = (props: any) => {
   const updateProfileImage = async(image: File) => {
     try { 
       const formData = new FormData();
-
-      formData.append("name", user?.name || "hoge")
       formData.append("image", image)
     await
     myHttpClient.patch(`/user_images/${props.match.params.id}`, formData,
