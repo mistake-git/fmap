@@ -27,11 +27,12 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
-import Yup from '../../plugins/yup'
+import * as Yup from "yup";
 
-
+const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({
   name: Yup.string()
+    .matches(katakanaRegExp,'カタカナで入力してください')
     .required('魚種を入力してください'),
   number: Yup.number()
   .min(1,'数量は1以上で入力してください')
@@ -153,7 +154,7 @@ export default function PostNewForm(props: any) {
   };
 
   const forms=[
-    {name: "name", label: "魚種(必須)",type: "text"},
+    {name: "name", label: "魚種(必須,カタカナ)",type: "text"},
     {name: "weight", label: "重さ",type: "weight"},
     {name: "date", label: "日付",type: "date"},
     {name: "time", label: "時間",type: "time"},
@@ -265,7 +266,7 @@ export default function PostNewForm(props: any) {
                     <Field
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
                       name="number"
-                      label="数量(匹)"
+                      label="数量(必須,匹)"
                       fullWidth
                       variant="outlined"
                       type="number"
