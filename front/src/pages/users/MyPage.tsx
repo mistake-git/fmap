@@ -78,10 +78,16 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
+      const message = 'プロフィール画像を更新しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
     })
     }
     catch (error) {
       alert(error.message);
+      const message = 'プロフィール画像の更新に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
     }
   }
 
