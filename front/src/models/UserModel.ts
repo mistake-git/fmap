@@ -1,7 +1,7 @@
 import PostModel from './PostModel'
 
 interface UserModel {
-  id?: string
+  id?: number
   name?: string
   uid?: string
   email?: string

@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import PostModel from "../../models/PostModel";
 import { AuthContext } from '../../Auth'
 import Tooltip from '@material-ui/core/Tooltip';
+import UserModel from "../../models/UserModel";
+import LikeModel from "../../models/LikeModel";
+import LikeForm from "../../forms/LikeForm";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,28 +32,31 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
-  post: PostModel
+  post: PostModel;
+  user: UserModel;
+  like: LikeModel|null;
+  postUser: UserModel;
+  destroyPost: (id: number) => {};
+  createLike: (like: LikeForm) => {};
+  destroyLike: (id: number) => {};
 }
 
-export default function PostCard(props: any) {
+export default function PostCard(props: Props) {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
 
 
   const handleDeleate = () => {
-    props.destroyPost(props.post.id)
+    props.destroyPost(props.post.id!)
   } 
 
-  const createLike = () =>{
-    const like ={
-      user_id: props.user.id,
-      post_id: props.post.id,
-    }
-    props.createLike(like)
+  const createLike = () =>　{
+    const likeForm = new LikeForm(props.post.id!, props.user.id!);
+    props.createLike(likeForm)
   }
   
-  const destroyLike = () =>{
-    props.destroyLike(props.like.id)
+  const destroyLike = () =>　{
+    props.destroyLike(props.like?.id!)
   }
   
 	return (

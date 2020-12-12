@@ -18,6 +18,7 @@ import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";
 import { myHttpClient } from "../../plugins/axios";
 import ShowGoogleMap from "../../components/map/ShowGoogleMap";
+import LikeForm from "../../forms/LikeForm";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -82,21 +83,19 @@ const PostsShow = (props: any) => {
   }, []);
 
 
-  // const getMyLike = () => {
-  //   const mylike = likes.find((like: any) => {
-  //   　return (like.user_id === user?.id);
-  //   });
-  //   setLike(mylike)
-  //   console.log(mylike)
-  //   console.log('mylike')
-  // }
+  const getMyLike = () => {
+    const mylike = likes.find((like: any) => {
+    　return (like.user_id === user?.id);
+    });
+    setLike(mylike)
+  }
 
-  // useEffect(() => {
-  //   getMyLike();
-  // },[setLike]);
+  useEffect(() => {
+    getMyLike();
+  },[setLike]);
 
 
-  const createLike = async(like: LikeModel ) => {
+  const createLike = async(like: LikeForm ) => {
     try { 
       await
     　 myHttpClient.post(`/posts/${props.match.params.id}/likes`,{like: like} )
