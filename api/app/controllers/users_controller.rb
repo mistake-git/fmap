@@ -26,11 +26,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    image = url_for(@user.image)
     user_data = @user.posts.group(:name).sum(:number)
     posts = @user.posts.order(created_at: :desc)
     likes_posts = @user.likes_posts.order(created_at: :desc)
-    render json: {user: @user, user_data: user_data, posts: posts, likes_posts: likes_posts, image: image}
+    render json: {
+      user: @user, 
+      user_data: user_data,
+      posts: posts,
+      likes_posts: likes_posts
+    }
   end
 
   private
