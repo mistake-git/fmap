@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include Rails.application.routes.url_helpers
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
@@ -12,20 +13,7 @@ class PostsController < ApplicationController
     feed_data = same_name_post.where.not(feed: '').group(:feed).sum(:number)
     date_data = same_name_post.where.not(date: nil).group("MONTH(date)").sum(:number)
     time_data = same_name_post.where.not(time: nil).group("HOUR(time)").sum(:number)
-    user = @post.user
-    likes_users = @post.likes_users
-    likes = @post.likes
-    render json: 
-    {
-      post: @post, 
-      user: user, 
-      feed_data: feed_data, 
-      time_data: time_data, 
-      date_data: date_data, 
-      size_data: size_data, 
-      likes_users: likes_users,
-      likes: likes,
-    }
+    render json: @post
   end
 
   def create

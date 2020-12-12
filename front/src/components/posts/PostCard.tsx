@@ -54,7 +54,7 @@ export default function PostCard(props: any) {
 				</Link>
 				<CardHeader
 					avatar={
-						<Avatar aria-label="" className={classes.avater}/>
+						<Avatar aria-label="" className={classes.avater} src={props.post.user.image_url}/>
 					}
 					title={props.post.user.name}
 				/>
