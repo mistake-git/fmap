@@ -28,17 +28,51 @@ const MyPage = (props: any) => {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useContext(AuthContext)
 
-
   const getUser = async() => {
     try { 
     await
       myHttpClient.get(`/users/${props.match.params.id}`)
       .then((results) => {
       console.log(results)
-      setUser(results.data.user);
-      setPosts(results.data.posts);
-      setLikesPosts(results.data.likes_posts)
-      setUserData(results.data.user_data)
+      setUser(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+    　setLoading(false);
+  }
+
+  useEffect(() => {
+    getUser();
+   },[setUser]);
+
+  const getUserData = async() => {
+    try { 
+    await
+      myHttpClient.get(`/users/${props.match.params.id}/data`)
+      .then((results) => {
+      console.log(results)
+      setUserData(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+    　setLoading(false);
+  }
+
+  useEffect(() => {
+    getUserData();
+   },[setUserData]);
+
+   const getUserPosts = async() => {
+    try { 
+    await
+      myHttpClient.get(`/users/${props.match.params.id}/posts`)
+      .then((results) => {
+      console.log(results)
+      setPosts(results.data);
       })
     }
     catch (error) {
@@ -49,8 +83,28 @@ const MyPage = (props: any) => {
   }
 
   useEffect(() => {
-    getUser();
-   },[setUser]);
+    getUserPosts();
+   },[setPosts]);
+
+   const getUserLikesPosts = async() => {
+    try { 
+    await
+      myHttpClient.get(`/users/${props.match.params.id}/likes_posts`)
+      .then((results) => {
+      console.log(results)
+      setLikesPosts(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+    　setLoading(false);
+  }
+
+  useEffect(() => {
+    getUserLikesPosts();
+   },[setLikesPosts]);
+
 
   const updateUser = async(user: UserModel) => {
     try { 
@@ -78,6 +132,8 @@ const MyPage = (props: any) => {
     .then((response) => {
       console.log(response)
       setUser(response.data);
+      getUserPosts()
+      getUserLikesPosts()
       const message = 'プロフィール画像を更新しました'
       const severity = 'success'
       props.handleFlash(message,severity)
@@ -101,6 +157,8 @@ const MyPage = (props: any) => {
       const severity = 'success'
       props.handleFlash(message,severity)
       setUser(response.data);
+      getUserPosts()
+      getUserLikesPosts()
     })
     }
     catch (error) {

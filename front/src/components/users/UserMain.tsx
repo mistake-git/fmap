@@ -50,7 +50,7 @@ export default function UserMain(props: any) {
       <ListItem  className={classes.paddingNone}>
         <div className={classes.avaterWrapper}>
           <ListItemAvatar>
-            <Avatar alt={props.user.name} src={props.user.image}  className={classes.avatar}/>
+            <Avatar alt={props.user.name} src={props.user.image_url}  className={classes.avatar}/>
           </ListItemAvatar>
           {currentUser && currentUser.uid === props.user.uid &&
             <div className={classes.cameraIcon}>

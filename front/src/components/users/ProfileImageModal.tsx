@@ -19,7 +19,6 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-
 const UserSchema = Yup.object().shape({
 });
 
@@ -34,7 +33,6 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   }
 });
-
 
 export default function ProfileUserModal(props: any) {
   const [open, setOpen] = useState(false);
@@ -91,8 +89,6 @@ export default function ProfileUserModal(props: any) {
     setSrc('');
   };
 
-  console.log(image)
-  console.log('image')
 
   return (
     <div>

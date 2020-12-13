@@ -74,7 +74,7 @@ const PostsShow = (props: any) => {
       myHttpClient.get(`/users/${user?.uid}`)
       .then((results) => {
         console.log(results)
-        setUser(results.data.user)
+        setUser(results.data)
       })
       .catch((data) =>{
         console.log(data.user)

@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   include Rails.application.routes.url_helpers
-
-  before_action :set_user, only: [:show, :update]
+  before_action :set_user, only: [:show, :update, :posts, :likes_posts, :data]
 
   def index
     users = User.all.order(created_at: :desc)
@@ -27,14 +26,22 @@ class UsersController < ApplicationController
 
   def show
     user_data = @user.posts.group(:name).sum(:number)
-    posts = @user.posts.order(created_at: :desc).as_json(include: [:user, :likes_users])
-    likes_posts = @user.likes_posts.order(created_at: :desc).as_json(include: [:user, :likes_users])
-    render json: {
-      user: @user, 
-      user_data: user_data,
-      posts: posts,
-      likes_posts: likes_posts
-    }
+    render json: @user
+  end
+
+  def posts
+    posts = @user.posts.order(created_at: :desc)
+    render json: posts
+  end
+
+  def likes_posts
+    likes_posts = @user.likes_posts.order(created_at: :desc)
+    render json: likes_posts
+  end
+
+  def data
+    user_data = @user.posts.group(:name).sum(:number)
+    render json: user_data
   end
 
   private
