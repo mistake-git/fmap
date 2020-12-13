@@ -37,7 +37,6 @@ const PostsShow = (props: any) => {
   const [timeData, setTimeData] = useState<any | null>(null);
   const [dateData, setDateData] = useState<any | null>(null);
   const [sizeData, setSizeData] = useState<any | null>(null);
-  const [postUser, setPostUser] = useState<UserModel | null>(null);
   const [comments, setComments] = useState<any>([]);
   const [likes, setLikes] = useState<any>([]);
   const [like, setLike] = useState<LikeModel | null>(null);
@@ -50,13 +49,19 @@ const PostsShow = (props: any) => {
         .then((results) => {
         console.log(results)
         console.log('get post')
-        setPost(results.data.post);
-        setDateData(results.data.date_data)
-        setTimeData(results.data.time_data)
-        setFeedData(results.data.feed_data)
-        setSizeData(results.data.size_data)
-        setPostUser(results.data.user);
-        setLikesUsers(results.data.likes_users);
+        setPost(results.data);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+
+  const getPostLikes = async() => {
+    try { 
+    await
+      myHttpClient.get(`/posts/${props.match.params.id}`)
+        .then((results) => {
         setLikes(results.data.likes);
       })
     }
@@ -65,9 +70,36 @@ const PostsShow = (props: any) => {
     }
   }
 
-  useEffect(() => {
-    getPost();
-  },[setPost]);
+  const getPostLikesUsers = async() => {
+    try { 
+    await
+      myHttpClient.get(`/posts/${props.match.params.id}`)
+        .then((results) => {
+        setLikesUsers(results.data.likes_users);
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
+  
+  const getPostData = async() => {
+    try { 
+    await
+      myHttpClient.get(`/posts/${props.match.params.id}/data`)
+        .then((results) => {
+        console.log(results)
+        console.log('data')
+        setDateData(results.data.date_data)
+        setTimeData(results.data.time_data)
+        setFeedData(results.data.feed_data)
+        setSizeData(results.data.size_data)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+    }
+  }
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -88,11 +120,6 @@ const PostsShow = (props: any) => {
     });
     setLike(mylike)
   }
-
-  useEffect(() => {
-    getMyLike();
-  },[setLike]);
-
 
   const createLike = async(like: LikeForm ) => {
     try { 
@@ -118,7 +145,7 @@ const PostsShow = (props: any) => {
   const destroyLike = async(id: number) => {
     try { 
     await
-    　 myHttpClient.delete(`/posts/${props.match.params.id}/likes/${id}`)
+    　 myHttpClient.delete(`/posts/${props.match.params.id}/likes_users/${id}`)
       .then((response) => {
         setLike(null)
         setLikesUsers(response.data.likes_users)
@@ -149,11 +176,6 @@ const PostsShow = (props: any) => {
       alert(error.message);
     }
   }
-
-  useEffect(() => {
-    getComments();
-  },[setComments]);
-  
 
   const createComment = async(comment: CommentModel) => {
     try { 
@@ -196,7 +218,7 @@ const PostsShow = (props: any) => {
       const message = 'コメントの編集に失敗しました'
       const severity = 'error'
       props.handleFlash(message,severity)
-  }
+    }
   }
 
   const destroyComment = async(id: number) => {
@@ -241,9 +263,33 @@ const PostsShow = (props: any) => {
     }
   }
 
+  useEffect(() => {
+    getPost();
+  },[setPost]);
+
+  useEffect(() => {
+    getComments();
+  },[setComments]);
+
+  useEffect(() => {
+    getMyLike();
+  },[setLike]);
+
+  useEffect(() => {
+    getPostData();
+  },[setFeedData]);
+
+  useEffect(() => {
+    getPostLikesUsers();
+  },[setLikesUsers]);
+
+  useEffect(() => {
+    getPostLikes();
+  },[setLikes]);
+
   return (
     <Fragment>
-      {user && post && postUser ? 
+      {user && post ? 
       <Template>
         <Container maxWidth="lg">
           <Grid container spacing={1} style={{ marginTop: "1em" }}>
@@ -252,7 +298,7 @@ const PostsShow = (props: any) => {
                 post={post}
                 user={user}
                 like={like}
-                postUser={postUser}
+                postUser={post.user}
                 destroyPost={destroyPost} 
                 createLike={createLike} 
                 destroyLike={destroyLike} 
@@ -290,7 +336,7 @@ const PostsShow = (props: any) => {
                   post={post}
                 />
               </Box>
-              <UserBar user={postUser}/>
+              <UserBar user={post.user}/>
               {post.memo}
               { comments ?
               <CommentContainer

@@ -30,7 +30,7 @@ export default function UserBar(props: any) {
       <List>
         <ListItem>
           <ListItemAvatar>
-          <Avatar alt={props.user.name} src="/static/images/avatar/1.jpg" />
+          <Avatar alt={props.user.name} src={props.user.image_url} />
           </ListItemAvatar>
           <ListItemText
             primary={props.user.name}

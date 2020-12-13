@@ -9,10 +9,10 @@ class PostsController < ApplicationController
 
   def show
     user = @post.user
-    render json: post: @post, 
+    render json: @post
   end
 
-  def date
+  def data
     same_name_post = Post.where(name: @post.name)
     size_data = same_name_post.where.not(size: nil).group(:size).sum(:number)
     feed_data = same_name_post.where.not(feed: '').group(:feed).sum(:number)
