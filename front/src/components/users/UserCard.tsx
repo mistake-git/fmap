@@ -45,7 +45,6 @@ export default function PostCard(props: any) {
         <Box fontWeight="bold" className={classes.userName} my={1}>
           {props.user.name}
         </Box>
-        <img src={props.user.image_url}/>
         <Box fontWeight="bold" className={classes.userPosts}>
           釣果 {props.user.posts.length}
         </Box>
