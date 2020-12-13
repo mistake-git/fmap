@@ -29,8 +29,13 @@ createStyles({
 		media: {
 			height: 160,
 		},
-		nounderline: {
+		postLink: {
 			textDecoration: 'none',
+			color: '#3f51b5;',
+		},
+		userLink: {
+			textDecoration: 'none',
+			color: '#000000',
 		}
 	}),
 );
@@ -56,13 +61,17 @@ export default function PostCard(props: any) {
 					avatar={
 						<Avatar aria-label="" className={classes.avater} src={props.post.user.image_url}/>
 					}
-					title={props.post.user.name}
+					title={
+						<Link to={`/mypages/${props.post.user.uid}`} className={classes.userLink}>{props.post.user.name}</Link>
+					}
 				/>
 				<CardContent className={classes.cardTitle}>
 					<Typography  component="h2">
-					<Box fontWeight="fontWeightBold">
-						{props.post.name}
-					</Box>
+						<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
+							<Box fontWeight="fontWeightBold">
+								{props.post.name}
+							</Box>
+						</Link>
 					</Typography>
 				</CardContent>
 				<CardActions>

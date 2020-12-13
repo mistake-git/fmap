@@ -5,7 +5,6 @@ import { Avatar, Box} from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     avater: {
