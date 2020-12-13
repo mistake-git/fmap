@@ -105,7 +105,6 @@ const MyPage = (props: any) => {
     getUserLikesPosts();
    },[setLikesPosts]);
 
-
   const updateUser = async(user: UserModel) => {
     try { 
     await
@@ -153,12 +152,12 @@ const MyPage = (props: any) => {
     myHttpClient.delete(`/user_images/${props.match.params.id}`) 
     .then((response) => {
       console.log(response)
-      const message = 'プロフィール画像を削除しました'
-      const severity = 'success'
-      props.handleFlash(message,severity)
       setUser(response.data);
       getUserPosts()
       getUserLikesPosts()
+      const message = 'プロフィール画像を削除しました'
+      const severity = 'success'
+      props.handleFlash(message,severity)
     })
     }
     catch (error) {

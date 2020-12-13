@@ -89,7 +89,6 @@ export default function ProfileUserModal(props: any) {
     setSrc('');
   };
 
-
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
