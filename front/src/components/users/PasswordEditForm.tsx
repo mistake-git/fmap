@@ -3,7 +3,6 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import * as Yup from "yup";
 import {
-  Box,
   Button,
   FormControl,
   LinearProgress,

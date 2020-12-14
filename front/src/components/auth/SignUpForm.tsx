@@ -8,11 +8,8 @@ import {
   Link,
   Typography,
   LinearProgress,
-  Box
 } from "@material-ui/core";
-
 import auth from "../../plugins/firebase";
-import UserModel from "../../models/UserModel";
 import { myHttpClient } from "../../plugins/axios";
 
 const AuthSchema = Yup.object().shape({
