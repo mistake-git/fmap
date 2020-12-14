@@ -180,14 +180,14 @@ const MyPage = (props: Props) => {
         <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
-                <UserMain
-                  user={user}
-                  currentUser={currentUser}
-                  updateProfileImage={updateProfileImage}
-                  destroyProfileImage={destroyProfileImage}
-                  updateUser={updateUser}
-                  handleFlash={props.handleFlash}
-                />
+              <UserMain
+                user={user}
+                currentUser={currentUser}
+                updateProfileImage={updateProfileImage}
+                destroyProfileImage={destroyProfileImage}
+                updateUser={updateUser}
+                handleFlash={props.handleFlash}
+              />
               <Box my={2}>
                 {user.introduction}
                 {user.uid === currentUser.uid &&
