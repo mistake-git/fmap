@@ -18,7 +18,7 @@ import PasswordEdit from "./pages/users/PasswordEdit";
 
 const App: React.FC = () => {
 
-  const handleFlash = (flashMessage: string, flashSeverity: any)  =>　{
+  const handleFlash = (flashMessage: string, flashSeverity: 'success'| 'error'| undefined)  =>　{
     setShowFlash(true)
     setMessage(flashMessage)
     setSeverity(flashSeverity)
