@@ -6,13 +6,7 @@ import UserCard from "../../components/users/UserCard";
 import Loading from "../../components/layouts/Loading";
 import { myHttpClient } from "../../plugins/axios";
 
-interface State {
-  users: UserModel[]
-  user: UserModel
-}
-
-const Users = (props: any) => {
- 
+const Users = () => {
   const [users, setUsers] = useState<UserModel[] | null>(null)
   const [loading, setLoading] = useState(true);
 
@@ -33,7 +27,6 @@ const Users = (props: any) => {
   useEffect(() => {
 	　getUsers();
   },[setUsers]);
-
 
   return (
     <Fragment>

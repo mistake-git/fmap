@@ -6,8 +6,6 @@ import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
 import { Avatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     PinXs: {
@@ -38,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
 interface PinProps {
   lat: number,
   lng: number,
@@ -58,7 +55,6 @@ const GoogleMap = (props: any) => {
       setCurrentKey(keyNumber)
     }
   }
-
   
   //サイズからピンの大きさを求める
   const getPinSize = (size: any) =>{
@@ -76,7 +72,6 @@ const GoogleMap = (props: any) => {
       return classes.PinXs
     }
   }
-
 
   const createMapOptions = (maps: Maps): MapOptions => {
     return {
