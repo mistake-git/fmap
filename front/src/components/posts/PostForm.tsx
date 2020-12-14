@@ -29,6 +29,8 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
 import * as Yup from "yup";
+import UserModel from '../../models/UserModel';
+import PostModel from '../../models/PostModel';
 
 const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({
@@ -68,10 +70,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface Props {
-  
-}
-
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
   ref: React.Ref<unknown>,
@@ -79,18 +77,12 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
 export default function PostNewForm(props: any) {
   
   const DefaultLocation = { 
     lat: props.lat , 
     lng: props.lng, 
   };
-
-  interface Location {
-    lat: number,
-    lng: number
-  }
 
   const DefaultZoom = 10;
   const classes = useStyles();

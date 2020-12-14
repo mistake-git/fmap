@@ -14,10 +14,8 @@ import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
 
-
 const UserSchema = Yup.object().shape({
 });
-
 
 const useStyles = makeStyles({
   input: {
@@ -33,7 +31,6 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   }
 });
-
 
 export default function NameEditModal(props: any) {
   const [open, setOpen] = useState(false);
