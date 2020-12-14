@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import CommentMenu from './CommentMenu';
 import CommentModel from '../../models/CommentModel';
 import CommentEditForm from './CommentEditForm'
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,6 +19,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inline: {
       display: 'inline',
+    },
+    topLink: {
+      textDecoration: 'none',
+      color: 'black',
     },
   }),
 );
@@ -43,7 +48,11 @@ export default function Comment(props: any) {
               <Avatar alt={comment.user.name} src={comment.user.image_url} />
             </ListItemAvatar>
             <ListItemText
-              primary={comment.user.name}
+              primary={
+                <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
+                {comment.user.name}
+                </Link>
+              }
               secondary={
                 <Typography
                   component="span"
