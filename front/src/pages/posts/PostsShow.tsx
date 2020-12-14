@@ -179,7 +179,7 @@ const PostsShow = (props: any) => {
     }
   }
 
-  const createComment = async(comment: CommentModel) => {
+  const createComment = async(comment: CommentFormModel) => {
     try { 
       await 
     　 myHttpClient.post(`/posts/${props.match.params.id}/comments`,{comment: comment} )

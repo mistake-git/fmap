@@ -10,7 +10,7 @@ interface Props {
   user: UserModel
   post: PostModel
   comments: CommentModel[]
-  createComment: (comment: CommentModel) => {}
+  createComment: (comment: CommentFormModel) => {}
   destroyComment: (id: number) => {}
   updateComment: (comment: CommentFormModel) => {}
 }
@@ -19,11 +19,11 @@ export default function CommentContainer(props: Props) {
   return (
     <Fragment>
      <CommentForm 
-      comments={props.comments}
-      commentsCount={props.comments.length}
-      createComment={props.createComment}
-      user={props.user}
-      post={props.post}
+        comments={props.comments}
+        commentsCount={props.comments.length}
+        createComment={props.createComment}
+        user={props.user}
+        post={props.post}
       />
       {props.comments.map((comment: CommentModel) => (
         <Comment

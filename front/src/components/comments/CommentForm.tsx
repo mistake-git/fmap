@@ -11,6 +11,9 @@ import {
 } from "@material-ui/core";
 import PostModel from "../../models/PostModel";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import CommentModel from "../../models/CommentModel";
+import UserModel from "../../models/UserModel";
+import CommentFormModel from "../../forms/CommentFormModel";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,7 +44,15 @@ export const CommentSchema = Yup.object().shape({
     .required('コメントを入力してください'),
 });
 
-export default function CommentForm(props: any) {
+interface Props {
+  user: UserModel
+  post: PostModel
+  comments: CommentModel[]
+  createComment: (comment: CommentFormModel) => {}
+  commentsCount: number
+}
+
+export default function CommentForm(props: Props) {
 
   const classes = useStyles();
   const [buttonOpen, setButtonOpen]= useState(false);
@@ -68,7 +79,7 @@ export default function CommentForm(props: any) {
                 user_id: props.user.id
               }
             await 
-              props.createComment(comment, props.post, props.comments);
+              props.createComment(comment);
               setButtonOpen(false);
               resetForm({})
             } 
