@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Loading = (props: any) => {
+const Loading = () => {
  
   const classes = useStyles();
   return (

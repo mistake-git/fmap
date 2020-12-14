@@ -6,8 +6,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import { AuthContext } from "../../Auth";
 import { withRouter } from 'react-router-dom';
-
-
+import * as H from 'history';
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
@@ -16,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+interface Props {
+  children: React.ReactNode
+	history: H.History;
+}
 
 const Template =(props: any) => {
 	const classes = useStyles();
@@ -29,7 +32,7 @@ const Template =(props: any) => {
 	return (
 		<Fragment>
 			<CssBaseline />
-			<Header title="Fishing Map" />
+			<Header/>
         <Container maxWidth="xl" className={classes.mainGrid}>
           {props.children}
         </Container>

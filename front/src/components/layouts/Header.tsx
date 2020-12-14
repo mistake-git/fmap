@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Header(props: any) {
+export default function Header() {
   const classes = useStyles();
   const [user, setUser] = useState<any>('');
 
@@ -112,7 +112,4 @@ return (
   </Fragment>
   );
 }
-Header.propTypes = {
-  sections: PropTypes.array,
-  title: PropTypes.string,
-};
+
