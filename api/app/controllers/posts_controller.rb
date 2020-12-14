@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-    if post.save
+    if post.save!
       render json: post
     else
       render json: post.errors
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :latitude, :longitude, :image)
+    params.permit(:user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :latitude, :longitude, :image)
   end
   
 end

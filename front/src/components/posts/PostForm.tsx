@@ -205,7 +205,7 @@ export default function PostForm(props: any) {
                   longitude: location.lng,
                 }
               await
-                props.action(post);
+                props.action(post,image);
                 let str = JSON.stringify(post);
               } 
               catch (error) {

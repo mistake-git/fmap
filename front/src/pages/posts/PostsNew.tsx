@@ -44,7 +44,8 @@ const PostsNew = (props: Props) => {
       formData.append("memo", post?.memo)
       formData.append("status", post?.status)
       formData.append("latitude", post?.latitude)
-      formData.append("latitude", post?.longitude)
+      formData.append("longitude", post?.longitude)
+      formData.append("user_id", post?.user_id)
     await
     myHttpClient.post('/posts',formData, 
     {headers: {
