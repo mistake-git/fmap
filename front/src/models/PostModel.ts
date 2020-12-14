@@ -3,11 +3,14 @@ import UserModel from './UserModel'
 
 interface PostModel {
   id?: number
-  name: string
+  name?: string
   size?: number
   weight?: number
   number?: number
+  weather?: string
   feed?: string
+  date?: any
+  time?: any
   memo?: string
   status?: string
   latitude?: number

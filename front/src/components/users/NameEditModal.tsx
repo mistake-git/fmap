@@ -13,6 +13,7 @@ import {
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
+import UserModel from '../../models/UserModel';
 
 const UserSchema = Yup.object().shape({
 });
@@ -32,7 +33,14 @@ const useStyles = makeStyles({
   }
 });
 
-export default function NameEditModal(props: any) {
+interface Props{
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  user: UserModel
+  updateUser: (user: any) => void
+}
+
+
+export default function NameEditModal(props: Props) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

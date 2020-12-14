@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@material-ui/core";
 
-
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
@@ -21,7 +20,13 @@ const useStyles = makeStyles({
   }
 });
 
-export default function IntroductionForm(props: any) {
+interface Props{
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  value: any
+  updateUser: (user: any) => void
+}
+
+export default function IntroductionForm(props: Props) {
 
   const classes = useStyles();
   const [FormOpen, setFormOpen]= useState(false);

@@ -9,7 +9,6 @@ import CardContent from '@material-ui/core/CardContent';
 import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import IconButton from '@material-ui/core/IconButton';
-import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
   Box,
   Button,
@@ -30,7 +29,7 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
 import * as Yup from "yup";
 import UserModel from '../../models/UserModel';
-import PostModel from '../../models/PostModel';
+
 
 const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({
@@ -76,6 +75,15 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+interface Props{
+  user: UserModel
+  lat: number
+  lng: number
+  values: any
+  action: any
+  title: string
+}
 
 export default function PostNewForm(props: any) {
   
