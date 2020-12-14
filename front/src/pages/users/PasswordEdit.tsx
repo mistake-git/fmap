@@ -6,9 +6,11 @@ import * as H from 'history';
 
 interface Props {
   history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
 }
 
-export default function PasswordEdit(props: any) {
+export default function PasswordEdit(props: Props) {
   const { currentUser } = useContext(AuthContext)
   useEffect(() => {
     currentUser && props.history.push('/')
