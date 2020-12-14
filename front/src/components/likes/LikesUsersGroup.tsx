@@ -3,7 +3,11 @@ import Avatar from '@material-ui/core/Avatar';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import UserModel from '../../models/UserModel';
 
-export default function LikesUsersGroup(props: any) {
+interface Props {
+  likesUsers: UserModel[]
+}
+
+export default function LikesUsersGroup(props: Props) {
 
   return (
     <AvatarGroup max={4}>
