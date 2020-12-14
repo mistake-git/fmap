@@ -21,9 +21,7 @@ interface TabPanelProps {
 }
 
 function TabPanel(props: TabPanelProps) {
-
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -55,7 +53,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function UserTab(props: any) {
+interface Props {
+  posts: PostModel[]
+  likesPosts: PostModel[]
+  userData: any
+}
+
+export default function UserTab(props: Props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 

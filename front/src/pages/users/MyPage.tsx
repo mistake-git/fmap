@@ -22,8 +22,8 @@ interface State {
 const MyPage = (props: any) => {
 
   const [user, setUser] = useState<UserModel | null>(null);
-  const [posts, setPosts] = useState<PostModel | null>(null);
-  const [likesPosts, setLikesPosts] = useState<PostModel | null>(null);
+  const [posts, setPosts] = useState<PostModel[] | null>(null);
+  const [likesPosts, setLikesPosts] = useState<PostModel[] | null>(null);
   const [userData, setUserData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const { currentUser } = useContext(AuthContext)
