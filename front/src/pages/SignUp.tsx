@@ -2,6 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../Auth'
 import AuthTemplate from '../components/layouts/AuthTemplate'
 import SignUpForm from '../components/auth/SignUpForm'
+import * as H from 'history';
+
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+}
 
 export default function SignUp(props: any) {
   const { currentUser } = useContext(AuthContext)

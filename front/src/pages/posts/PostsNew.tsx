@@ -5,8 +5,15 @@ import PostForm from "../../components/posts/PostForm"
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 import { myHttpClient } from "../../plugins/axios";
+import * as H from 'history';
 
-const PostsNew = (props: any) => {
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
+}
+
+const PostsNew = (props: Props) => {
   const [user, setUser] = useState<UserModel | null>(null);
 
   useEffect(() => {
@@ -62,7 +69,6 @@ const PostsNew = (props: any) => {
 
   const lat = 35;
   const lng = 135;
-  
   const title = "釣果を投稿"
 
   return (

@@ -19,7 +19,7 @@ import { myHttpClient } from "../../plugins/axios";
 import ShowGoogleMap from "../../components/map/ShowGoogleMap";
 import LikeFormModel from "../../forms/LikeFormModel";
 import CommentFormModel from "../../forms/CommentFormModel";
-
+import * as H from 'history';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,8 +30,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
+}
 
-const PostsShow = (props: any) => {
+const PostsShow = (props: Props) => {
   const classes = useStyles();
   const [user, setUser] = useState<UserModel | null>(null);
   const [post, setPost] = useState<PostModel | null>(null);

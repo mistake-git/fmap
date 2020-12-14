@@ -6,8 +6,15 @@ import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
 import PostModel from "../../models/PostModel";
 import { myHttpClient } from "../../plugins/axios";
+import * as H from 'history';
 
-const PostsEdit = (props: any) => {
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
+}
+
+const PostsEdit = (props: Props) => {
 
   const [post, setPost] = useState<any>('');
   const [user, setUser] = useState<UserModel | null>(null);

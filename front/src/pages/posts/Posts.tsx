@@ -5,12 +5,15 @@ import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
 import Loading from "../../components/layouts/Loading";
 import { myHttpClient } from "../../plugins/axios";
+import * as H from 'history';
 
-interface State {
-  posts: PostModel[]
-  post: PostModel
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
 }
-const Posts = (props: any) => {
+
+const Posts = (props: Props) => {
  
   const [posts, setPosts] = useState<PostModel[] | null>(null)
   const [loading, setLoading] = useState(true);

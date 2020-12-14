@@ -13,13 +13,15 @@ import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
 import { myHttpClient } from "../../plugins/axios";
+import * as H from 'history';
 
-interface State {
-  posts: PostModel[]
-  post: PostModel
+interface Props {
+  history: H.History;
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
 }
 
-const MyPage = (props: any) => {
+const MyPage = (props: Props) => {
 
   const [user, setUser] = useState<UserModel | null>(null);
   const [posts, setPosts] = useState<PostModel[] | null>(null);
