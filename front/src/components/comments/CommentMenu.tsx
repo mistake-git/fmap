@@ -5,10 +5,19 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
+import CommentModel from '../../models/CommentModel';
+import PostModel from '../../models/PostModel';
 
 const ITEM_HEIGHT = 48;
 
-export default function CommentMenu(props: any) {
+interface Props {
+  post: PostModel
+  comment: CommentModel
+  destroyComment: (id: number) => {}
+  handleFormOpen: () => void
+}
+
+export default function CommentMenu(props: Props) {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -27,7 +36,7 @@ export default function CommentMenu(props: any) {
   }
 
   const handleDelete = () =>{
-    props.destroyComment(props.comment.id)
+    props.destroyComment(props.comment.id!)
     setAnchorEl(null);
   }
 
