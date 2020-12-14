@@ -29,10 +29,27 @@ const PostsNew = (props: Props) => {
     });
   }, []);
 
-  const createPost = async(post: any) => {
+  const createPost = async(post: any, image: File) => {
     try { 
+      const formData = new FormData();
+      formData.append("image", image)
+      formData.append("name", post?.name)
+      formData.append("number", post?.number)
+      formData.append("size", post?.size)
+      formData.append("date", post?.date)
+      formData.append("time", post?.time)
+      formData.append("weight", post?.weight)
+      formData.append("weather", post?.weather)
+      formData.append("feed", post?.feed)
+      formData.append("memo", post?.memo)
+      formData.append("status", post?.status)
+      formData.append("latitude", post?.latitude)
+      formData.append("latitude", post?.longitude)
     await
-    myHttpClient.post('/posts',{post: post}) 
+    myHttpClient.post('/posts',formData, 
+    {headers: {
+      'content-type': 'multipart/form-data'
+    }})  
     .then((response) => {
       console.log(response.data)
       console.log('create post')

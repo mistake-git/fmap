@@ -4,7 +4,6 @@ import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
 import auth from "../../plugins/firebase";
 import UserModel from "../../models/UserModel";
-import PostModel from "../../models/PostModel";
 import { myHttpClient } from "../../plugins/axios";
 import * as H from 'history';
 
@@ -51,8 +50,22 @@ const PostsEdit = (props: Props) => {
     getPost();
   },[setPost]);
 
-  const updatePost = async(post: PostModel) => {
+  const updatePost = async(post: any, image: File) => {
     try { 
+      const formData = new FormData();
+      formData.append("image", image)
+      formData.append("name", post.name)
+      formData.append("number", post.number)
+      formData.append("size", post.size)
+      formData.append("date", post.date)
+      formData.append("time", post.time)
+      formData.append("weight", post.weight)
+      formData.append("weather", post.weather)
+      formData.append("feed", post.feed)
+      formData.append("memo", post.memo)
+      formData.append("status", post.status)
+      formData.append("latitude", post.latitude)
+      formData.append("latitude", post.longitude)
     await
     myHttpClient.patch(`/posts/${props.match.params.id}`,{post: post})  
     .then((response) => {
