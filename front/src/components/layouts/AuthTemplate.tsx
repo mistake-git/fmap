@@ -47,7 +47,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthTemplate(props: any) {
+
+interface Props {
+  children?: React.ReactNode
+  title: string
+}
+
+export default function AuthTemplate(props: Props) {
   const classes = useStyles();
 
   return (

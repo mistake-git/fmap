@@ -33,7 +33,10 @@ const Template =(props: any) => {
         <Container maxWidth="xl" className={classes.mainGrid}>
           {props.children}
         </Container>
-			<Footer title="Fishing Map" />
+			<Footer 
+				title="Fishing Map" 
+				description="地図で釣果を探せるアプリ"
+			/>
 		</Fragment>
 	);
 }

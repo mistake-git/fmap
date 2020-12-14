@@ -16,7 +16,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export default function FlashAlert(props: any) {
+interface Props {
+  handleClose: () => void
+  severity: undefined | 'success' | 'error'
+  message: string
+}
+
+export default function FlashAlert(props: Props) {
   const classes = useStyles();
 
   return (
