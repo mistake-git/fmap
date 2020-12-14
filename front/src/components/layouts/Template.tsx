@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  children: React.ReactNode
+  children?: any
 	history: H.History;
 }
 
-const Template =(props: any) => {
+const Template =(props: Props) => {
 	const classes = useStyles();
 	const { currentUser } = useContext(AuthContext);
 

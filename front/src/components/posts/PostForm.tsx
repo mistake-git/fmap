@@ -85,7 +85,7 @@ interface Props{
   title: string
 }
 
-export default function PostNewForm(props: any) {
+export default function PostForm(props: any) {
   
   const DefaultLocation = { 
     lat: props.lat , 
