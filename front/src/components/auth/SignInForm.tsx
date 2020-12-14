@@ -21,7 +21,7 @@ const AuthSchema = Yup.object().shape({
 });
 
 interface Props {
-  handleFlash: (message: string, severity: 'success'|'error') => {}
+  handleFlash: (message: string, severity: 'success'|'error') => void
 }
 
 const SignInForm = (props: Props) => {
@@ -56,6 +56,7 @@ const SignInForm = (props: Props) => {
               label="メールアドレス"
               fullWidth
               variant="outlined"
+              size="small"
               component={TextField}
             />
           </FormControl>
@@ -67,6 +68,7 @@ const SignInForm = (props: Props) => {
               fullWidth
               variant="outlined"
               type="password"
+              size="small"
               component={TextField}
             />
           </FormControl>

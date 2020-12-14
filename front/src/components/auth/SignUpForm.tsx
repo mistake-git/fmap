@@ -39,7 +39,7 @@ const forms=[
 ]
 
 interface Props {
-  handleFlash: (message: string, severity: 'success'|'error') => {}
+  handleFlash: (message: string, severity: 'success'|'error') => void
 }
 
 

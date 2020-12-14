@@ -7,9 +7,10 @@ import * as H from 'history';
 interface Props {
   history: H.History;
   handleFlash: (message: string, severity: 'success'|'error') => void
+  match: any
 }
 
-export default function SignUp(props: any) {
+export default function SignUp(props: Props) {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
