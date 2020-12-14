@@ -10,11 +10,7 @@ import ProfileUserModal from './ProfileImageModal';
 import UserModel from '../../models/UserModel';
 import { AuthContext } from '../../Auth'
 import NameEditModal from './NameEditModal';
-
-
-interface Props {
-  post: UserModel;
-}
+import { User } from 'firebase';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,7 +37,16 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function UserMain(props: any) {
+interface Props{
+  user: UserModel
+  handleFlash: (message: string, severity: 'success'|'error') => void
+  updateProfileImage: (image: File) => {}
+  destroyProfileImage: () => void
+  currentUser: User
+  updateUser: (user: UserModel) => void
+}
+
+export default function UserMain(props: Props) {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
 

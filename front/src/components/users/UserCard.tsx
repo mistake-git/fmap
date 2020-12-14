@@ -35,7 +35,7 @@ interface Props {
 	user: UserModel;
 }
 
-export default function PostCard(props: any) {
+export default function PostCard(props: Props) {
   const classes = useStyles();
 	return (
     <Fragment>
@@ -45,7 +45,7 @@ export default function PostCard(props: any) {
           {props.user.name}
         </Box>
         <Box fontWeight="bold" className={classes.userPosts}>
-          釣果 {props.user.posts.length}
+          釣果 {props.user.posts?.length}
         </Box>
         <Box className={classes.introduction}>
           {props. user.introduction &&

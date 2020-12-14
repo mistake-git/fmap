@@ -18,6 +18,8 @@ import {
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import UserModel from '../../models/UserModel';
+import { User } from 'firebase';
 
 const UserSchema = Yup.object().shape({
 });
@@ -34,7 +36,13 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ProfileUserModal(props: any) {
+interface Props{
+  user: User
+  updateProfileImage: (image: File) => {}
+  destroyProfileImage: () => void
+}
+
+export default function ProfileUserModal(props: Props) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -127,7 +135,7 @@ export default function ProfileUserModal(props: any) {
           onSubmit={async value => {
             try {
             await
-              props.updateProfileImage(image)
+              props.updateProfileImage(image!)
               handleClose();
               clear();
               console.log('image')

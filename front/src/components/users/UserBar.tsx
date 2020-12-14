@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Button, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
+import UserModel from '../../models/UserModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,7 +27,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function UserBar(props: any) {
+interface Props {
+	user: UserModel;
+}
+
+export default function UserBar(props: Props) {
   const classes = useStyles();
 
   return (

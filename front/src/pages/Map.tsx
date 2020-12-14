@@ -5,7 +5,7 @@ import PostModel from '../models/PostModel'
 import Loading from '../components/layouts/Loading'
 import { myHttpClient } from '../plugins/axios'
 
-const Home = (props: any) => {
+const Home = () => {
   const [posts, setPosts] = useState<PostModel[] | null>(null)
   const [loading, setLoading] = useState(true)
   //非同期で投稿をAPIから取得
