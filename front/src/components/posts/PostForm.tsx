@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface State {
-
+interface Props {
+  
 }
 
 const Transition = React.forwardRef(function Transition(

@@ -44,7 +44,7 @@ interface Props {
 	post: PostModel;
 }
 
-export default function PostCard(props: any) {
+export default function PostCard(props: Props) {
   const classes = useStyles();
 
 	return (

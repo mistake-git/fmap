@@ -12,9 +12,9 @@ interface PostModel {
   status?: string
   latitude?: number
   longitude?: number
-
   comments: CommentModel[]
   user: UserModel
+  likes_users: UserModel[]
 }
 
 export default PostModel

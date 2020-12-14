@@ -10,7 +10,6 @@ import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
 import auth from "../../plugins/firebase";
 import PostModel from "../../models/PostModel";
-import CommentModel from "../../models/CommentModel";
 import UserModel from "../../models/UserModel";
 import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 );
+
 
 const PostsShow = (props: any) => {
   const classes = useStyles();
