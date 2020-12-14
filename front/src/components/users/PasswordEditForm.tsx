@@ -51,6 +51,7 @@ const PasswordEditForm = (props: any) => {
             label="メールアドレス"
             fullWidth
             variant="outlined"
+            size="small"
             component={TextField}
           />
         </FormControl>

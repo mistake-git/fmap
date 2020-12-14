@@ -245,6 +245,7 @@ export default function PostNewForm(props: any) {
                         variant="outlined"
                         type={form.type}
                         component={TextField}
+                        size="small"
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -259,6 +260,7 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="text"
+                      size="small"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,
@@ -273,6 +275,7 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="number"
+                      size="small"
                       component={TextField}
                       InputProps={{
                         inputProps: { 
@@ -292,6 +295,7 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       type="number"
+                      size="small"
                       component={TextField}
                       InputProps={{
                         inputProps: { 
@@ -312,6 +316,7 @@ export default function PostNewForm(props: any) {
                       fullWidth
                       variant="outlined"
                       as="select"
+                      size="small"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,
@@ -334,6 +339,7 @@ export default function PostNewForm(props: any) {
                       multiline={true}
                       rows={4}
                       type="text"
+                      size="small"
                       component={TextField}
                       InputLabelProps={{
                         shrink: true,

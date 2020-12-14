@@ -69,6 +69,7 @@ export default function IntroductionForm(props: any) {
                 placeholder="自己紹介を入力"
                 type="text"
                 variant="outlined"
+                size="small"
                 component={TextField}
                 multiline={true}
                 rows={4}

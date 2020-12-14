@@ -101,6 +101,7 @@ export default function NameEditModal(props: any) {
                 type='text'
                 fullWidth
                 variant="outlined"
+                size="small"
                 component={TextField}
               />
             </DialogContent>
