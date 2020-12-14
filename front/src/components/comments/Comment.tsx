@@ -10,6 +10,8 @@ import CommentMenu from './CommentMenu';
 import CommentModel from '../../models/CommentModel';
 import CommentEditForm from './CommentEditForm'
 import { Link } from 'react-router-dom';
+import UserModel from '../../models/UserModel';
+import PostModel from '../../models/PostModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,7 +29,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function Comment(props: any) {
+interface Props {
+  user: UserModel
+  post: PostModel
+  comment: CommentModel
+  destroyComment: (id: number) => {}
+  updateComment: (comment: CommentModel) => {}
+}
+
+export default function Comment(props: Props) {
   const classes = useStyles();
   const [formOpen, setFormOpen]= useState<boolean>(false);
   const comment: CommentModel = props.comment;

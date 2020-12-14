@@ -38,12 +38,12 @@ const forms=[
   {name: "password_confirmation", label: "パスワード確認",type: "password"},
 ]
 
-interface State {
- user: UserModel;
+interface Props {
+  handleFlash: (message: string, severity: 'success'|'error') => {}
 }
 
 
-const SignUpForm = (props: any) => {
+const SignUpForm = (props: Props) => {
 
   return (
     <Formik
@@ -87,6 +87,7 @@ const SignUpForm = (props: any) => {
               label={form.label}
               type={form.type}
               variant="outlined"
+              size="small"
               component={TextField}
             />
           </FormControl>

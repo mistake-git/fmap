@@ -20,7 +20,11 @@ const AuthSchema = Yup.object().shape({
     .required('パスワードを入力してください'),
 });
 
-const SignInForm = (props: any) => {
+interface Props {
+  handleFlash: (message: string, severity: 'success'|'error') => {}
+}
+
+const SignInForm = (props: Props) => {
   return (
     <Formik
       initialValues={{ email: "", password: "" }}

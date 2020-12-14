@@ -2,9 +2,19 @@ import React, {Fragment}　from "react";
 import CommentModel from "../../models/CommentModel";
 import CommentForm from './CommentForm';
 import Comment from './Comment';
+import UserModel from "../../models/UserModel";
+import PostModel from "../../models/PostModel";
 
+interface Props {
+  user: UserModel
+  post: PostModel
+  comments: CommentModel[]
+  createComment: (comment: CommentModel) => {}
+  destroyComment: (id: number) => {}
+  updateComment: (comment: CommentModel) => {}
+}
 
-export default function CommentContainer(props: any) {
+export default function CommentContainer(props: Props) {
   return (
     <Fragment>
      <CommentForm 
