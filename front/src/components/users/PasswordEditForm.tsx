@@ -12,14 +12,17 @@ import {
 } from "@material-ui/core";
 import auth from "../../plugins/firebase";
 
-
 const AuthSchema = Yup.object().shape({
   email: Yup.string()
     .email('有効なメールアドレスを入力してください')
 });
 
+interface Props{
+  handleFlash: (message: string, severity: 'success'|'error') => void
+}
 
-const PasswordEditForm = (props: any) => {
+
+const PasswordEditForm = (props: Props) => {
   return (
     <Formik
     initialValues={{ email: ""}}

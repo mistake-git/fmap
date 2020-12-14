@@ -18,7 +18,6 @@ import {
 import CancelIcon from '@material-ui/icons/Cancel';
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import UserModel from '../../models/UserModel';
 import { User } from 'firebase';
 
 const UserSchema = Yup.object().shape({

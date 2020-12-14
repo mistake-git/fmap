@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const NotFound = (props: any) => {
+const NotFound = () => {
   const classes = useStyles()
 
   return (
