@@ -1,5 +1,4 @@
 import React, { useEffect, Fragment, useState } from "react";
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +13,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import GroupIcon from '@material-ui/icons/Group';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import { myHttpClient } from "../../plugins/axios";
+import UserModel from "../../models/UserModel";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const [user, setUser] = useState<any>('');
+  const [user, setUser] = useState<UserModel | null>(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -90,7 +90,7 @@ return (
           <GroupIcon/><Box>ユーザー一覧</Box>
         </Button>
       </Link>
-      <Link to={`/mypages/${user.uid}`} className={classes.link}>
+      <Link to={`/mypages/${user?.uid}`} className={classes.link}>
       　<Button className={classes.linkColor}>
           <AccountCircle /><Box>マイページ</Box>
         </Button>
