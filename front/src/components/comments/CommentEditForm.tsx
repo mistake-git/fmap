@@ -6,6 +6,8 @@ import {
   Button,
   Grid,
 } from "@material-ui/core";
+import CommentModel from "../../models/CommentModel";
+import CommentFormModel from "../../forms/CommentFormModel";
 
 
 const useStyles = makeStyles({
@@ -20,7 +22,14 @@ const useStyles = makeStyles({
   }
 });
 
-export default function CommentEditForm(props: any) {
+interface Props {
+  comment: CommentModel
+  handleFormClose: () => void
+  updateComment: (comment: CommentFormModel) => {}
+}
+
+
+export default function CommentEditForm(props: Props) {
   const classes = useStyles();
   return (
     <div>
@@ -36,7 +45,7 @@ export default function CommentEditForm(props: any) {
                 content: value.content
               }
               props.handleFormClose()
-              props.updateComment(comment, props.comment.id)
+              props.updateComment(comment)
             } catch (error) {
               alert(error.message);
             }

@@ -4,6 +4,7 @@ import CommentForm from './CommentForm';
 import Comment from './Comment';
 import UserModel from "../../models/UserModel";
 import PostModel from "../../models/PostModel";
+import CommentFormModel from "../../forms/CommentFormModel";
 
 interface Props {
   user: UserModel
@@ -11,7 +12,7 @@ interface Props {
   comments: CommentModel[]
   createComment: (comment: CommentModel) => {}
   destroyComment: (id: number) => {}
-  updateComment: (comment: CommentModel) => {}
+  updateComment: (comment: CommentFormModel) => {}
 }
 
 export default function CommentContainer(props: Props) {

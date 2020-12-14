@@ -12,6 +12,7 @@ import CommentEditForm from './CommentEditForm'
 import { Link } from 'react-router-dom';
 import UserModel from '../../models/UserModel';
 import PostModel from '../../models/PostModel';
+import CommentForm from '../../forms/CommentFormModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,7 +35,7 @@ interface Props {
   post: PostModel
   comment: CommentModel
   destroyComment: (id: number) => {}
-  updateComment: (comment: CommentModel) => {}
+  updateComment: (comment: CommentForm) => {}
 }
 
 export default function Comment(props: Props) {

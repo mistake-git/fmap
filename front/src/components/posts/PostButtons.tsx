@@ -11,7 +11,7 @@ import { AuthContext } from '../../Auth'
 import Tooltip from '@material-ui/core/Tooltip';
 import UserModel from "../../models/UserModel";
 import LikeModel from "../../models/LikeModel";
-import LikeForm from "../../forms/LikeForm";
+import LikeForm from "../../forms/LikeFormModel";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
