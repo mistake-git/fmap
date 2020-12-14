@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { Button, Divider } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       margin: theme.spacing(4, 0, 2),
+    },
+    topLink: {
+      textDecoration: 'none',
+      color: 'black',
     },
   }),
 );
@@ -33,7 +38,11 @@ export default function UserBar(props: any) {
           <Avatar alt={props.user.name} src={props.user.image_url} />
           </ListItemAvatar>
           <ListItemText
-            primary={props.user.name}
+            primary={
+              <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
+                {props.user.name}
+              </Link>
+            }
           />
           <ListItemSecondaryAction>
             <Button

@@ -50,7 +50,7 @@ export default function Comment(props: any) {
             <ListItemText
               primary={
                 <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
-                {comment.user.name}
+                  {comment.user.name}
                 </Link>
               }
               secondary={
