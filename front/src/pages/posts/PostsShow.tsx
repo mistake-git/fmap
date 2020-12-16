@@ -66,15 +66,18 @@ const PostsShow = (props: Props) => {
 
   const getPostLikes = async() => {
     try { 
-    await
-      myHttpClient.get(`/posts/${props.match.params.id}`)
+    const likes = await
+      myHttpClient.get(`/posts/${props.match.params.id}/likes`)
         .then((results) => {
-        setLikes(results.data.likes);
+        setLikes(results.data);
+        return results.data
       })
+      return likes;
     }
     catch (error) {
       alert(error.message);
     }
+    return [] as LikeModel[];
   }
 
   const getPostLikesUsers = async() => {
@@ -109,29 +112,38 @@ const PostsShow = (props: Props) => {
   }
 
   useEffect(() => {
-    auth.onAuthStateChanged((user: any) => {
-      myHttpClient.get(`/users/${user?.uid}`)
-      .then((results) => {
-        console.log(results)
-        setUser(results.data)
-      })
-      .catch((data) =>{
-        console.log(data.user)
-      })
-    });
-  }, []);
+    const f = async() => {
+      const likes = await getPostLikes();
+      auth.onAuthStateChanged((user: any) => {
+        myHttpClient.get(`/users/${user?.uid}`)
+        .then((results) => {
+          const me = results.data
+          setUser(me)
+          getMyLike(likes, me);
+        })
+        .catch((data) =>{
+          console.log(data.user)
+        })
+      });
+    }
+    f();
+  }, [setLikes]);
 
-  const getMyLike = () => {
-    const mylike = likes.find((like: any) => {
+  const getMyLike = (likes: LikeModel[], user: UserModel) => {
+    const mylike = likes.find((like: LikeModel) => {
     　return (like.user_id === user?.id);
     });
-    setLike(mylike)
+    setLike(mylike || null)
   }
 
-  const createLike = async(like: LikeFormModel ) => {
+  const createLike = async() => {
+    if(!user){
+      alert("ログインしてください");
+      return;
+    }
     try { 
       await
-    　 myHttpClient.post(`/posts/${props.match.params.id}/likes`,{like: like} )
+    　 myHttpClient.post(`/posts/${props.match.params.id}/likes`, {like: { user_id: user.id}})
         .then((response) => {
         setLike(response.data.like)
         setLikesUsers(response.data.likes_users)
@@ -149,10 +161,10 @@ const PostsShow = (props: Props) => {
     }
   }
 
-  const destroyLike = async(id: number) => {
+  const destroyLike = async() => {
     try { 
     await
-    　 myHttpClient.delete(`/posts/${props.match.params.id}/likes_users/${id}`)
+    　 myHttpClient.delete(`/posts/${props.match.params.id}/likes/${like?.id}`)
       .then((response) => {
         setLike(null)
         setLikesUsers(response.data.likes_users)
@@ -279,7 +291,6 @@ const PostsShow = (props: Props) => {
   },[setComments]);
 
   useEffect(() => {
-    getMyLike();
   },[setLike]);
 
   useEffect(() => {
@@ -289,10 +300,6 @@ const PostsShow = (props: Props) => {
   useEffect(() => {
     getPostLikesUsers();
   },[setLikesUsers]);
-
-  useEffect(() => {
-    getPostLikes();
-  },[setLikes]);
 
   return (
     <Fragment>
@@ -366,7 +373,3 @@ const PostsShow = (props: Props) => {
   );
 };
 export default PostsShow;
-
-
-
-

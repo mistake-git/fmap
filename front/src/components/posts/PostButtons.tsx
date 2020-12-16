@@ -37,11 +37,11 @@ interface Props {
   like: LikeModel|null;
   postUser: UserModel;
   destroyPost: (id: number) => {};
-  createLike: (like: LikeForm) => {};
+  createLike: () => {};
   destroyLike: (id: number) => {};
 }
 
-export default function PostCard(props: Props) {
+export default function PostButtons(props: Props) {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
 
@@ -51,8 +51,7 @@ export default function PostCard(props: Props) {
   } 
 
   const createLike = () =>　{
-    const likeForm = new LikeForm(props.post.id!, props.user.id!);
-    props.createLike(likeForm)
+    props.createLike()
   }
   
   const destroyLike = () =>　{
@@ -63,17 +62,8 @@ export default function PostCard(props: Props) {
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-          {props.like === null ?
-          <Tooltip title="いいね"　placement="right">
-            <Fab
-              color="default" 
-              className={classes.icon}
-              onClick={createLike}
-            >
-              <FavoriteIcon />
-            </Fab>
-          </Tooltip>:
-           <Tooltip title="いいねを削除"　placement="right">
+          {props.like ?
+          <Tooltip title="いいねを削除"　placement="right">
             <Fab
               color="secondary" 
               className={classes.icon}
@@ -81,7 +71,16 @@ export default function PostCard(props: Props) {
             >
               <FavoriteIcon />
             </Fab>
-          </Tooltip>
+          </Tooltip>:
+          <Tooltip title="いいね"　placement="right">
+          <Fab
+            color="default" 
+            className={classes.icon}
+            onClick={createLike}
+          >
+            <FavoriteIcon />
+          </Fab>
+        </Tooltip>
           }
         </Box>
         {currentUser && currentUser.uid === props.postUser.uid &&

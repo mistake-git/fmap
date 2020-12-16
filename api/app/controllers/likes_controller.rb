@@ -2,10 +2,13 @@ class LikesController < ApplicationController
   before_action :set_post
   before_action :set_like, except: [:index, :create]
 
+  def index
+    likes = @post.likes
+    render json: likes
+  end
 
   def create
-    like = Like.new(like_params)
-    like.save
+    like = Like.first_or_create!(user_id: params[:like][:user_id], post_id: @post.id)
     likes_users = @post.likes_users
     render json: {like: like, likes_users: likes_users}
   end
@@ -26,8 +29,4 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
   end
   
-  def like_params
-    params.require(:like).permit(:user_id, :post_id)
-  end
-
 end
