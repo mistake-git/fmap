@@ -1,0 +1,6 @@
+Fishing-Mapのフロントエンドアプリ
+
+```
+yarn start
+```
+
