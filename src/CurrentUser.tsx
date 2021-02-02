@@ -11,22 +11,21 @@ const CurrentUserProvider = (props: any) => {
   const { firebaseAuthUser } = useContext(AuthContext)
 
   useEffect(() => {
-    if (firebaseAuthUser === null) {
-      return
+    if (firebaseAuthUser !== null) {
+      auth.onAuthStateChanged((user) => {
+        UsersRepository.getUser(user!.uid)
+        .then((results) => {
+          console.log(results)
+          setCurrentUser(results)
+        })
+        .catch((data) =>{
+          console.log(data.user)
+          const message = 'サーバーに接続できませんでした。もう一度やり直してください'
+          const severity = 'error'
+          props.handleFlash(message, severity)
+        })
+      });
     }
-    auth.onAuthStateChanged((user) => {
-      UsersRepository.getUser(user!.uid)
-      .then((results) => {
-        console.log(results)
-        setCurrentUser(results)
-      })
-      .catch((data) =>{
-        console.log(data.user)
-        const message = 'サーバーに接続できませんでした。もう一度やり直してください'
-        const severity = 'error'
-        props.handleFlash(message, severity)
-      })
-    });
   }, []);
   
   return (

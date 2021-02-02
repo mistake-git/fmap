@@ -131,23 +131,22 @@ const PostsShow = (props: Props) => {
   },[setSizeData, postId]);
 
   useEffect(() => {
-    if (firebaseAuthUser === null) {
-      return
-    }
     const f = async() => {
       const likes = await getPostLikes();
-      auth.onAuthStateChanged((user) => {
-        UsersRepository.getUser(user!.uid)
-        .then((results) => {
-          console.log(results)
-          const me = results
-          getMyLike(likes, me)
-        })
-        .catch((data) =>{
-          console.log(data.user)
-        })
-      });
-    }
+        auth.onAuthStateChanged((user) => {
+          if (firebaseAuthUser !== null && user !== null) {
+            UsersRepository.getUser(user!.uid)
+            .then((results) => {
+              console.log(results)
+              const me = results
+              getMyLike(likes, me)
+            })
+            .catch((data) =>{
+              console.log(data.user)
+            })
+          }
+        });
+      }
     f();
   }, []);
 
