@@ -5,7 +5,7 @@ import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
 import SearchForm from "../../components/layouts/SearchForm"
 import InfiniteScroll  from "react-infinite-scroller"
-import LoadingDots from "../../components/layouts/LoadingDots";
+import LoadingDots from "../../components/layouts/ContentsLoading";
 import PostsRepository from "../../repositories/PostsRepository";
 
 const Posts = () => {

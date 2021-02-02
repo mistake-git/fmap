@@ -5,7 +5,7 @@ import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import SearchForm from "../../components/layouts/SearchForm";
 import InfiniteScroll  from "react-infinite-scroller"
-import LoadingDots from "../../components/layouts/LoadingDots";
+import LoadingDots from "../../components/layouts/ContentsLoading";
 import UsersRepository from "../../repositories/UsersRepository";
 
 const Users = () => {
