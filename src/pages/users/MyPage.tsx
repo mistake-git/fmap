@@ -3,7 +3,6 @@ import {
   Container,
   Grid,
   Box,
-  Typography
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserMain from "../../components/users/UserMain";
@@ -19,6 +18,7 @@ import { useParams } from 'react-router-dom';
 import UsersRepository from "../../repositories/UsersRepository";
 import UserFormModel from "../../forms/UserFormModel";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import FollowModal from "../../components/users/FollowModal";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,6 +45,8 @@ const MyPage = (props: Props) => {
   const [posts, setPosts] = useState<PostModel[] | null>(null);
   const [likesPosts, setLikesPosts] = useState<PostModel[] | null>(null);
   const [userData, setUserData] = useState<any | null>(null);
+  const [followings, setFollowings] = useState<UserModel[] | null>(null);
+  const [followers, setFollowers]  = useState<UserModel[] | null>(null);
   const { firebaseAuthUser } = useContext(AuthContext)
   const [error, setError] = useState<Boolean>(false)
   const id  = useParams();
@@ -55,6 +57,8 @@ const MyPage = (props: Props) => {
     getUserPosts()
     getUserData()
     getUserLikesPosts()
+    getUserFollowers()
+    getUserFollowings()
   }, [id]);
 
   const getUser = async() => {
@@ -129,7 +133,45 @@ const MyPage = (props: Props) => {
 
   useEffect(() => {
     getUserLikesPosts();
-   },[setLikesPosts]);
+  },[setLikesPosts]);
+
+
+  useEffect(() => {
+    getUserFollowings();
+  },[setFollowings]);
+
+  const getUserFollowings = async() => {
+    try { 
+    await
+      UsersRepository.getUserFollowings(props.match.params.id)
+      .then((results) => {
+      console.log(results)
+      setFollowings(results);
+      })
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getUserFollowers();
+  },[setFollowers]);
+
+  const getUserFollowers = async() => {
+    try { 
+    await
+      UsersRepository.getUserFollowers(props.match.params.id)
+      .then((results) => {
+      console.log(results)
+      setFollowers(results);
+      })
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+
 
   const updateUser = async(user: UserFormModel) => {
     try { 
@@ -219,10 +261,20 @@ const MyPage = (props: Props) => {
                 }
               </Box>
             </Grid>
-            <div className={classes.follow}>
-              <Typography variant="subtitle2" gutterBottom>フォロー{user.followings.length}</Typography>
-              <Typography variant="subtitle2" gutterBottom>フォロワーー{user.followers.length}</Typography>
-            </div>
+            { followings && followers &&
+              <div className={classes.follow}>
+                <FollowModal
+                modalTitle={`${user.name}がフォロー中`}
+                title={`フォロー中${followings.length}`}
+                users={user.followings}
+                />
+                <FollowModal
+                　title={`フォロワー${followers.length}`}
+                  modalTitle={`${user.name}のフォロワー`}
+                  users={user.followers}
+                />
+              </div>
+            }
             <Grid item xs={12} >
               <Box my={2}>
                 <UserTab

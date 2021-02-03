@@ -34,6 +34,16 @@ export default class UsersRepository {
     return result.data
   }
 
+  public static async getUserFollowings(userUid: string): Promise<UserModel[]> {
+    const result = await myHttpClient.get(`/users/${userUid}/followings`)
+    return result.data
+  }
+
+  public static async getUserFollowers(userUid: string): Promise<UserModel[]> {
+    const result = await myHttpClient.get(`/users/${userUid}/followers`)
+    return result.data
+  }
+
   public static async updateUser(
     userUid: string,
     user: UserFormModel
@@ -74,6 +84,6 @@ export default class UsersRepository {
   }
 
   public static async destroyRelationships(user_id: number, follow_id: number){
-    const result = await myHttpClient.delete('/relationships', { params: {user_id: user_id, follow_id: follow_id} })
+    myHttpClient.delete('/relationships', { params: {user_id: user_id, follow_id: follow_id} })
   }
 }
