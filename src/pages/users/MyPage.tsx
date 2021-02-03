@@ -17,28 +17,17 @@ import NotFound from "../NotFound";
 import { useParams } from 'react-router-dom';
 import UsersRepository from "../../repositories/UsersRepository";
 import UserFormModel from "../../forms/UserFormModel";
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import FollowModal from "../../components/users/FollowModal";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    follow: {
-      display: 'flex',
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-  }),
-);
+import FollowButton from "../../components/users/FollowButton";
+import { CurrentUserContext } from "../../CurrentUser";
 
 interface Props {
   history: H.History;
-  handleFlash: (message: string, severity: 'success'|'error') => void
+  handleFlash: (message: string, severity: 'success'|'error' | 'info') => void
   match: any
 }
 
 const MyPage = (props: Props) => {
-  const classes = useStyles();
 
   //マイページは必ずしも自分のユーザーデータをとってくるとは限らないので、変数名をcurrentUserではなくuserにする
   const [user, setUser] = useState<UserModel | null>(null);
@@ -47,8 +36,9 @@ const MyPage = (props: Props) => {
   const [userData, setUserData] = useState<any | null>(null);
   const [followings, setFollowings] = useState<UserModel[] | null>(null);
   const [followers, setFollowers]  = useState<UserModel[] | null>(null);
-  const { firebaseAuthUser } = useContext(AuthContext)
   const [error, setError] = useState<Boolean>(false)
+  const { firebaseAuthUser } = useContext(AuthContext)
+  const {currentUser} = useContext(CurrentUserContext)
   const id  = useParams();
 
   //ユーザーのIDだけ変わった時にユーザー情報を取得
@@ -172,6 +162,53 @@ const MyPage = (props: Props) => {
     }
   }
 
+  const createRelationships = async(user_id: number, follow_id: number) => {
+    if(currentUser === null ){
+      props.history.push("/signin");
+      const message = 'ログインしてください'
+      const severity = 'info'
+      props.handleFlash(message,severity)
+      return;
+    }
+    try { 
+    await
+    　 UsersRepository.createRelationships(user_id, follow_id)
+      .then(() => {
+        console.log('create relationships')
+        const message = 'ユーザーをフォローしました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
+        getUserFollowers()
+      })
+    }
+    catch (error) {
+      alert(error.message);
+      const message = 'ユーザーのフォローに失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+    }
+  }
+
+  const destroyRelationships = async(user_id: number, follow_id: number) => {
+    try { 
+    await
+    　 UsersRepository.destroyRelationships(user_id, follow_id)
+      .then(() => {
+        console.log('destroy relationships')
+        const message = 'フォローを解除しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
+        getUserFollowers()
+      })
+    }
+    catch (error) {
+      alert(error.message);
+      const message = 'フォローの解除に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+    }
+  }
+
   const updateUser = async(user: UserFormModel) => {
     try { 
     await
@@ -261,18 +298,31 @@ const MyPage = (props: Props) => {
               </Box>
             </Grid>
             { followings && followers &&
-              <div className={classes.follow}>
+              <Grid container>
+                <Grid xs={3} md={2} item>
+                  <FollowModal
+                    modalTitle={`${user.name}がフォロー中`}
+                    title={`フォロー中${followings.length}`}
+                    users={followings}
+                  />
+                </Grid>
+                <Grid xs={3} md={2}item>
                 <FollowModal
-                modalTitle={`${user.name}がフォロー中`}
-                title={`フォロー中${followings.length}`}
-                users={followings}
-                />
-                <FollowModal
-                　title={`フォロワー${followers.length}`}
-                  modalTitle={`${user.name}のフォロワー`}
-                  users={followers}
-                />
-              </div>
+                  　title={`フォロワー${followers.length}`}
+                    modalTitle={`${user.name}のフォロワー`}
+                    users={followers}
+                  />
+                </Grid>
+                <Grid xs={false} md={6}/>
+                <Grid xs={6} md={2} item>
+                  <FollowButton
+                    user={user}
+                    currentUser={currentUser}
+                    createRelationships={createRelationships}
+                    destroyRelationships={destroyRelationships}
+                  />
+                </Grid>
+              </Grid>
             }
             <Grid item xs={12} >
               <Box my={2}>

@@ -38,7 +38,7 @@ interface Props {
 export default function PostCard(props: Props) {
   const classes = useStyles();
 	return (
-    <Fragment>
+    <Box m={2}>
       <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
         <Avatar alt={props.user.name} src={props.user.image_url} className={classes.avater} />
         <Box fontWeight="bold" className={classes.userName} my={1}>
@@ -48,7 +48,7 @@ export default function PostCard(props: Props) {
           釣果 {props.user.posts?.length}
         </Box>
       </Link>
-    </Fragment>  
+    </Box> 
 	);
 }
 

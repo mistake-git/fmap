@@ -54,7 +54,7 @@ export default function UserBar(props: Props) {
           />
           <ListItemSecondaryAction>
             <FollowButton
-              postUser={props.postUser}
+              user={props.postUser}
               currentUser={props.currentUser}
               createRelationships={props.createRelationships}
               destroyRelationships={props.destroyRelationships}
