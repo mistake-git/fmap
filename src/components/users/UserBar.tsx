@@ -6,10 +6,10 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
-import { Button, Divider } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import { Link } from 'react-router-dom';
 import UserModel from '../../models/UserModel';
+import FollowButton from './FollowButton';
+import { Divider } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,14 +50,7 @@ export default function UserBar(props: Props) {
             }
           />
           <ListItemSecondaryAction>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              startIcon={<AddIcon />}
-            >
-              フォロー
-            </Button>
+            <FollowButton/>
           </ListItemSecondaryAction>
         </ListItem>
       </List>
