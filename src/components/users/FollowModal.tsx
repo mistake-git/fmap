@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
+import { Divider, List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import UserModel from '../../models/UserModel';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(5),
     height: theme.spacing(5),
   },
+  modalContent:{
+    overflowX: 'auto',
+    maxHeight: '300px'
+  }
 }));
 
 interface Props{
@@ -49,7 +53,8 @@ export default function FollowModal(props: Props) {
         aria-describedby="alert-dialog-description"
       >
        <DialogTitle id="alert-dialog-title">{props.modalTitle}</DialogTitle>
-        <List>
+       <Divider/>
+        <List className={classes.modalContent}>
           {
             props.users? props.users.map((user) => {
               return(
@@ -65,6 +70,7 @@ export default function FollowModal(props: Props) {
             }):<div>ユーザーがいません</div>
           }
         </List>
+        <Divider/>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             閉じる
