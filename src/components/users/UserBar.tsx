@@ -28,7 +28,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
-	user: UserModel;
+  postUser: UserModel;
+  currentUser: UserModel;
+  createRelationships: (user_id: number, follow_id: number) => {}
+  destroyRelationships: (user_id: number, follow_id: number) => {}
 }
 
 export default function UserBar(props: Props) {
@@ -40,17 +43,22 @@ export default function UserBar(props: Props) {
       <List>
         <ListItem>
           <ListItemAvatar>
-          <Avatar alt={props.user.name} src={props.user.image_url} />
+          <Avatar alt={props.postUser.name} src={props.postUser.image_url} />
           </ListItemAvatar>
           <ListItemText
             primary={
-              <Link to={`/mypages/${props.user.uid}`} className={classes.topLink}>
-                {props.user.name}
+              <Link to={`/mypages/${props.postUser.uid}`} className={classes.topLink}>
+                {props.postUser.name}
               </Link>
             }
           />
           <ListItemSecondaryAction>
-            <FollowButton/>
+            <FollowButton
+              postUser={props.postUser}
+              currentUser={props.currentUser}
+              createRelationships={props.createRelationships}
+              destroyRelationships={props.destroyRelationships}
+            />
           </ListItemSecondaryAction>
         </ListItem>
       </List>

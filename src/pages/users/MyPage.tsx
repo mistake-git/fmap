@@ -2,7 +2,8 @@ import React, {useEffect, useContext, Fragment, useState, } from "react";
 import {
   Container,
   Grid,
-  Box
+  Box,
+  Typography
 } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserMain from "../../components/users/UserMain";
@@ -17,6 +18,18 @@ import NotFound from "../NotFound";
 import { useParams } from 'react-router-dom';
 import UsersRepository from "../../repositories/UsersRepository";
 import UserFormModel from "../../forms/UserFormModel";
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    follow: {
+      display: 'flex',
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }),
+);
 
 interface Props {
   history: H.History;
@@ -25,6 +38,8 @@ interface Props {
 }
 
 const MyPage = (props: Props) => {
+  const classes = useStyles();
+
   //マイページは必ずしも自分のユーザーデータをとってくるとは限らないので、変数名をcurrentUserではなくuserにする
   const [user, setUser] = useState<UserModel | null>(null);
   const [posts, setPosts] = useState<PostModel[] | null>(null);
@@ -204,6 +219,10 @@ const MyPage = (props: Props) => {
                 }
               </Box>
             </Grid>
+            <div className={classes.follow}>
+              <Typography variant="subtitle2" gutterBottom>フォロー{user.followings.length}</Typography>
+              <Typography variant="subtitle2" gutterBottom>フォロワーー{user.followers.length}</Typography>
+            </div>
             <Grid item xs={12} >
               <Box my={2}>
                 <UserTab

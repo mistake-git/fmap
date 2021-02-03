@@ -57,6 +57,7 @@ const PostsShow = (props: Props) => {
   const postId = props.match?.params.id
   const { firebaseAuthUser } = useContext(AuthContext)
   const { currentUser} = useContext(CurrentUserContext)
+ 
   
   useEffect(() => {
     const getPost = async() => {
@@ -312,6 +313,51 @@ const PostsShow = (props: Props) => {
     }
   }
 
+  const createRelationships = async(user_id: number, follow_id: number) => {
+    if(currentUser === null ){
+      props.history.push("/signin");
+      const message = 'ログインしてください'
+      const severity = 'info'
+      props.handleFlash(message,severity)
+      return;
+    }
+    try { 
+    await
+    　 UsersRepository.createRelationships(user_id, follow_id)
+      .then(() => {
+        console.log('create relationships')
+        const message = 'ユーザーをフォローしました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+      const message = 'ユーザーのフォローに失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+    }
+  }
+
+  const destroyRelationships = async(user_id: number, follow_id: number) => {
+    try { 
+    await
+    　 UsersRepository.createRelationships(user_id, follow_id)
+      .then(() => {
+        console.log('destroy relationships')
+        const message = 'フォローを解除しました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
+      })
+    }
+    catch (error) {
+      alert(error.message);
+      const message = 'フォローの解除に失敗しました'
+      const severity = 'error'
+      props.handleFlash(message,severity)
+    }
+  }
+
   return (
     <Fragment>
       {error ? <NotFound/> :
@@ -362,7 +408,12 @@ const PostsShow = (props: Props) => {
                   post={post}
                 />
               </Box>
-              <UserBar user={post.user}/>
+              <UserBar 
+                postUser={post.user}
+                currentUser={currentUser}
+                createRelationships={createRelationships}
+                destroyRelationships={destroyRelationships}
+              />
               {post.memo}
               {comments &&
                 <CommentContainer

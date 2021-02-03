@@ -67,4 +67,14 @@ export default class UsersRepository {
     const result = await myHttpClient.get(`/users/search?search=${search}`)
     return result.data
   }
+
+  public static async createRelationships(user_id: number, follow_id: number): Promise<UserModel[]> {
+    const result = await myHttpClient.post('/relationships', { user_id: user_id, follow_id: follow_id  })
+    return result.data
+  }
+
+  public static async destroyRelationships(user_id: number, follow_id: number): Promise<UserModel[]> {
+    const result = await myHttpClient.delete('/relationships', { params: {user_id: user_id, follow_id: follow_id} })
+    return result.data
+  }
 }

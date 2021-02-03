@@ -14,6 +14,8 @@ interface UserModel {
   longitude?: number
   posts: PostModel[]
   likes_posts: PostModel[]
+  followings: UserModel[]
+  followers: UserModel[]
 }
 
 export default UserModel
