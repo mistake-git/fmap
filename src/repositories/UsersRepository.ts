@@ -68,6 +68,11 @@ export default class UsersRepository {
     return result.data
   }
 
+  public static async getCurrentUserFollowings(currentUserId: number): Promise<UserModel[]> {
+    const result = await myHttpClient.get('/relationships', {params: { user_id: currentUserId }})
+    return result.data
+  }
+
   public static async createRelationships(user_id: number, follow_id: number): Promise<UserModel[]> {
     const result = await myHttpClient.post('/relationships', { user_id: user_id, follow_id: follow_id  })
     return result.data
