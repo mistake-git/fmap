@@ -172,7 +172,6 @@ const MyPage = (props: Props) => {
     }
   }
 
-
   const updateUser = async(user: UserFormModel) => {
     try { 
     await
@@ -266,12 +265,12 @@ const MyPage = (props: Props) => {
                 <FollowModal
                 modalTitle={`${user.name}がフォロー中`}
                 title={`フォロー中${followings.length}`}
-                users={user.followings}
+                users={followings}
                 />
                 <FollowModal
                 　title={`フォロワー${followers.length}`}
                   modalTitle={`${user.name}のフォロワー`}
-                  users={user.followers}
+                  users={followers}
                 />
               </div>
             }

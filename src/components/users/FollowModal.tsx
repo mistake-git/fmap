@@ -8,10 +8,14 @@ import Avatar from '@material-ui/core/Avatar';
 import UserModel from '../../models/UserModel';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     color: '#000000',
+  },
+  avatar: {
+    width: theme.spacing(5),
+    height: theme.spacing(5),
   },
 }));
 
@@ -50,11 +54,11 @@ export default function FollowModal(props: Props) {
             props.users? props.users.map((user) => {
               return(
                 <Link to={`/mypages/${user.uid}`} onClick={handleClose} className={classes.link}>
-                  <ListItem key={user.id}>
-                    <ListItemAvatar>
-                      <Avatar src={user.image_url} alt={user.name} />
-                    </ListItemAvatar>
-                    <ListItemText primary={user.name} />
+                  <ListItem>
+                  <ListItemAvatar>
+                    <Avatar alt={user.name} src={user.image_url}  className={classes.avatar}/>
+                  </ListItemAvatar>
+                  <ListItemText primary={user.name} />
                   </ListItem>
                 </Link>
               )
