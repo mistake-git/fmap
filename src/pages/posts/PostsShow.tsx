@@ -53,7 +53,6 @@ const PostsShow = (props: Props) => {
   const [comments, setComments] = useState<CommentModel[]>([]);
   const [like, setLike] = useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = useState<UserModel[] | null>(null);
-  const [otherUser, setOtherUser] = useState<UserModel | null>(null);
   const [error, setError] = useState<Boolean>(false)
   const postId = props.match?.params.id
   const { firebaseAuthUser } = useContext(AuthContext)
@@ -327,7 +326,6 @@ const PostsShow = (props: Props) => {
     　 UsersRepository.createRelationships(user_id, follow_id)
       .then((results) => {
         console.log('create relationships')
-        setOtherUser(results)
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
@@ -346,7 +344,6 @@ const PostsShow = (props: Props) => {
     await
     　 UsersRepository.createRelationships(user_id, follow_id)
       .then(() => {
-        setOtherUser(null)
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
         const severity = 'success'
@@ -414,7 +411,6 @@ const PostsShow = (props: Props) => {
               <UserBar 
                 postUser={post.user}
                 currentUser={currentUser}
-                otherUser={otherUser}
                 createRelationships={createRelationships}
                 destroyRelationships={destroyRelationships}
               />

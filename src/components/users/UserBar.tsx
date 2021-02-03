@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
 interface Props {
   postUser: UserModel;
   currentUser: UserModel;
-  otherUser: UserModel | null
   createRelationships: (user_id: number, follow_id: number) => {}
   destroyRelationships: (user_id: number, follow_id: number) => {}
 }
@@ -57,7 +56,6 @@ export default function UserBar(props: Props) {
             <FollowButton
               postUser={props.postUser}
               currentUser={props.currentUser}
-              otherUser={props.otherUser}
               createRelationships={props.createRelationships}
               destroyRelationships={props.destroyRelationships}
             />
