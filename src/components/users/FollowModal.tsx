@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
+import { List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
 import UserModel from '../../models/UserModel';
 import { Link } from 'react-router-dom';
 
@@ -51,7 +52,7 @@ export default function FollowModal(props: Props) {
                 <Link to={`/mypages/${user.uid}`} onClick={handleClose} className={classes.link}>
                   <ListItem key={user.id}>
                     <ListItemAvatar>
-                      <Avatar alt={user.name} src={user.image_url}/>
+                      <Avatar src={user.image_url} alt={user.name} />
                     </ListItemAvatar>
                     <ListItemText primary={user.name} />
                   </ListItem>
