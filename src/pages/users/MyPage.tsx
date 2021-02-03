@@ -314,14 +314,16 @@ const MyPage = (props: Props) => {
                   />
                 </Grid>
                 <Grid xs={false} md={6}/>
-                <Grid xs={6} md={2} item>
-                  <FollowButton
-                    user={user}
-                    currentUser={currentUser}
-                    createRelationships={createRelationships}
-                    destroyRelationships={destroyRelationships}
-                  />
-                </Grid>
+                {currentUser && user.id != currentUser.id &&
+                  <Grid xs={6} md={2} item>
+                    <FollowButton
+                      user={user}
+                      currentUser={currentUser}
+                      createRelationships={createRelationships}
+                      destroyRelationships={destroyRelationships}
+                    />
+                  </Grid>
+                }
               </Grid>
             }
             <Grid item xs={12} >
