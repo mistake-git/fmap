@@ -83,7 +83,7 @@ export default class UsersRepository {
     return result.data
   }
 
-  public static async destroyRelationships(user_id: number, follow_id: number){
-    myHttpClient.delete('/relationships', {params: {user_id: user_id, follow_id: follow_id}} )
+  public static async destroyRelationships(){
+    myHttpClient.delete('/relationships')
   }
 }
