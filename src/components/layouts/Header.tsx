@@ -114,14 +114,16 @@ return (
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem 
-            onClick={handleClose}
-          >
-            <AccountBoxIcon className={classes.link}/>
-            <Link to={`/mypages/${currentUser?.uid}`} className={classes.link}>
-              マイページ
-            </Link>
-          </MenuItem>
+          <Link to={`/mypages/${currentUser?.uid}`} className={classes.link}>
+            <MenuItem 
+              onClick={handleClose}
+            >
+              <AccountBoxIcon className={classes.link}/>
+              
+                マイページ
+            
+            </MenuItem>
+          </Link>
           <MenuItem  
             onClick={LogOut}
           >

@@ -84,6 +84,7 @@ export default class UsersRepository {
   }
 
   public static async destroyRelationships(user_id: number, follow_id: number){
-    myHttpClient.get('/relationships', { params: {user_id: user_id, follow_id: follow_id  }})
+    //deleteの場合、うまくパラメーターを送れないので一時的な実装
+    myHttpClient.delete('/relationships/delete', {params: {user_id: user_id, follow_id: follow_id  }})
   }
 }

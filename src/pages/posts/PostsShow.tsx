@@ -342,7 +342,7 @@ const PostsShow = (props: Props) => {
   const destroyRelationships = async(user_id: number, follow_id: number) => {
     try { 
     await
-    　 UsersRepository.destroyRelationships(user_id, follow_id )
+    　 UsersRepository.destroyRelationships(user_id, follow_id)
       .then(() => {
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
