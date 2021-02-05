@@ -84,7 +84,7 @@ export default class UsersRepository {
   }
 
   public static async destroyRelationships(userId: number, followId: number): Promise<UserModel>{
-    const result = await myHttpClient.delete('/relationships/delete', {params: {userId: userId, followId: followId  }})
+    const result = await myHttpClient.delete('/relationships/delete', {params: {user_id: userId, follow_id: followId  }})
     return result.data
   }
 
