@@ -313,7 +313,7 @@ const PostsShow = (props: Props) => {
     }
   }
 
-  const createRelationships = async(user_id: number, follow_id: number) => {
+  const createRelationships = async(userId: number, followId: number) => {
     if(currentUser === null ){
       props.history.push("/signin");
       const message = 'ログインしてください'
@@ -323,13 +323,13 @@ const PostsShow = (props: Props) => {
     }
     try { 
     await
-    　 UsersRepository.createRelationships(user_id, follow_id)
+    　 UsersRepository.createRelationships(userId, followId)
       .then((results) => {
         console.log('create relationships')
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
-        UsersRepository.isFollowed(user_id,results.id)
+        UsersRepository.isFollowed(userId,results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log("set isfollow")
@@ -345,16 +345,16 @@ const PostsShow = (props: Props) => {
     }
   }
 
-  const destroyRelationships = async(user_id: number, follow_id: number) => {
+  const destroyRelationships = async(userId: number, followId: number) => {
     try { 
     await
-    　 UsersRepository.destroyRelationships(user_id, follow_id)
+    　 UsersRepository.destroyRelationships(userId, followId)
       .then((results) => {
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
         const severity = 'success'
         props.handleFlash(message,severity)
-        UsersRepository.isFollowed(user_id, results.id)
+        UsersRepository.isFollowed(userId, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -370,10 +370,16 @@ const PostsShow = (props: Props) => {
   }
 
   useEffect(() => {
-    UsersRepository.isFollowed(currentUser.id, post!.user.id).then((results)=>{
-      setIsFollowed(results)
-    })
-  },[]);
+    if (post) {
+      const isThisUserFollowed = async() => {
+        UsersRepository.isFollowed(currentUser.id, post.user.id).then((results) =>{
+          console.log('set isFollowd')
+          setIsFollowed(results)
+        })
+      }
+      isThisUserFollowed();
+    }
+  }, [setIsFollowed]);
 
   return (
     <Fragment>

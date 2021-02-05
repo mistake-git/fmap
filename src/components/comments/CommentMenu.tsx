@@ -81,9 +81,9 @@ export default function CommentMenu(props: Props) {
         }}
       >
         {options.map((option) => (
-          <Fragment key={option.id}>
+          <div key={option.id}>
              {option.item}
-          </Fragment>
+          </div>
         ))}
       </Menu>
     </div>
