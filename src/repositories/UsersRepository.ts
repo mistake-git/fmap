@@ -83,8 +83,13 @@ export default class UsersRepository {
     return result.data
   }
 
-  public static async destroyRelationships(user_id: number, follow_id: number){
-    //deleteの場合、うまくパラメーターを送れないので一時的な実装
-    myHttpClient.delete('/relationships/delete', {params: {user_id: user_id, follow_id: follow_id  }})
+  public static async destroyRelationships(user_id: number, follow_id: number): Promise<UserModel>{
+    const result = await myHttpClient.delete('/relationships/delete', {params: {user_id: user_id, follow_id: follow_id  }})
+    return result.data
+  }
+
+  public static async isFollowed(user_id: number, follow_id: number): Promise<boolean>{
+    const result = await myHttpClient.get('/relationships/is_followed', {params: {user_id: user_id, follow_id: follow_id  }})
+    return result.data
   }
 }

@@ -37,6 +37,7 @@ const MyPage = (props: Props) => {
   const [followings, setFollowings] = useState<UserModel[] | null>(null);
   const [followers, setFollowers]  = useState<UserModel[] | null>(null);
   const [error, setError] = useState<Boolean>(false)
+  const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const id  = useParams();
@@ -173,12 +174,17 @@ const MyPage = (props: Props) => {
     try { 
     await
     　 UsersRepository.createRelationships(user_id, follow_id)
-      .then(() => {
+      .then((results) => {
         console.log('create relationships')
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
         getUserFollowers()
+        UsersRepository.isFollowed(user_id, results.id)
+        .then((results) => {
+          setIsFollowed(results)
+          console.log(results)
+        })
       })
     }
     catch (error) {
@@ -193,12 +199,17 @@ const MyPage = (props: Props) => {
     try { 
     await
     　 UsersRepository.destroyRelationships(user_id, follow_id)
-      .then(() => {
+      .then((results) => {
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
         const severity = 'success'
         props.handleFlash(message,severity)
         getUserFollowers()
+        UsersRepository.isFollowed(user_id, results.id)
+        .then((results) => {
+          setIsFollowed(results)
+          console.log(results)
+        })
       })
     }
     catch (error) {
@@ -314,13 +325,14 @@ const MyPage = (props: Props) => {
                   />
                 </Grid>
                 <Grid xs={false} md={6}/>
-                {currentUser && user.id != currentUser.id &&
+                {currentUser && user.id !== currentUser.id &&
                   <Grid xs={6} md={2} item>
                     <FollowButton
                       user={user}
                       currentUser={currentUser}
                       createRelationships={createRelationships}
                       destroyRelationships={destroyRelationships}
+                      isFollowed={isFollowed}
                     />
                   </Grid>
                 }

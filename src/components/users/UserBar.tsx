@@ -30,8 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
 interface Props {
   postUser: UserModel;
   currentUser: UserModel;
-  createRelationships: (user_id: number, follow_id: number) => {}
-  destroyRelationships: (user_id: number, follow_id: number) => {}
+  createRelationships: (user_id: number, follow_id: number) => {};
+  destroyRelationships: (user_id: number, follow_id: number) => {};
+  isFollowed: boolean
 }
 
 export default function UserBar(props: Props) {
@@ -58,6 +59,7 @@ export default function UserBar(props: Props) {
               currentUser={props.currentUser}
               createRelationships={props.createRelationships}
               destroyRelationships={props.destroyRelationships}
+              isFollowed={props.isFollowed}
             />
           </ListItemSecondaryAction>
         </ListItem>

@@ -53,12 +53,12 @@ const PostsShow = (props: Props) => {
   const [comments, setComments] = useState<CommentModel[]>([]);
   const [like, setLike] = useState<LikeModel | null>(null);
   const [likesUsers, setLikesUsers] = useState<UserModel[] | null>(null);
-  const [error, setError] = useState<Boolean>(false)
+  const [error, setError] = useState<boolean>(false)
   const postId = props.match?.params.id
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
+  const [isFollowed, setIsFollowed] = useState<boolean>(false)
  
-  
   useEffect(() => {
     const getPost = async() => {
       try { 
@@ -329,6 +329,12 @@ const PostsShow = (props: Props) => {
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
+        UsersRepository.isFollowed(user_id,results.id)
+        .then((results) => {
+          setIsFollowed(results)
+          console.log("set isfollow")
+          console.log(results)
+        })
       })
     }
     catch (error) {
@@ -343,11 +349,16 @@ const PostsShow = (props: Props) => {
     try { 
     await
     　 UsersRepository.destroyRelationships(user_id, follow_id)
-      .then(() => {
+      .then((results) => {
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
         const severity = 'success'
         props.handleFlash(message,severity)
+        UsersRepository.isFollowed(user_id, results.id)
+        .then((results) => {
+          setIsFollowed(results)
+          console.log(results)
+        })
       })
     }
     catch (error) {
@@ -357,6 +368,12 @@ const PostsShow = (props: Props) => {
       props.handleFlash(message,severity)
     }
   }
+
+  useEffect(() => {
+    UsersRepository.isFollowed(currentUser.id, post!.user.id).then((results)=>{
+      setIsFollowed(results)
+    })
+  },[]);
 
   return (
     <Fragment>
@@ -413,6 +430,7 @@ const PostsShow = (props: Props) => {
                 currentUser={currentUser}
                 createRelationships={createRelationships}
                 destroyRelationships={destroyRelationships}
+                isFollowed={isFollowed}
               />
               {post.memo}
               {comments &&

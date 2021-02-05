@@ -9,6 +9,7 @@ interface Props {
   currentUser: UserModel;
   createRelationships: (user_id: number, follow_id: number) => {}
   destroyRelationships: (user_id: number, follow_id: number) => {}
+  isFollowed: boolean
 }
 
 export default function FollowButton(props: Props) {
@@ -23,6 +24,7 @@ export default function FollowButton(props: Props) {
 
 	return (
     <Fragment>
+    { props.isFollowed?
       <Button
           variant="contained"
           color="primary"
@@ -32,6 +34,7 @@ export default function FollowButton(props: Props) {
         >
         フォロー解除
       </Button>
+      :
       <Button
         variant="contained"
         color="default"
@@ -41,6 +44,7 @@ export default function FollowButton(props: Props) {
       >
         フォロー
       </Button>
+    }
     </Fragment>
 	);
 }
