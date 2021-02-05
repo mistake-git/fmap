@@ -310,14 +310,14 @@ const MyPage = (props: Props) => {
             </Grid>
             { followings && followers &&
               <Grid container>
-                <Grid xs={3} md={2} item>
+                <Grid xs={4} md={2} item>
                   <FollowModal
                     modalTitle={`${user.name}がフォロー中`}
                     title={`フォロー中${followings.length}`}
                     users={followings}
                   />
                 </Grid>
-                <Grid xs={3} md={2}item>
+                <Grid xs={4} md={2}item>
                 <FollowModal
                   　title={`フォロワー${followers.length}`}
                     modalTitle={`${user.name}のフォロワー`}
@@ -326,7 +326,7 @@ const MyPage = (props: Props) => {
                 </Grid>
                 <Grid xs={false} md={6}/>
                 {currentUser && user.id !== currentUser.id &&
-                  <Grid xs={6} md={2} item>
+                  <Grid xs={4} md={2} item>
                     <FollowButton
                       user={user}
                       currentUser={currentUser}
