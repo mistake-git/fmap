@@ -326,12 +326,12 @@ const PostsShow = (props: Props) => {
     　 UsersRepository.createRelationships(userId, followId)
       .then((results) => {
         console.log('create relationships')
-        const message = 'ユーザーをフォローしました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
         UsersRepository.isFollowed(userId,results.id)
         .then((results) => {
           setIsFollowed(results)
+          const message = 'ユーザーをフォローしました'
+          const severity = 'success'
+          props.handleFlash(message,severity)
           console.log("set isfollow")
           console.log(results)
         })
@@ -351,11 +351,11 @@ const PostsShow = (props: Props) => {
     　 UsersRepository.destroyRelationships(userId, followId)
       .then((results) => {
         console.log('destroy relationships')
-        const message = 'フォローを解除しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
         UsersRepository.isFollowed(userId, results.id)
         .then((results) => {
+          const message = 'フォローを解除しました'
+          const severity = 'success'
+          props.handleFlash(message,severity)
           setIsFollowed(results)
           console.log(results)
         })
