@@ -78,21 +78,6 @@ const PostsShow = (props: Props) => {
     getPost();
   },[setPost, postId]);
 
-  const getPostLikes = async() => {
-    try { 
-    const likes = await
-      PostsRepository.getPostLikes(postId)
-        .then((results) => {
-        return results
-      })
-      return likes;
-    }
-    catch (error) {
-      console.log(error.message);
-    }
-    return [] as LikeModel[];
-  }
-
   const getPostLikesUsers = async() => {
     try { 
     await
@@ -130,6 +115,21 @@ const PostsShow = (props: Props) => {
     }
     getPostData();
   },[setSizeData, postId]);
+
+  const getPostLikes = async() => {
+    try { 
+    const likes = await
+      PostsRepository.getPostLikes(postId)
+        .then((results) => {
+        return results
+      })
+      return likes;
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+    return [] as LikeModel[];
+  }
 
   useEffect(() => {
     const f = async() => {
@@ -313,6 +313,47 @@ const PostsShow = (props: Props) => {
     }
   }
 
+  const getPostUser = async() => {
+    try { 
+    const userId = await
+      PostsRepository.getPostUser(postId)
+        .then((results) => {
+        return results.id
+      })
+      return userId;
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+    return ;
+  }
+
+  const checkFollowd = (userId: number, followId: number) => {
+    UsersRepository.isFollowed(userId,followId).then((results) => {
+      setIsFollowed(results)
+    })
+  }
+
+  useEffect(() => {
+    const check = async() => {
+      const followId= await getPostUser();
+        auth.onAuthStateChanged((user) => {
+          if (firebaseAuthUser !== null && user !== null) {
+            UsersRepository.getUser(user!.uid)
+            .then((results) => {
+              console.log(results)
+              const userId = results.id
+              checkFollowd(userId, followId!)
+            })
+            .catch((data) =>{
+              console.log(data)
+            })
+          }
+        });
+      }
+    check();
+  }, []);
+
   const createRelationships = async(userId: number, followId: number) => {
     if(currentUser === null ){
       props.history.push("/signin");
@@ -368,18 +409,6 @@ const PostsShow = (props: Props) => {
       props.handleFlash(message,severity)
     }
   }
-
-  useEffect(() => {
-    if (post) {
-      const isThisUserFollowed = async() => {
-        UsersRepository.isFollowed(currentUser.id, post.user.id).then((results) =>{
-          console.log('set isFollowd')
-          setIsFollowed(results)
-        })
-      }
-      isThisUserFollowed();
-    }
-  }, [setIsFollowed]);
 
   return (
     <Fragment>

@@ -26,6 +26,11 @@ export default class PostsRepository {
     return result.data
   }
 
+  public static async getPostUser(postId: number): Promise<UserModel> {
+    const result = await myHttpClient.get(`/posts/${postId}/user`)
+    return result.data
+  }
+
   public static async getPostLikes(postId: number): Promise<LikeModel[]> {
     const result = await myHttpClient.get(`/posts/${postId}/likes`)
     return result.data
