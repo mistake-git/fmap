@@ -22,6 +22,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StorageIcon from '@material-ui/icons/Storage';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -122,16 +123,26 @@ export default function Header() {
           </Link>
         ))}
         <Divider/>
-        <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
+        {firebaseAuthUser?
+        <Fragment>
+          <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
+            <ListItem button>
+              <AccountBoxIcon/>
+              <ListItemText primary="マイページ" />
+            </ListItem>
+          </Link>
+          <ListItem button　onClick={LogOut}　className={classes.link}>
+            <ExitToAppIcon/>
+            <ListItemText primary="ログアウト" />
+          </ListItem>
+        </Fragment>:
+        <Link to={"signin"}　className={classes.link}>
           <ListItem button>
-            <AccountBoxIcon/>
-            <ListItemText primary="マイページ" />
+            <LockOpenIcon/>
+            <ListItemText primary="ログイン" />
           </ListItem>
         </Link>
-        <ListItem button　onClick={LogOut}　className={classes.link}>
-          <ExitToAppIcon/>
-          <ListItemText primary="ログアウト" />
-        </ListItem>
+        }  
       </List>
     </div>
   );
