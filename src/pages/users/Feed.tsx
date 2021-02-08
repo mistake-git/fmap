@@ -14,7 +14,7 @@ import auth from "../../plugins/firebase";
 const Feed = () => {
   const [posts, setPosts] = useState<PostModel[]>([])
   const [hasMore, setHasMore] = useState(true);
-  const　placeHolder ="釣りたい魚を検索 例 タイ"
+  const　placeHolder ="魚を検索 例 タイ"
   const { firebaseAuthUser } = useContext(AuthContext)
 
   //非同期でFeedをAPIから取得

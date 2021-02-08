@@ -10,7 +10,7 @@ import { CurrentUserContext } from '../CurrentUser'
 
 const Map = () => {
   const [posts, setPosts] = useState<PostModel[] | null>(null)
-  const placeHolder = '釣りたい魚を検索 例 タイ'
+  const placeHolder = '魚を検索 例 タイ'
   const { currentUser } = useContext(CurrentUserContext)
 
   //非同期で投稿をAPIから取得

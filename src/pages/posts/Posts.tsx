@@ -11,7 +11,7 @@ import PostsRepository from "../../repositories/PostsRepository";
 const Posts = () => {
   const [posts, setPosts] = useState<PostModel[]>([])
   const [hasMore, setHasMore] = useState(true);
-  const　placeHolder ="釣りたい魚を検索 例 タイ"
+  const　placeHolder ="魚を検索 例 タイ"
 
   //非同期で投稿をAPIから取得
   const getPosts = async(page: number) => {
