@@ -44,9 +44,6 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: "middle",
     zIndex: 1,
   },
-  list: {
-    width: 250,
-  },
   fullList: {
     width: 'auto',
   },
@@ -141,7 +138,7 @@ export default function Header() {
 
   return (
     <div>
-      <Drawer anchor="right" open={state['right']} onClose={toggleDrawer('right', false)}>
+      <Drawer anchor="right" open={state['right']} onClose={toggleDrawer('right', false)} style={{width: '40%'}}>
         {headerList('right')}
       </Drawer>
       <Toolbar className={classes.toolbar}>
