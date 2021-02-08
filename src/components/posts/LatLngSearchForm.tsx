@@ -70,7 +70,7 @@ export default function LatLngSearchForm(props: Props) {
             onClick={submitForm}
             disabled={!isValid || isSubmitting}　
           >
-            住所検索
+            検索
           </Button>
         </Grid>
       </Grid>
