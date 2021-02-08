@@ -9,7 +9,6 @@ import * as H from 'history';
 import { AppBar, Button, Hidden, Toolbar, Typography } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 
-
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
 		marginTop: theme.spacing(2),
