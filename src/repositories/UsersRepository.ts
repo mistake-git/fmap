@@ -29,7 +29,10 @@ export default class UsersRepository {
     return result.data
   }
 
-  public static async getUserFeed(userUid: string, page: number): Promise<PostModel[]> {
+  public static async getUserFeed(
+    userUid: string,
+    page: number
+  ): Promise<PostModel[]> {
     const result = await myHttpClient.get(`/users/${userUid}/feed?page=${page}`)
     return result.data
   }
@@ -83,18 +86,34 @@ export default class UsersRepository {
     return result.data
   }
 
-  public static async createRelationships(userId: number, followId: number): Promise<UserModel> {
-    const result = await myHttpClient.post('/relationships', { user_id: userId, follow_id: followId  })
+  public static async createRelationships(
+    userId: number,
+    followId: number
+  ): Promise<UserModel> {
+    const result = await myHttpClient.post('/relationships', {
+      user_id: userId,
+      follow_id: followId,
+    })
     return result.data
   }
 
-  public static async destroyRelationships(userId: number, followId: number): Promise<UserModel>{
-    const result = await myHttpClient.delete('/relationships/delete', {params: {user_id: userId, follow_id: followId  }})
+  public static async destroyRelationships(
+    userId: number,
+    followId: number
+  ): Promise<UserModel> {
+    const result = await myHttpClient.delete('/relationships/delete', {
+      params: { user_id: userId, follow_id: followId },
+    })
     return result.data
   }
 
-  public static async isFollowed(userId: number, followId: number): Promise<boolean>{
-    const result = await myHttpClient.get('/relationships/is_followed', {params: {user_id: userId, follow_id: followId  }})
+  public static async isFollowed(
+    userId: number,
+    followId: number
+  ): Promise<boolean> {
+    const result = await myHttpClient.get('/relationships/is_followed', {
+      params: { user_id: userId, follow_id: followId },
+    })
     return result.data
   }
 }
