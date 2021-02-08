@@ -136,7 +136,7 @@ export default function Header() {
             <ListItemText primary="ログアウト" />
           </ListItem>
         </Fragment>:
-        <Link to={"signin"}　className={classes.link}>
+        <Link to={"/signin"}　className={classes.link}>
           <ListItem button>
             <LockOpenIcon/>
             <ListItemText primary="ログイン" />
