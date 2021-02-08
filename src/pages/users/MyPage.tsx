@@ -20,6 +20,7 @@ import UserFormModel from "../../forms/UserFormModel";
 import FollowModal from "../../components/users/FollowModal";
 import FollowButton from "../../components/users/FollowButton";
 import { CurrentUserContext } from "../../CurrentUser";
+import auth from "../../plugins/firebase";
 
 interface Props {
   history: H.History;
@@ -233,6 +234,32 @@ const MyPage = (props: Props) => {
       console.log(error.message);
     }
   }
+
+  const checkFollowd = (userId: number, followId: number) => {
+    UsersRepository.isFollowed(userId,followId).then((results) => {
+      setIsFollowed(results)
+    })
+  }
+
+  useEffect(() => {
+    const check = async() => {
+      const followId = props.match.params.id
+        auth.onAuthStateChanged((user) => {
+          if (firebaseAuthUser !== null && user !== null) {
+            UsersRepository.getUser(user!.uid)
+            .then((results) => {
+              console.log(results)
+              const userId = results.id
+              checkFollowd(userId, followId!)
+            })
+            .catch((data) =>{
+              console.log(data)
+            })
+          }
+        });
+      }
+    check();
+  }, []);
 
   const updateProfileImage = async(image: File) => {
     try { 

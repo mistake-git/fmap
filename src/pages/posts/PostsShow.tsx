@@ -336,7 +336,7 @@ const PostsShow = (props: Props) => {
 
   useEffect(() => {
     const check = async() => {
-      const followId= await getPostUser();
+      const followId = await getPostUser();
         auth.onAuthStateChanged((user) => {
           if (firebaseAuthUser !== null && user !== null) {
             UsersRepository.getUser(user!.uid)
