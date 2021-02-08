@@ -29,6 +29,11 @@ export default class UsersRepository {
     return result.data
   }
 
+  public static async getUserFeed(userUid: string, page: number): Promise<PostModel[]> {
+    const result = await myHttpClient.get(`/users/${userUid}/feed?page=${page}`)
+    return result.data
+  }
+
   public static async getUserLikesPosts(userUid: string): Promise<PostModel[]> {
     const result = await myHttpClient.get(`/users/${userUid}/likes_posts`)
     return result.data

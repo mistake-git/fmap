@@ -16,6 +16,7 @@ import FlashAlert from "./components/layouts/FlashAlert";
 import PasswordEdit from "./pages/users/PasswordEdit";
 import NotFound from "./pages/NotFound";
 import Rankings from "./pages/rankings/Rankings";
+import Feed from "./pages/users/Feed";
 
 const App: React.FC = () => {
 
@@ -92,6 +93,7 @@ const App: React.FC = () => {
             />
             <Route exact path="/users" component={Users} />
             <Route exact path="/posts" component={Posts} />
+            <Route exact path="/feed" component={Feed} />
             <Route 
               exact path="/posts/:id/edit" 
               render={({ 

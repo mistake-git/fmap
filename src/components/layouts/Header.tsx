@@ -17,6 +17,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { AuthContext } from '../../Auth'
 import { CurrentUserContext } from "../../CurrentUser";
+import StorageIcon from '@material-ui/icons/Storage';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -77,6 +78,14 @@ return (
           <img src="../../logo.png"　alt="サイトロゴ" className={classes.logo}/>
         </Link>
       </Typography>
+      {firebaseAuthUser &&
+        <Link to={'/feed'}　className={classes.link}>
+          <Button className={classes.linkBold}>
+            <ViewModuleIcon/>
+            <Box>フィード</Box>
+          </Button>
+        </Link>
+      }
       <Link to={'/posts/new'}　className={classes.link}>
         <Button className={classes.linkBold}>
           <CreateIcon/>
@@ -91,8 +100,8 @@ return (
       </Link>
       <Link to={'/posts'}　className={classes.link}>
       　<Button className={classes.linkBold}>
-          <ViewModuleIcon/>
-          <Box>釣果</Box>
+          <StorageIcon/>
+          <Box>全データ</Box>
         </Button>
       </Link>
       <Link to={'/users'}　className={classes.link}>
@@ -119,9 +128,7 @@ return (
               onClick={handleClose}
             >
               <AccountBoxIcon className={classes.link}/>
-              
                 マイページ
-            
             </MenuItem>
           </Link>
           <MenuItem  
