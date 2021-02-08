@@ -1,15 +1,11 @@
 import React, { Fragment, useContext, useState } from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
@@ -56,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'right';
 
 export default function Header() {
 
@@ -86,7 +82,6 @@ export default function Header() {
     }
   }
 
-
   const toggleDrawer = (anchor: Anchor, open: boolean) => (
     event: React.KeyboardEvent | React.MouseEvent,
   ) => {
@@ -100,6 +95,13 @@ export default function Header() {
 
     setState({ ...state, [anchor]: open });
   };
+
+  const headerLinks = [
+    { name: '地図', url: '/', icon: <PinDropIcon/>},
+    { name: '投稿', url: '/posts/new', icon: <CreateIcon/>},
+    { name: '全ての釣果', url: '/posts', icon: <StorageIcon/>},
+    { name: 'ユーザー', url: '/users', icon: <GroupIcon/>},
+  ];
 
   const headerList = (anchor: Anchor) => (
     <div
@@ -122,6 +124,7 @@ export default function Header() {
             </ListItem>
           </Link>
         ))}
+        <Divider/>
         <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
           <ListItem button>
             <AccountBoxIcon/>
@@ -135,13 +138,6 @@ export default function Header() {
       </List>
     </div>
   );
-
-  const headerLinks = [
-    { name: '地図', url: '/', icon: <PinDropIcon/>},
-    { name: '投稿', url: '/posts/new', icon: <CreateIcon/>},
-    { name: '全ての釣果', url: '/posts', icon: <StorageIcon/>},
-    { name: 'ユーザー', url: '/users', icon: <GroupIcon/>},
-  ];
 
   return (
     <div>
