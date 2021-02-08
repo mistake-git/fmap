@@ -45,7 +45,7 @@ export default function LatLngSearchForm(props: Props) {
     render={({ submitForm,  isSubmitting, isValid,}) => (
     <Form>
       <Grid container spacing={1}>
-        <Grid item xs={11}>
+        <Grid item xs={9} sm={10} md={11}>
           <Field 
           name="address"
           type="text"
@@ -62,7 +62,7 @@ export default function LatLngSearchForm(props: Props) {
           }}
         />
         </Grid>
-        <Grid item xs={1}>
+        <Grid xs={3} sm={2} md={1}>
           <Button
             fullWidth 
             variant="contained"
