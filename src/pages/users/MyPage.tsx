@@ -235,6 +235,21 @@ const MyPage = (props: Props) => {
     }
   }
 
+  const getThisUserId = async() => {
+    try { 
+    const followId = await
+      UsersRepository.getUser(props.match.params.id)
+        .then((results) => {
+        return results.id
+      })
+      return followId;
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+    return 
+  }
+
   const checkFollowd = (userId: number, followId: number) => {
     UsersRepository.isFollowed(userId,followId).then((results) => {
       setIsFollowed(results)
@@ -243,7 +258,7 @@ const MyPage = (props: Props) => {
 
   useEffect(() => {
     const check = async() => {
-      const followId = props.match.params.id
+      const followId = await getThisUserId()
         auth.onAuthStateChanged((user) => {
           if (firebaseAuthUser !== null && user !== null) {
             UsersRepository.getUser(user!.uid)
