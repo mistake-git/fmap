@@ -1,8 +1,6 @@
-import { Button } from "@material-ui/core";
+import { Button,Typography} from "@material-ui/core";
 import React, { Fragment} from "react";
-import AddIcon from '@material-ui/icons/Add';
 import UserModel from "../../models/UserModel";
-import RemoveIcon from '@material-ui/icons/Remove';
 
 interface Props {
   user: UserModel;
@@ -29,20 +27,18 @@ export default function FollowButton(props: Props) {
           variant="contained"
           color="primary"
           fullWidth
-          startIcon={<RemoveIcon />}
           onClick={unFollow}
         >
-        フォロー解除
+          フォロー中
       </Button>
       :
       <Button
         variant="contained"
         color="default"
         fullWidth
-        startIcon={<AddIcon />}
         onClick={follow}
       >
-        フォロー
+        <Typography variant="button">フォロー</Typography>
       </Button>
     }
     </Fragment>

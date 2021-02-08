@@ -43,6 +43,7 @@ const MyPage = (props: Props) => {
   const {currentUser} = useContext(CurrentUserContext)
   const id  = useParams();
 
+
   //ユーザーのIDだけ変わった時にユーザー情報を取得
   useEffect(() => {
     getUser()
