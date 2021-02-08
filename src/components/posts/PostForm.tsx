@@ -441,7 +441,7 @@ export default function PostForm(props: Props) {
                             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
                               <CloseIcon />
                             </IconButton>
-                            <Typography variant="h6" className={classes.title}>
+                            <Typography variant="caption" className={classes.title}>
                               地図で釣った場所を選択してください(必須)
                             </Typography>
                           </Toolbar>
