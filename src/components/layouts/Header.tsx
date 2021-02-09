@@ -108,12 +108,14 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      <Link to={'/feed'}　className={classes.link}>
-        <ListItem button>
-          <ViewModuleIcon/>
-          <ListItemText primary="フィード" />
-        </ListItem>
-      </Link>
+      {firebaseAuthUser &&
+        <Link to={'/feed'}　className={classes.link}>
+          <ListItem button>
+            <ViewModuleIcon/>
+            <ListItemText primary="フィード" />
+          </ListItem>
+        </Link>
+      }
        {headerLinks.map((header,index) => (
          <Link to={header.url}　className={classes.link} key={index}>
             <ListItem button>
@@ -179,7 +181,6 @@ export default function Header() {
           </Button>
         </Link>
         )}
-       
         {firebaseAuthUser &&
         <Fragment>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>

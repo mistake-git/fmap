@@ -20,13 +20,12 @@ const PostsNew = (props: Props) => {
 
   useEffect(() => {
     // if not logged in, redirect to login page
-    if (firebaseAuthUser !== null){
-      return
+    if (firebaseAuthUser === null){
+      props.history.push("/signin")
+      const message = '投稿するにはログインしてください'
+      const severity = 'info'
+      props.handleFlash(message,severity)
     }
-   props.history.push("/signin")
-    const message = '投稿するにはログインしてください'
-    const severity = 'info'
-    props.handleFlash(message,severity)
   }, [firebaseAuthUser,props.history]);
 
   const createPost = async(post: any, image: File) => {
