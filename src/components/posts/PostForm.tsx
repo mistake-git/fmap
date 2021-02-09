@@ -202,8 +202,8 @@ export default function PostForm(props: Props) {
 
   const forms=[
     {name: "name", label: "魚種(必須,カタカナ)",type: "text"},
-    {name: "date", label: "日付",type: "date"},
-    {name: "time", label: "時間",type: "time"},
+    {name: "date", label: "日付", type: "date"},
+    {name: "time", label: "時間", type: "time"},
   ]
 
 	return (
@@ -407,17 +407,15 @@ export default function PostForm(props: Props) {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} container>
-                    <Grid item xs={12} md={6}>
-                      <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}>
-                        地図から選ぶ
-                      </Button>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-                      <Button variant="outlined" color="primary" fullWidth onClick={handleCurrentPosition}　style={{ marginTop: "1em" }}>
-                        現在地を取得する
-                      </Button>
-                    </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}>
+                      地図から選ぶ
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Button variant="outlined" color="primary" fullWidth onClick={handleCurrentPosition}>
+                      現在地を取得する
+                    </Button>
                   </Grid>
                   <Grid item xs={12}>
                     <Fragment>
