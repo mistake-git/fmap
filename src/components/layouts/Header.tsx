@@ -123,7 +123,7 @@ export default function Header() {
           </Link>
         ))}
         <Divider/>
-        {currentUser?
+   
         <Fragment>
           <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
             <ListItem button>
@@ -142,7 +142,7 @@ export default function Header() {
             <ListItemText primary="ログイン" />
           </ListItem>
         </Link>
-        }  
+  
       </List>
     </div>
   );
