@@ -9,7 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Auth';
 import { CurrentUserContext } from '../../CurrentUser';
 import auth from '../../plugins/firebase';
 import PinDropIcon from '@material-ui/icons/PinDrop';
@@ -56,7 +55,6 @@ export default function Header() {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { firebaseAuthUser } = useContext(AuthContext)
   const { currentUser} = useContext(CurrentUserContext)
   const [state, setState] = useState({
     right: false,
@@ -108,7 +106,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      {firebaseAuthUser &&
+      {currentUser &&
         <Link to={'/feed'}　className={classes.link}>
           <ListItem button>
             <ViewModuleIcon/>
@@ -125,7 +123,7 @@ export default function Header() {
           </Link>
         ))}
         <Divider/>
-        {firebaseAuthUser?
+        {currentUser?
         <Fragment>
           <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
             <ListItem button>
@@ -165,7 +163,7 @@ export default function Header() {
           </Link>
         </Typography>
         <Hidden smDown>
-        {firebaseAuthUser &&
+        {currentUser &&
           <Link to={'/feed'}　className={classes.link}>
             <Button className={classes.linkBold}>
               <ViewModuleIcon/>
@@ -181,11 +179,11 @@ export default function Header() {
           </Button>
         </Link>
         )}
-        {firebaseAuthUser &&
+        {currentUser &&
         <Fragment>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
             <AccountCircle />
-            {currentUser?.name}
+            {currentUser.name}
           </Button>
           <Menu
             id="user-menu"
