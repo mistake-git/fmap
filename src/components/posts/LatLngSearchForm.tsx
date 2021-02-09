@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Box,
   Button, Grid, InputAdornment,
 } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
@@ -44,7 +45,7 @@ export default function LatLngSearchForm(props: Props) {
     }}
     render={({ submitForm,  isSubmitting, isValid,}) => (
     <Form>
-      <Grid container spacing={1}>
+      <Grid container>
         <Grid item xs={9} sm={10} md={11}>
           <Field 
           name="address"
@@ -63,15 +64,16 @@ export default function LatLngSearchForm(props: Props) {
         />
         </Grid>
         <Grid xs={3} sm={2} md={1}>
-          <Button
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={submitForm}
-            disabled={!isValid || isSubmitting}　
-          >
-            検索
-          </Button>
+          <Box textAlign="center">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={submitForm}
+              disabled={!isValid || isSubmitting}　
+            >
+              検索
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Form>

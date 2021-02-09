@@ -49,10 +49,6 @@ const useStyles = makeStyles((theme: Theme) =>
     appBar: {
       position: 'relative',
     },
-    title: {
-      marginLeft: theme.spacing(2),
-      flex: 1,
-    },
     formTitle: {
       color: '#3f51b5;',
       fontWeight: 'bold'
@@ -441,9 +437,7 @@ export default function PostForm(props: Props) {
                             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
                               <CloseIcon />
                             </IconButton>
-                            <Typography variant="caption" className={classes.title}>
                               地図で釣った場所を選択してください(必須)
-                            </Typography>
                           </Toolbar>
                         </AppBar>
                         <Fragment>
@@ -480,7 +474,6 @@ export default function PostForm(props: Props) {
                       color="primary"
                       fullWidth
                       onClick={submitForm}
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
                       type="submit"
                       disabled={!isValid || isSubmitting}
                     >
