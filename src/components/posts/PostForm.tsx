@@ -409,12 +409,12 @@ export default function PostForm(props: Props) {
                   </Grid>
                   <Grid item xs={12} container>
                     <Grid item xs={12} md={6}>
-                      <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}　style={{ marginTop: "0.5em"}}>
+                      <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}>
                         地図から選ぶ
                       </Button>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                      <Button variant="outlined" color="primary" fullWidth onClick={handleCurrentPosition}　style={{ marginTop: "0.5em" }}>
+                      <Button variant="outlined" color="primary" fullWidth onClick={handleCurrentPosition}　style={{ marginTop: "1em" }}>
                         現在地を取得する
                       </Button>
                     </Grid>
