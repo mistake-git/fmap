@@ -407,7 +407,7 @@ export default function PostForm(props: Props) {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12} container spacing={2}>
+                  <Grid item xs={12} container>
                     <Grid item xs={12} md={6}>
                       <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}>
                         地図から選ぶ
