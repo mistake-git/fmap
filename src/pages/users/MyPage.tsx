@@ -165,7 +165,7 @@ const MyPage = (props: Props) => {
     }
   }
 
-  const createRelationships = async(user_id: number, follow_id: number) => {
+  const createRelationships = async(follow_id: number) => {
     if(currentUser === null ){
       props.history.push("/signin");
       const message = 'ログインしてください'
@@ -175,14 +175,14 @@ const MyPage = (props: Props) => {
     }
     try { 
     await
-    　 UsersRepository.createRelationships(user_id, follow_id)
+    　 UsersRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
         getUserFollowers()
-        UsersRepository.isFollowed(user_id, results.id)
+        UsersRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)

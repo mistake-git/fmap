@@ -7,8 +7,8 @@ import RemoveIcon from '@material-ui/icons/Remove';
 
 interface Props {
   user: UserModel;
-  currentUser: UserModel;
-  createRelationships: (user_id: number, follow_id: number) => {}
+  currentUser: UserModel | null;
+  createRelationships: (follow_id: number) => {}
   destroyRelationships: (user_id: number, follow_id: number) => {}
   isFollowed: boolean
 }
@@ -16,11 +16,11 @@ interface Props {
 export default function FollowButton(props: Props) {
 
   const follow = () => {
-    props.createRelationships(props.currentUser.id, props.user.id)
+    props.createRelationships(props.user.id)
   }
 
   const unFollow = () => {
-    props.destroyRelationships(props.currentUser.id, props.user.id)
+    props.destroyRelationships(props.currentUser!.id, props.user.id)
   }
 
 	return (

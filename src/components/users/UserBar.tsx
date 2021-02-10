@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
   postUser: UserModel;
-  currentUser: UserModel;
-  createRelationships: (user_id: number, follow_id: number) => {};
+  currentUser: UserModel | null;
+  createRelationships: (follow_id: number) => {};
   destroyRelationships: (user_id: number, follow_id: number) => {};
   isFollowed: boolean
 }
@@ -54,7 +54,7 @@ export default function UserBar(props: Props) {
             }
           />
           <ListItemSecondaryAction>
-            {props.currentUser && props.currentUser.id !== props.postUser.id &&
+            {props.currentUser?.id !== props.postUser.id &&
               <FollowButton
                 user={props.postUser}
                 currentUser={props.currentUser}
