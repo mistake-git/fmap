@@ -368,7 +368,7 @@ const MyPage = (props: Props) => {
                   />
                 </Grid>
                 <Grid xs={false} md={6}/>
-                {currentUser && user.id !== currentUser.id &&
+                {user.id !== currentUser?.id &&
                   <Grid xs={4} md={2} item>
                     <FollowButton
                       user={user}
