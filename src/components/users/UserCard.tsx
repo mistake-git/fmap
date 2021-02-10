@@ -1,4 +1,4 @@
-import React ,{Fragment} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import UserModel from '../../models/UserModel';
 import { Avatar, Box} from '@material-ui/core';
