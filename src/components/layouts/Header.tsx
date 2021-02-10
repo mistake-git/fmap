@@ -9,7 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import { CurrentUserContext } from '../../CurrentUser';
 import auth from '../../plugins/firebase';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import CreateIcon from '@material-ui/icons/Create';
@@ -22,6 +21,11 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StorageIcon from '@material-ui/icons/Storage';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import { AuthContext } from "../../Auth";
+import { CurrentUserContext } from '../../CurrentUser';
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -55,7 +59,10 @@ export default function Header() {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const { currentUser} = useContext(CurrentUserContext)
+  const { firebaseAuthUser } = useContext(AuthContext)
+  const {currentUser} = useContext(CurrentUserContext)
+
+
   const [state, setState] = useState({
     right: false,
   });
@@ -106,7 +113,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-      {currentUser &&
+      {firebaseAuthUser &&
         <Link to={'/feed'}　className={classes.link}>
           <ListItem button>
             <ViewModuleIcon/>
@@ -123,7 +130,7 @@ export default function Header() {
           </Link>
         ))}
         <Divider/>
-        {currentUser?
+        {firebaseAuthUser?
         <Fragment>
           <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
             <ListItem button>
@@ -179,11 +186,11 @@ export default function Header() {
           </Button>
         </Link>
         )}
-        {currentUser &&
+        {firebaseAuthUser &&
         <Fragment>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
             <AccountCircle />
-            {currentUser.name}
+            {currentUser?.name}
           </Button>
           <Menu
             id="user-menu"
