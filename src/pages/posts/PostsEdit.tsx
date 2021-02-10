@@ -8,6 +8,7 @@ import Loading from "../../components/layouts/Loading";
 import NotFound from "../NotFound";
 import PostsRepository from "../../repositories/PostsRepository";
 import { CurrentUserContext } from "../../CurrentUser";
+import moment from 'moment'
 
 interface Props {
   history: H.History;
@@ -84,7 +85,7 @@ const PostsEdit = (props: Props) => {
     feed: post.feed,
     memo: post.memo,
     date: post.date,
-    time: post.time,
+    time: moment(post.time).format('HH:mm'),
     status: post.statu,
     latitude: post.latitude,
     longitude: post.longitude
