@@ -166,7 +166,7 @@ const MyPage = (props: Props) => {
   }
 
   const createRelationships = async(follow_id: number) => {
-    if(currentUser === null ){
+    if(firebaseAuthUser === null ){
       props.history.push("/signin");
       const message = 'ログインしてください'
       const severity = 'info'
