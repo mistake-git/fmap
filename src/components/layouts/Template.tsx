@@ -60,7 +60,7 @@ const Template =(props: Props) => {
 							Fishing Mapにログインして釣果を登録しよう！
 						</Typography>
 					</Hidden>
-					<Hidden lgDown>
+					<Hidden smDown>
 						<Typography variant="body1" className={classes.text} gutterBottom>
 					　　Fishing MapはみんなでつくるWeb上の釣果がわかる地図です。
 						</Typography>
