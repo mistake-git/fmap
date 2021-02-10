@@ -108,7 +108,6 @@ export default function PostForm(props: Props) {
   const [location, setLocation] = useState(defaultLocation);
   const [zoom, setZoom] = useState<number>(DefaultZoom);
   const [open, setOpen] = useState<boolean>(false);
-  const [selectOption, setSelectOption] = useState<'currentPosition' | 'selectMap' | ''>('');
   const　placeHolder ="住所を入力　例 東京都多摩市"
   const apiKey = process.env.REACT_APP_GOOGLE_MAP_KEY
 
@@ -119,14 +118,6 @@ export default function PostForm(props: Props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleCurrentPosition = () =>{
-    setSelectOption('currentPosition')
-  }
-
-  const handleSelectMap = () =>{
-    setSelectOption('selectMap')
-  }
   
   const handleChangeLocation = (lat: number, lng: number) => {
     setLocation({lat:　lat, lng:　lng}) 
@@ -408,27 +399,17 @@ export default function PostForm(props: Props) {
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Button variant="outlined" color="primary" fullWidth onClick={handleSelectMap}>
-                      地図から選ぶ
+                    <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth>
+                      地図で場所を選択してください(必須)
                     </Button>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Button variant="outlined" color="primary" fullWidth onClick={handleCurrentPosition}>
-                      現在地を取得する
+                    <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
+                      現在地を取得する(必須)
                     </Button>
                   </Grid>
                   <Grid item xs={12}>
                     <Fragment>
-                      { selectOption === 'selectMap' &&
-                      <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth>
-                        地図で場所を選択してください(必須)
-                      </Button>
-                      }
-                      { selectOption === 'currentPosition' &&
-                      <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
-                        現在地を取得する(必須)
-                      </Button>
-                      }
                       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                         <AppBar className={classes.appBar}>
                           <Toolbar>
