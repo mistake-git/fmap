@@ -354,26 +354,25 @@ const PostsShow = (props: Props) => {
     check();
   }, []);
 
-  const createRelationships = async(followId: number) => {
-    if(currentUser === null ){
+  const createRelationships = async(follow_id: number) => {
+    if(firebaseAuthUser === null ){
       props.history.push("/signin");
       const message = 'ログインしてください'
       const severity = 'info'
       props.handleFlash(message,severity)
       return;
     }
-    try {
+    try { 
     await
-    　 UsersRepository.createRelationships(currentUser.id, followId)
+    　 UsersRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
-        UsersRepository.isFollowed(currentUser.id,results.id)
+        const message = 'ユーザーをフォローしました'
+        const severity = 'success'
+        props.handleFlash(message,severity)
+        UsersRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
-          const message = 'ユーザーをフォローしました'
-          const severity = 'success'
-          props.handleFlash(message,severity)
-          console.log("set isfollow")
           console.log(results)
         })
       })
