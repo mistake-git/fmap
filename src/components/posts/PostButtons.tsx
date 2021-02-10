@@ -82,9 +82,8 @@ export default function PostButtons(props: Props) {
             </Tooltip>
           </Link>
         </Box>
-    
           <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-            {props.like ?
+            {firebaseAuthUser && props.like ?
             <Tooltip title="いいねを削除"　placement="right">
               <Fab
                 color="secondary" 
