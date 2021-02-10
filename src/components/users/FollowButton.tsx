@@ -1,8 +1,9 @@
-import { Button,Hidden,Typography} from "@material-ui/core";
-import React, { Fragment} from "react";
+import { Button,Hidden} from "@material-ui/core";
+import React, { Fragment, useContext} from "react";
 import UserModel from "../../models/UserModel";
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { AuthContext } from "../../Auth";
 
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export default function FollowButton(props: Props) {
+  const { firebaseAuthUser } = useContext(AuthContext)
 
   const follow = () => {
     props.createRelationships(props.user.id)
@@ -25,7 +27,7 @@ export default function FollowButton(props: Props) {
 
 	return (
     <Fragment>
-    { props.isFollowed?
+    {firebaseAuthUser && props.isFollowed?  
       <Button
         variant="contained"
         color="primary"
