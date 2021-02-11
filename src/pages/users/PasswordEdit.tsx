@@ -78,7 +78,7 @@ export default function PasswordEdit(props: Props) {
                 type="submit"
                 disabled={!isValid || isSubmitting}
               >
-                パスワードリセットメールを送信
+                メールを送信
               </Button>
               <Typography align="center">
                 <Link href="/signup">新規登録</Link>
