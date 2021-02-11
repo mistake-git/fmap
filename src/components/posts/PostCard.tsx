@@ -46,7 +46,10 @@ createStyles({
 		fishIcon: {
 			height: '24px',
 			width: '24px',
-			verticalAlign: 'middle'
+			verticalAlign:'middle'
+		},
+		varticalAlignMiddle: {
+			verticalAlign:'middle'
 		}
 	}),
 );
@@ -86,14 +89,14 @@ export default function PostCard(props: Props) {
 							<Typography  component="h2">
 								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
 									<Box fontWeight="fontWeightBold">
-									<Icon icon={fishIcon} className={classes.fishIcon}/>{props.post.name}
+									<Icon icon={fishIcon} className={classes.fishIcon}/><Typography className={classes.varticalAlignMiddle}>{props.post.name}</Typography>
 									</Box>
 								</Link>
 							</Typography>
 						</Box>
 						<Box>
 							<Typography className={classes.smallText} gutterBottom>
-								<Box>
+								<Box className={classes.varticalAlignMiddle}>
 									{props.post.size && `${props.post.size}cm`}
 								</Box>
 							</Typography>
