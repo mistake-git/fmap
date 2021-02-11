@@ -45,7 +45,8 @@ createStyles({
 		},
 		fishIcon: {
 			height: '24px',
-			width: '24px'
+			width: '24px',
+			verticalAlign: 'middle'
 		}
 	}),
 );
