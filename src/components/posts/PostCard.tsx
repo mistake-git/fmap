@@ -89,7 +89,7 @@ export default function PostCard(props: Props) {
 							<Typography  component="h2">
 								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
 									<Box fontWeight="fontWeightBold">
-									<Icon icon={fishIcon} className={classes.fishIcon}/><Typography className={classes.varticalAlignMiddle}>{props.post.name}</Typography>
+										<Icon icon={fishIcon} className={classes.fishIcon}/><span className={classes.varticalAlignMiddle}>{props.post.name}</span>
 									</Box>
 								</Link>
 							</Typography>
