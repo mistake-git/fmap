@@ -76,13 +76,13 @@ export default function PostCard(props: Props) {
 					
 					<Box display="flex">
 						<Box flexGrow={1}>
-						<Typography  component="h2">
-							<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
-								<Box fontWeight="fontWeightBold">
-									{props.post.name}
-								</Box>
-							</Link>
-						</Typography>
+							<Typography  component="h2">
+								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
+									<Box fontWeight="fontWeightBold">
+										{props.post.name}
+									</Box>
+								</Link>
+							</Typography>
 						</Box>
 						<Box>
 							<Typography className={classes.smallText} gutterBottom>
