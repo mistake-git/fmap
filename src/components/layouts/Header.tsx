@@ -63,8 +63,6 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
-
-
   const [state, setState] = useState({
     right: false,
   });
@@ -104,7 +102,7 @@ export default function Header() {
   const headerLinks = [
     { name: '地図', url: '/', icon: <PinDropIcon/>},
     { name: '投稿', url: '/posts/new', icon: <CreateIcon/>},
-    { name: '全ての釣果', url: '/posts', icon: <Icon icon={fishIcon} />},
+    { name: '全ての釣果', url: '/posts', icon: <Icon icon={fishIcon} className={classes.fishIcon}/>},
     { name: 'ユーザー', url: '/users', icon: <GroupIcon/>},
   ];
 
