@@ -19,10 +19,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import StorageIcon from '@material-ui/icons/Storage';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from '../../CurrentUser';
+import { Icon} from '@iconify/react';
+import fishIcon from '@iconify-icons/mdi/fish';
 
 
 
@@ -102,7 +103,7 @@ export default function Header() {
   const headerLinks = [
     { name: '地図', url: '/', icon: <PinDropIcon/>},
     { name: '投稿', url: '/posts/new', icon: <CreateIcon/>},
-    { name: '全ての釣果', url: '/posts', icon: <StorageIcon/>},
+    { name: '全ての釣果', url: '/posts', icon: <Icon icon={fishIcon} />},
     { name: 'ユーザー', url: '/users', icon: <GroupIcon/>},
   ];
 
