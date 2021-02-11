@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
   fullList: {
     width: 'auto',
   },
+  fishIcon: {
+    height: '24px',
+    width: '24px'
+  }
 }));
 
 type Anchor = 'right';
