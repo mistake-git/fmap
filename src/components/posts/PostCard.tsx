@@ -42,6 +42,10 @@ createStyles({
 		},
 		smallText: {
 			fontSize: '14px'
+		},
+		fishIcon: {
+			height: '24px',
+			width: '24px'
 		}
 	}),
 );
@@ -81,7 +85,7 @@ export default function PostCard(props: Props) {
 							<Typography  component="h2">
 								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
 									<Box fontWeight="fontWeightBold">
-									<Icon icon={fishIcon} />{props.post.name}
+									<Icon icon={fishIcon} className={classes.fishIcon}/>{props.post.name}
 									</Box>
 								</Link>
 							</Typography>
