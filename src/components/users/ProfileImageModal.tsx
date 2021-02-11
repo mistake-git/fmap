@@ -157,15 +157,9 @@ export default function ProfileUserModal(props: Props) {
                 onClick={onClick}
               />
             </DialogContent>
-            <DialogActions>
-            <Button 
-                variant="contained" 
-                color="primary" 
-                autoFocus　
-                onClick={submitForm}
-                disabled={!isValid || isSubmitting}　
-              >
-                更新
+            <DialogActions>         
+              <Button variant="contained"　onClick={handleClose}>
+                キャンセル
               </Button>
               <Button 
                 variant="contained"　
@@ -174,8 +168,14 @@ export default function ProfileUserModal(props: Props) {
               >
                 削除
               </Button>
-              <Button variant="contained"　onClick={handleClose}>
-                キャンセル
+              <Button 
+                variant="contained" 
+                color="primary" 
+                autoFocus　
+                onClick={submitForm}
+                disabled={!isValid || isSubmitting}　
+              >
+                更新
               </Button>
             </DialogActions>
           </Form>
