@@ -25,9 +25,6 @@ import { CurrentUserContext } from '../../CurrentUser';
 import { Icon} from '@iconify/react';
 import fishIcon from '@iconify-icons/mdi/fish';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,

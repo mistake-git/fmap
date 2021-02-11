@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import PostModel from '../../models/PostModel';
 import { Avatar, Box, CardHeader } from '@material-ui/core';
 import moment from 'moment'
+import { Icon} from '@iconify/react';
+import fishIcon from '@iconify-icons/mdi/fish';
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
@@ -79,7 +81,7 @@ export default function PostCard(props: Props) {
 							<Typography  component="h2">
 								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
 									<Box fontWeight="fontWeightBold">
-										{props.post.name}
+									<Icon icon={fishIcon} />{props.post.name}
 									</Box>
 								</Link>
 							</Typography>
