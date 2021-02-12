@@ -13,6 +13,11 @@ import UserModel from "../../models/UserModel";
 import LikeModel from "../../models/LikeModel";
 import { Icon} from '@iconify/react';
 import crownIcon from '@iconify-icons/mdi/crown';
+import {
+  TwitterShareButton,
+} from 'react-share';
+import twitterIcon from '@iconify-icons/mdi/twitter';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +42,17 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     crownIcon: {
+      height: '24px',
+      width: '24px'
+    },
+    shareIcon: {
+      backgroundColor: '#00aced',
+      [theme.breakpoints.down('sm')]: {
+        height: '35px',
+        width: '35px'
+      },
+    },
+    twitterIcon: {
       height: '24px',
       width: '24px'
     }
@@ -74,6 +90,15 @@ export default function PostButtons(props: Props) {
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
         <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+          <TwitterShareButton url={`https://myapp-11f4e.web.app/posts/${props.post.id}`} title={`${props.post.name}の釣果情報\n`}>
+            <Tooltip title="Twitterにシェア"　placement="right">
+              <Fab className={classes.shareIcon}>
+              <Icon icon={twitterIcon} color="#ffffff" className={classes.twitterIcon} />
+              </Fab>
+            </Tooltip>
+          </TwitterShareButton>
+        </Box>
+        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
           <Link to={`/posts/${props.post.id}/rankings`}>
             <Tooltip title="ランキング"　placement="right">
               <Fab className={classes.rankingsIcon}>
@@ -82,29 +107,28 @@ export default function PostButtons(props: Props) {
             </Tooltip>
           </Link>
         </Box>
-          <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
-            {firebaseAuthUser && props.like ?
-            <Tooltip title="いいねを削除"　placement="right">
-              <Fab
-                color="secondary" 
-                className={classes.icon}
-                onClick={destroyLike}
-              >
-                <FavoriteIcon />
-              </Fab>
-            </Tooltip>:
-            <Tooltip title="いいね"　placement="right">
+        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+          {firebaseAuthUser && props.like ?
+          <Tooltip title="いいねを削除"　placement="right">
             <Fab
-              color="default" 
+              color="secondary" 
               className={classes.icon}
-              onClick={createLike}
+              onClick={destroyLike}
             >
               <FavoriteIcon />
             </Fab>
-          </Tooltip>
-            }
-          </Box>
-      
+          </Tooltip>:
+          <Tooltip title="いいね"　placement="right">
+          <Fab
+            color="default" 
+            className={classes.icon}
+            onClick={createLike}
+          >
+            <FavoriteIcon />
+          </Fab>
+        </Tooltip>
+          }
+        </Box>
         {firebaseAuthUser && firebaseAuthUser.uid === props.postUser.uid &&
          <Fragment>
           <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
