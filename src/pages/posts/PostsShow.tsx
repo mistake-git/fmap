@@ -414,73 +414,80 @@ const PostsShow = (props: Props) => {
       {error ? <NotFound/> :
       post ? 
       <Template>
-        <Container maxWidth="lg">
-          <Grid container spacing={1} style={{ marginTop: "1em" }}>
-            <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
-              <PostButtons 
-                post={post}
-                currentUser={currentUser}
-                like={like}
-                postUser={post.user}
-                destroyPost={destroyPost} 
-                createLike={createLike} 
-                destroyLike={destroyLike} 
-              />
-            </Grid>
-            <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
-              <img src={post.image_url} alt="釣果画像" className={classes.image}/>
-              <Box display="flex" justifyContent="flex-end" mb={3}>
-                <Favorite color="secondary"/>
-                {likesUsers &&
-                  <LikesUsersGroup
-                    likesUsers={likesUsers}
-                  />
-                }
-              </Box>
-              <PostData post={post}/>
-              <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-                {post.name}のデータ分析
-              </Box>
-              {feedData  && timeData && sizeData && dateData &&
-              <PostChart 
-                post={post} 
-                feedData={feedData}
-                dateData={dateData}
-                timeData={timeData}
-                sizeData={sizeData}
-              />
-              }
-              <Divider/>
-              <Box my={5}>
-                <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
-                  {post.name}の釣れた場所
-                </Box>
-                <ShowGoogleMap
-                  post={post}
-                />
-              </Box>
-              <UserBar 
-                postUser={post.user}
-                currentUser={currentUser}
-                createRelationships={createRelationships}
-                destroyRelationships={destroyRelationships}
-                isFollowed={isFollowed}
-              />
-              {post.memo}
-              {comments &&
-                <CommentContainer
+        <Grid 
+          container 
+          component="main" 
+          direction="row"
+          justify="center"
+        >
+          <Grid item xs={12} sm={11} md={10} lg={10} xl={10} >
+            <Grid container spacing={1} style={{ marginTop: "1em" }}>
+              <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
+                <PostButtons 
                   post={post}
                   currentUser={currentUser}
-                  comments={comments}
-                  firebaseAuthUser={firebaseAuthUser}
-                  createComment={createComment}
-                  updateComment={updateComment}
-                  destroyComment={destroyComment}
+                  like={like}
+                  postUser={post.user}
+                  destroyPost={destroyPost} 
+                  createLike={createLike} 
+                  destroyLike={destroyLike} 
                 />
-              }
+              </Grid>
+              <Grid xs={12} item md={8} style={{ marginTop: "1em" }}>
+                <img src={post.image_url} alt="釣果画像" className={classes.image}/>
+                <Box display="flex" justifyContent="flex-end" mb={3}>
+                  <Favorite color="secondary"/>
+                  {likesUsers &&
+                    <LikesUsersGroup
+                      likesUsers={likesUsers}
+                    />
+                  }
+                </Box>
+                <PostData post={post}/>
+                <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+                  {post.name}のデータ分析
+                </Box>
+                {feedData  && timeData && sizeData && dateData &&
+                <PostChart 
+                  post={post} 
+                  feedData={feedData}
+                  dateData={dateData}
+                  timeData={timeData}
+                  sizeData={sizeData}
+                />
+                }
+                <Divider/>
+                <Box my={5}>
+                  <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
+                    {post.name}の釣れた場所
+                  </Box>
+                  <ShowGoogleMap
+                    post={post}
+                  />
+                </Box>
+                <UserBar 
+                  postUser={post.user}
+                  currentUser={currentUser}
+                  createRelationships={createRelationships}
+                  destroyRelationships={destroyRelationships}
+                  isFollowed={isFollowed}
+                />
+                {post.memo}
+                {comments &&
+                  <CommentContainer
+                    post={post}
+                    currentUser={currentUser}
+                    comments={comments}
+                    firebaseAuthUser={firebaseAuthUser}
+                    createComment={createComment}
+                    updateComment={updateComment}
+                    destroyComment={destroyComment}
+                  />
+                }
+              </Grid>
             </Grid>
           </Grid>
-        </Container>
+        </Grid>
       </Template>: 
       <Loading/>
       }
