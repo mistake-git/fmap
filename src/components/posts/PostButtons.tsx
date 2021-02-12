@@ -93,7 +93,7 @@ export default function PostButtons(props: Props) {
           <TwitterShareButton url={`https://myapp-11f4e.web.app/posts/${props.post.id}`} title={`${props.post.name}の釣果情報\n`}>
             <Tooltip title="Twitterにシェア"　placement="right">
               <Fab className={classes.shareIcon}>
-              <Icon icon={twitterIcon} color="#ffffff" className={classes.twitterIcon} />
+                <Icon icon={twitterIcon} color="#ffffff" className={classes.twitterIcon} />
               </Fab>
             </Tooltip>
           </TwitterShareButton>
