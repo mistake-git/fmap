@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import {
   Box,
   Button,
+  Container,
+  DialogActions,
   Grid,
   InputAdornment,
   LinearProgress,
@@ -444,13 +446,27 @@ export default function PostForm(props: Props) {
                             onChangeZoom={handleChangeZoom}
                             apiKey={apiKey!}
                           />
-                           <Button 
-                            variant="contained" 
-                            color="primary"
-                            onClick={handleResetLocation}
-                          >
-                            場所をリセット
-                          </Button>
+                           <DialogActions>         
+                            <Button variant="contained"　onClick={handleClose}>
+                              キャンセル
+                            </Button>
+                            <Button 
+                              variant="contained"　
+                              onClick={handleResetLocation}
+                              color="secondary" 
+                            >
+                              位置情報をリセット
+                            </Button>
+                            <Button 
+                              variant="contained" 
+                              color="primary" 
+                              autoFocus　
+                              onClick={submitForm}
+                              disabled={!isValid || isSubmitting}　
+                            >
+                              完了
+                            </Button>
+                        </DialogActions>
                         </Fragment>
                       </Dialog>
                     </Fragment>
