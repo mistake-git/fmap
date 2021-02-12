@@ -409,10 +409,10 @@ export default function PostForm(props: Props) {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth　style={{ marginTop: "0.5em"}}>
-                      ※現在地を取得する(必須)
+                      現在地を取得する(必須)
                     </Button>
                     <Typography variant="body2" gutterBottom>
-                      現在地から登録する場合はこちら
+                      ※現在地から登録する場合はこちら
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
