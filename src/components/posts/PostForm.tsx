@@ -105,7 +105,7 @@ export default function PostForm(props: Props) {
   const [src, setSrc] = useState('')
   const ref = createRef<HTMLInputElement>()
   const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
-  const [location, setLocation] = useState(defaultLocation);
+  const [currentLocation, setCurrentLocation] = useState(defaultLocation);
   const [zoom, setZoom] = useState<number>(DefaultZoom);
   const [open, setOpen] = useState<boolean>(false);
   const　placeHolder ="住所を入力　例 東京都多摩市"
@@ -120,7 +120,7 @@ export default function PostForm(props: Props) {
   };
   
   const handleChangeLocation = (lat: number, lng: number) => {
-    setLocation({lat:　lat, lng:　lng}) 
+    setCurrentLocation({lat:　lat, lng:　lng}) 
   }
   
   const handleChangeZoom = (newZoom: number) =>{
@@ -153,7 +153,7 @@ export default function PostForm(props: Props) {
   const getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      setLocation({lat:　latitude, lng:　longitude})
+      setCurrentLocation({lat:　latitude, lng:　longitude})
       setDefaultLocation({lat:　latitude, lng:　longitude})
       setOpen(true);
       const message = '位置情報を取得しました'
@@ -246,8 +246,8 @@ export default function PostForm(props: Props) {
                   time: value.time,  
                   status: value.status,
                   user_id: props.currentUser.id,
-                  latitude: location.lat,
-                  longitude: location.lng,
+                  latitude: currentLocation.lat,
+                  longitude: currentLocation.lng,
                 }
               await
                 props.action(post,image);
@@ -428,8 +428,8 @@ export default function PostForm(props: Props) {
                           </Toolbar>
                         </AppBar>
                         <Fragment>
-                          緯度:{location.lat}
-                          経度:{location.lng}
+                          緯度:{currentLocation.lat}
+                          経度:{currentLocation.lng}
                           拡大率:{zoom}
                           <Box my={2}>
                             <LatLngSearchForm
