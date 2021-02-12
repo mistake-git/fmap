@@ -447,9 +447,6 @@ export default function PostForm(props: Props) {
                             apiKey={apiKey!}
                           />
                            <DialogActions>         
-                            <Button variant="contained"　onClick={handleClose}>
-                              キャンセル
-                            </Button>
                             <Button 
                               variant="contained"　
                               onClick={handleResetLocation}
@@ -461,8 +458,7 @@ export default function PostForm(props: Props) {
                               variant="contained" 
                               color="primary" 
                               autoFocus　
-                              onClick={submitForm}
-                              disabled={!isValid || isSubmitting}　
+                              onClick={handleClose}　
                             >
                               完了
                             </Button>
