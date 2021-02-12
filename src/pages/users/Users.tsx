@@ -1,5 +1,5 @@
 import React, { Fragment,useState } from "react";
-import {　Box, Container, Grid} from "@material-ui/core";
+import {　Box, Container, Grid, makeStyles, Typography} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
@@ -8,10 +8,19 @@ import InfiniteScroll  from "react-infinite-scroller"
 import LoadingDots from "../../components/layouts/ContentsLoading";
 import UsersRepository from "../../repositories/UsersRepository";
 
+const useStyles = makeStyles(() => ({
+  countText:{
+    fontWeight: 'bold',
+    color: '#3f51b5;',
+    fontSize: '1.3rem',
+  }
+}));
+
 const Users = () => {
   const [users, setUsers] = useState<UserModel[]>([])
   const [hasMore, setHasMore] = useState(true);
   const　placeHolder ="ユーザー名を検索"
+  const classes = useStyles();
 
   const getUsers = async(page: number) => {
     try { 
@@ -66,6 +75,7 @@ const Users = () => {
                 placeHolder={placeHolder}
               />
             </Box>
+            <Typography>現在<span className={classes.countText}>{users.length}</span>件のユーザー</Typography>
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}

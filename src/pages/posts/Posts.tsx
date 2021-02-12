@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Box, Container, Grid } from "@material-ui/core";
+import { Box, Container, Grid, makeStyles, Typography } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
@@ -8,10 +8,19 @@ import InfiniteScroll  from "react-infinite-scroller"
 import LoadingDots from "../../components/layouts/ContentsLoading";
 import PostsRepository from "../../repositories/PostsRepository";
 
+const useStyles = makeStyles(() => ({
+  countText:{
+    fontWeight: 'bold',
+    color: '#3f51b5;',
+    fontSize: '1.3rem',
+  }
+}));
+
 const Posts = () => {
   const [posts, setPosts] = useState<PostModel[]>([])
   const [hasMore, setHasMore] = useState(true);
   const　placeHolder ="魚を検索 例 タイ"
+  const classes = useStyles();
 
   //非同期で投稿をAPIから取得
   const getPosts = async(page: number) => {
@@ -68,6 +77,7 @@ const Posts = () => {
                 placeHolder={placeHolder}
               />
             </Box>
+            <Typography>現在<span className={classes.countText}>{posts.length}</span>件の釣果</Typography>
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
