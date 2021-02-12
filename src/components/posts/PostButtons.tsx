@@ -89,7 +89,7 @@ export default function PostButtons(props: Props) {
 	return (
     <Fragment>
       <Box className={classes.positionTop} display={{ xs: 'inline', sm: 'block' }}>
-        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
           <TwitterShareButton url={`https://myapp-11f4e.web.app/posts/${props.post.id}`} title={`${props.post.name}の釣果情報\n`}>
             <Tooltip title="Twitterにシェア"　placement="right">
               <Fab className={classes.shareIcon}>
@@ -98,7 +98,7 @@ export default function PostButtons(props: Props) {
             </Tooltip>
           </TwitterShareButton>
         </Box>
-        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
           <Link to={`/posts/${props.post.id}/rankings`}>
             <Tooltip title="ランキング"　placement="right">
               <Fab className={classes.rankingsIcon}>
@@ -107,7 +107,7 @@ export default function PostButtons(props: Props) {
             </Tooltip>
           </Link>
         </Box>
-        <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+        <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
           {firebaseAuthUser && props.like ?
           <Tooltip title="いいねを削除"　placement="right">
             <Fab
@@ -131,7 +131,7 @@ export default function PostButtons(props: Props) {
         </Box>
         {firebaseAuthUser && firebaseAuthUser.uid === props.postUser.uid &&
          <Fragment>
-          <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+          <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
             <Link to={`/posts/${props.post.id}/edit`}>
               <Tooltip title="投稿を編集"　placement="right">
                 <Fab color="primary" className={classes.icon}>
@@ -140,7 +140,7 @@ export default function PostButtons(props: Props) {
               </Tooltip>
             </Link>
           </Box>
-          <Box mt={2} mr={5} display={{ xs: 'inline', md: 'block' }}>
+          <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
             <Tooltip title="投稿を削除"　placement="right">
               <Fab onClick={handleDeleate} className={classes.icon}>
                 <DeleteIcon/>
