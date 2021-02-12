@@ -360,8 +360,8 @@ const MyPage = (props: Props) => {
                 <Grid container>
                   <Grid xs={4} md={2} item>
                     <FollowModal
-                      modalTitle={`${user.name}がフォロー中`}
-                      title={`フォロー中${followings.length}`}
+                      modalTitle={`${user.name}がフォロー`}
+                      title={`フォロー${followings.length}`}
                       users={followings}
                     />
                   </Grid>
