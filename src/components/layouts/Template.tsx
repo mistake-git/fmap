@@ -6,7 +6,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import { Link, withRouter } from 'react-router-dom';
 import * as H from 'history';
-import { AppBar, Button, Hidden, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Button, Hidden, Toolbar, Typography } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	text: {
 		flexGrow: 1,
+		fontSize: '1.2rem'
 	},
 	root: {
 		'& > *': {
@@ -56,19 +57,19 @@ const Template =(props: Props) => {
 			<AppBar position="fixed" className={classes.appBar}>
 				<Toolbar>
 					<Hidden mdDown>
-						<Typography variant="h6" className={classes.text}>
+						<Box className={classes.text}>
 							Fishing Mapにログインして釣果を登録しよう！
-						</Typography>
+						</Box>
 					</Hidden>
 					<Hidden smDown>
-						<Typography variant="body1" className={classes.text} gutterBottom>
+						<Box className={classes.text}>
 					　　Fishing MapはみんなでつくるWeb上の釣果がわかる地図です。
-						</Typography>
+						</Box>
 					</Hidden>
 					<Hidden mdUp>
-						<Typography variant="body1" className={classes.text} gutterBottom>
+						<Box className={classes.text} >
 					　　Fishing Map
-						</Typography>
+						</Box>
 					</Hidden>
 					<div className={classes.root}>
 					<Link to={'/signin'}　className={classes.link}>
