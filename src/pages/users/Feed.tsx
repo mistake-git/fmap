@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext} from "react";
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
@@ -11,11 +11,20 @@ import { AuthContext } from '../../Auth'
 import UsersRepository from "../../repositories/UsersRepository";
 import auth from "../../plugins/firebase";
 
+const useStyles = makeStyles(() => ({
+  countText:{
+    fontWeight: 'bold',
+    color: '#3f51b5;',
+    fontSize: '1.3rem',
+  }
+}));
+
 const Feed = () => {
   const [posts, setPosts] = useState<PostModel[]>([])
   const [hasMore, setHasMore] = useState(true);
   const　placeHolder ="魚を検索 例 タイ"
   const { firebaseAuthUser } = useContext(AuthContext)
+  const classes = useStyles();
 
   //非同期でFeedをAPIから取得
   const getUserFeed = async(currentUserUid: string, page: number) => {
@@ -81,6 +90,7 @@ const Feed = () => {
                 placeHolder={placeHolder}
               />
             </Box>
+            <Typography>フォロー中、自分の<span className={classes.countText}>{posts.length}</span>件の釣果</Typography>
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
