@@ -400,13 +400,19 @@ export default function PostForm(props: Props) {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth>
-                      地図で場所を選択してください(必須)
+                      地図で場所を選択する(必須)
                     </Button>
+                    <Typography variant="body2" gutterBottom>
+                      地図から位置を選択する場合はこちら
+                    </Typography>
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
                       現在地を取得する(必須)
                     </Button>
+                    <Typography variant="body2" gutterBottom>
+                      現在地から登録する場合はこちら
+                    </Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <Fragment>
