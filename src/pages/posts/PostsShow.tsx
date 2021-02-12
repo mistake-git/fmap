@@ -422,7 +422,7 @@ const PostsShow = (props: Props) => {
         >
           <Grid item xs={12} sm={11} md={10} lg={10} xl={10} >
             <Grid container spacing={1} style={{ marginTop: "1em" }}>
-              <Grid item xs={12} md={1} style={{ marginTop: "1em" }}>
+              <Grid item xs={12} md={1}>
                 <PostButtons 
                   post={post}
                   currentUser={currentUser}
