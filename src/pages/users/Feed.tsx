@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext} from "react";
-import { Box, Container, Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
