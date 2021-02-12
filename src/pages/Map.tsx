@@ -9,18 +9,18 @@ import PostsRepository from '../repositories/PostsRepository'
 import { CurrentUserContext } from '../CurrentUser'
 
 const useStyles = makeStyles(() => ({
-  countText:{
+  countText: {
     fontWeight: 'bold',
     color: '#3f51b5;',
     fontSize: '1.3rem',
-  }
-}));
+  },
+}))
 
 const Map = () => {
   const [posts, setPosts] = useState<PostModel[] | null>(null)
   const placeHolder = '魚を検索 例 タイ'
   const { currentUser } = useContext(CurrentUserContext)
-  const classes = useStyles();
+  const classes = useStyles()
 
   //非同期で投稿をAPIから取得
   const getPosts = async () => {
@@ -56,7 +56,10 @@ const Map = () => {
           <Box my={3}>
             <SearchForm placeHolder={placeHolder} search={search} />
           </Box>
-          <Typography>現在<span className={classes.countText}>{posts.length}</span>件の釣果</Typography>
+          <Typography>
+            現在<span className={classes.countText}>{posts.length}</span>
+            件の釣果
+          </Typography>
           <GoogleMap posts={posts} currentUser={currentUser} />
         </Template>
       ) : (
