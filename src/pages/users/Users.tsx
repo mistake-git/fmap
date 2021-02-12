@@ -53,13 +53,19 @@ const Users = () => {
   return (
     <Fragment>
       <Template>
-        <Container maxWidth="md">
-          <Box my={3}>
-            <SearchForm
-              search={search}
-              placeHolder={placeHolder}
-            />
-          </Box>
+        <Grid 
+          container 
+          component="main" 
+          direction="row"
+          justify="center"
+         >
+          <Grid item xs={12} sm={11} md={10} lg={8} >
+            <Box my={3}>
+              <SearchForm
+                search={search}
+                placeHolder={placeHolder}
+              />
+            </Box>
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
@@ -77,7 +83,8 @@ const Users = () => {
                 }
               </Grid>
             </InfiniteScroll>
-        </Container>
+          </Grid>
+        </Grid>
         </Template>
     </Fragment>
   );

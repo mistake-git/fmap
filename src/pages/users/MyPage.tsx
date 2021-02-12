@@ -329,70 +329,77 @@ const MyPage = (props: Props) => {
       {error ? <NotFound/> :
        user && posts && likesPosts && userData?
        <Template>    
-        <Container maxWidth="md">
-          <Grid container>
-            <Grid item xs={12}>
-              <UserMain
-                user={user}
-                firebaseAuthUser={firebaseAuthUser}
-                updateProfileImage={updateProfileImage}
-                destroyProfileImage={destroyProfileImage}
-                updateUser={updateUser}
-                handleFlash={props.handleFlash}
-              />
-              <Box my={2}>
-                {user.introduction}
-                {firebaseAuthUser && user.uid === firebaseAuthUser.uid &&
-                  <IntroductionForm
-                    value={user.introduction}
-                    updateUser={updateUser}
-                    handleFlash={props.handleFlash}
-                  />
-                }
-              </Box>
-            </Grid>
-            { followings && followers &&
-              <Grid container>
-                <Grid xs={4} md={2} item>
-                  <FollowModal
-                    modalTitle={`${user.name}がフォロー中`}
-                    title={`フォロー中${followings.length}`}
-                    users={followings}
-                  />
-                </Grid>
-                <Grid xs={4} md={2}item>
-                <FollowModal
-                  　title={`フォロワー${followers.length}`}
-                    modalTitle={`${user.name}のフォロワー`}
-                    users={followers}
-                  />
-                </Grid>
-                <Grid xs={false} md={6}/>
-                {user.id !== currentUser?.id &&
+        <Grid 
+          container 
+          component="main" 
+          direction="row"
+          justify="center"
+         >
+          <Grid item xs={12} sm={11} md={10} lg={8} >
+            <Grid container>
+              <Grid item xs={12}>
+                <UserMain
+                  user={user}
+                  firebaseAuthUser={firebaseAuthUser}
+                  updateProfileImage={updateProfileImage}
+                  destroyProfileImage={destroyProfileImage}
+                  updateUser={updateUser}
+                  handleFlash={props.handleFlash}
+                />
+                <Box my={2}>
+                  {user.introduction}
+                  {firebaseAuthUser && user.uid === firebaseAuthUser.uid &&
+                    <IntroductionForm
+                      value={user.introduction}
+                      updateUser={updateUser}
+                      handleFlash={props.handleFlash}
+                    />
+                  }
+                </Box>
+              </Grid>
+              { followings && followers &&
+                <Grid container>
                   <Grid xs={4} md={2} item>
-                    <FollowButton
-                      user={user}
-                      currentUser={currentUser}
-                      createRelationships={createRelationships}
-                      destroyRelationships={destroyRelationships}
-                      isFollowed={isFollowed}
+                    <FollowModal
+                      modalTitle={`${user.name}がフォロー中`}
+                      title={`フォロー中${followings.length}`}
+                      users={followings}
                     />
                   </Grid>
-                }
+                  <Grid xs={4} md={2}item>
+                  <FollowModal
+                    　title={`フォロワー${followers.length}`}
+                      modalTitle={`${user.name}のフォロワー`}
+                      users={followers}
+                    />
+                  </Grid>
+                  <Grid xs={false} md={6}/>
+                  {user.id !== currentUser?.id &&
+                    <Grid xs={4} md={2} item>
+                      <FollowButton
+                        user={user}
+                        currentUser={currentUser}
+                        createRelationships={createRelationships}
+                        destroyRelationships={destroyRelationships}
+                        isFollowed={isFollowed}
+                      />
+                    </Grid>
+                  }
+                </Grid>
+              }
+              <Grid item xs={12} >
+                <Box my={2}>
+                  <UserTab
+                    user={user}
+                    posts={posts}
+                    likesPosts={likesPosts}
+                    userData={userData}
+                  />
+                </Box>
               </Grid>
-            }
-            <Grid item xs={12} >
-              <Box my={2}>
-                <UserTab
-                  user={user}
-                  posts={posts}
-                  likesPosts={likesPosts}
-                  userData={userData}
-                />
-              </Box>
             </Grid>
           </Grid>
-        </Container>
+        </Grid>
       </Template>:
       <Loading/>
       }

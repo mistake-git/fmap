@@ -55,31 +55,38 @@ const Posts = () => {
   return (
     <Fragment>
       <Template>
-        <Container maxWidth="md">
-          <Box my={3}>
-            <SearchForm
-              search={search}
-              placeHolder={placeHolder}
-            />
-          </Box>
-          <InfiniteScroll
-            loadMore={loadMore} 
-            hasMore={hasMore}
-            loader={loader}>
-              <Grid container>
-              {
-                posts ? posts.map((post) => {
-                  return(
-                    <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} >
-                      <PostCard post={post} key={post.id}/>
-                    </Grid>
-                  )
-                }):
-                <div>釣果がありません</div>
-              }
-            </Grid>
-          </InfiniteScroll>
-        </Container>
+        <Grid 
+          container 
+          component="main" 
+          direction="row"
+          justify="center"
+        >
+          <Grid item xs={12} sm={11} md={10} lg={8} >
+            <Box my={3}>
+              <SearchForm
+                search={search}
+                placeHolder={placeHolder}
+              />
+            </Box>
+            <InfiniteScroll
+              loadMore={loadMore} 
+              hasMore={hasMore}
+              loader={loader}>
+                <Grid container>
+                {
+                  posts ? posts.map((post) => {
+                    return(
+                      <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} >
+                        <PostCard post={post} key={post.id}/>
+                      </Grid>
+                    )
+                  }):
+                  <div>釣果がありません</div>
+                }
+              </Grid>
+            </InfiniteScroll>
+          </Grid>
+        </Grid>
       </Template>
     </Fragment>
   );
