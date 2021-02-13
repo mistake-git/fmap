@@ -196,7 +196,6 @@ export default function PostForm(props: Props) {
     maximumAge: 0
   };
   
-
   const onClick = () => {
     if (ref.current) {
       ref.current.click()
@@ -473,9 +472,14 @@ export default function PostForm(props: Props) {
                     </Grid>
                   </Collapse>
                   <Grid container className={classes.root} spacing={3}>
+                    <Grid item xs={12} md={12}>
+                      <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
+                        位置情報(必須)
+                      </Typography>
+                    </Grid>
                     <Grid item xs={12} md={6}>
                       <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth >
-                        地図で場所を選択する(必須)
+                        地図で場所を選択する
                       </Button>
                       <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
                         ※地図から位置を選択する場合はこちら
@@ -483,7 +487,7 @@ export default function PostForm(props: Props) {
                     </Grid>
                     <Grid item xs={12} md={6}>
                       <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
-                        現在地を取得する(必須)
+                        現在地を取得する
                       </Button>
                       <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
                         ※現在地から登録する場合はこちら
