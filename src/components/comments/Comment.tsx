@@ -12,6 +12,8 @@ import CommentEditForm from './CommentEditForm'
 import { Link } from 'react-router-dom';
 import PostModel from '../../models/PostModel';
 import CommentForm from '../../forms/CommentFormModel';
+import moment from 'moment'
+import 'moment/locale/ja'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,7 +64,7 @@ export default function Comment(props: Props) {
                   <Link to={`/mypages/${comment.user.uid}`} className={classes.topLink}>
                     {comment.user.name}
                   </Link>
-                  :{comment.created_at}
+                  : <Typography variant="caption" display="block" gutterBottom>{moment(comment.created_at).fromNow()}</Typography>
                 </Fragment>
               }
               secondary={
