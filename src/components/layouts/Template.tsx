@@ -8,6 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 import * as H from 'history';
 import { AppBar, Box, Button, Hidden, Toolbar } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
+import { spawn } from "child_process";
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
@@ -57,19 +58,19 @@ const Template =(props: Props) => {
 			<AppBar position="fixed" className={classes.appBar}>
 				<Toolbar>
 					<Hidden mdDown>
-						<Box className={classes.text}>
+						<span className={classes.text}>
 							Fishing Mapにログインして釣果を登録しよう！
-						</Box>
+						</span>
 					</Hidden>
 					<Hidden smDown>
-						<Box className={classes.text}>
+						<span className={classes.text}>
 					　　Fishing MapはみんなでつくるWeb上の釣果がわかる地図です。
-						</Box>
+						</span>
 					</Hidden>
 					<Hidden mdUp>
-						<Box className={classes.text} >
+						<span className={classes.text} >
 					　　Fishing Map
-						</Box>
+						</span>
 					</Hidden>
 					<div className={classes.root}>
 					<Link to={'/signin'}　className={classes.link}>
