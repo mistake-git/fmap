@@ -33,8 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
 interface Props {
   notifications: NotificationModel[]
 }
