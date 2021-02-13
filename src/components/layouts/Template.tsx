@@ -6,7 +6,7 @@ import  Header  from './Header';
 import  Footer  from './Footer';
 import { Link, withRouter } from 'react-router-dom';
 import * as H from 'history';
-import { AppBar, Box, Button, Hidden, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Button, Hidden, Toolbar } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({

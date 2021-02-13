@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment, useState, useContext } from "react";
-import { Container, createStyles, Divider, Grid, makeStyles, Theme} from "@material-ui/core";
+import { createStyles, Divider, Grid, makeStyles, Theme} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import Box from '@material-ui/core/Box';
 import PostButtons from "../../components/posts/PostButtons"
