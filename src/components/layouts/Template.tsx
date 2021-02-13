@@ -8,7 +8,6 @@ import { Link, withRouter } from 'react-router-dom';
 import * as H from 'history';
 import { AppBar, Box, Button, Hidden, Toolbar } from "@material-ui/core";
 import { AuthContext } from "../../Auth";
-import { spawn } from "child_process";
 
 const useStyles = makeStyles((theme) => ({
 	mainGrid: {
