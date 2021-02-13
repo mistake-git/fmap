@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { Badge, Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import auth from '../../plugins/firebase';
@@ -135,7 +135,9 @@ export default function Header() {
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
             <ListItem button>
-              <NotificationsIcon/>
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon/>
+              </Badge>
               <ListItemText primary="通知" />
             </ListItem>
           </Link>
@@ -187,7 +189,9 @@ export default function Header() {
             </Link>
             <Link to={'/notifications'}　className={classes.link}>
               <Button className={classes.linkBold}>
-                <NotificationsIcon/>
+                <Badge badgeContent={4} color="secondary">
+                  <NotificationsIcon/>
+                </Badge>
                 通知
               </Button>
             </Link>
