@@ -17,6 +17,7 @@ import PasswordEdit from "./pages/users/PasswordEdit";
 import NotFound from "./pages/NotFound";
 import Rankings from "./pages/rankings/Rankings";
 import Feed from "./pages/users/Feed";
+import Notifications from "./pages/Notifications";
 
 const App: React.FC = () => {
 
@@ -94,6 +95,18 @@ const App: React.FC = () => {
             <Route exact path="/users" component={Users} />
             <Route exact path="/posts" component={Posts} />
             <Route exact path="/feed" component={Feed} />
+            <Route 
+              exact path="/notifications" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <Notifications 
+                  match={match}
+                  history={history}
+                />
+              )} 
+            />
             <Route 
               exact path="/posts/:id/edit" 
               render={({ 
