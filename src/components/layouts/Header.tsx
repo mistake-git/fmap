@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Badge, Box, Hidden, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { Badge, Box, Hidden, IconButton, Popover, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import auth from '../../plugins/firebase';
@@ -25,6 +25,7 @@ import { CurrentUserContext } from '../../CurrentUser';
 import { Icon} from '@iconify/react';
 import fishIcon from '@iconify-icons/mdi/fish';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import NotifiCationList from '../notifications/NotificationList';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -53,6 +54,14 @@ const useStyles = makeStyles((theme) => ({
   fishIcon: {
     height: '24px',
     width: '24px'
+  },
+  sticky :{
+    position: 'sticky',
+    top: 0,
+    "z-index": 1,
+  },
+  popver: {
+    height: 500,
   }
 }));
 
@@ -62,11 +71,14 @@ export default function Header() {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [notification, setNotification] = useState<null | HTMLElement>(null);
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const [state, setState] = useState({
     right: false,
   });
+  const notificationOpen = Boolean(notification);
+  const notificationId = notificationOpen ? 'simple-popover' : undefined;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -74,6 +86,15 @@ export default function Header() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const open = Boolean(notification);
+
+  const handleNotification= (event: React.MouseEvent<HTMLButtonElement>) => {
+    setNotification(event.currentTarget);
+  };
+
+  const handleCloseNotification = () => {
+    setNotification(null);
   };
 
   const LogOut = async() => {
@@ -187,14 +208,35 @@ export default function Header() {
                 フィード
               </Button>
             </Link>
-            <Link to={'/notifications'}　className={classes.link}>
-              <Button className={classes.linkBold}>
-                <Badge badgeContent={4} color="secondary">
-                  <NotificationsIcon/>
-                </Badge>
+            <Button className={classes.linkBold} onClick={handleNotification}>
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon/>
+              </Badge>
                 通知
-              </Button>
-            </Link>
+            </Button>
+            <Popover
+              className={classes.popver}
+              id={notificationId}
+              open={open}
+              anchorEl={notification}
+              onClose={handleCloseNotification}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              >
+              <div className={classes.sticky}>
+                <Typography align="center">
+                  <Box py={1}>お知らせ</Box>
+                  <Divider/>
+                </Typography>
+              </div>
+              <NotifiCationList/>
+            </Popover>
           </Fragment>
         }
         {headerLinks.map((header,index) => 
