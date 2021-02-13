@@ -205,13 +205,7 @@ export default function PostForm(props: Props) {
   const clear = () => {
     setSrc('')
   };
-
-  const forms=[
-    {name: "name", label: "魚種(必須,カタカナ)",type: "text"},
-    {name: "date", label: "日付", type: "date"},
-    {name: "time", label: "時間", type: "time"},
-  ]
-
+  
 	return (
 		<Fragment>
 			<Card className={classes.root}>
