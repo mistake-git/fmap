@@ -208,35 +208,6 @@ export default function Header() {
                 フィード
               </Button>
             </Link>
-            <Button className={classes.linkBold} onClick={handleNotification}>
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon/>
-              </Badge>
-                通知
-            </Button>
-            <Popover
-              className={classes.popver}
-              id={notificationId}
-              open={open}
-              anchorEl={notification}
-              onClose={handleCloseNotification}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              >
-              <div className={classes.sticky}>
-                <Typography align="center">
-                  <Box py={1}>お知らせ</Box>
-                  <Divider/>
-                </Typography>
-              </div>
-              <NotifiCationList/>
-            </Popover>
           </Fragment>
         }
         {headerLinks.map((header,index) => 
@@ -249,6 +220,35 @@ export default function Header() {
         )}
         {firebaseAuthUser &&
         <Fragment>
+          <Button className={classes.linkBold} onClick={handleNotification}>
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon/>
+            </Badge>
+              通知
+          </Button>
+          <Popover
+            className={classes.popver}
+            id={notificationId}
+            open={open}
+            anchorEl={notification}
+            onClose={handleCloseNotification}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            >
+            <div className={classes.sticky}>
+              <Typography align="center">
+                <Box py={1}>お知らせ</Box>
+                <Divider/>
+              </Typography>
+            </div>
+            <NotifiCationList/>
+          </Popover>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
             <AccountCircle />
             {currentUser?.name}
