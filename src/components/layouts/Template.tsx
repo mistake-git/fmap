@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	text: {
 		flexGrow: 1,
-		fontSize: '1.2rem'
+		fontSize: '1.1rem'
 	},
 	root: {
 		'& > *': {
@@ -67,7 +67,7 @@ const Template =(props: Props) => {
 						</span>
 					</Hidden>
 					<Hidden mdUp>
-						<span className={classes.text} >
+						<span >
 					　　Fishing Map
 						</span>
 					</Hidden>
