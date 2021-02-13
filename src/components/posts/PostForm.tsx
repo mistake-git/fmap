@@ -178,7 +178,14 @@ export default function PostForm(props: Props) {
   }
 
   const errorFunc = (error: any) => {
-    const message = error.code
+    var errorMessageList = [
+      {message: "原因不明のエラーが発生しました"},
+      {message:  "位置情報の取得が許可されませんでした"},
+      {message:  "電波状況などで位置情報が取得できませんでした。"},
+      {message:  "要求がタイムアウトしました。"},
+    ]
+    const errorMessage = errorMessageList[error.code]
+    const message = errorMessage.message
     const severity = 'error'
     props.handleFlash(message,severity) 
   }
