@@ -164,9 +164,9 @@ export default function PostForm(props: Props) {
   }
 
   const getCurrentPosition = () => {
+    setOpen(true);
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      setOpen(true);
       setCurrentLocation({lat:　latitude, lng:　longitude})
       setDefaultLocation({lat:　latitude, lng:　longitude})
       const message = '位置情報を取得しました'
