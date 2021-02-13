@@ -41,8 +41,8 @@ export default function NotifiCationList(props: Props) {
   const classes = useStyles();
 
   return (
-    <List className={classes.root}>
-      <ListItem button>
+    <List className={classes.root} disablePadding>
+      <ListItem button disableGutters>
         <ListItemAvatar>
         <Avatar>
           <PersonIcon />
@@ -52,7 +52,7 @@ export default function NotifiCationList(props: Props) {
         <ChatBubbleIcon className={classes.comment}/>
       </ListItem>
       <Divider/>
-      <ListItem button>
+      <ListItem button disableGutters>
         <ListItemAvatar>
         <Avatar>
           <PersonIcon />
@@ -62,7 +62,7 @@ export default function NotifiCationList(props: Props) {
         <FavoriteIcon className={classes.favorite}/>
       </ListItem>
       <Divider/>
-      <ListItem button>
+      <ListItem button disableGutters>
         <ListItemAvatar>
         <Avatar>
           <PersonIcon />
@@ -72,7 +72,7 @@ export default function NotifiCationList(props: Props) {
         <PersonIcon  className={classes.person}/>
       </ListItem>
       <Divider/>
-      <ListItem button >
+      <ListItem button disableGutters>
         <ListItemAvatar>
         <Avatar>
           <PersonIcon />
@@ -82,7 +82,7 @@ export default function NotifiCationList(props: Props) {
         <ChatBubbleIcon className={classes.comment}/>
       </ListItem>
       <Divider/>
-      <ListItem button>
+      <ListItem button disableGutters>
         <ListItemAvatar>
         <Avatar>
           <PersonIcon />
