@@ -201,9 +201,11 @@ export default function Header() {
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
             <ListItem button>
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon/>
-              </Badge>
+              {notifications &&
+                <Badge badgeContent={notifications.length} color="secondary">
+                  <NotificationsIcon/>
+                </Badge>
+              }
               <ListItemText primary="通知" />
             </ListItem>
           </Link>
@@ -266,10 +268,14 @@ export default function Header() {
         {firebaseAuthUser &&
         <Fragment>
           <Button className={classes.linkBold} onClick={handleNotification}>
-            <Badge badgeContent={4} color="secondary">
+            {notifications &&
+            <Fragment>
+              <Badge badgeContent={notifications.length} color="secondary">
               <NotificationsIcon/>
-            </Badge>
-              通知
+              </Badge>
+                通知
+            </Fragment>
+            }
           </Button>
           <Popover
             className={classes.popver}
