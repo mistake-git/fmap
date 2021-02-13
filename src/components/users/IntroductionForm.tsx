@@ -34,9 +34,17 @@ export default function IntroductionForm(props: Props) {
   const classes = useStyles();
   const [formOpen, setFormOpen]= useState(false);
 
+  const handleOpen = () => {
+    setFormOpen(true)
+  };
+
+  const handleClose = () => {
+    setFormOpen(false)
+  };
+
   return (
     <div>
-      <Button onClick={() => setFormOpen(true)}>
+      <Button onClick={handleOpen}>
         <Typography 
           color='textSecondary'
           variant='caption'
@@ -90,8 +98,7 @@ export default function IntroductionForm(props: Props) {
                       className={classes.marginRight}
                       variant="contained"
                       style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      type="submit"
-                      onClick={() => setFormOpen(false)}
+                      onClick={handleClose}
                     >
                       キャンセル
                     </Button>
