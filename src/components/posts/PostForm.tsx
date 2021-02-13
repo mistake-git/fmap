@@ -164,7 +164,7 @@ export default function PostForm(props: Props) {
   }
 
   const getCurrentPosition = () => {
-    navigator.geolocation.getCurrentPosition(successFunc,errorFunc);
+    navigator.geolocation.getCurrentPosition(successFunc, errorFunc, options);
   };
 
   const successFunc = (position: any) =>{
@@ -178,10 +178,17 @@ export default function PostForm(props: Props) {
   }
 
   const errorFunc = (error: any) => {
-    const message = error.message
+    const message = error.code
     const severity = 'error'
     props.handleFlash(message,severity) 
   }
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  
 
   const onClick = () => {
     if (ref.current) {
