@@ -10,6 +10,8 @@ import Divider from '@material-ui/core/Divider';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import NotificationModel from '../../models/NotificationModel';
+import moment from 'moment'
+import 'moment/locale/ja'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,68 +42,44 @@ interface Props {
 export default function NotifiCationList(props: Props) {
   const classes = useStyles();
 
-  const likeNotification = () => {
+  const like = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItem button disableGutters>
-          <ListItemAvatar>
-          <Avatar>
-            <PersonIcon />
-          </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Bさんがあなたの記事に良いね！しました" secondary="2020/4/2" />
-          <FavoriteIcon className={classes.favorite}/>
-        </ListItem>
-        <Divider/>
+        <ListItemText primary={`${notification.visitor.name}さんがあなたの【${notification.post.name}】の記事にいいね！しました`} secondary={moment(notification.created_at).fromNow()} />
+        <FavoriteIcon className={classes.favorite}/>
       </Fragment>
     )
   }
 
-  const commentNotification = () => {
+  const comment = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItem button disableGutters>
-          <ListItemAvatar>
-          <Avatar>
-            <PersonIcon />
-          </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Aさんがあなたの記事【ニュース】にコメントしました:コメントのコンテンツ" secondary="2020/9/23" />
-          <ChatBubbleIcon className={classes.comment}/>
-        </ListItem>
-        <Divider/>
+        <ListItemText primary={`${notification.visitor.name}さんがあなたの【${notification.post.name}】の記事にコメントしました:${notification.comment.content}`} secondary={moment(notification.created_at).fromNow()} />
+        <ChatBubbleIcon className={classes.comment}/>
       </Fragment>
     )
   }
 
-  const followNotification = () => {
+  const follow = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItem button disableGutters>
-        <ListItemAvatar>
-          <Avatar>
-            <PersonIcon />
-          </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Cさんにフォローされました" secondary="2020/3/2" />
-          <PersonIcon  className={classes.person}/>
-        </ListItem>  
-        <Divider/>
+        <ListItemText primary={`${notification.visitor.name}さんにフォローされました`} secondary={moment(notification.created_at).fromNow()} />
+        <PersonIcon  className={classes.person}/>
       </Fragment>
     )
   }
   
-  const judgeNotifications = (notification: NotificationModel) => {
+  const judgeNotification = (notification: NotificationModel) => {
     var action = notification.action;
     switch(action){
     　case "like":
-        likeNotification()
+        like(notification)
     　break;
     　case "comment":
-    　  commentNotification()
+    　  comment(notification)
     　break;
     　case "follow":
-        followNotification()
+        follow(notification)
     　break;
     }
   }
@@ -109,7 +87,17 @@ export default function NotifiCationList(props: Props) {
   return (
     <List className={classes.root} disablePadding>
       {props.notifications && props.notifications.map((notification) => {
-        judgeNotifications(notification)
+        return(
+          <Fragment>
+          <ListItem button disableGutters>
+            <ListItemAvatar>
+              <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
+            </ListItemAvatar>
+            {judgeNotification(notification)}
+          </ListItem>  
+          <Divider/>
+        </Fragment>
+        )
       })}
     </List>
   );
