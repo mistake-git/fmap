@@ -68,17 +68,17 @@ const useStyles = makeStyles((theme) => ({
 type Anchor = 'right';
 
 export default function Header() {
-
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [notification, setNotification] = useState<null | HTMLElement>(null);
+  const [notificationEl, setNotificationEl] = useState<null | HTMLElement>(null);
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const [state, setState] = useState({
     right: false,
   });
-  const notificationOpen = Boolean(notification);
+  const notificationOpen = Boolean(notificationEl);
   const notificationId = notificationOpen ? 'simple-popover' : undefined;
+  
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -87,14 +87,14 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const open = Boolean(notification);
+  const open = Boolean(notificationEl);
 
   const handleNotification= (event: React.MouseEvent<HTMLButtonElement>) => {
-    setNotification(event.currentTarget);
+    setNotificationEl(event.currentTarget);
   };
 
   const handleCloseNotification = () => {
-    setNotification(null);
+    setNotificationEl(null);
   };
 
   const LogOut = async() => {
@@ -230,7 +230,7 @@ export default function Header() {
             className={classes.popver}
             id={notificationId}
             open={open}
-            anchorEl={notification}
+            anchorEl={notificationEl}
             onClose={handleCloseNotification}
             anchorOrigin={{
               vertical: 'bottom',
