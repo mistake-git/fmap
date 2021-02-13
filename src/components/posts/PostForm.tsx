@@ -306,7 +306,7 @@ export default function PostForm(props: Props) {
                       }}
                       InputProps={{
                         inputProps: { min: 1},
-                        endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                        endAdornment: <InputAdornment position="end">g</InputAdornment>,
                       }}
                     />
                   </Grid>
