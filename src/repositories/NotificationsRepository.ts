@@ -1,5 +1,3 @@
-import CommentFormModel from '../forms/CommentFormModel'
-import CommentModel from '../models/CommentModel'
 import NotificationModel from '../models/NotificationModel'
 import { myHttpClient } from '../plugins/axios'
 
