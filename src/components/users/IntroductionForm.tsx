@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import {
   Button,
+  Collapse,
   Grid,
   Typography,
 } from "@material-ui/core";
@@ -31,7 +32,7 @@ interface Props{
 export default function IntroductionForm(props: Props) {
 
   const classes = useStyles();
-  const [FormOpen, setFormOpen]= useState(false);
+  const [formOpen, setFormOpen]= useState(false);
 
   return (
     <div>
@@ -43,7 +44,7 @@ export default function IntroductionForm(props: Props) {
           編集
         </Typography>
       </Button>
-      {FormOpen &&
+      <Collapse in={formOpen}>
       　<Formik
       　  enableReinitialize={true}
           initialValues={
@@ -110,7 +111,7 @@ export default function IntroductionForm(props: Props) {
             </Form>
           )}
         />
-      }
+      </Collapse>
     </div>
   );
 }
