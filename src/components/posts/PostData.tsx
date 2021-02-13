@@ -17,7 +17,7 @@ export default function PostData(props: any) {
     {label: '釣った日', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
     {label: '数量', content: props.post.number},
     {label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
-    {label: '重さ', content: props.post.weight &&`${props.post.weight}kg` },
+    {label: '重さ', content: props.post.weight &&`${props.post.weight}g` },
     {label: '餌', content: props.post.feed },
     {label: '天候', content: props.post.weather},
   ];
