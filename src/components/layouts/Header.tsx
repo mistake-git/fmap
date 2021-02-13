@@ -298,7 +298,11 @@ export default function Header() {
                 <Divider/>
               </Typography>
             </div>
-            <NotifiCationList/>
+            {notifications &&
+              <NotifiCationList
+               notifications={notifications}
+              />
+            }
           </Popover>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
             <AccountCircle />
