@@ -38,12 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-interface PinProps {
-  lat: number,
-  lng: number,
-  icon: any
-}
-
 interface Props{
   currentUser: UserModel 
   posts: PostModel[]
