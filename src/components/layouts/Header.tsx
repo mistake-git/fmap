@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -26,6 +26,8 @@ import { Icon} from '@iconify/react';
 import fishIcon from '@iconify-icons/mdi/fish';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import NotifiCationList from '../notifications/NotificationList';
+import NotificationModel from '../../models/NotificationModel';
+import NotificationsRepository from '../../repositories/NotificationsRepository';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -78,6 +80,7 @@ export default function Header() {
   });
   const notificationOpen = Boolean(notificationEl);
   const notificationId = notificationOpen ? 'simple-popover' : undefined;
+  const [notifications, setNotifications]  = useState<NotificationModel[] | null>(null);
   
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -117,9 +120,51 @@ export default function Header() {
     ) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
+　
+  const getNotifications = async(currentUserId: string) => {
+    try { 
+    const notifications = await
+      NotificationsRepository.getNotifications(currentUserId)
+        .then((results) => {
+        return results
+      })
+      return notifications;
+    }
+    catch (error) {
+      console.log(error.message);
+    }
+    return [] as NotificationModel[];
+  }
+  
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (firebaseAuthUser !== null && user !== null) {
+        getNotifications(user?.uid)
+        .then((results)=>{
+          setNotifications(results)
+        })   
+        .catch((data) =>{
+          console.log(data.user)
+        })
+      }
+    });  
+  }, [setNotifications]);
+
+  const checkNotifications = () =>{
+    auth.onAuthStateChanged((user) => {
+      if (firebaseAuthUser !== null && user !== null) {
+        NotificationsRepository.checkNotifications(user?.uid)
+        .then((results)=>{
+          setNotifications(results)
+        })      
+        .catch((data) =>{
+          console.log(data.user)
+        })
+      }
+    });  
+  }
 
   const headerLinks = [
     { name: '地図', url: '/', icon: <PinDropIcon/>},
