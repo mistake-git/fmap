@@ -24,6 +24,7 @@ import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from '../../CurrentUser';
 import { Icon} from '@iconify/react';
 import fishIcon from '@iconify-icons/mdi/fish';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -132,6 +133,12 @@ export default function Header() {
         <Divider/>
         {firebaseAuthUser?
         <Fragment>
+          <Link to={`/notifications`}　className={classes.link}>
+            <ListItem button>
+              <NotificationsIcon/>
+              <ListItemText primary="通知" />
+            </ListItem>
+          </Link>
           <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
             <ListItem button>
               <AccountBoxIcon/>
@@ -171,12 +178,20 @@ export default function Header() {
         </Typography>
         <Hidden smDown>
         {currentUser &&
-          <Link to={'/feed'}　className={classes.link}>
-            <Button className={classes.linkBold}>
-              <ViewModuleIcon/>
-              フィード
-            </Button>
-          </Link>
+          <Fragment>
+            <Link to={'/feed'}　className={classes.link}>
+              <Button className={classes.linkBold}>
+                <ViewModuleIcon/>
+                フィード
+              </Button>
+            </Link>
+            <Link to={'/notifications'}　className={classes.link}>
+              <Button className={classes.linkBold}>
+                <NotificationsIcon/>
+                通知
+              </Button>
+            </Link>
+          </Fragment>
         }
         {headerLinks.map((header,index) => 
         <Link to={header.url}　className={classes.link} key={index}>

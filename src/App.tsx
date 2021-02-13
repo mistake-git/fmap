@@ -133,7 +133,6 @@ const App: React.FC = () => {
                 />
               )} 
             />
-          
             <Switch>
               <Route 
                 exact path="/posts/new" 
