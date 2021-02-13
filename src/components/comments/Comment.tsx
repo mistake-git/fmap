@@ -64,7 +64,7 @@ export default function Comment(props: Props) {
                   <Link to={`/mypages/${comment.user.uid}`} className={classes.topLink}>
                     {comment.user.name}
                   </Link>
-                  : <Typography variant="caption" display="block" gutterBottom>{moment(comment.created_at).fromNow()}</Typography>
+                  : <Typography variant="caption" gutterBottom>{moment(comment.created_at).fromNow()}</Typography>
                 </Fragment>
               }
               secondary={
