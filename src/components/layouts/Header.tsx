@@ -64,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   popver: {
     height: 500,
+  },
+  notificationslist: {
     maxWidth: 500,
   }
 }));
@@ -300,9 +302,11 @@ export default function Header() {
               </Typography>
             </div>
             {notifications &&
-              <NotifiCationList
-               notifications={notifications}
-              />
+              <Box className={classes.notificationslist}>
+                <NotifiCationList
+                notifications={notifications}
+                />
+              </Box>
             }
           </Popover>
           <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
