@@ -41,8 +41,8 @@ export default function UserBar(props: Props) {
   return (
     <div className={classes.demo}>
       <Divider/>
-      <List>
-        <ListItem>
+      <List disablePadding>
+        <ListItem disableGutters>
           <ListItemAvatar>
           <Avatar alt={props.postUser.name} src={props.postUser.image_url} />
           </ListItemAvatar>
