@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -33,6 +33,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+
+
 interface Props {
   notifications: NotificationModel[]
 }
@@ -40,57 +42,78 @@ interface Props {
 export default function NotifiCationList(props: Props) {
   const classes = useStyles();
 
+  const likeNotification = () => {
+    return(
+      <Fragment>
+        <ListItem button disableGutters>
+          <ListItemAvatar>
+          <Avatar>
+            <PersonIcon />
+          </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Bさんがあなたの記事に良いね！しました" secondary="2020/4/2" />
+          <FavoriteIcon className={classes.favorite}/>
+        </ListItem>
+        <Divider/>
+      </Fragment>
+    )
+  }
+
+  const commentNotification = () => {
+    return(
+      <Fragment>
+        <ListItem button disableGutters>
+          <ListItemAvatar>
+          <Avatar>
+            <PersonIcon />
+          </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Aさんがあなたの記事【ニュース】にコメントしました:コメントのコンテンツ" secondary="2020/9/23" />
+          <ChatBubbleIcon className={classes.comment}/>
+        </ListItem>
+        <Divider/>
+      </Fragment>
+    )
+  }
+
+  const followNotification = () => {
+    return(
+      <Fragment>
+        <ListItem button disableGutters>
+        <ListItemAvatar>
+          <Avatar>
+            <PersonIcon />
+          </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Cさんにフォローされました" secondary="2020/3/2" />
+          <PersonIcon  className={classes.person}/>
+        </ListItem>  
+        <Divider/>
+      </Fragment>
+    )
+  }
+  
+  const judgeNotifications = (notification: NotificationModel) => {
+    var action = notification.action;
+    switch(action){
+    　case "like":
+        likeNotification()
+    　break;
+    　case "comment":
+    　  commentNotification()
+    　break;
+    　case "follow":
+        followNotification()
+    　break;
+    }
+  }
+
   return (
     <List className={classes.root} disablePadding>
-      <ListItem button disableGutters>
-        <ListItemAvatar>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Aさんがあなたの記事【ニュース】にコメントしました:コメントのコンテンツ" secondary="2020/9/23" />
-        <ChatBubbleIcon className={classes.comment}/>
-      </ListItem>
-      <Divider/>
-      <ListItem button disableGutters>
-        <ListItemAvatar>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Bさんがあなたの記事に良いね！しました" secondary="2020/4/2" />
-        <FavoriteIcon className={classes.favorite}/>
-      </ListItem>
-      <Divider/>
-      <ListItem button disableGutters>
-        <ListItemAvatar>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Cさんにフォローされました" secondary="2020/3/2" />
-        <PersonIcon  className={classes.person}/>
-      </ListItem>
-      <Divider/>
-      <ListItem button disableGutters>
-        <ListItemAvatar>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Dさんがあなたの投稿にコメントしました:コメントです" secondary="2020/2/2" />
-        <ChatBubbleIcon className={classes.comment}/>
-      </ListItem>
-      <Divider/>
-      <ListItem button disableGutters>
-        <ListItemAvatar>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Cさんにフォローされました" secondary="2020/1/2" />
-        <PersonIcon  className={classes.person}/>
-      </ListItem>
+      {props.notifications && props.notifications.map((notification) => {
+        judgeNotifications(notification)
+      })}
     </List>
   );
 }
+
