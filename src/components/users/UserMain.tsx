@@ -33,9 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
       bottom: '-5px',
       right: '-5px', 
     },
-    paddingZero:{
-      padding: 0
-    }
   }),
 );
 
@@ -52,8 +49,8 @@ export default function UserMain(props: Props) {
   const classes = useStyles();
 
   return (
-    <List>
-      <ListItem className={classes.paddingZero}>
+    <List disablePadding={true}>
+      <ListItem disableGutters>
         <ListItemIcon>
           <RoomIcon/>
         </ListItemIcon>
@@ -68,7 +65,7 @@ export default function UserMain(props: Props) {
           />
         }
       </ListItem>
-      <ListItem className={classes.paddingZero}>
+      <ListItem disableGutters>
         <div className={classes.avaterWrapper}>
           <ListItemAvatar>
             <Avatar alt={props.user.name} src={props.user.image_url}  className={classes.avatar}/>

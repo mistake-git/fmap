@@ -51,16 +51,19 @@ export default function Comment(props: Props) {
   return (
     <Fragment>
         <Fragment>
-        <List className={classes.root} key={comment.id}>
-          <ListItem alignItems="flex-start">
+        <List className={classes.root} key={comment.id} disablePadding={true}>
+          <ListItem alignItems="flex-start" disableGutters>
             <ListItemAvatar>
               <Avatar alt={comment.user.name} src={comment.user.image_url} />
             </ListItemAvatar>
             <ListItemText
               primary={
-                <Link to={`/mypages/${comment.user.uid}`} className={classes.topLink}>
-                  {comment.user.name}
-                </Link>
+                <Fragment>
+                  <Link to={`/mypages/${comment.user.uid}`} className={classes.topLink}>
+                    {comment.user.name}
+                  </Link>
+                  :{comment.created_at}
+                </Fragment>
               }
               secondary={
                 <Typography
