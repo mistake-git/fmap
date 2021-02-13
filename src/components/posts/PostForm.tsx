@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {
   Box,
   Button,
-  Container,
+  Collapse,
   DialogActions,
   Grid,
   InputAdornment,
@@ -35,6 +35,8 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import PostsRepository from '../../repositories/PostsRepository';
 import LatLngSearchForm from './LatLngSearchForm';
 import PostModel from '../../models/PostModel';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({
@@ -57,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     root: {
       minWidth: 150,
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(2),
     },
     imageWrapper: {
       position: 'relative',
@@ -110,6 +112,7 @@ export default function PostForm(props: Props) {
   const [currentLocation, setCurrentLocation] = useState(defaultLocation);
   const [zoom, setZoom] = useState<number>(DefaultZoom);
   const [open, setOpen] = useState<boolean>(false);
+  const [collapseOpen, setCollapseOpen] = useState<boolean>(false);
   const　placeHolder ="住所を入力　例 東京都多摩市"
   const apiKey = process.env.REACT_APP_GOOGLE_MAP_KEY
 
@@ -117,8 +120,16 @@ export default function PostForm(props: Props) {
     setOpen(true);
   };
 
+  const handleClickCollapseOpen = () => {
+    setCollapseOpen(true);
+  };
+
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCollapseClose = () => {
+    setCollapseOpen(false);
   };
   
   const handleChangeLocation = (lat: number, lng: number) => {
@@ -261,28 +272,27 @@ export default function PostForm(props: Props) {
             render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
               <Form>
                 <Grid container className={classes.root} spacing={3}>
-                {isSubmitting && <LinearProgress />}
-                  <Grid item xs={12}>
-                    <Field 
-                      name="image"
-                      accept="image" 
-                      multiple={false}
-                      id="icon-button-file" 
-                      type="file"
-                      enctype="multipart/form-data"
-                      onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
-                      onClick={onClick}
-                    />
-                  </Grid>
-                  {forms.map((form) => (
+                  {isSubmitting && <LinearProgress />}
+                    <Grid item xs={12}>
+                      <Field 
+                        name="image"
+                        accept="image" 
+                        multiple={false}
+                        id="icon-button-file" 
+                        type="file"
+                        enctype="multipart/form-data"
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
+                        onClick={onClick}
+                      />
+                    </Grid>
                     <Grid item xs={12} md={6}>
                       <Field
                         style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        name={form.name}
-                        label={form.label}
+                        name="name"
+                        label="魚種(必須),カタカナ"
                         fullWidth
                         variant="outlined"
-                        type={form.type}
+                        type="text"
                         component={TextField}
                         size="small"
                         InputLabelProps={{
@@ -290,179 +300,224 @@ export default function PostForm(props: Props) {
                         }}
                       />
                     </Grid>
-                  ))}
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="weight"
-                      label="重さ"
-                      fullWidth
-                      variant="outlined"
-                      type="text"
-                      component={TextField}
-                      size="small"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      InputProps={{
-                        inputProps: { min: 1},
-                        endAdornment: <InputAdornment position="end">g</InputAdornment>,
-                      }}
-                    />
+                    <Grid item xs={12} md={6}>
+                      <Field
+                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                        name="number"
+                        label="数量(必須)"
+                        fullWidth
+                        variant="outlined"
+                        type="number"
+                        size="small"
+                        component={TextField}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        InputProps={{
+                          inputProps: { min: 1},
+                          endAdornment: <InputAdornment position="end">匹</InputAdornment>,
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                      {collapseOpen?
+                         <Button startIcon={<ExpandLessIcon/> } onClick={handleCollapseClose}>
+                          閉じる
+                        </Button>:
+                        <Button startIcon={<KeyboardArrowDownIcon/> } onClick={handleClickCollapseOpen}>
+                          詳細に入力する
+                        </Button>
+                      }
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="feed"
-                      label="餌"
-                      fullWidth
-                      variant="outlined"
-                      type="text"
-                      size="small"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="number"
-                      label="数量(必須)"
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                      size="small"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      InputProps={{
-                        inputProps: { min: 1},
-                        endAdornment: <InputAdornment position="end">匹</InputAdornment>,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="size"
-                      label="サイズ"
-                      fullWidth
-                      variant="outlined"
-                      type="number"
-                      size="small"
-                      component={TextField}
-                      InputProps={{
-                        inputProps: { min: 1},
-                        endAdornment: <InputAdornment position="end">cm</InputAdornment>,
-                      }}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Field
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="weather"
-                      select={true}
-                      label="天気"
-                      fullWidth
-                      variant="outlined"
-                      as="select"
-                      size="small"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    >
-                      {['晴天', '晴れ', '雨', '大雨', '曇り', '雪', 'その他'].map((value, index) => (
-                        <MenuItem key={index} value={value}>
-                          {value}
-                        </MenuItem>
-                      ))}
-                    </Field>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Field
-                      fullWidth
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      name="memo"
-                      label="メモ"
-                      variant="outlined"
-                      multiline={true}
-                      rows={4}
-                      type="text"
-                      size="small"
-                      component={TextField}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth >
-                      地図で場所を選択する(必須)
-                    </Button>
-                    <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
-                      ※地図から位置を選択する場合はこちら
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
-                      現在地を取得する(必須)
-                    </Button>
-                    <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
-                      ※現在地から登録する場合はこちら
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Fragment>
-                      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-                        <AppBar className={classes.appBar}>
-                          <Toolbar>
-                            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-                              <CloseIcon />
-                            </IconButton>
-                              地図で釣った場所を選択してください(必須)
-                          </Toolbar>
-                        </AppBar>
-                        <Fragment>
-                          緯度:{currentLocation.lat}
-                          経度:{currentLocation.lng}
-                          拡大率:{zoom}
-                          <Box my={2}>
-                            <LatLngSearchForm
-                              getLatLng={getLatLng}
-                              placeHolder={placeHolder}
-                            /> 
-                          </Box>
-                          <MapPicker defaultLocation={defaultLocation}
-                            zoom={zoom}
-                            style={{height:'700px'}}
-                            onChangeLocation={handleChangeLocation} 
-                            onChangeZoom={handleChangeZoom}
-                            apiKey={apiKey!}
-                          />
-                           <DialogActions>         
-                            <Button 
-                              variant="contained"　
-                              onClick={handleResetLocation}
-                              color="secondary" 
-                            >
-                              位置情報をリセット
-                            </Button>
-                            <Button 
-                              variant="contained" 
-                              color="primary" 
-                              autoFocus　
-                              onClick={handleClose}　
-                            >
-                              完了
-                            </Button>
-                        </DialogActions>
+                  <Collapse in={collapseOpen}>
+                    <Grid container className={classes.root} spacing={3}>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="date"
+                          label="釣った日"
+                          fullWidth
+                          variant="outlined"
+                          type="date"
+                          component={TextField}
+                          size="small"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="time"
+                          label="時間"
+                          fullWidth
+                          variant="outlined"
+                          type="time"
+                          component={TextField}
+                          size="small"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="weight"
+                          label="重さ"
+                          fullWidth
+                          variant="outlined"
+                          type="text"
+                          component={TextField}
+                          size="small"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          InputProps={{
+                            inputProps: { min: 1},
+                            endAdornment: <InputAdornment position="end">g</InputAdornment>,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="feed"
+                          label="餌"
+                          fullWidth
+                          variant="outlined"
+                          type="text"
+                          size="small"
+                          component={TextField}
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="size"
+                          label="サイズ"
+                          fullWidth
+                          variant="outlined"
+                          type="number"
+                          size="small"
+                          component={TextField}
+                          InputProps={{
+                            inputProps: { min: 1},
+                            endAdornment: <InputAdornment position="end">cm</InputAdornment>,
+                          }}
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Field
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="weather"
+                          select={true}
+                          label="天気"
+                          fullWidth
+                          variant="outlined"
+                          as="select"
+                          size="small"
+                          component={TextField}
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        >
+                          {['晴天', '晴れ', '雨', '大雨', '曇り', '雪', 'その他'].map((value, index) => (
+                            <MenuItem key={index} value={value}>
+                              {value}
+                            </MenuItem>
+                          ))}
+                        </Field>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Field
+                          fullWidth
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          name="memo"
+                          label="メモ"
+                          variant="outlined"
+                          multiline={true}
+                          rows={4}
+                          type="text"
+                          size="small"
+                          component={TextField}
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Collapse>
+                  <Grid container className={classes.root} spacing={3}>
+                    <Grid item xs={12} md={6}>
+                      <Button variant="outlined" color="primary" onClick={handleClickOpen} fullWidth >
+                        地図で場所を選択する(必須)
+                      </Button>
+                      <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
+                        ※地図から位置を選択する場合はこちら
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Button variant="outlined" color="primary" onClick={getCurrentPosition} fullWidth>
+                        現在地を取得する(必須)
+                      </Button>
+                      <Typography variant="body2" gutterBottom　style={{ marginTop: "0.5em"}}>
+                        ※現在地から登録する場合はこちら
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Fragment>
+                        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+                          <AppBar className={classes.appBar}>
+                            <Toolbar>
+                              <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                                <CloseIcon />
+                              </IconButton>
+                                地図で釣った場所を選択してください(必須)
+                            </Toolbar>
+                          </AppBar>
+                          <Fragment>
+                            緯度:{currentLocation.lat}
+                            経度:{currentLocation.lng}
+                            拡大率:{zoom}
+                            <Box my={2}>
+                              <LatLngSearchForm
+                                getLatLng={getLatLng}
+                                placeHolder={placeHolder}
+                              /> 
+                            </Box>
+                            <MapPicker defaultLocation={defaultLocation}
+                              zoom={zoom}
+                              style={{height:'700px'}}
+                              onChangeLocation={handleChangeLocation} 
+                              onChangeZoom={handleChangeZoom}
+                              apiKey={apiKey!}
+                            />
+                            <DialogActions>         
+                              <Button 
+                                variant="contained"　
+                                onClick={handleResetLocation}
+                                color="secondary" 
+                              >
+                                位置情報をリセット
+                              </Button>
+                              <Button 
+                                variant="contained" 
+                                color="primary" 
+                                autoFocus　
+                                onClick={handleClose}　
+                              >
+                                完了
+                              </Button>
+                          </DialogActions>
                         </Fragment>
                       </Dialog>
                     </Fragment>
