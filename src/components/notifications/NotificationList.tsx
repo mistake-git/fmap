@@ -9,6 +9,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Divider from '@material-ui/core/Divider';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import NotificationModel from '../../models/NotificationModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,7 +34,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function NotifiCationList() {
+interface Props {
+  notifications: NotificationModel[]
+}
+
+export default function NotifiCationList(props: Props) {
   const classes = useStyles();
 
   return (
