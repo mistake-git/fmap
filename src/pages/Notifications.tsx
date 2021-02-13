@@ -27,10 +27,10 @@ const Notifications = (props: Props) => {
   const { firebaseAuthUser } = useContext(AuthContext)
   const classes = useStyles();
 
-  const getNotifications = async(currentUserId: string) => {
+  const getNotifications = async(currentUserUId: string) => {
     try { 
     const notifications = await
-      NotificationsRepository.getNotifications(currentUserId)
+      NotificationsRepository.getNotifications(currentUserUId)
         .then((results) => {
         return results
       })
