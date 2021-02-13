@@ -39,7 +39,7 @@ export default function FollowButton(props: Props) {
           </Hidden>
         }
       >
-        フォロー中
+        フォロー
       </Button>
       :
       <Button
