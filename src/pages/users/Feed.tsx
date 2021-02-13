@@ -90,7 +90,7 @@ const Feed = () => {
                 placeHolder={placeHolder}
               />
             </Box>
-            <Typography>フォロー中、自分の<span className={classes.countText}>{posts.length}</span>件の釣果</Typography>
+            <Typography>フォロー、自分の<span className={classes.countText}>{posts.length}</span>件の釣果</Typography>
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
