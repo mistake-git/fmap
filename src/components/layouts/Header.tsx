@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   popver: {
     height: 500,
+    maxWidth: 500,
   }
 }));
 
