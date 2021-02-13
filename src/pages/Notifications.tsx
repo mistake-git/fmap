@@ -2,6 +2,7 @@ import { Grid } from "@material-ui/core";
 import React, { Fragment } from "react";
 import Template from "../components/layouts/Template";
 import * as H from 'history';
+import NotifiCationList from "../components/notifications/NotificationList";
 
 interface Props {
   history: H.History;
@@ -20,7 +21,7 @@ const Notifications = (props: Props) => {
           justify="center"
         >
           <Grid item xs={12} sm={11} md={10} lg={8} >
-            <div>通知</div>
+            <NotifiCationList/>
           </Grid>
         </Grid>
       </Template>
