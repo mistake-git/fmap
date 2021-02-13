@@ -8,6 +8,7 @@ interface CommentModel {
   content: string
   user: UserModel
   posts: PostModel[]
+  created_at: Date
 }
 
 export default CommentModel
