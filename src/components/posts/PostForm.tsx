@@ -164,17 +164,25 @@ export default function PostForm(props: Props) {
   }
 
   const getCurrentPosition = () => {
-    setOpen(true);
-    navigator.geolocation.getCurrentPosition(position => {
-      const { latitude, longitude } = position.coords;
+    navigator.geolocation.getCurrentPosition(successFunc,errorFunc);
+  };
+
+  const successFunc = (position: any) =>{
+    const { latitude, longitude } = position.coords;
+      setOpen(true);
       setCurrentLocation({lat:　latitude, lng:　longitude})
       setDefaultLocation({lat:　latitude, lng:　longitude})
       const message = '位置情報を取得しました'
       const severity = 'success'
       props.handleFlash(message,severity) 
-    });
-  };
-   
+  }
+
+  const errorFunc = (error: any) => {
+    const message = error.message
+    const severity = 'error'
+    props.handleFlash(message,severity) 
+  }
+
   const onClick = () => {
     if (ref.current) {
       ref.current.click()
