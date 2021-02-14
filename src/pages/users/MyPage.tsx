@@ -8,7 +8,6 @@ import UserMain from "../../components/users/UserMain";
 import UserTab from "../../components/users/UserTab";
 import PostModel from "../../models/PostModel";
 import IntroductionForm from "../../components/users/IntroductionForm";
-import Loading from "../../components/layouts/Loading";
 import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
 import * as H from 'history';
@@ -20,6 +19,7 @@ import FollowModal from "../../components/users/FollowModal";
 import FollowButton from "../../components/users/FollowButton";
 import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
+import ContentsLoading from "../../components/layouts/ContentsLoading";
 
 interface Props {
   history: H.History;
@@ -326,7 +326,7 @@ const MyPage = (props: Props) => {
   return (
     <Fragment>
       {error ? <NotFound/> :
-       user && posts && likesPosts && userData?
+      
        <Template>    
         <Grid 
           container 
@@ -337,26 +337,30 @@ const MyPage = (props: Props) => {
           <Grid item xs={12} sm={11} md={10} lg={8} >
             <Grid container>
               <Grid item xs={12}>
-                <UserMain
-                  user={user}
-                  firebaseAuthUser={firebaseAuthUser}
-                  updateProfileImage={updateProfileImage}
-                  destroyProfileImage={destroyProfileImage}
-                  updateUser={updateUser}
-                  handleFlash={props.handleFlash}
-                />
-                <Box my={2}>
-                  {user.introduction}
-                  {firebaseAuthUser && user.uid === firebaseAuthUser.uid &&
-                    <IntroductionForm
-                      value={user.introduction}
-                      updateUser={updateUser}
-                      handleFlash={props.handleFlash}
-                    />
-                  }
-                </Box>
+              { user ?
+                <Fragment>
+                  <UserMain
+                    user={user}
+                    firebaseAuthUser={firebaseAuthUser}
+                    updateProfileImage={updateProfileImage}
+                    destroyProfileImage={destroyProfileImage}
+                    updateUser={updateUser}
+                    handleFlash={props.handleFlash}
+                  />
+                  <Box my={2}>
+                    {user.introduction}
+                    {firebaseAuthUser && user.uid === firebaseAuthUser.uid &&
+                      <IntroductionForm
+                        value={user.introduction}
+                        updateUser={updateUser}
+                        handleFlash={props.handleFlash}
+                      />
+                    }
+                  </Box>
+                </Fragment>: <ContentsLoading/>
+                }
               </Grid>
-              { followings && followers &&
+              { user && followers && followings &&
                 <Grid container>
                   <Grid xs={4} md={2} item>
                     <FollowModal
@@ -387,22 +391,24 @@ const MyPage = (props: Props) => {
                     </Grid>
                   }
                 </Grid>
-              }
+              }            
               <Grid item xs={12} >
                 <Box my={2}>
+                  { user && posts && likesPosts ?
                   <UserTab
                     user={user}
                     posts={posts}
                     likesPosts={likesPosts}
                     userData={userData}
-                  />
+                  />:
+                  <ContentsLoading/>
+                  }
                 </Box>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Template>:
-      <Loading/>
+      </Template>
       }
     </Fragment>
   );

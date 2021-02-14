@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Box, Divider, Grid } from '@material-ui/core';
+import { Divider, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import PostCard from '../posts/PostCard';
 import PieChart from '../chart/PieChart';

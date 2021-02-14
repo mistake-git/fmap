@@ -55,7 +55,7 @@ const Notifications = (props: Props) => {
         })
       }
     });  
-  }, [setNotifications]);
+  }, [setNotifications, firebaseAuthUser]);
 
   return (
     <Fragment>

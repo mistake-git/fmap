@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
 import * as H from 'history';
-import Loading from "../../components/layouts/Loading";
 import PostsRepository from "../../repositories/PostsRepository";
 import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from "../../CurrentUser";
+import ContentsLoading from "../../components/layouts/ContentsLoading";
 
 interface Props {
   history: H.History;
@@ -87,30 +87,28 @@ const PostsNew = (props: Props) => {
   const title = "釣果を投稿"
 
   return (
-    <Fragment>
-      {currentUser ?
-        <Template>
-          <Grid 
-            container 
-            component="main" 
-            direction="row"
-            justify="center"
-          >
-            <Grid item xs={12} sm={11} md={10} lg={8} >
-              <PostForm 
-                action={createPost} 
-                values={values}
-                currentUser={currentUser}
-                lat={lat}
-                lng={lng}
-                title={title}
-                handleFlash={props.handleFlash}
-              />
-            </Grid>
-          </Grid>
-        </Template>
-      : <Loading/>}
-    </Fragment>
+    <Template>
+      <Grid 
+        container 
+        component="main" 
+        direction="row"
+        justify="center"
+      >
+        <Grid item xs={12} sm={11} md={10} lg={8} >
+        {currentUser ?
+          <PostForm 
+            action={createPost} 
+            values={values}
+            currentUser={currentUser}
+            lat={lat}
+            lng={lng}
+            title={title}
+            handleFlash={props.handleFlash}
+          /> : <ContentsLoading/>
+          }
+        </Grid>
+      </Grid>
+    </Template>
   );
 };
 export default PostsNew;

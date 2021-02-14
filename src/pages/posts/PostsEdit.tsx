@@ -9,6 +9,7 @@ import NotFound from "../NotFound";
 import PostsRepository from "../../repositories/PostsRepository";
 import { CurrentUserContext } from "../../CurrentUser";
 import moment from 'moment'
+import ContentsLoading from "../../components/layouts/ContentsLoading";
 
 interface Props {
   history: H.History;
@@ -95,15 +96,16 @@ const PostsEdit = (props: Props) => {
   
   return (
     <Fragment>
-      {error ? <NotFound/>: post && currentUser ?
-      <Template>
-         <Grid 
+      {error ? <NotFound/>: 
+        <Template>
+          <Grid 
             container 
             component="main" 
             direction="row"
             justify="center"
           >
             <Grid item xs={12} sm={11} md={10} lg={8} >
+            {post && currentUser ?
               <PostForm 
                 post={post} 
                 currentUser={currentUser}
@@ -113,11 +115,12 @@ const PostsEdit = (props: Props) => {
                 lng={post.longitude}
                 title={title}
                 handleFlash={props.handleFlash}
-              />
+              />: <ContentsLoading/>
+            }
             </Grid>
           </Grid>
         </Template>
-       : <Loading/>}
+      }
     </Fragment>
   );
 };

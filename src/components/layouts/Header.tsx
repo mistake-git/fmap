@@ -157,7 +157,7 @@ export default function Header() {
         })
       }
     });  
-  }, [setNotifications]);
+  }, [setNotifications, firebaseAuthUser]);
 
   const checkNotifications = () =>{
     auth.onAuthStateChanged((user) => {
