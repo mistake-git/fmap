@@ -13,6 +13,7 @@ import NotificationModel from '../../models/NotificationModel';
 import moment from 'moment'
 import 'moment/locale/ja'
 import { Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,10 +44,27 @@ interface Props {
 export default function NotifiCationList(props: Props) {
   const classes = useStyles();
 
+  const visitor = (notification: NotificationModel) => {
+    return(
+      <Link to={`${notification.visitor.uid}`}>{`${notification.visitor.name}`}</Link>
+    )
+  }
+
   const like = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItemText primary={`${notification.visitor.name}さんがあなたの【${notification.post.name}】の記事にいいね！しました`} secondary={moment(notification.created_at).fromNow()} />
+        <ListItemText 
+         primary={
+          <Fragment>
+            {visitor(notification)}
+            さんがあなたの
+            <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
+            】
+            の釣果にいいね！しました。
+          </Fragment>
+        }   
+          secondary={moment(notification.created_at).fromNow()} 
+        />
         <FavoriteIcon className={classes.favorite}/>
       </Fragment>
     )
@@ -55,7 +73,18 @@ export default function NotifiCationList(props: Props) {
   const comment = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItemText primary={`${notification.visitor.name}さんがあなたの【${notification.post.name}】の記事にコメントしました:${notification.comment.content}`} secondary={moment(notification.created_at).fromNow()} />
+        <ListItemText 
+          primary={
+            <Fragment>
+              {visitor(notification)}
+              さんがあなたの
+              <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
+              】
+              の釣果にコメントしました:{`${notification.comment.content}`}
+            </Fragment>
+          }   
+          secondary={moment(notification.created_at).fromNow()} 
+        />
         <ChatBubbleIcon className={classes.comment}/>
       </Fragment>
     )
@@ -64,7 +93,15 @@ export default function NotifiCationList(props: Props) {
   const follow = (notification: NotificationModel) => {
     return(
       <Fragment>
-        <ListItemText primary={`${notification.visitor.name}さんにフォローされました`} secondary={moment(notification.created_at).fromNow()} />
+        <ListItemText 
+          primary={
+            <Fragment>
+              {visitor(notification)}
+              さんにフォローされました
+            </Fragment>
+          } 
+          secondary={moment(notification.created_at).fromNow()}
+        />
         <PersonIcon  className={classes.person}/>
       </Fragment>
     )
