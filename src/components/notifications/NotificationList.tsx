@@ -55,7 +55,7 @@ export default function NotifiCationList(props: Props) {
 
   const yourPost = (notification: NotificationModel) => {
     return(
-      <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
+      <Link to={`/posts/${notification.post.id}`} className={classes.textDecorationNone}>{`【${notification.post.name}`}</Link>
     )
   }
 
@@ -128,12 +128,12 @@ export default function NotifiCationList(props: Props) {
   }
 
   return (
-    <List className={classes.root} disablePadding>
+    <List className={classes.root}>
       {props.notifications && props.notifications.length >= 1 ? 
         props.notifications.map((notification) => {
         return(
           <Fragment>
-            <ListItem button disableGutters>
+            <ListItem button>
               <ListItemAvatar>
                 <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
               </ListItemAvatar>
