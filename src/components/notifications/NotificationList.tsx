@@ -14,6 +14,7 @@ import moment from 'moment'
 import 'moment/locale/ja'
 import { Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import ContentsLoading from '../layouts/ContentsLoading';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,19 +25,32 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     favorite:{
       color: 'rgb(224, 36, 94)',
+      width: theme.spacing(3),
+      height: theme.spacing(3),
     },
     comment:{
       color:'gray',
+      width: theme.spacing(3),
+      height: theme.spacing(3)
     },
     person:{
       color: '#00acee',
+      width: theme.spacing(3),
+      height: theme.spacing(3)
     },
-    note :{
-      color: 'rgb(121, 75, 196)',
+    defaultLink: {
+      textDecoration: 'none',
+      color: '#000000'
     },
-    textDecorationNone:{
-      textDecoration: 'none'
-    }
+    link:{
+      color: '#3f51b5;',
+      textDecoration: 'none',
+      fontWeight: 'bold'
+    },
+    avater:{
+      width: theme.spacing(4),
+      height: theme.spacing(4)
+    },
   }),
 );
 
@@ -49,13 +63,13 @@ export default function NotifiCationList(props: Props) {
 
   const visitor = (notification: NotificationModel) => {
     return(
-      <Link to={`/mypages/${notification.visitor.uid}`} className={classes.textDecorationNone}>{`${notification.visitor.name}`}</Link>
+      <Link to={`/mypages/${notification.visitor.uid}`} className={classes.link}>{`${notification.visitor.name}`}</Link>
     )
   }
 
   const yourPost = (notification: NotificationModel) => {
     return(
-      <Link to={`/posts/${notification.post.id}`} className={classes.textDecorationNone}>{`【${notification.post.name}`}</Link>
+      <Link to={`/posts/${notification.post.id}`} className={classes.link}>{`【${notification.post.name}】`}</Link>
     )
   }
 
@@ -129,22 +143,25 @@ export default function NotifiCationList(props: Props) {
 
   return (
     <List className={classes.root}>
-      {props.notifications && props.notifications.length >= 1 ? 
+      {props.notifications?
+        props.notifications.length >= 1 ? 
         props.notifications.map((notification) => {
         return(
           <Fragment>
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
-              </ListItemAvatar>
-              {judgeNotificationType(notification)}
-            </ListItem>  
-            <Divider/>
+            <Link to={'/notifications'} className={classes.defaultLink}>
+              <ListItem button>
+                <ListItemAvatar>
+                  <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} className={classes.avater}/>
+                </ListItemAvatar>
+                {judgeNotificationType(notification)}
+              </ListItem>  
+              <Divider/>
+            </Link>
           </Fragment>
           )
         }):
         <Box textAlign="center" my={3}>通知がありません</Box>
-        }
+        :<ContentsLoading/>}
     </List>
   );
 }
