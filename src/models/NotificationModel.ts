@@ -10,6 +10,7 @@ interface NotificationModel {
   action: string
   comment: CommentModel
   post: PostModel
+  checked: boolean
 }
 
 export default NotificationModel

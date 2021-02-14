@@ -84,6 +84,7 @@ export default function Header() {
   const notificationOpen = Boolean(notificationEl);
   const notificationId = notificationOpen ? 'simple-popover' : undefined;
   const [notifications, setNotifications]  = useState<NotificationModel[] | null>(null);
+  const [uncheckedNotificationCount, setUncheckedNotificationCount] = useState<number>(0);
   
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -95,8 +96,9 @@ export default function Header() {
   };
   const open = Boolean(notificationEl);
 
-  const handleNotification= (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleNotificationOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setNotificationEl(event.currentTarget);
+    checkNotifications()
   };
 
   const handleCloseNotification = () => {
@@ -147,6 +149,8 @@ export default function Header() {
         getNotifications(user?.uid)
         .then((results)=>{
           setNotifications(results)
+          const count = getUncheckedNotificationCount(results)
+          setUncheckedNotificationCount(count)
         })   
         .catch((data) =>{
           console.log(data.user)
@@ -160,13 +164,21 @@ export default function Header() {
       if (firebaseAuthUser !== null && user !== null) {
         NotificationsRepository.checkNotifications(user?.uid)
         .then((results)=>{
-          setNotifications(results)
+          const count = getUncheckedNotificationCount(results)
+          setUncheckedNotificationCount(count)
         })      
         .catch((data) =>{
-          console.log(data.user)
+          console.log(data)
         })
       }
     });  
+  }
+
+  const getUncheckedNotificationCount = (notifications: NotificationModel[]) => {
+    const uncheckedNotifications = notifications.map((notification)=>{
+      return notification.checked === false
+    })
+    return uncheckedNotifications.length
   }
 
   const headerLinks = [
@@ -203,9 +215,9 @@ export default function Header() {
         {firebaseAuthUser?
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
-            <ListItem button>
+            <ListItem button onClick={checkNotifications}>
               {notifications &&
-                <Badge badgeContent={notifications.length} color="secondary">
+                <Badge badgeContent={uncheckedNotificationCount} color="secondary">
                   <NotificationsIcon/>
                 </Badge>
               }
@@ -270,10 +282,10 @@ export default function Header() {
         )}
         {firebaseAuthUser &&
         <Fragment>
-          <Button className={classes.linkBold} onClick={handleNotification}>
+          <Button className={classes.linkBold} onClick={handleNotificationOpen}>
             {notifications &&
             <Fragment>
-              <Badge badgeContent={notifications.length} color="secondary">
+              <Badge badgeContent={uncheckedNotificationCount} color="secondary">
               <NotificationsIcon/>
               </Badge>
                 通知
@@ -304,7 +316,7 @@ export default function Header() {
             {notifications &&
               <Box className={classes.notificationslist}>
                 <NotifiCationList
-                notifications={notifications}
+                  notifications={notifications}
                 />
               </Box>
             }
