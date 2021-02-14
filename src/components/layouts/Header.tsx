@@ -97,6 +97,8 @@ export default function Header() {
 
   const handleNotificationOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setNotificationEl(event.currentTarget);
+    check()
+    getUncheckedNotificationsCount()
   };
 
   const handleCloseNotification = () => {
@@ -155,6 +157,32 @@ export default function Header() {
     });  
   }, [setNotifications, firebaseAuthUser]);
 
+  useEffect(() => {
+    getUncheckedNotificationsCount()
+  }, [setUncheckedNotificationCount, firebaseAuthUser]);
+
+  const getUncheckedNotificationsCount = () => {
+    auth.onAuthStateChanged((user) => {
+      if (firebaseAuthUser !== null && user !== null) {
+        NotificationsRepository.getUncheckedNotificationsCount(user?.uid)
+        .then((results)=>{
+          setUncheckedNotificationCount(results)
+        })   
+        .catch((data) =>{
+          console.log(data)
+        })
+      }
+    });  
+  }
+
+  const check = () => {
+    auth.onAuthStateChanged((user) => {
+      if (firebaseAuthUser !== null && user !== null) {
+        NotificationsRepository.checkNotifications(user?.uid)
+      }
+    });  
+  }
+
   const headerLinks = [
     { name: '地図', url: '/', icon: <PinDropIcon/>},
     { name: '投稿', url: '/posts/new', icon: <CreateIcon/>},
@@ -189,7 +217,7 @@ export default function Header() {
         {firebaseAuthUser?
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
-            <ListItem button>
+            <ListItem button　onClick={check}>
               {notifications &&
                 <Badge badgeContent={uncheckedNotificationCount} color="secondary">
                   <NotificationsIcon/>
@@ -283,7 +311,7 @@ export default function Header() {
             >
             <div className={classes.sticky}>
               <Typography align="center">
-                <Box py={1} style={{width: 500}}>お知らせ</Box>
+                <Box py={1} style={{ width: 500 }}>お知らせ</Box>
                 <Divider/>
               </Typography>
             </div>
