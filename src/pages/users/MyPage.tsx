@@ -363,6 +363,7 @@ const MyPage = (props: Props) => {
                       modalTitle={`${user.name}がフォロー`}
                       title={`フォロー${followings.length}`}
                       users={followings}
+                      noText={"フォローなし"}
                     />
                   </Grid>
                   <Grid xs={4} md={2}item>
@@ -370,6 +371,7 @@ const MyPage = (props: Props) => {
                     　title={`フォロワー${followers.length}`}
                       modalTitle={`${user.name}のフォロワー`}
                       users={followers}
+                      noText={"フォロワーはいません"}
                     />
                   </Grid>
                   <Grid xs={false} md={6}/>

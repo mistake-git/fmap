@@ -12,6 +12,7 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import NotificationModel from '../../models/NotificationModel';
 import moment from 'moment'
 import 'moment/locale/ja'
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,19 +87,22 @@ export default function NotifiCationList(props: Props) {
 
   return (
     <List className={classes.root} disablePadding>
-      {props.notifications && props.notifications.map((notification) => {
+      {props.notifications && props.notifications.length >= 1 ? 
+        props.notifications.map((notification) => {
         return(
           <Fragment>
-          <ListItem button disableGutters>
-            <ListItemAvatar>
-              <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
-            </ListItemAvatar>
-            {judgeNotification(notification)}
-          </ListItem>  
-          <Divider/>
-        </Fragment>
-        )
-      })}
+            <ListItem button disableGutters>
+              <ListItemAvatar>
+                <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
+              </ListItemAvatar>
+              {judgeNotification(notification)}
+            </ListItem>  
+            <Divider/>
+          </Fragment>
+          )
+        }):
+        <Box textAlign="center">通知がありません</Box>
+        }
     </List>
   );
 }

@@ -46,7 +46,7 @@ const [posts, setPosts] = useState<PostModel[] | null>(null)
               <Divider/>
             </Box>
             <Grid container spacing={2}>
-              {posts ?
+              {posts && posts.length >= 1 ?　
                 posts.map((post) => {
                   return(
                     <Grid item xs={12} sm={6} md={4}>
@@ -54,7 +54,8 @@ const [posts, setPosts] = useState<PostModel[] | null>(null)
                     </Grid>
                   )
                 }):
-              <div>釣果がありません</div>}
+                <Box textAlign="center">釣果がありません</Box>
+              }
             </Grid>
           </Container>
           </Template>:

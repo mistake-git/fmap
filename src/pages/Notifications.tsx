@@ -72,9 +72,9 @@ const Notifications = (props: Props) => {
         >
           <Grid item xs={12} sm={10} md={8} lg={5} >
             {notifications && 
-            <NotifiCationList
-              notifications={notifications}
-            />
+              <NotifiCationList
+                notifications={notifications}
+              />
             }  
           </Grid>
         </Grid>

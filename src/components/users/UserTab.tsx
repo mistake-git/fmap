@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Divider, Grid } from '@material-ui/core';
+import { Box, Divider, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import PostCard from '../posts/PostCard';
 import PieChart from '../chart/PieChart';
@@ -82,28 +82,34 @@ export default function UserTab(props: Props) {
       <Divider/>
       <TabPanel value={value} index={0}>
       <Grid container style={{ marginTop: "1rem" }}>
-          {props.posts.map((post: PostModel) => {
-            return(
-              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                <PostCard 
-                  post={ post }
-                />
-              </Grid>
-            )
-          })}
+          {props.posts.length >= 1? 
+            props.posts.map((post: PostModel) => {
+              return(
+                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                  <PostCard 
+                    post={ post }
+                  />
+                </Grid>
+              )
+            }):
+          <Box textAlign="center">釣果がありません</Box>
+          }
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Grid container style={{ marginTop: "1rem" }}>
-          {props.likesPosts.map((post: PostModel) => {
-            return(
-              <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
-                <PostCard 
-                  post={ post }
-                />
-              </Grid>
-            )
-          })}
+          {props.likesPosts.length >= 1?
+            props.likesPosts.map((post: PostModel) => {
+              return(
+                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                  <PostCard 
+                    post={ post }
+                  />
+                </Grid>
+              )
+            }):
+          <Box textAlign="center">釣果がありません</Box>
+          }
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>

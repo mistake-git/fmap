@@ -97,14 +97,14 @@ const Feed = () => {
               loader={loader}>
                 <Grid container>
                 {
-                  posts ? posts.map((post) => {
+                  posts && posts.length >= 1 ? posts.map((post) => {
                     return(
                       <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} >
                         <PostCard post={post} key={post.id}/>
                       </Grid>
                     )
                   }):
-                  <div>釣果がありません</div>
+                  <Box textAlign="center">釣果がありません</Box>
                 }
               </Grid>
             </InfiniteScroll>

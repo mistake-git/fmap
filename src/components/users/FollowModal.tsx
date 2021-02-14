@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Divider, List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
+import { Box, Divider, List, ListItem, ListItemAvatar, ListItemText, makeStyles } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import UserModel from '../../models/UserModel';
 import { Link } from 'react-router-dom';
@@ -27,6 +27,7 @@ interface Props{
   title: string
   modalTitle: string
   users: UserModel[] | null
+  noText: string
 }
 
 export default function FollowModal(props: Props) {
@@ -56,7 +57,7 @@ export default function FollowModal(props: Props) {
        <Divider/>
         <List className={classes.modalContent}>
           {
-            props.users? props.users.map((user) => {
+            props.users && props.users.length ? props.users.map((user) => {
               return(
                 <Link to={`/mypages/${user.uid}`} onClick={handleClose} className={classes.link}>
                   <ListItem>
@@ -67,7 +68,8 @@ export default function FollowModal(props: Props) {
                   </ListItem>
                 </Link>
               )
-            }):<div>ユーザーがいません</div>
+            })
+            :<Box textAlign="center">{props.noText}</Box>
           }
         </List>
         <Divider/>
