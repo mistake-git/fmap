@@ -101,7 +101,7 @@ export default function NotifiCationList(props: Props) {
           </Fragment>
           )
         }):
-        <Box textAlign="center">通知がありません</Box>
+        <Box textAlign="center" my={5}>通知がありません</Box>
         }
     </List>
   );

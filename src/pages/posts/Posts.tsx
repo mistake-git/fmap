@@ -91,7 +91,7 @@ const Posts = () => {
                       </Grid>
                     )
                   }):
-                  <Box textAlign="center">釣果がありません</Box>
+                  <Box textAlign="center" my={5}>釣果がありません</Box>
                 }
               </Grid>
             </InfiniteScroll>

@@ -92,7 +92,7 @@ export default function UserTab(props: Props) {
                 </Grid>
               )
             }):
-          <Box textAlign="center">釣果がありません</Box>
+          <Box textAlign="center" mx="auto" my={5}>釣果がありません</Box>
           }
         </Grid>
       </TabPanel>
@@ -108,7 +108,7 @@ export default function UserTab(props: Props) {
                 </Grid>
               )
             }):
-          <Box textAlign="center">釣果がありません</Box>
+          <Box textAlign="center" mx="auto" my={5}>釣果がありません</Box>
           }
         </Grid>
       </TabPanel>

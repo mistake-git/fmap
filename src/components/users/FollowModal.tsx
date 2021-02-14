@@ -69,7 +69,7 @@ export default function FollowModal(props: Props) {
                 </Link>
               )
             })
-            :<Box textAlign="center">{props.noText}</Box>
+            :<Box textAlign="center"　my={5}>{props.noText}</Box>
           }
         </List>
         <Divider/>
