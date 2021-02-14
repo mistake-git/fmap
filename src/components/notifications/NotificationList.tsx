@@ -49,7 +49,7 @@ export default function NotifiCationList(props: Props) {
 
   const visitor = (notification: NotificationModel) => {
     return(
-      <Link to={`${notification.visitor.uid}`} className={classes.textDecorationNone}>{`${notification.visitor.name}`}</Link>
+      <Link to={`/mypages/${notification.visitor.uid}`} className={classes.textDecorationNone}>{`${notification.visitor.name}`}</Link>
     )
   }
 
