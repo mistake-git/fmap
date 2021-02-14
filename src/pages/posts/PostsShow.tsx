@@ -10,7 +10,6 @@ import CommentContainer from "../../components/comments/CommentContainer";
 import update from 'react-addons-update'
 import PostModel from "../../models/PostModel";
 import UserModel from "../../models/UserModel";
-import Loading from "../../components/layouts/Loading";
 import LikeModel from "../../models/LikeModel";
 import LikesUsersGroup from "../../components/likes/LikesUsersGroup";
 import { Favorite } from "@material-ui/icons";

@@ -85,7 +85,6 @@ export default function Header() {
   const notificationId = notificationOpen ? 'simple-popover' : undefined;
   const [notifications, setNotifications]  = useState<NotificationModel[] | null>(null);
   const [uncheckedNotificationCount, setUncheckedNotificationCount] = useState<number>(0);
-  
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -98,7 +97,6 @@ export default function Header() {
 
   const handleNotificationOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setNotificationEl(event.currentTarget);
-    checkNotifications()
   };
 
   const handleCloseNotification = () => {
@@ -149,8 +147,6 @@ export default function Header() {
         getNotifications(user?.uid)
         .then((results)=>{
           setNotifications(results)
-          const count = getUncheckedNotificationCount(results)
-          setUncheckedNotificationCount(count)
         })   
         .catch((data) =>{
           console.log(data)
@@ -158,28 +154,6 @@ export default function Header() {
       }
     });  
   }, [setNotifications, firebaseAuthUser]);
-
-  const checkNotifications = () =>{
-    auth.onAuthStateChanged((user) => {
-      if (firebaseAuthUser !== null && user !== null) {
-        NotificationsRepository.checkNotifications(user?.uid)
-        .then((results)=>{
-          const count = getUncheckedNotificationCount(results)
-          setUncheckedNotificationCount(count)
-        })      
-        .catch((data) =>{
-          console.log(data)
-        })
-      }
-    });  
-  }
-
-  const getUncheckedNotificationCount = (notifications: NotificationModel[]) => {
-    const uncheckedNotifications = notifications.map((notification)=>{
-      return notification.checked === false
-    })
-    return uncheckedNotifications.length
-  }
 
   const headerLinks = [
     { name: '地図', url: '/', icon: <PinDropIcon/>},
@@ -215,7 +189,7 @@ export default function Header() {
         {firebaseAuthUser?
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
-            <ListItem button onClick={checkNotifications}>
+            <ListItem button>
               {notifications &&
                 <Badge badgeContent={uncheckedNotificationCount} color="secondary">
                   <NotificationsIcon/>
