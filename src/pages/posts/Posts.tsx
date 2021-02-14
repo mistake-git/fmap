@@ -5,7 +5,7 @@ import PostCard from "../../components/posts/PostCard"
 import PostModel from "../../models/PostModel";
 import SearchForm from "../../components/layouts/SearchForm"
 import InfiniteScroll  from "react-infinite-scroller"
-import LoadingDots from "../../components/layouts/ContentsLoading";
+import ContentsLoading from "../../components/layouts/ContentsLoading";
 import PostsRepository from "../../repositories/PostsRepository";
 
 const useStyles = makeStyles(() => ({
@@ -59,7 +59,7 @@ const Posts = () => {
     }
   }
 
-  const loader = <LoadingDots/>;
+  const loader = <ContentsLoading/>;
 
   return (
     <Fragment>
@@ -84,14 +84,13 @@ const Posts = () => {
               loader={loader}>
                 <Grid container>
                 {
-                  posts && posts.length >= 1 ? posts.map((post) => {
+                  posts && posts.map((post) => {
                     return(
                       <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} >
                         <PostCard post={post} key={post.id}/>
                       </Grid>
                     )
-                  }):
-                  <Box textAlign="center" my={5}>釣果がありません</Box>
+                  })
                 }
               </Grid>
             </InfiniteScroll>

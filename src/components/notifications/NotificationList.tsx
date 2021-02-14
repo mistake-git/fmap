@@ -12,9 +12,7 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import NotificationModel from '../../models/NotificationModel';
 import moment from 'moment'
 import 'moment/locale/ja'
-import { Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import ContentsLoading from '../layouts/ContentsLoading';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -143,8 +141,7 @@ export default function NotifiCationList(props: Props) {
 
   return (
     <List className={classes.root}>
-      {props.notifications?
-        props.notifications.length >= 1 ? 
+      {props.notifications &&
         props.notifications.map((notification) => {
         return(
           <Fragment>
@@ -159,9 +156,8 @@ export default function NotifiCationList(props: Props) {
             </Link>
           </Fragment>
           )
-        }):
-        <Box textAlign="center" my={3}>通知がありません</Box>
-        :<ContentsLoading/>}
+        })
+      }
     </List>
   );
 }

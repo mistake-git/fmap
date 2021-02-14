@@ -7,6 +7,7 @@ import NotificationsRepository from "../repositories/NotificationsRepository";
 import NotificationModel from "../models/NotificationModel";
 import auth from "../plugins/firebase";
 import { AuthContext } from "../Auth";
+import ContentsLoading from "../components/layouts/ContentsLoading";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -71,10 +72,10 @@ const Notifications = (props: Props) => {
           justify="center"
         >
           <Grid item xs={12} sm={10} md={8} lg={6} >
-            {notifications && 
+            {notifications ? 
               <NotifiCationList
                 notifications={notifications}
-              />
+              />:<ContentsLoading/>
             }  
           </Grid>
         </Grid>

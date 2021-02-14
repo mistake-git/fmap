@@ -82,7 +82,7 @@ export default function UserTab(props: Props) {
       <Divider/>
       <TabPanel value={value} index={0}>
       <Grid container style={{ marginTop: "1rem" }}>
-          {props.posts.length >= 1? 
+          {
             props.posts.map((post: PostModel) => {
               return(
                 <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
@@ -91,15 +91,14 @@ export default function UserTab(props: Props) {
                   />
                 </Grid>
               )
-            }):
-          <Box textAlign="center" mx="auto" my={5}>釣果がありません</Box>
+            })
           }
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Grid container style={{ marginTop: "1rem" }}>
-          {props.likesPosts.length >= 1?
-            props.likesPosts.map((post: PostModel) => {
+          {
+            props.likesPosts && props.likesPosts.map((post: PostModel) => {
               return(
                 <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
                   <PostCard 
@@ -107,8 +106,7 @@ export default function UserTab(props: Props) {
                   />
                 </Grid>
               )
-            }):
-          <Box textAlign="center" mx="auto" my={5}>釣果がありません</Box>
+            })
           }
         </Grid>
       </TabPanel>
