@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     note :{
       color: 'rgb(121, 75, 196)',
+    },
+    textDecorationNone:{
+      textDecoration: 'none'
     }
   }),
 );
@@ -46,7 +49,13 @@ export default function NotifiCationList(props: Props) {
 
   const visitor = (notification: NotificationModel) => {
     return(
-      <Link to={`${notification.visitor.uid}`}>{`${notification.visitor.name}`}</Link>
+      <Link to={`${notification.visitor.uid}`} className={classes.textDecorationNone}>{`${notification.visitor.name}`}</Link>
+    )
+  }
+
+  const yourPost = (notification: NotificationModel) => {
+    return(
+      <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
     )
   }
 
@@ -58,8 +67,7 @@ export default function NotifiCationList(props: Props) {
           <Fragment>
             {visitor(notification)}
             さんがあなたの
-            <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
-            】
+            {yourPost(notification)}
             の釣果にいいね！しました。
           </Fragment>
         }   
@@ -78,8 +86,7 @@ export default function NotifiCationList(props: Props) {
             <Fragment>
               {visitor(notification)}
               さんがあなたの
-              <Link to={`/posts/${notification.post.id}`}>{`【${notification.post.name}`}</Link>
-              】
+              {yourPost(notification)}
               の釣果にコメントしました:{`${notification.comment.content}`}
             </Fragment>
           }   
@@ -106,19 +113,17 @@ export default function NotifiCationList(props: Props) {
       </Fragment>
     )
   }
-  
-  const judgeNotification = (notification: NotificationModel) => {
-    var action = notification.action;
-    switch(action){
-    　case "like":
-        like(notification)
-    　break;
-    　case "comment":
-    　  comment(notification)
-    　break;
-    　case "follow":
-        follow(notification)
-    　break;
+
+  const judgeNotificationType = (notification: NotificationModel) =>{
+    const action = notification.action
+    if (action === 'like') {
+      return like(notification)
+    } else if (action === 'comment') {
+      return comment(notification)
+    } else if (action === 'follow') {
+     return follow(notification)
+    } else {
+      return
     }
   }
 
@@ -132,7 +137,7 @@ export default function NotifiCationList(props: Props) {
               <ListItemAvatar>
                 <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} />
               </ListItemAvatar>
-              {judgeNotification(notification)}
+              {judgeNotificationType(notification)}
             </ListItem>  
             <Divider/>
           </Fragment>
