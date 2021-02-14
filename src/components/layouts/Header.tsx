@@ -153,7 +153,7 @@ export default function Header() {
           setUncheckedNotificationCount(count)
         })   
         .catch((data) =>{
-          console.log(data.user)
+          console.log(data)
         })
       }
     });  
