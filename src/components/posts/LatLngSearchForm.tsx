@@ -42,42 +42,42 @@ export default function LatLngSearchForm(props: Props) {
       catch (error) {
         console.log(error.message);
       }
-    }}
-    render={({ submitForm,  isSubmitting, isValid,}) => (
-    <Form>
-      <Grid container>
-        <Grid item xs={9} sm={10} md={11}>
-          <Field 
-          name="address"
-          type="text"
-          placeholder={props.placeHolder}
-          size="small"
-          variant="outlined"
-          fullWidth
-          component={TextField}
-          InputProps={{
-            startAdornment: 
-            <InputAdornment position="end">
-              <SearchIcon className={classes.iconColor}/>
-            </InputAdornment>,
-          }}
-        />
+    }}>
+    {({ submitForm,  isSubmitting, isValid,}) => (
+      <Form>
+        <Grid container>
+          <Grid item xs={9} sm={10} md={11}>
+            <Field 
+              name="address"
+              type="text"
+              placeholder={props.placeHolder}
+              size="small"
+              variant="outlined"
+              fullWidth
+              component={TextField}
+              InputProps={{
+                startAdornment: 
+                <InputAdornment position="end">
+                  <SearchIcon className={classes.iconColor}/>
+                </InputAdornment>,
+              }}
+            />
+          </Grid>
+          <Grid xs={3} sm={2} md={1}>
+            <Box textAlign="center">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={submitForm}
+                disabled={!isValid || isSubmitting}　
+              >
+                検索
+              </Button>
+            </Box>
+          </Grid>
         </Grid>
-        <Grid xs={3} sm={2} md={1}>
-          <Box textAlign="center">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={submitForm}
-              disabled={!isValid || isSubmitting}　
-            >
-              検索
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Form>
+      </Form>
     )}
-  />
+  </Formik>
   );
 }

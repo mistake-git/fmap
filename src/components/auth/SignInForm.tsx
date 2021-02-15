@@ -36,7 +36,8 @@ const SignInForm = (props: Props) => {
           console.log(error.message);
         }
       }}
-      render={({ submitForm, isSubmitting, isValid }) => (
+    >
+      {({ submitForm, isSubmitting, isValid }) => (
         <Form>
           {isSubmitting && <LinearProgress />}
           <FormControl margin="dense" fullWidth>
@@ -49,6 +50,8 @@ const SignInForm = (props: Props) => {
               size="small"
               component={TextField}
             />
+
+        
           </FormControl>
           <FormControl margin="dense"  fullWidth>
             <Field
@@ -85,7 +88,7 @@ const SignInForm = (props: Props) => {
           </FormControl>
         </Form>
       )}
-    />
+    </Formik>
   );
 };
 

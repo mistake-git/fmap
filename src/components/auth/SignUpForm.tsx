@@ -62,8 +62,8 @@ const SignUpForm = (props: Props) => {
         catch (error) {
           console.log(error.message);
         }
-      }}
-      render={({ submitForm, isSubmitting, isValid }) => (
+      }}>
+      {({ submitForm, isSubmitting, isValid }) => (
         <Form>
           {isSubmitting && <LinearProgress />}
 
@@ -103,7 +103,7 @@ const SignUpForm = (props: Props) => {
           </FormControl>
         </Form>
       )}
-    />
+    </Formik>
   );
 };
 

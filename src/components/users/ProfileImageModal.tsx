@@ -142,45 +142,45 @@ export default function ProfileUserModal(props: Props) {
             catch (error) {
               console.log(error.message);
             }
-          }}
-          render={({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
-          <Form>
-            <DialogContent>
-              <Field 
-                required
-                name="image"
-                accept="image" 
-                multiple={false}
-                id="icon-button-file" 
-                type="file"
-                onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
-                onClick={onClick}
-              />
-            </DialogContent>
-            <DialogActions>         
-              <Button variant="contained"　onClick={handleClose}>
-                キャンセル
-              </Button>
-              <Button 
-                variant="contained"　
-                onClick={handleDestroyProfile}
-                color="secondary" 
-              >
-                削除
-              </Button>
-              <Button 
-                variant="contained" 
-                color="primary" 
-                autoFocus　
-                onClick={submitForm}
-                disabled={!isValid || isSubmitting}　
-              >
-                更新
-              </Button>
-            </DialogActions>
-          </Form>
+          }}>
+          {({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
+            <Form>
+              <DialogContent>
+                <Field 
+                  required
+                  name="image"
+                  accept="image" 
+                  multiple={false}
+                  id="icon-button-file" 
+                  type="file"
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
+                  onClick={onClick}
+                />
+              </DialogContent>
+              <DialogActions>         
+                <Button variant="contained"　onClick={handleClose}>
+                  キャンセル
+                </Button>
+                <Button 
+                  variant="contained"　
+                  onClick={handleDestroyProfile}
+                  color="secondary" 
+                >
+                  削除
+                </Button>
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  autoFocus　
+                  onClick={submitForm}
+                  disabled={!isValid || isSubmitting}　
+                >
+                  更新
+                </Button>
+              </DialogActions>
+            </Form>
           )}
-        />
+        </Formik>
       </Dialog>
     </div>
   );

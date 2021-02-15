@@ -53,8 +53,8 @@ export default function PasswordEdit(props: Props) {
             const severity = 'error'
             props.handleFlash(message,severity )
           }
-        }}
-        render={({ submitForm, isSubmitting, isValid }) => (
+        }}>
+        {({ submitForm, isSubmitting, isValid }) => (
           <Form>
             {isSubmitting && <LinearProgress />}
             <FormControl margin="dense"　fullWidth>
@@ -89,7 +89,7 @@ export default function PasswordEdit(props: Props) {
             </FormControl>
           </Form>
         )}
-      />
+      </Formik>
     </AuthTemplate>
   )
 }

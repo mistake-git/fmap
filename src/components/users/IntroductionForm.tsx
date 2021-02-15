@@ -74,8 +74,8 @@ export default function IntroductionForm(props: Props) {
               const severity = 'error'
               props.handleFlash(message,severity)
             }
-          }}
-          render={({ submitForm, isSubmitting, isValid }) => (
+          }}>
+          {({ submitForm, isSubmitting, isValid }) => (
             <Form>
               <Field
                 fullWidth
@@ -117,7 +117,7 @@ export default function IntroductionForm(props: Props) {
               </Grid>
             </Form>
           )}
-        />
+        </Formik>
       </Collapse>
     </div>
   );

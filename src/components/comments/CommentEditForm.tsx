@@ -31,67 +31,66 @@ interface Props {
 
 export default function CommentEditForm(props: Props) {
   const classes = useStyles();
-  return (
-    <div>
-      　<Formik
-      　  enableReinitialize={true}
-          initialValues={
-            {content: props.comment.content}
+    return (
+    <Formik
+      enableReinitialize={true}
+      initialValues={
+        {content: props.comment.content}
+      }
+      onSubmit={async value => {
+        try {
+          const comment ={
+            id: props.comment.id,
+            content: value.content
           }
-          onSubmit={async value => {
-            try {
-              const comment ={
-                id: props.comment.id,
-                content: value.content
-              }
-              props.handleFormClose()
-              props.updateComment(comment)
-            } catch (error) {
-              console.log(error.message);
-            }
-          }}
-          render={({ submitForm, isSubmitting, isValid }) => (
-            <Form>
-              <Field
-                fullWidth
-                required
-                style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                name="content"
-                placeholder="コメントを編集"
-                type="text"
-                variant="outlined"
-                component={TextField}
-                multiline={true}
-                rows={4}
-              />
-              <Grid container justify="flex-end">
-                <Grid>
-                  <Fragment>
-                    <Button
-                      className={classes.marginRight}
-                      variant="contained"
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      type="submit"
-                      onClick={props.handleFormClose}
-                    >
-                      キャンセル
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={submitForm}
-                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                      type="submit"
-                      disabled={!isValid || isSubmitting}
-                    >
-                      更新
-                    </Button>                    
-                  </Fragment>
-                </Grid>
-              </Grid>
-            </Form>
-          )}
-        />
-    </div>
+          props.handleFormClose()
+          props.updateComment(comment)
+        } catch (error) {
+          console.log(error.message);
+        }
+      }}
+    >
+      {({ submitForm, isSubmitting, isValid }) => (
+        <Form>
+          <Field
+            fullWidth
+            required
+            style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+            name="content"
+            placeholder="コメントを編集"
+            type="text"
+            variant="outlined"
+            component={TextField}
+            multiline={true}
+            rows={4}
+          />
+          <Grid container justify="flex-end">
+            <Grid>
+              <Fragment>
+                <Button
+                  className={classes.marginRight}
+                  variant="contained"
+                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                  type="submit"
+                  onClick={props.handleFormClose}
+                >
+                  キャンセル
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={submitForm}
+                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                  type="submit"
+                  disabled={!isValid || isSubmitting}
+                >
+                  更新
+                </Button>                    
+              </Fragment>
+            </Grid>
+          </Grid>
+        </Form>
+      )}
+    </Formik>
   );
 }

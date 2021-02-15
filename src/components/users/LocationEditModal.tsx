@@ -65,7 +65,6 @@ export default function LocationEditModal(props: Props) {
               const user ={
                 address: value.address
               }
-            await
               props.updateUser(user)
               const message = '活動エリアを編集しました'
               const severity = 'success'
@@ -78,8 +77,8 @@ export default function LocationEditModal(props: Props) {
               const severity = 'success'
               props.handleFlash(message,severity)          
             }
-          }}
-          render={({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
+          }}>
+          {({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
           <Form>
             <DialogContent>
               <Field
@@ -110,7 +109,7 @@ export default function LocationEditModal(props: Props) {
             </DialogActions>
           </Form>
           )}
-        />
+        </Formik>
       </Dialog>
     </div>
   );

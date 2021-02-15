@@ -80,7 +80,6 @@ export default function CommentForm(props: Props) {
                   content: value.content,
                   user_id: props.currentUser.id
                 }
-              await 
                 props.createComment(comment);
                 setButtonOpen(false);
                 resetForm({})
@@ -88,8 +87,8 @@ export default function CommentForm(props: Props) {
               catch (error) {
                 console.log(error.message);
               }
-            }}
-            render={({ submitForm, isSubmitting, isValid }) => (
+            }}>
+            {({ submitForm, isSubmitting, isValid }) => (
               <Form>
                 {isSubmitting &&<LinearProgress/>}
                 <Field
@@ -131,7 +130,7 @@ export default function CommentForm(props: Props) {
                 </Grid>
               </Form>
             )}
-          />
+          </Formik>
         </Fragment>
       }
     </Fragment>

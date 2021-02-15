@@ -41,42 +41,42 @@ export default function SearchForm(props: Props) {
       catch (error) {
         console.log(error.message);
       }
-    }}
-    render={({ submitForm,  isSubmitting, isValid,}) => (
-    <Form>
-      <Grid container spacing={1}>
-        <Grid item xs={9} sm={10} md={11}>
-          <Field 
-          name="search"
-          type="text"
-          placeholder={props.placeHolder}
-          size="small"
-          variant="outlined"
-          fullWidth
-          component={TextField}
-          InputProps={{
-            startAdornment: 
-            <InputAdornment position="end">
-              <SearchIcon className={classes.iconColor}/>
-            </InputAdornment>,
-          }}
-        />
+    }}>
+    {({ submitForm,  isSubmitting, isValid,}) => (
+      <Form>
+        <Grid container spacing={1}>
+          <Grid item xs={9} sm={10} md={11}>
+            <Field 
+            name="search"
+            type="text"
+            placeholder={props.placeHolder}
+            size="small"
+            variant="outlined"
+            fullWidth
+            component={TextField}
+            InputProps={{
+              startAdornment: 
+              <InputAdornment position="end">
+                <SearchIcon className={classes.iconColor}/>
+              </InputAdornment>,
+            }}
+          />
+          </Grid>
+          <Grid item xs={3} sm={2} md={1}>
+            <Button
+              fullWidth 
+              variant="contained"
+              color="primary"
+              onClick={submitForm}
+              disabled={!isValid || isSubmitting}　
+            >
+              検索
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={3} sm={2} md={1}>
-          <Button
-            fullWidth 
-            variant="contained"
-            color="primary"
-            onClick={submitForm}
-            disabled={!isValid || isSubmitting}　
-          >
-            検索
-          </Button>
-        </Grid>
-      </Grid>
-    </Form>
-    )}
-  />
+      </Form>
+      )}
+    </Formik>
   );
 }
 

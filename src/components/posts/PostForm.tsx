@@ -283,8 +283,8 @@ export default function PostForm(props: Props) {
               catch (error) {
                 console.log(error.message);
               }
-            }}
-            render={({ submitForm, isSubmitting, isValid, setFieldValue}) => (
+            }}>
+            {({ submitForm, isSubmitting, isValid, setFieldValue}) => (
               <Form>
                 <Grid container className={classes.root} spacing={3}>
                   {isSubmitting && <LinearProgress />}
@@ -557,7 +557,7 @@ export default function PostForm(props: Props) {
                 </Grid>
               </Form>
             )}
-          />
+          </Formik>
         </CardContent>   
 			</Card>
 		</Fragment>

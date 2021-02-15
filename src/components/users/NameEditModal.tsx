@@ -80,38 +80,38 @@ export default function NameEditModal(props: Props) {
               const severity = 'success'
               props.handleFlash(message,severity)          
             }
-          }}
-          render={({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
-          <Form>
-            <DialogContent>
-              <Field
-                style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                name='name'
-                label='名前'
-                type='text'
-                fullWidth
-                variant="outlined"
-                size="small"
-                component={TextField}
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button variant="contained"　onClick={handleClose}>
-                キャンセル
-              </Button>
-              <Button 
-                variant="contained" 
-                color="primary" 
-                autoFocus　
-                onClick={submitForm}
-                disabled={!isValid || isSubmitting}　
-              >
-                更新
-              </Button>
-            </DialogActions>
-          </Form>
+          }}>
+          {({ submitForm, setFieldValue, isSubmitting, isValid,}) => (
+            <Form>
+              <DialogContent>
+                <Field
+                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                  name='name'
+                  label='名前'
+                  type='text'
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  component={TextField}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button variant="contained"　onClick={handleClose}>
+                  キャンセル
+                </Button>
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  autoFocus　
+                  onClick={submitForm}
+                  disabled={!isValid || isSubmitting}　
+                >
+                  更新
+                </Button>
+              </DialogActions>
+            </Form>
           )}
-        />
+        </Formik>
       </Dialog>
     </div>
   );
