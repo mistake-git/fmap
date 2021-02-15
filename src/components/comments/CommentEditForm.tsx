@@ -65,7 +65,7 @@ export default function CommentEditForm(props: Props) {
             rows={4}
           />
           <Grid container justify="flex-end">
-            <Grid>
+            <Grid item>
               <Fragment>
                 <Button
                   className={classes.marginRight}

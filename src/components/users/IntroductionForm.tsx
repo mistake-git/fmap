@@ -92,7 +92,7 @@ export default function IntroductionForm(props: Props) {
                 onClick={() => setFormOpen(true)}
               />
               <Grid container justify="flex-end">
-                <Grid>
+                <Grid item>
                   <Fragment>
                     <Button
                       className={classes.marginRight}

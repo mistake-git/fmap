@@ -63,7 +63,7 @@ export default function LatLngSearchForm(props: Props) {
               }}
             />
           </Grid>
-          <Grid xs={3} sm={2} md={1}>
+          <Grid item xs={3} sm={2} md={1}>
             <Box textAlign="center">
               <Button
                 variant="contained"

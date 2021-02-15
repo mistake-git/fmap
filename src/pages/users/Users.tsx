@@ -5,8 +5,8 @@ import UserModel from "../../models/UserModel";
 import UserCard from "../../components/users/UserCard";
 import SearchForm from "../../components/layouts/SearchForm";
 import InfiniteScroll  from "react-infinite-scroller"
-import LoadingDots from "../../components/layouts/ContentsLoading";
 import UsersRepository from "../../repositories/UsersRepository";
+import ContentsLoading from "../../components/layouts/ContentsLoading";
 
 const useStyles = makeStyles(() => ({
   countText:{
@@ -57,8 +57,6 @@ const Users = () => {
     }
   }
 
-  const loader = <LoadingDots/>;
-
   return (
     <Fragment>
       <Template>
@@ -79,13 +77,13 @@ const Users = () => {
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
-              loader={loader}>
+              loader={<ContentsLoading key={0}/>}>
                 <Grid container style={{ marginTop: "1em" }}>
                 {
                   users ? users.map((user) => {
                     return(
-                      <Grid xs={6} sm={4} md={3} lg={2}>
-                        <UserCard user={user} key={user.id}/>
+                      <Grid xs={6} sm={4} md={3} lg={2} item key={user.id}>
+                        <UserCard user={user} />
                       </Grid>
                     )
                   }):

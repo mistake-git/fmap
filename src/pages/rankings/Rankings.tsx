@@ -49,8 +49,8 @@ const [posts, setPosts] = useState<PostModel[] | null>(null)
               {posts &&
                 posts.map((post) => {
                   return(
-                    <Grid item xs={12} sm={6} md={4}>
-                      <PostCard post={post} key={post.id}/>
+                    <Grid item xs={12} sm={6} md={4} key={post.id}>
+                      <PostCard post={post} />
                     </Grid>
                   )
                 })

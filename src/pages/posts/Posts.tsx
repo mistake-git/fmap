@@ -59,8 +59,6 @@ const Posts = () => {
     }
   }
 
-  const loader = <ContentsLoading/>;
-
   return (
     <Fragment>
       <Template>
@@ -81,13 +79,13 @@ const Posts = () => {
             <InfiniteScroll
               loadMore={loadMore} 
               hasMore={hasMore}
-              loader={loader}>
+              loader={<ContentsLoading key={0}/>}>
                 <Grid container>
                 {
                   posts && posts.map((post) => {
                     return(
-                      <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} >
-                        <PostCard post={post} key={post.id}/>
+                      <Grid xs={12} sm={6} md={4} style={{ marginTop: "1em" }} key={post.id} item>
+                        <PostCard post={post}/>
                       </Grid>
                     )
                   })

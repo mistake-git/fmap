@@ -102,7 +102,7 @@ export default function CommentForm(props: Props) {
                   onClick={() => setButtonOpen(true)}
                 />
                 <Grid container justify="flex-end">
-                  <Grid>
+                  <Grid item>
                     {buttonOpen &&
                     <Fragment>
                       <Button
