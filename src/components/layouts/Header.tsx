@@ -311,7 +311,7 @@ export default function Header() {
             >
             <div className={classes.sticky}>
               <Typography align="center">
-                <Box py={1} style={{ width: 500 }}>お知らせ</Box>
+                <Box py={1} style={{ width: 500, background: "#ffffff" }}>お知らせ</Box>
                 <Divider/>
               </Typography>
             </div>
