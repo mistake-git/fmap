@@ -2,7 +2,7 @@ import { Box, createStyles, Grid, makeStyles, Typography } from "@material-ui/co
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import Template from "../components/layouts/Template";
 import * as H from 'history';
-import NotifiCationList from "../components/notifications/NotificationList";
+import NotifiCationsList from "../components/notifications/NotificationsList";
 import NotificationsRepository from "../repositories/NotificationsRepository";
 import NotificationModel from "../models/NotificationModel";
 import auth from "../plugins/firebase";
@@ -73,7 +73,7 @@ const Notifications = (props: Props) => {
         >
           <Grid item xs={12} sm={10} md={8} lg={6} >
             {notifications ? 
-              <NotifiCationList
+              <NotifiCationsList
                 notifications={notifications}
               />:<ContentsLoading/>
             }  

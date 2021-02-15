@@ -13,6 +13,7 @@ import NotificationModel from '../../models/NotificationModel';
 import moment from 'moment'
 import 'moment/locale/ja'
 import { Link } from 'react-router-dom';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: theme.spacing(3),
     },
     comment:{
-      color:'gray',
+      color: '#FFCE56',
       width: theme.spacing(3),
       height: theme.spacing(3)
     },
@@ -141,7 +142,7 @@ export default function NotifiCationList(props: Props) {
 
   return (
     <List className={classes.root}>
-      {props.notifications &&
+      {props.notifications.length ?
         props.notifications.map((notification) => {
         return(
           <Fragment>
@@ -156,7 +157,7 @@ export default function NotifiCationList(props: Props) {
             </Link>
           </Fragment>
           )
-        })
+        }):<Box mx="auto" my={5}>通知はありません</Box>
       }
     </List>
   );

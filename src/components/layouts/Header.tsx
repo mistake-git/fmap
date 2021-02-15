@@ -25,7 +25,7 @@ import { CurrentUserContext } from '../../CurrentUser';
 import { Icon} from '@iconify/react';
 import fishIcon from '@iconify-icons/mdi/fish';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import NotifiCationList from '../notifications/NotificationList';
+import NotifiCationsList from '../notifications/NotificationsList';
 import NotificationModel from '../../models/NotificationModel';
 import NotificationsRepository from '../../repositories/NotificationsRepository';
 
@@ -317,7 +317,7 @@ export default function Header() {
             </div>
             {notifications &&
               <Box className={classes.notificationslist}>
-                <NotifiCationList
+                <NotifiCationsList
                   notifications={notifications}
                 />
               </Box>
