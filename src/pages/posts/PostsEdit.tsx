@@ -4,7 +4,6 @@ import { Grid} from "@material-ui/core";
 import Template from "../../components/layouts/Template";
 import PostForm from "../../components/posts/PostForm"
 import * as H from 'history';
-import Loading from "../../components/layouts/Loading";
 import NotFound from "../NotFound";
 import PostsRepository from "../../repositories/PostsRepository";
 import { CurrentUserContext } from "../../CurrentUser";
