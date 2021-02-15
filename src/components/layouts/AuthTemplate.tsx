@@ -25,9 +25,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold'
   },
   paper: {
-    margin: theme.spacing(5, 3),
     display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   avatar: {
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     verticalAlign: "middle",
     zIndex: 1,
-  }
+  },
 }));
 
 interface Props {
@@ -54,31 +53,38 @@ export default function AuthTemplate(props: Props) {
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={5} md={7} className={classes.image}/>
-      <Grid item xs={12} sm={7} md={5} component={Paper} elevation={6} square>
-        <Container maxWidth="sm">
-          <div className={classes.paper}>
-            <Card>
-              <Container>
-                <CardContent>
-                  <Link to={'/'}　className={classes.link}>
-                    <Box textAlign="center" my={3}>
-                      <img src="../../logo.png"　alt="サイトロゴ" className={classes.logo}/>
-                    </Box>
-                  </Link>
-                  <Typography component="h1" variant="h5">
-                    <Box textAlign="center" my={2} className={classes.title}>
-                      {props.title}
-                    </Box>
-                  </Typography>
-                  {props.children}
-                </CardContent>
-              </Container>
-            </Card>
-            <Box mt={2}>
-              <Copyright />
-            </Box>
-          </div>
-        </Container>
+      <Grid item xs={12} sm={7} md={5} className={classes.paper}>
+       
+      <Grid 
+          container 
+          component="main" 
+          direction="row"
+          justify="center"
+        >
+          <Grid item xs={11} sm={10} md={9} lg={8} xl={7}>
+              <Card>
+                <Container>
+                  <CardContent>
+                    <Link to={'/'}　className={classes.link}>
+                      <Box textAlign="center" my={3}>
+                        <img src="../../logo.png"　alt="サイトロゴ" className={classes.logo}/>
+                      </Box>
+                    </Link>
+                    <Typography component="h1" variant="h5">
+                      <Box textAlign="center" my={2} className={classes.title}>
+                        {props.title}
+                      </Box>
+                    </Typography>
+                    {props.children}
+                  </CardContent>
+                </Container>
+              </Card>
+              <Box mt={2}>
+                <Copyright />
+              </Box>
+            </Grid>
+            </Grid>
+           
       </Grid>
     </Grid>
   );
