@@ -217,14 +217,14 @@ export default function Header() {
         {firebaseAuthUser?
         <Fragment>
           <Link to={`/notifications`}　className={classes.link}>
-            <ListItem button　onClick={check}>
-              {notifications &&
+            {notifications &&
+              <ListItem button　onClick={check}>
                 <Badge badgeContent={uncheckedNotificationCount} color="secondary">
                   <NotificationsIcon/>
                 </Badge>
-              }
-              <ListItemText primary="通知" />
-            </ListItem>
+                <ListItemText primary="通知" />
+              </ListItem>
+            }
           </Link>
           <Link to={`/mypages/${currentUser?.uid}`}　className={classes.link}>
             <ListItem button>
