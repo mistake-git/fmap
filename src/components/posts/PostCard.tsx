@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import PostModel from '../../models/PostModel';
 import { Avatar, Box, CardHeader } from '@material-ui/core';

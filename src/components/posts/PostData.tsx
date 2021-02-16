@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react';
 import Divider from '@material-ui/core/Divider';
 import { Box, Grid } from '@material-ui/core';
-import PostModel from '../../models/PostModel';
 import moment from 'moment'
 
 export default function PostData(props: any) {

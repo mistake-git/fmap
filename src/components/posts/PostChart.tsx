@@ -4,7 +4,6 @@ import BarChart  from "../chart/BarChart";
 import HorizontalBarChart  from "../chart/HorizontalBarChart";
 import LineChart  from "../chart/LineChart";
 import {  Divider, Grid, Typography } from "@material-ui/core";
-import PostModel from "../../models/PostModel";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
