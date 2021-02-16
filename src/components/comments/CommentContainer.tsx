@@ -40,6 +40,7 @@ export default function CommentContainer(props: Props) {
       }
       {props.comments.map((comment: CommentModel) => (
         <Comment
+          currentUser={props.currentUser}
           key={comment.id}
           comment={comment}
           post={props.post}

@@ -14,6 +14,7 @@ import PostModel from '../../models/PostModel';
 import CommentForm from '../../forms/CommentFormModel';
 import moment from 'moment'
 import 'moment/locale/ja'
+import UserModel from '../../models/UserModel';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
+  currentUser: UserModel | null,
   post: PostModel
   comment: CommentModel
   destroyComment: (id: number) => {}
@@ -78,12 +80,14 @@ export default function Comment(props: Props) {
                 </Typography>
               }
             />
-            <CommentMenu 
-              post={props.post} 
-              comment={comment} 
-              destroyComment={props.destroyComment}
-              handleFormOpen={handleFormOpen}
-            />
+            {props.currentUser && props.currentUser.id === comment.user.id &&
+              <CommentMenu 
+                post={props.post} 
+                comment={comment} 
+                destroyComment={props.destroyComment}
+                handleFormOpen={handleFormOpen}
+              />
+            }
           </ListItem>   
         </List>
         {formOpen &&
