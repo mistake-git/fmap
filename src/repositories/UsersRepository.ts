@@ -14,7 +14,7 @@ export default class UsersRepository {
     return result.data
   }
 
-  public static async getUser(userUid: string): Promise<UserModel> {
+  public static async getUser(userUid: string| undefined): Promise<UserModel> {
     const result = await myHttpClient.get(`/users/${userUid}`)
     return result.data
   }

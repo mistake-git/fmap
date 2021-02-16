@@ -3,6 +3,7 @@ import auth from "./plugins/firebase";
 import UserModel from "./models/UserModel";
 import UsersRepository from "./repositories/UsersRepository";
 import { AuthContext } from './Auth'
+import { User } from "firebase";
 
 const CurrentUserContext = createContext<any | null>(null);
 
@@ -13,7 +14,7 @@ const CurrentUserProvider = (props: any) => {
   useEffect(() => {
     if (firebaseAuthUser !== null) {
       auth.onAuthStateChanged((user) => {
-        UsersRepository.getUser(user!.uid)
+        UsersRepository.getUser(user?.uid)
         .then((results) => {
           console.log(results)
           setCurrentUser(results)
