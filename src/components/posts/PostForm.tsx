@@ -295,7 +295,7 @@ export default function PostForm(props: Props) {
                         multiple={false}
                         id="icon-button-file" 
                         type="file"
-                        enctype="multipart/form-data"
+                        encType="multipart/form-data"
                         onChange={(event: ChangeEvent<HTMLInputElement>) => onChange(event,setFieldValue)}
                         onClick={onClick}
                       />

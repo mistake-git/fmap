@@ -145,19 +145,17 @@ export default function NotifiCationList(props: Props) {
       {props.notifications.length ?
         props.notifications.map((notification) => {
         return(
-          <Fragment>
-            <Link to={'/notifications'} className={classes.defaultLink}>
-              <ListItem button>
-                <ListItemAvatar>
-                  <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} className={classes.avater}/>
-                </ListItemAvatar>
-                {judgeNotificationType(notification)}
-              </ListItem>  
-              <Divider/>
-            </Link>
+          <Fragment key={notification.id}>
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar alt={notification.visitor.name} src={notification.visitor.image_url} className={classes.avater}/>
+              </ListItemAvatar>
+              {judgeNotificationType(notification)}
+            </ListItem>  
+            <Divider/>
           </Fragment>
           )
-        }):<Box mx="auto" my={5}>通知はありません</Box>
+        }):<Box mx="auto" my={5}>お知らせはありません</Box>
       }
     </List>
   );

@@ -274,6 +274,7 @@ const GoogleMap = (props: Props) => {
             lat: props.currentUser && props.currentUser.latitude? props.currentUser.latitude: 35.9871612,
             lng: props.currentUser && props.currentUser.longitude? props.currentUser.longitude: 140.419659
           }}
+          yesIWantToUseGoogleMapApiInternals = {true}
           defaultZoom={8}
           options={createMapOptions}
           onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, props.posts)}

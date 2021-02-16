@@ -378,7 +378,7 @@ const MyPage = (props: Props) => {
                       noText={"フォロワーはいません"}
                     />
                   </Grid>
-                  <Grid xs={false} md={6}/>
+                  <Grid  xs={false} md={6} item/>
                   {user.id !== currentUser?.id &&
                     <Grid xs={4} md={2} item>
                       <FollowButton

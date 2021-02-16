@@ -18,14 +18,11 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-interface Props {
-  post: PostModel;
-}
-
 export default function PostData(props: any) {
   const classes = useStyles();
-  const datalist =[
+  const datalist = [
     {
+    key: 1,
     title: 
       `${props.post.name}のよく釣れる餌`, 
     chart:
@@ -35,7 +32,8 @@ export default function PostData(props: any) {
       />: 
       <div className={classes.objectBlank}>データがありません</div> 
     },
-    {
+    { 
+      key: 2,
       title: 
         `${props.post.name}のよく釣れる時期`, 
       chart:
@@ -45,7 +43,7 @@ export default function PostData(props: any) {
         />: 
         <div className={classes.objectBlank}>データがありません</div> 
     },
-    {
+    { key: 3,
       title: 
         `${props.post.name}のよく釣れる時間`, 
       chart:
@@ -55,7 +53,7 @@ export default function PostData(props: any) {
         />:
         <div className={classes.objectBlank}>データがありません</div> 
     },
-    {
+    { key: 4,
       title: 
         `${props.post.name}のサイズ分布`, 
       chart: 
@@ -72,7 +70,7 @@ export default function PostData(props: any) {
       <Divider/>
       <Grid container style={{ marginTop: "1em" }}>
         {datalist.map((data) => (
-          <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
+          <Grid item xs={12} sm={6} style={{ marginTop: "1em" }} key={data.key}>
             <Typography variant="button" display="block" gutterBottom>
             {data.title}
             </Typography>

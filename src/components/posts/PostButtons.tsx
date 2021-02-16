@@ -92,7 +92,7 @@ export default function PostButtons(props: Props) {
         <Box mt={2} mr={4} display={{ xs: 'inline', md: 'block' }}>
           <TwitterShareButton url={`https://myapp-11f4e.web.app/posts/${props.post.id}`} title={`${props.post.name}の釣果情報\n`}>
             <Tooltip title="Twitterにシェア"　placement="right">
-              <Fab className={classes.shareIcon}>
+              <Fab className={classes.shareIcon} component="div">
                 <Icon icon={twitterIcon} color="#ffffff" className={classes.twitterIcon} />
               </Fab>
             </Tooltip>

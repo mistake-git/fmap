@@ -56,7 +56,7 @@ export default function IntroductionForm(props: Props) {
       　<Formik
       　  enableReinitialize={true}
           initialValues={
-            {introduction: props.value}
+            {introduction: props.value && props.value != null? props.value: ''}
           }
           onSubmit={async value => {
             try {

@@ -310,10 +310,12 @@ export default function Header() {
             }}
             >
             <div className={classes.sticky}>
-              <Typography align="center">
-                <Box py={1} style={{ width: 500, background: "#ffffff" }}>お知らせ</Box>
-                <Divider/>
-              </Typography>
+              <Link to={'/notifications'} >
+                <Box textAlign="center" fontWeight="bold">
+                  <Box py={1} style={{ width: 500, background: "#ffffff" }}>通知</Box>
+                  <Divider/>
+                </Box>
+              </Link>
             </div>
             {notifications &&
               <Box className={classes.notificationslist}>

@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme: Theme) =>
 interface PinProps {
   lat: number,
   lng: number,
-  icon: any
+  icon: any,
+  key:　number
 }
 const ShowGoogleMap = (props: any) => {
   const [currentKey, setCurrentKey] = useState(-1)
@@ -62,16 +63,15 @@ const ShowGoogleMap = (props: any) => {
     }
   }
 
-  const pins: PinProps[] = [
-    {
+  const pin: PinProps = 
+    { key: 1,
       lat: props.post.latitude,
       lng: props.post.longitude,
       icon:
         <Avatar alt={props.post.name} src={props.post.image_url} className={getPinSize(props.post.size)}/>
-    },
-  ]
-
-  const apiLoaded = (map: any, maps: any, pins: any) => {
+    }
+  
+  const apiLoaded = (map: any, maps: any, pin: any) => {
   }
   const changeBalloon = (key: string) => {
     const keyNumber = Number(key)
@@ -281,27 +281,21 @@ const ShowGoogleMap = (props: any) => {
             lat: props.post.latitude,
             lng: props.post.longitude
           }}
+          yesIWantToUseGoogleMapApiInternals = {true}
           defaultZoom={8}
           options={createMapOptions}
-          onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, pins)}
+          onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, pin)}
           onChildClick={(key: string) => changeBalloon(key)}
         >
-        {
-          pins.map((
-            pin: {
-              lat: number,
-              lng: number,
-              icon: any
-            },
-            index: number) => (
+      
             <Pin
+              key={pin.key}
               lat={pin.lat}
               lng={pin.lng}
             >
             {pin.icon}
             </Pin>
-          ))
-        }
+       
         </GoogleMapReact>
       </GoogleMapWrapper>
     </Wrapper>

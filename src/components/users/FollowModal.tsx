@@ -59,7 +59,7 @@ export default function FollowModal(props: Props) {
           {
             props.users && props.users.length ? props.users.map((user) => {
               return(
-                <Link to={`/mypages/${user.uid}`} onClick={handleClose} className={classes.link}>
+                <Link to={`/mypages/${user.uid}`} onClick={handleClose} className={classes.link} key={user.id}>
                   <ListItem>
                   <ListItemAvatar>
                     <Avatar alt={user.name} src={user.image_url}  className={classes.avatar}/>

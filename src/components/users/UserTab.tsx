@@ -31,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Typography>{children}</Typography>
+        <div>{children}</div>
       )}
     </div>
   );
@@ -85,7 +85,7 @@ export default function UserTab(props: Props) {
           {
             props.posts.length ? props.posts.map((post: PostModel) => {
               return(
-                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }} key={post.id}>
                   <PostCard 
                     post={ post }
                   />
@@ -100,7 +100,7 @@ export default function UserTab(props: Props) {
           {
             props.likesPosts.length? props.likesPosts.map((post: PostModel) => {
               return(
-                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }}>
+                <Grid item xs={12} sm={6} md={4} style={{ marginTop: "1em" }} key={post.id}>
                   <PostCard 
                     post={ post }
                   />

@@ -4,22 +4,18 @@ import { Box, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import moment from 'moment'
 
-interface Props {
-  post: PostModel;
-}
-
 export default function PostData(props: any) {
 
   const datalist = [
-    {label: '魚種', content: props.post.name },
-    {label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},
-    {label: '釣った時間', content: props.post.time &&　props.post.time},
-    {label: '釣った日', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
-    {label: '数量', content: props.post.number},
-    {label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
-    {label: '重さ', content: props.post.weight &&`${props.post.weight}g` },
-    {label: '餌', content: props.post.feed },
-    {label: '天候', content: props.post.weather},
+    {key: 1, label: '魚種', content: props.post.name },
+    {key: 2, label: '投稿日', content: props.post.created_at && moment(props.post.created_at).format('YYYY年MM月DD日')},
+    {key: 3, label: '釣った時間', content: props.post.time &&　props.post.time},
+    {key: 4, label: '釣った日', content: props.post.date && moment(props.post.date).format('YYYY年MM月DD日')},
+    {key: 5, label: '数量', content: props.post.number},
+    {key: 6, label: 'サイズ', content: props.post.size && `${props.post.size}cm` },
+    {key: 7, label: '重さ', content: props.post.weight &&`${props.post.weight}g` },
+    {key: 8, label: '餌', content: props.post.feed },
+    {key: 9, label: '天候', content: props.post.weather},
   ];
 
   return (
@@ -29,7 +25,7 @@ export default function PostData(props: any) {
       </Box>
       <Divider/>
       {datalist.map((data) => (
-        <Grid container style={{ marginTop: "1em" }}>
+        <Grid container style={{ marginTop: "1em" }} key={data.key}>
           <Grid item xs={12} sm={2} style={{ marginTop: "1em" }}>
             {data.label}
           </Grid>

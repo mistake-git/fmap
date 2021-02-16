@@ -50,6 +50,9 @@ createStyles({
 		},
 		varticalAlignMiddle: {
 			verticalAlign:'middle'
+		},
+		heart: {
+			color: 'rgb(224, 36, 94)',
 		}
 	}),
 );
@@ -86,27 +89,25 @@ export default function PostCard(props: Props) {
 					
 					<Box display="flex">
 						<Box flexGrow={1}>
-							<Typography  component="h2">
+							<div>
 								<Link to={`/posts/${props.post.id}`} className={classes.postLink}>
 									<Box fontWeight="fontWeightBold">
 										<Icon icon={fishIcon} className={classes.fishIcon}/><span className={classes.varticalAlignMiddle}>{props.post.name}</span>
 									</Box>
 								</Link>
-							</Typography>
+							</div>
 						</Box>
 						<Box>
-							<Typography className={classes.smallText} gutterBottom>
+							<div className={classes.smallText}>
 								<Box className={classes.varticalAlignMiddle}>
 									{props.post.size && `${props.post.size}cm`}
 								</Box>
-							</Typography>
+							</div>
 						</Box>
 					</Box>
 				</CardContent>
 				<CardActions>
-					<IconButton>
-						<FavoriteIcon fontSize="small" />
-					</IconButton>
+					<FavoriteIcon fontSize="small" className={classes.heart}/>
 					{props.post.likes_users.length}
 				</CardActions>
 			</CardActionArea>
