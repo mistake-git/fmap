@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -159,9 +159,9 @@ export default function Header() {
 
   useEffect(() => {
     getUncheckedNotificationsCount()
-  }, [setUncheckedNotificationCount, firebaseAuthUser]);
+  });
 
-  const getUncheckedNotificationsCount = () => {
+  const getUncheckedNotificationsCount = useCallback(() => {
     auth.onAuthStateChanged((user) => {
       if (firebaseAuthUser !== null && user !== null) {
         NotificationsRepository.getUncheckedNotificationsCount(user?.uid)
@@ -173,7 +173,7 @@ export default function Header() {
         })
       }
     });  
-  }
+  }, [firebaseAuthUser]);
 
   const check = () => {
     auth.onAuthStateChanged((user) => {
