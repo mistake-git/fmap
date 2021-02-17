@@ -6,6 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import {
   Button,
+  Collapse,
   Grid,
   LinearProgress,
 } from "@material-ui/core";
@@ -103,29 +104,29 @@ export default function CommentForm(props: Props) {
                 />
                 <Grid container justify="flex-end">
                   <Grid item>
-                    {buttonOpen &&
-                    <Fragment>
-                      <Button
-                        className={classes.marginRight}
-                        variant="contained"
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        type="submit"
-                        onClick={() => setButtonOpen(false)}
-                      >
-                        キャンセル
-                      </Button>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={submitForm}
-                        style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                        type="submit"
-                        disabled={!isValid || isSubmitting}
-                      >
-                        コメント
-                      </Button>                    
-                    </Fragment>
-                    }
+                    <Collapse in={buttonOpen}>
+                      <Fragment>
+                        <Button
+                          className={classes.marginRight}
+                          variant="contained"
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          type="submit"
+                          onClick={() => setButtonOpen(false)}
+                        >
+                          キャンセル
+                        </Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={submitForm}
+                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                          type="submit"
+                          disabled={!isValid || isSubmitting}
+                        >
+                          コメント
+                        </Button>                    
+                      </Fragment>
+                    </Collapse>
                   </Grid>
                 </Grid>
               </Form>
