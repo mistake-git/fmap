@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
-import { Avatar } from '@material-ui/core';
+import { Avatar, Tooltip } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,7 +39,8 @@ interface PinProps {
   lat: number,
   lng: number,
   icon: any,
-  key:　number
+  key:　number,
+  name: string
 }
 const ShowGoogleMap = (props: any) => {
   const [currentKey, setCurrentKey] = useState(-1)
@@ -65,6 +66,7 @@ const ShowGoogleMap = (props: any) => {
 
   const pin: PinProps = 
     { key: 1,
+      name: props.post.name,
       lat: props.post.latitude,
       lng: props.post.longitude,
       icon:
@@ -287,15 +289,15 @@ const ShowGoogleMap = (props: any) => {
           onGoogleApiLoaded={({ map, maps }) => apiLoaded(map, maps, pin)}
           onChildClick={(key: string) => changeBalloon(key)}
         >
-      
+          <Tooltip title={pin.name}　placement="right">
             <Pin
               key={pin.key}
               lat={pin.lat}
               lng={pin.lng}
             >
-            {pin.icon}
+              {pin.icon}
             </Pin>
-       
+          </Tooltip>
         </GoogleMapReact>
       </GoogleMapWrapper>
     </Wrapper>
