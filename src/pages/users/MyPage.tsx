@@ -396,7 +396,7 @@ const MyPage = (props: Props) => {
               }            
               <Grid item xs={12} >
                 <Box my={2}>
-                  { user && posts && likesPosts && currentUser ?
+                  { user && posts && likesPosts ?
                   <UserTab
                     currentUser={currentUser}
                     user={user}
