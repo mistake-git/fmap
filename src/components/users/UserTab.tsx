@@ -4,7 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Box, Button, Divider, Grid } from '@material-ui/core';
+import { Box, Button, Divider, Grid, Typography } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import PostCard from '../posts/PostCard';
 import PieChart from '../chart/PieChart';
@@ -14,6 +14,7 @@ import GoogleMap from '../map/GoogleMap';
 import UserModel from '../../models/UserModel';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
+import BarChart from '../chart/BarChart';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -58,7 +59,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface Props {
   posts: PostModel[]
   likesPosts: PostModel[]
-  userData: any
+  fishData: any
+  monthData: any
   user: UserModel
   currentUser: UserModel | null
 }
@@ -130,11 +132,24 @@ export default function UserTab(props: Props) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div  style={{ marginTop: "1em" }}>
-          <PieChart 
-            data={props.userData}
-          />
-        </div>
+        <Grid container style={{ marginTop: "1em" }}>
+          <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
+            <Typography variant="button" display="block" gutterBottom style={{fontWeight: 'bold'}}>
+              釣果データ
+            </Typography>
+            <PieChart 
+              data={props.fishData}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} style={{ marginTop: "1em" }}>
+            <Typography variant="button" display="block" gutterBottom style={{fontWeight: 'bold'}}>
+              投稿データ
+            </Typography>
+            <BarChart
+              data={props.monthData}
+            />
+          </Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div  style={{ marginTop: "1em" }}>

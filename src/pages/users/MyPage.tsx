@@ -33,7 +33,8 @@ const MyPage = (props: Props) => {
   const [user, setUser] = useState<UserModel | null>(null);
   const [posts, setPosts] = useState<PostModel[] | null>(null);
   const [likesPosts, setLikesPosts] = useState<PostModel[] | null>(null);
-  const [userData, setUserData] = useState<any | null>(null);
+  const [fishData, setFishData] = useState<any | null>(null);
+  const [monthData, setMonthData] = useState<any | null>(null);
   const [followings, setFollowings] = useState<UserModel[] | null>(null);
   const [followers, setFollowers]  = useState<UserModel[] | null>(null);
   const [error, setError] = useState<Boolean>(false)
@@ -79,7 +80,8 @@ const MyPage = (props: Props) => {
       .then((results) => {
       console.log(results)
       console.log('getUserData')
-      setUserData(results);
+      setFishData(results.fish_data);
+      setMonthData(results.month_data);
       })
     }
     catch (error) {
@@ -89,7 +91,7 @@ const MyPage = (props: Props) => {
 
   useEffect(() => {
     getUserData();
-   },[setUserData]);
+   },[]);
 
    const getUserPosts = async() => {
     try { 
@@ -400,7 +402,8 @@ const MyPage = (props: Props) => {
                     user={user}
                     posts={posts}
                     likesPosts={likesPosts}
-                    userData={userData}
+                    fishData={fishData}
+                    monthData={monthData}
                   />:
                   <ContentsLoading/>
                   }
