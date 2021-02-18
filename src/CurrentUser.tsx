@@ -3,7 +3,6 @@ import auth from "./plugins/firebase";
 import UserModel from "./models/UserModel";
 import UsersRepository from "./repositories/UsersRepository";
 import { AuthContext } from './Auth'
-import { User } from "firebase";
 
 const CurrentUserContext = createContext<any | null>(null);
 
