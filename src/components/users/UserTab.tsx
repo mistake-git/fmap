@@ -4,7 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DescriptionIcon from '@material-ui/icons/Description';
-import { Box, Divider, Grid } from '@material-ui/core';
+import { Box, Button, Divider, Grid } from '@material-ui/core';
 import PostModel from '../../models/PostModel';
 import PostCard from '../posts/PostCard';
 import PieChart from '../chart/PieChart';
@@ -12,6 +12,8 @@ import PieChartIcon from '@material-ui/icons/PieChart';
 import MapIcon from '@material-ui/icons/Map';
 import GoogleMap from '../map/GoogleMap';
 import UserModel from '../../models/UserModel';
+import AddIcon from '@material-ui/icons/Add';
+import { Link } from 'react-router-dom';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,6 +50,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     width: '100%',
   },
+  decolationNone:{
+    textDecoration: 'none'
+  }
 }));
 
 interface Props {
@@ -55,6 +60,7 @@ interface Props {
   likesPosts: PostModel[]
   userData: any
   user: UserModel
+  currentUser: UserModel | null
 }
 
 export default function UserTab(props: Props) {
@@ -90,7 +96,21 @@ export default function UserTab(props: Props) {
                   />
                 </Grid>
               )
-            }):<Box mx="auto"　my={5}>釣果がありません</Box>
+            }):
+            props.currentUser && props.currentUser.id === props.user.id ?
+            <Box mx="auto">
+              <Box my={5}>釣果がありません</Box>
+              <Link to={'/posts/new'} className={classes.decolationNone}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<AddIcon/>}
+                >
+                  釣果を投稿
+                </Button> 
+              </Link>
+            </Box>
+            :<Box mx="auto"　my={5}>釣果がありません</Box>
           }
         </Grid>
       </TabPanel>
