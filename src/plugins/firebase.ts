@@ -16,5 +16,5 @@ const config = {
 }
 
 firebase.initializeApp(config)
-const auth = firebase.auth()
+const auth = firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 export default auth
