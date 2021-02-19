@@ -55,13 +55,13 @@ export default function UserBar(props: Props) {
             secondary={
               <Fragment>
                 <Box display="flex" justifyContent="flex-start">
-                  <Box pr={2}>
+                  <Box pr={1}>
                     釣果{props.postUser.posts.length}
                   </Box>
-                  <Box pr={2}>
+                  <Box pr={1}>
                     フォロー{props.postUser.followings.length}
                   </Box>
-                  <Box pr={2}> 
+                  <Box pr={1}> 
                     フォロワー{props.postUser.followers.length}
                   </Box>
                 </Box>  
