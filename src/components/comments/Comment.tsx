@@ -1,4 +1,4 @@
-import React,{ Fragment, useState } from 'react';
+import React,{ Fragment, useContext, useState } from 'react';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -14,7 +14,7 @@ import PostModel from '../../models/PostModel';
 import CommentForm from '../../forms/CommentFormModel';
 import moment from 'moment'
 import 'moment/locale/ja'
-import UserModel from '../../models/UserModel';
+import { CurrentUserContext } from '../../CurrentUser';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
-  currentUser: UserModel | null,
   post: PostModel
   comment: CommentModel
   destroyComment: (id: number) => {}
@@ -44,6 +43,7 @@ export default function Comment(props: Props) {
   const classes = useStyles();
   const [formOpen, setFormOpen]= useState<boolean>(false);
   const comment: CommentModel = props.comment;
+  const {currentUser} = useContext(CurrentUserContext)
   const handleFormOpen = () =>{
     setFormOpen(true)
   }
@@ -80,7 +80,7 @@ export default function Comment(props: Props) {
                 </Typography>
               }
             />
-            {props.currentUser && props.currentUser.id === comment.user.id &&
+            { currentUser && currentUser.id === comment.user.id &&
               <CommentMenu 
                 post={props.post} 
                 comment={comment} 

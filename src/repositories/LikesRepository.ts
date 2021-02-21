@@ -4,11 +4,8 @@ import { myHttpClient } from '../plugins/axios'
 export default class LikessRepository {
   public static async createLike(
     postId: number,
-    userId: number
   ): Promise<LikeModel> {
-    const result = await myHttpClient.post(`/posts/${postId}/likes`, {
-      like: { user_id: userId },
-    })
+    const result = await myHttpClient.post(`/posts/${postId}/likes`)
     return result.data
   }
 

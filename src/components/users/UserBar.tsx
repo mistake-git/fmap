@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,6 +10,7 @@ import UserModel from '../../models/UserModel';
 import FollowButton from './FollowButton';
 import { Divider} from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { CurrentUserContext } from '../../CurrentUser';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
   postUser: UserModel;
-  currentUser: UserModel | null;
   createRelationships: (follow_id: number) => {};
   destroyRelationships: (user_id: number, follow_id: number) => {};
   isFollowed: boolean
@@ -37,6 +37,7 @@ interface Props {
 
 export default function UserBar(props: Props) {
   const classes = useStyles();
+  const {currentUser} = useContext(CurrentUserContext)
 
   return (
     <div className={classes.demo}>
@@ -54,10 +55,10 @@ export default function UserBar(props: Props) {
             }
           />
           <ListItemSecondaryAction>
-            {props.currentUser?.id !== props.postUser.id &&
+            {currentUser?.id !== props.postUser.id &&
               <FollowButton
                 user={props.postUser}
-                currentUser={props.currentUser}
+                currentUser={currentUser}
                 createRelationships={props.createRelationships}
                 destroyRelationships={props.destroyRelationships}
                 isFollowed={props.isFollowed}

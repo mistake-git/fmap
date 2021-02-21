@@ -13,7 +13,6 @@ import {
 import PostModel from "../../models/PostModel";
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CommentModel from "../../models/CommentModel";
-import UserModel from "../../models/UserModel";
 import CommentFormModel from "../../forms/CommentFormModel";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,7 +45,6 @@ export const CommentSchema = Yup.object().shape({
 });
 
 interface Props {
-  currentUser: UserModel
   post: PostModel
   comments: CommentModel[]
   createComment: (comment: CommentFormModel) => {}
@@ -60,78 +58,71 @@ export default function CommentForm(props: Props) {
 
   return (
     <Fragment>
-      {props.currentUser &&
-        <Fragment>
-        <Box my={3}>
-          <Divider/>
-        </Box>
-        <Box fontWeight="fontWeightBold" my={3}　fontSize={16}>
-        {props.commentsCount}件のコメント
-        </Box>
-        　<Formik
-            initialValues={{ 
-              content: "", 
-              post_id: "",
-              user_id: ""
-            }}
-            validationSchema={CommentSchema}
-            onSubmit={async (value, {resetForm}) => {
-              try {
-                const comment ={
-                  content: value.content,
-                  user_id: props.currentUser.id
-                }
-                props.createComment(comment);
-                setButtonOpen(false);
-                resetForm({})
-              } 
-              catch (error) {
-                console.log(error.message);
-              }
-            }}>
-            {({ submitForm, isSubmitting, isValid }) => (
-              <Form>
-                {isSubmitting &&<LinearProgress/>}
-                <Field
-                  fullWidth
-                  style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                  name="content"
-                  placeholder="コメントを入力"
-                  type="text"
-                  component={TextField}
-                  onClick={() => setButtonOpen(true)}
-                />
-                <Grid container justify="flex-end">
-                  <Grid item>
-                    <Collapse in={buttonOpen}>
-                      <Fragment>
-                        <Button
-                          className={classes.marginRight}
-                          variant="contained"
-                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                          onClick={() => setButtonOpen(false)}
-                        >
-                          キャンセル
-                        </Button>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={submitForm}
-                          style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                          type="submit"
-                          disabled={!isValid || isSubmitting}
-                        >
-                          コメント
-                        </Button>                    
-                      </Fragment>
-                    </Collapse>
-                  </Grid>
-                </Grid>
-              </Form>
-            )}
-          </Formik>
-        </Fragment>
-      }
+      <Box my={3}>
+        <Divider/>
+      </Box>
+      <Box fontWeight="fontWeightBold" my={3}　fontSize={16}>
+      {props.commentsCount}件のコメント
+      </Box>
+    　<Formik
+        initialValues={{ 
+          content: "", 
+        }}
+        validationSchema={CommentSchema}
+        onSubmit={async (value, {resetForm}) => {
+          try {
+            const comment ={
+              content: value.content,
+            }
+            props.createComment(comment);
+            setButtonOpen(false);
+            resetForm({})
+          } 
+          catch (error) {
+            console.log(error.message);
+          }
+        }}>
+        {({ submitForm, isSubmitting, isValid }) => (
+          <Form>
+            {isSubmitting && <LinearProgress/>}
+            <Field
+              fullWidth
+              style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+              name="content"
+              placeholder="コメントを入力"
+              type="text"
+              component={TextField}
+              onClick={() => setButtonOpen(true)}
+            />
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Collapse in={buttonOpen}>
+                  <Fragment>
+                    <Button
+                      className={classes.marginRight}
+                      variant="contained"
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      onClick={() => setButtonOpen(false)}
+                    >
+                      キャンセル
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={submitForm}
+                      style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
+                      type="submit"
+                      disabled={!isValid || isSubmitting}
+                    >
+                      コメント
+                    </Button>                    
+                  </Fragment>
+                </Collapse>
+              </Grid>
+            </Grid>
+          </Form>
+        )}
+      </Formik>
     </Fragment>
   );
 }

@@ -9,7 +9,6 @@ import {
 import CommentModel from "../../models/CommentModel";
 import CommentFormModel from "../../forms/CommentFormModel";
 
-
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
