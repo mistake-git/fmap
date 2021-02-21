@@ -180,14 +180,14 @@ const MyPage = (props: Props) => {
     　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
-        const message = 'ユーザーをフォローしました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
         getUserFollowers()
         RelationshipsRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
+          const message = 'ユーザーをフォローしました'
+          const severity = 'success'
+          props.handleFlash(message,severity)
         })
       })
     }
@@ -205,14 +205,15 @@ const MyPage = (props: Props) => {
     　 RelationshipsRepository.destroyRelationships(user_id, follow_id)
       .then((results) => {
         console.log('destroy relationships')
-        const message = 'フォローを解除しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        
         getUserFollowers()
         RelationshipsRepository.isFollowed(user_id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
+          const message = 'フォローを解除しました'
+          const severity = 'success'
+          props.handleFlash(message,severity)
         })
       })
     }

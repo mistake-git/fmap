@@ -368,13 +368,13 @@ const PostsShow = (props: Props) => {
     　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
-        const message = 'ユーザーをフォローしました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
         RelationshipsRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
+          const message = 'ユーザーをフォローしました'
+          const severity = 'success'
+          props.handleFlash(message,severity)
         })
       })
     }
