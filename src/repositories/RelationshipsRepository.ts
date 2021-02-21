@@ -15,16 +15,14 @@ export default class RelationshipsRepository {
     followId: number
   ): Promise<UserModel> {
     const result = await myHttpClient.delete('/relationships/delete', {
-      params: {follow_id: followId },
+      params: { follow_id: followId },
     })
     return result.data
   }
 
-  public static async isFollowed(
-    followId: number
-  ): Promise<boolean> {
+  public static async isFollowed(followId: number): Promise<boolean> {
     const result = await myHttpClient.get('/relationships/is_followed', {
-      params: {follow_id: followId },
+      params: { follow_id: followId },
     })
     return result.data
   }

@@ -1,6 +1,6 @@
-import CommentModel from "./CommentModel";
-import PostModel from "./PostModel";
-import UserModel from "./UserModel";
+import CommentModel from './CommentModel'
+import PostModel from './PostModel'
+import UserModel from './UserModel'
 
 interface NotificationModel {
   id: number

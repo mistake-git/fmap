@@ -23,14 +23,14 @@ export default function SiginIn(props: Props) {
         props.handleFlash(message, severity)
         const firebaseAuthUser = results.user
         firebaseAuthUser
-        ?.getIdToken(true)
-        .then((idToken) => {
-          console.log(idToken)
-          localStorage.setItem('id-token', idToken);
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          ?.getIdToken(true)
+          .then((idToken) => {
+            console.log(idToken)
+            localStorage.setItem('id-token', idToken)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       })
       .catch(function (error) {
         console.log(error)

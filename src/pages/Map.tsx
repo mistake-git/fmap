@@ -54,16 +54,17 @@ const Map = () => {
       <Box my={3}>
         <SearchForm placeHolder={placeHolder} search={search} />
       </Box>
-      {posts ?  
+      {posts ? (
         <Fragment>
           <Typography>
             現在<span className={classes.countText}>{posts.length}</span>
             件の釣果
           </Typography>
           <GoogleMap posts={posts} currentUser={currentUser} />
-        </Fragment>:
+        </Fragment>
+      ) : (
         <ContentsLoading />
-      }
+      )}
     </Template>
   )
 }

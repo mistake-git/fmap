@@ -22,18 +22,18 @@ export default function SignUp(props: Props) {
 
   const createaAccount = (user: UserFormModel) => {
     UsersRepository.createUser(user)
-    .then((response) => {
-      console.log(response)
-      const message = 'アカウントを作成しました'
-      const severity = 'success'
-      props.handleFlash(message, severity)
-    })
-    .catch((error) => {
-      console.error(error)
-      const message = 'アカウントに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message, severity)
-    })
+      .then((response) => {
+        console.log(response)
+        const message = 'アカウントを作成しました'
+        const severity = 'success'
+        props.handleFlash(message, severity)
+      })
+      .catch((error) => {
+        console.error(error)
+        const message = 'アカウントに失敗しました'
+        const severity = 'error'
+        props.handleFlash(message, severity)
+      })
   }
 
   return (

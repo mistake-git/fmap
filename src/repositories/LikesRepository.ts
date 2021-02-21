@@ -2,9 +2,7 @@ import LikeModel from '../models/LikeModel'
 import { myHttpClient } from '../plugins/axios'
 
 export default class LikessRepository {
-  public static async createLike(
-    postId: number,
-  ): Promise<LikeModel> {
+  public static async createLike(postId: number): Promise<LikeModel> {
     const result = await myHttpClient.post(`/posts/${postId}/likes`)
     return result.data
   }
