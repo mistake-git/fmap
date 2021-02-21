@@ -17,20 +17,20 @@ export default function SiginIn(props: Props) {
   const signIn = (email: string, password: string) => {
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((results) => {
         const message = 'ログインしました'
         const severity = 'success'
         props.handleFlash(message, severity)
-        const firebaseAuthUser = result.user
+        const firebaseAuthUser = results.user
         firebaseAuthUser
-          ?.getIdToken(true)
-          .then((idToken) => {
-            console.log(idToken)
-            localStorage.setItem('id-token', idToken);
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+        ?.getIdToken(true)
+        .then((idToken) => {
+          console.log(idToken)
+          localStorage.setItem('id-token', idToken);
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       })
       .catch(function (error) {
         console.log(error)

@@ -57,6 +57,16 @@ const SignUpForm = (props: Props) => {
               uid: results.user?.uid
             }
             props.createAccount(user)
+            const firebaseAuthUser = results.user
+            firebaseAuthUser
+            ?.getIdToken(true)
+            .then((idToken) => {
+              console.log(idToken)
+              localStorage.setItem('id-token', idToken);
+            })
+            .catch((error) => {
+              console.log(error)
+            })
           })
         } 
         catch (error) {
