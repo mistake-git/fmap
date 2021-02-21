@@ -4,7 +4,6 @@ import { myHttpClient } from '../plugins/axios'
 export default class NotificationsRepository {
 
   public static async getNotifications(
-    userUid: string,
   ): Promise<NotificationModel[]> {
     const result = await myHttpClient.get('/notifications')
     return result.data
