@@ -365,7 +365,7 @@ const PostsShow = (props: Props) => {
     }
     try { 
     await
-    　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
+    　 RelationshipsRepository.createRelationships(follow_id)
       .then((results) => {
         console.log('create relationships')
         RelationshipsRepository.isFollowed(currentUser.id, results.id)
@@ -389,7 +389,7 @@ const PostsShow = (props: Props) => {
   const destroyRelationships = async(userId: number, followId: number) => {
     try { 
     await
-    　 RelationshipsRepository.destroyRelationships(userId, followId)
+    　 RelationshipsRepository.destroyRelationships(followId)
       .then((results) => {
         console.log('destroy relationships')
         RelationshipsRepository.isFollowed(userId, results.id)

@@ -177,7 +177,7 @@ const MyPage = (props: Props) => {
     }
     try { 
     await
-    　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
+    　 RelationshipsRepository.createRelationships(follow_id)
       .then((results) => {
         console.log('create relationships')
         getUserFollowers()
@@ -202,7 +202,7 @@ const MyPage = (props: Props) => {
   const destroyRelationships = async(user_id: number, follow_id: number) => {
     try { 
     await
-    　 RelationshipsRepository.destroyRelationships(user_id, follow_id)
+    　 RelationshipsRepository.destroyRelationships(follow_id)
       .then((results) => {
         console.log('destroy relationships')
         

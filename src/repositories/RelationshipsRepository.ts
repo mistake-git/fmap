@@ -3,22 +3,19 @@ import { myHttpClient } from '../plugins/axios'
 
 export default class RelationshipsRepository {
   public static async createRelationships(
-    userId: number,
     followId: number
   ): Promise<UserModel> {
     const result = await myHttpClient.post('/relationships', {
-      user_id: userId,
       follow_id: followId,
     })
     return result.data
   }
 
   public static async destroyRelationships(
-    userId: number,
     followId: number
   ): Promise<UserModel> {
     const result = await myHttpClient.delete('/relationships/delete', {
-      params: { user_id: userId, follow_id: followId },
+      params: {follow_id: followId },
     })
     return result.data
   }
