@@ -265,15 +265,7 @@ const MyPage = (props: Props) => {
       const followId = await getThisUserId()
         auth.onAuthStateChanged((user) => {
           if (firebaseAuthUser !== null && user !== null) {
-            UsersRepository.getUser(user!.uid)
-            .then((results) => {
-              console.log(results)
-              const userId = results.id
-              checkFollowd(followId!)
-            })
-            .catch((data) =>{
-              console.log(data)
-            })
+            checkFollowd(followId!) 
           }
         });
       }
