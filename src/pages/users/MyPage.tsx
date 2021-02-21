@@ -181,7 +181,7 @@ const MyPage = (props: Props) => {
       .then((results) => {
         console.log('create relationships')
         getUserFollowers()
-        RelationshipsRepository.isFollowed(currentUser.id, results.id)
+        RelationshipsRepository.isFollowed(results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -207,7 +207,7 @@ const MyPage = (props: Props) => {
         console.log('destroy relationships')
         
         getUserFollowers()
-        RelationshipsRepository.isFollowed(user_id, results.id)
+        RelationshipsRepository.isFollowed(results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -254,8 +254,8 @@ const MyPage = (props: Props) => {
     return 
   }
 
-  const checkFollowd = (userId: number, followId: number) => {
-    RelationshipsRepository.isFollowed(userId,followId).then((results) => {
+  const checkFollowd = (followId: number) => {
+    RelationshipsRepository.isFollowed(followId).then((results) => {
       setIsFollowed(results)
     })
   }
@@ -269,7 +269,7 @@ const MyPage = (props: Props) => {
             .then((results) => {
               console.log(results)
               const userId = results.id
-              checkFollowd(userId, followId!)
+              checkFollowd(followId!)
             })
             .catch((data) =>{
               console.log(data)

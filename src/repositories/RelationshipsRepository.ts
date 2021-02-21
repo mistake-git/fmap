@@ -21,11 +21,10 @@ export default class RelationshipsRepository {
   }
 
   public static async isFollowed(
-    userId: number,
     followId: number
   ): Promise<boolean> {
     const result = await myHttpClient.get('/relationships/is_followed', {
-      params: { user_id: userId, follow_id: followId },
+      params: {follow_id: followId },
     })
     return result.data
   }

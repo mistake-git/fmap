@@ -329,8 +329,8 @@ const PostsShow = (props: Props) => {
     return ;
   }
 
-  const checkFollowd = (userId: number, followId: number) => {
-    RelationshipsRepository.isFollowed(userId,followId).then((results) => {
+  const checkFollowd = (followId: number) => {
+    RelationshipsRepository.isFollowed(followId).then((results) => {
       setIsFollowed(results)
     })
   }
@@ -344,7 +344,7 @@ const PostsShow = (props: Props) => {
             .then((results) => {
               console.log(results)
               const userId = results.id
-              checkFollowd(userId, followId!)
+              checkFollowd(followId!)
             })
             .catch((data) =>{
               console.log(data)
@@ -368,7 +368,7 @@ const PostsShow = (props: Props) => {
     　 RelationshipsRepository.createRelationships(follow_id)
       .then((results) => {
         console.log('create relationships')
-        RelationshipsRepository.isFollowed(currentUser.id, results.id)
+        RelationshipsRepository.isFollowed(results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -392,7 +392,7 @@ const PostsShow = (props: Props) => {
     　 RelationshipsRepository.destroyRelationships(followId)
       .then((results) => {
         console.log('destroy relationships')
-        RelationshipsRepository.isFollowed(userId, results.id)
+        RelationshipsRepository.isFollowed(results.id)
         .then((results) => {
           const message = 'フォローを解除しました'
           const severity = 'success'
