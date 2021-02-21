@@ -132,10 +132,10 @@ export default function Header() {
     setState({ ...state, [anchor]: open });
   };
 　
-  const getNotifications = async(currentUserId: string) => {
+  const getNotifications = async() => {
     try { 
     const notifications = await
-      NotificationsRepository.getNotifications(currentUserId)
+      NotificationsRepository.getNotifications()
         .then((results) => {
         return results
       })
@@ -150,7 +150,7 @@ export default function Header() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (firebaseAuthUser !== null && user !== null) {
-        getNotifications(user?.uid)
+        getNotifications()
         .then((results)=>{
           setNotifications(results)
         })   

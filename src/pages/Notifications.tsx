@@ -28,10 +28,10 @@ const Notifications = (props: Props) => {
   const { firebaseAuthUser } = useContext(AuthContext)
   const classes = useStyles();
 
-  const getNotifications = async(currentUserUId: string) => {
+  const getNotifications = async() => {
     try { 
     const notifications = await
-      NotificationsRepository.getNotifications(currentUserUId)
+      NotificationsRepository.getNotifications()
         .then((results) => {
         return results
       })
@@ -46,7 +46,7 @@ const Notifications = (props: Props) => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (firebaseAuthUser !== null && user !== null) {
-        getNotifications(user?.uid)
+        getNotifications()
         .then((results)=>{
           setNotifications(results)
         })   
