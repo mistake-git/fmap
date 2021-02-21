@@ -94,7 +94,6 @@ export default function CommentForm(props: Props) {
                 {isSubmitting &&<LinearProgress/>}
                 <Field
                   fullWidth
-                  required
                   style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
                   name="content"
                   placeholder="コメントを入力"
@@ -110,7 +109,6 @@ export default function CommentForm(props: Props) {
                           className={classes.marginRight}
                           variant="contained"
                           style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                          type="submit"
                           onClick={() => setButtonOpen(false)}
                         >
                           キャンセル

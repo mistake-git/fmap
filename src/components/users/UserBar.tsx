@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import UserModel from '../../models/UserModel';
 import FollowButton from './FollowButton';
-import { Box, Divider, Typography } from '@material-ui/core';
+import { Divider} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -51,21 +51,6 @@ export default function UserBar(props: Props) {
               <Link to={`/mypages/${props.postUser.uid}`} className={classes.topLink}>
                 {props.postUser.name}
               </Link>
-            }
-            secondary={
-              <Fragment>
-                <Box display="flex" justifyContent="flex-start">
-                  <Box pr={1}>
-                    釣果{props.postUser.posts.length}
-                  </Box>
-                  <Box pr={1}>
-                    フォロー{props.postUser.followings.length}
-                  </Box>
-                  <Box pr={1}> 
-                    フォロワー{props.postUser.followers.length}
-                  </Box>
-                </Box>  
-              </Fragment>
             }
           />
           <ListItemSecondaryAction>

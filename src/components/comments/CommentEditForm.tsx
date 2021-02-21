@@ -54,7 +54,6 @@ export default function CommentEditForm(props: Props) {
         <Form>
           <Field
             fullWidth
-            required
             style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
             name="content"
             placeholder="コメントを編集"
@@ -71,7 +70,6 @@ export default function CommentEditForm(props: Props) {
                   className={classes.marginRight}
                   variant="contained"
                   style={{ marginTop: "0.5em", marginBottom: "0.5em" }}
-                  type="submit"
                   onClick={props.handleFormClose}
                 >
                   キャンセル
