@@ -273,7 +273,6 @@ export default function PostForm(props: Props) {
                   date: value.date,
                   time: value.time,  
                   status: value.status,
-                  user_id: props.currentUser.id,
                   latitude: currentLocation.lat,
                   longitude: currentLocation.lng,
                 }

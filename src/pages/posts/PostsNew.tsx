@@ -44,7 +44,6 @@ const PostsNew = (props: Props) => {
       formData.append("status", post?.status)
       formData.append("latitude", post?.latitude)
       formData.append("longitude", post?.longitude)
-      formData.append("user_id", post?.user_id)
     await
     PostsRepository.createPost(formData)
     .then((response) => {

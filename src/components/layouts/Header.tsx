@@ -166,25 +166,21 @@ export default function Header() {
   });
 
   const getUncheckedNotificationsCount = useCallback(() => {
-    auth.onAuthStateChanged((user) => {
-      if (firebaseAuthUser !== null && user !== null) {
-        NotificationsRepository.getUncheckedNotificationsCount(user?.uid)
-        .then((results)=>{
-          setUncheckedNotificationCount(results)
-        })   
-        .catch((data) =>{
-          console.log(data)
-        })
-      }
-    });  
+    if (firebaseAuthUser !== null) {
+      NotificationsRepository.getUncheckedNotificationsCount()
+      .then((results)=>{
+        setUncheckedNotificationCount(results)
+      })   
+      .catch((data) =>{
+        console.log(data)
+      })
+    }
   }, [firebaseAuthUser]);
 
   const check = () => {
-    auth.onAuthStateChanged((user) => {
-      if (firebaseAuthUser !== null && user !== null) {
-        NotificationsRepository.checkNotifications(user?.uid)
-      }
-    });  
+    if (firebaseAuthUser !== null) {
+      NotificationsRepository.checkNotifications()
+    }
   }
 
   const headerLinks = [
