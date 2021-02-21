@@ -27,6 +27,7 @@ import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
 import UsersRepository from "../../repositories/UsersRepository";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
+import RelationshipsRepository from "../../repositories/RelationshipsRepository";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -329,7 +330,7 @@ const PostsShow = (props: Props) => {
   }
 
   const checkFollowd = (userId: number, followId: number) => {
-    UsersRepository.isFollowed(userId,followId).then((results) => {
+    RelationshipsRepository.isFollowed(userId,followId).then((results) => {
       setIsFollowed(results)
     })
   }
@@ -364,13 +365,13 @@ const PostsShow = (props: Props) => {
     }
     try { 
     await
-    　 UsersRepository.createRelationships(currentUser.id, follow_id)
+    　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
-        UsersRepository.isFollowed(currentUser.id, results.id)
+        RelationshipsRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -388,10 +389,10 @@ const PostsShow = (props: Props) => {
   const destroyRelationships = async(userId: number, followId: number) => {
     try { 
     await
-    　 UsersRepository.destroyRelationships(userId, followId)
+    　 RelationshipsRepository.destroyRelationships(userId, followId)
       .then((results) => {
         console.log('destroy relationships')
-        UsersRepository.isFollowed(userId, results.id)
+        RelationshipsRepository.isFollowed(userId, results.id)
         .then((results) => {
           const message = 'フォローを解除しました'
           const severity = 'success'

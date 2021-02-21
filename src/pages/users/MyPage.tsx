@@ -20,6 +20,7 @@ import FollowButton from "../../components/users/FollowButton";
 import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
+import RelationshipsRepository from "../../repositories/RelationshipsRepository";
 
 interface Props {
   history: H.History;
@@ -176,14 +177,14 @@ const MyPage = (props: Props) => {
     }
     try { 
     await
-    　 UsersRepository.createRelationships(currentUser.id, follow_id)
+    　 RelationshipsRepository.createRelationships(currentUser.id, follow_id)
       .then((results) => {
         console.log('create relationships')
         const message = 'ユーザーをフォローしました'
         const severity = 'success'
         props.handleFlash(message,severity)
         getUserFollowers()
-        UsersRepository.isFollowed(currentUser.id, results.id)
+        RelationshipsRepository.isFollowed(currentUser.id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -201,14 +202,14 @@ const MyPage = (props: Props) => {
   const destroyRelationships = async(user_id: number, follow_id: number) => {
     try { 
     await
-    　 UsersRepository.destroyRelationships(user_id, follow_id)
+    　 RelationshipsRepository.destroyRelationships(user_id, follow_id)
       .then((results) => {
         console.log('destroy relationships')
         const message = 'フォローを解除しました'
         const severity = 'success'
         props.handleFlash(message,severity)
         getUserFollowers()
-        UsersRepository.isFollowed(user_id, results.id)
+        RelationshipsRepository.isFollowed(user_id, results.id)
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
@@ -253,7 +254,7 @@ const MyPage = (props: Props) => {
   }
 
   const checkFollowd = (userId: number, followId: number) => {
-    UsersRepository.isFollowed(userId,followId).then((results) => {
+    RelationshipsRepository.isFollowed(userId,followId).then((results) => {
       setIsFollowed(results)
     })
   }

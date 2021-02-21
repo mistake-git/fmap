@@ -85,35 +85,4 @@ export default class UsersRepository {
     const result = await myHttpClient.get(`/users/search?search=${search}`)
     return result.data
   }
-
-  public static async createRelationships(
-    userId: number,
-    followId: number
-  ): Promise<UserModel> {
-    const result = await myHttpClient.post('/relationships', {
-      user_id: userId,
-      follow_id: followId,
-    })
-    return result.data
-  }
-
-  public static async destroyRelationships(
-    userId: number,
-    followId: number
-  ): Promise<UserModel> {
-    const result = await myHttpClient.delete('/relationships/delete', {
-      params: { user_id: userId, follow_id: followId },
-    })
-    return result.data
-  }
-
-  public static async isFollowed(
-    userId: number,
-    followId: number
-  ): Promise<boolean> {
-    const result = await myHttpClient.get('/relationships/is_followed', {
-      params: { user_id: userId, follow_id: followId },
-    })
-    return result.data
-  }
 }
