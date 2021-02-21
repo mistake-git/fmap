@@ -77,6 +77,7 @@ const PostsEdit = (props: Props) => {
   }
 
   const values ={
+    image_url: post.image_url,
     name: post.name, 
     size: post.size,
     weight: post.weight,

@@ -65,7 +65,7 @@ const PostsNew = (props: Props) => {
   }
 
   const values ={
-    image: "",
+    image_url: "",
     name: "", 
     size: "",
     weight: "",
