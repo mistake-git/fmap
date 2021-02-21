@@ -112,6 +112,7 @@ export default function Header() {
       await auth.signOut();
       setAnchorEl(null);
       history.push('/signin');
+      localStorage.removeItem('id-token');
     } 
     catch (error) {
       console.log(error.message);
