@@ -6,7 +6,6 @@ import { Field, Form, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import {
   Button,
-  Collapse,
   Grid,
   LinearProgress,
 } from "@material-ui/core";
@@ -96,7 +95,7 @@ export default function CommentForm(props: Props) {
             />
             <Grid container justify="flex-end">
               <Grid item>
-                <Collapse in={buttonOpen}>
+                {buttonOpen &&
                   <Fragment>
                     <Button
                       className={classes.marginRight}
@@ -117,7 +116,7 @@ export default function CommentForm(props: Props) {
                       コメント
                     </Button>                    
                   </Fragment>
-                </Collapse>
+                }
               </Grid>
             </Grid>
           </Form>
