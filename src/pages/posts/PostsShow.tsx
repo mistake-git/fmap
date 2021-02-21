@@ -170,7 +170,7 @@ const PostsShow = (props: Props) => {
     }
     try { 
       await
-    　LikessRepository.createLike(postId, currentUser!.id)
+    　LikessRepository.createLike(postId)
         .then((response) => {
         setLike(response)
         getPostLikesUsers()
@@ -475,7 +475,6 @@ const PostsShow = (props: Props) => {
                       </Box>
                       <UserBar 
                         postUser={post.user}
-                        currentUser={currentUser}
                         createRelationships={createRelationships}
                         destroyRelationships={destroyRelationships}
                         isFollowed={isFollowed}
@@ -484,7 +483,6 @@ const PostsShow = (props: Props) => {
 
                       <CommentContainer
                         post={post}
-                        currentUser={currentUser}
                         comments={comments}
                         firebaseAuthUser={firebaseAuthUser}
                         createComment={createComment}
