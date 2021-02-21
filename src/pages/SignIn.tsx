@@ -26,6 +26,7 @@ export default function SiginIn(props: Props) {
           ?.getIdToken(true)
           .then((idToken) => {
             console.log(idToken)
+            localStorage.setItem('id-token', idToken);
           })
           .catch((error) => {
             console.log(error)

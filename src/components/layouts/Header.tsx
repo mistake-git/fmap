@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState, useCallback } from 'react';
+import { useHistory } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -104,11 +105,14 @@ export default function Header() {
   const handleCloseNotification = () => {
     setNotificationEl(null);
   };
+  const history = useHistory();
 
   const LogOut = async() => {
     try {
       await auth.signOut();
       setAnchorEl(null);
+      history.push('/signin');
+      localStorage.removeItem('id-token');
     } 
     catch (error) {
       console.log(error.message);
