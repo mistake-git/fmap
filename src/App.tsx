@@ -42,9 +42,9 @@ const App: React.FC = () => {
     <Router>
       {showFlash &&
         <FlashAlert
-        message={message}
-        severity={severity}
-        handleClose={handleClose}
+          message={message}
+          severity={severity}
+          handleClose={handleClose}
         />
       }
       <AuthProvider>
@@ -168,7 +168,6 @@ const App: React.FC = () => {
                 }) => (
                   <Rankings 
                     match={match} 
-                    handleFlash={handleFlash}
                     history={history}
                   />
                 )} 

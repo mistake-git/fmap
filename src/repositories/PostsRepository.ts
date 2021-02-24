@@ -11,8 +11,8 @@ export default class PostsRepository {
     return result.data
   }
 
-  public static async getRankingPosts(postId: number): Promise<PostModel[]> {
-    const result = await myHttpClient.get(`/posts/${postId}/ranking`)
+  public static async getRankingPosts(postId: number, page: number): Promise<PostModel[]> {
+    const result = await myHttpClient.get(`/posts/${postId}/ranking?page=${page}`)
     return result.data
   }
 
