@@ -9,6 +9,7 @@ import PostsRepository from "../../repositories/PostsRepository";
 import { CurrentUserContext } from "../../CurrentUser";
 import moment from 'moment'
 import ContentsLoading from "../../components/layouts/ContentsLoading";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   history: H.History;
@@ -21,6 +22,7 @@ const PostsEdit = (props: Props) => {
   const [post, setPost] = useState<any>('');
   const [error, setError] = useState<Boolean>(false)
   const { currentUser} = useContext(CurrentUserContext)
+  const history = useHistory();
 
   useEffect(() => {
     const getPost = async() => {
@@ -65,7 +67,7 @@ const PostsEdit = (props: Props) => {
       const message = '釣果を編集しました'
       const severity = 'success'
       props.handleFlash(message,severity)
-      props.history.push(`/posts/${response.id}`);
+      history.push(`/posts/${response.id}`);
     })
     }
     catch (error) {

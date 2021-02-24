@@ -5,6 +5,7 @@ import SignUpForm from '../components/auth/SignUpForm'
 import * as H from 'history'
 import UsersRepository from '../repositories/UsersRepository'
 import UserFormModel from '../forms/UserFormModel'
+import { useHistory } from 'react-router-dom'
 
 interface Props {
   history: H.History
@@ -14,11 +15,12 @@ interface Props {
 
 export default function SignUp(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
+  const history = useHistory();
 
   useEffect(() => {
     // if logged in, redirect to home
-    firebaseAuthUser && props.history.push('/')
-  }, [firebaseAuthUser, props.history])
+    firebaseAuthUser && history.push('/')
+  }, [firebaseAuthUser, history])
 
   const createaAccount = (user: UserFormModel) => {
     UsersRepository.createUser(user)

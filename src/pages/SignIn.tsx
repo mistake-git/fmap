@@ -4,6 +4,7 @@ import AuthTemplate from '../components/layouts/AuthTemplate'
 import { AuthContext } from '../Auth'
 import * as H from 'history'
 import auth from '../plugins/firebase'
+import { useHistory } from 'react-router-dom'
 
 interface Props {
   history: H.History
@@ -13,6 +14,7 @@ interface Props {
 
 export default function SiginIn(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
+  const history = useHistory();
 
   const signIn = (email: string, password: string) => {
     auth
@@ -42,8 +44,8 @@ export default function SiginIn(props: Props) {
 
   useEffect(() => {
     // if logged in, redirect to home
-    firebaseAuthUser && props.history.push('/')
-  }, [firebaseAuthUser, props.history])
+    firebaseAuthUser && history.push('/')
+  }, [firebaseAuthUser, history])
 
   return (
     <AuthTemplate title="ログイン">

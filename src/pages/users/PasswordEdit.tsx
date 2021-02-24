@@ -13,6 +13,7 @@ import {
   Typography
 } from "@material-ui/core";
 import auth from "../../plugins/firebase";
+import { useHistory } from 'react-router-dom';
 
 const AuthSchema = Yup.object().shape({
   email: Yup.string()
@@ -27,10 +28,11 @@ interface Props {
 
 export default function PasswordEdit(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
+  const history = useHistory();
 
   useEffect(() => {
-    firebaseAuthUser && props.history.push('/')
-  }, [props.history, firebaseAuthUser])
+    firebaseAuthUser && history.push('/')
+  }, [history, firebaseAuthUser])
 
   return (
     <AuthTemplate title="パスワード再設定">

@@ -12,7 +12,7 @@ import UserModel from "../../models/UserModel";
 import { AuthContext } from '../../Auth'
 import * as H from 'history';
 import NotFound from "../NotFound";
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import UsersRepository from "../../repositories/UsersRepository";
 import UserFormModel from "../../forms/UserFormModel";
 import FollowModal from "../../components/users/FollowModal";
@@ -43,6 +43,7 @@ const MyPage = (props: Props) => {
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const id  = useParams();
+  const history = useHistory();
 
 
   //ユーザーのIDだけ変わった時にユーザー情報を取得
@@ -169,7 +170,7 @@ const MyPage = (props: Props) => {
 
   const createRelationships = async(follow_id: number) => {
     if(firebaseAuthUser === null ){
-      props.history.push("/signin");
+      history.push("/signin");
       const message = 'ログインしてください'
       const severity = 'info'
       props.handleFlash(message,severity)

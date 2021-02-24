@@ -21,7 +21,7 @@ import PostsRepository from "../../repositories/PostsRepository";
 import CommentsRepository from "../../repositories/CommentsRepository";
 import LikessRepository from "../../repositories/LikesRepository";
 import CommentModel from "../../models/CommentModel";
-import { match } from "react-router-dom";
+import { match, useHistory } from "react-router-dom";
 import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
@@ -59,6 +59,7 @@ const PostsShow = (props: Props) => {
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const [isFollowed, setIsFollowed] = useState<boolean>(false)
+  const history = useHistory();
  
   useEffect(() => {
     const getPost = async() => {
@@ -163,7 +164,7 @@ const PostsShow = (props: Props) => {
 
   const createLike = async() => {
     if(firebaseAuthUser === null ){
-      props.history.push("/signin");
+      history.push("/signin");
       const message = 'ログインしてください'
       const severity = 'info'
       props.handleFlash(message,severity)
@@ -300,7 +301,7 @@ const PostsShow = (props: Props) => {
     　 PostsRepository.destroyPost(postId)
       .then(() => {
         console.log('delete post')
-        props.history.push("/posts");
+        history.push("/posts");
         const message = '釣果を削除しました'
         const severity = 'success'
         props.handleFlash(message,severity)
@@ -308,7 +309,7 @@ const PostsShow = (props: Props) => {
     }
     catch (error) {
       alert(error.message);
-      const message = '釣果を削除しました'
+      const message = '釣果の削除に失敗しました'
       const severity = 'error'
       props.handleFlash(message,severity)
     }
@@ -349,7 +350,7 @@ const PostsShow = (props: Props) => {
 
   const createRelationships = async(follow_id: number) => {
     if(firebaseAuthUser === null ){
-      props.history.push("/signin");
+      history.push("/signin");
       const message = 'ログインしてください'
       const severity = 'info'
       props.handleFlash(message,severity)

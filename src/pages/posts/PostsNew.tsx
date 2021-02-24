@@ -7,6 +7,7 @@ import PostsRepository from "../../repositories/PostsRepository";
 import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from "../../CurrentUser";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   history: H.History;
@@ -17,16 +18,17 @@ interface Props {
 const PostsNew = (props: Props) => {
   const { currentUser} = useContext(CurrentUserContext)
   const {firebaseAuthUser } = useContext(AuthContext);
+  const history = useHistory();
 
   useEffect(() => {
     // if not logged in, redirect to login page
     if (firebaseAuthUser === null){
-      props.history.push("/signin")
+      history.push("/signin")
       const message = '投稿するにはログインしてください'
       const severity = 'info'
       props.handleFlash(message,severity)
     }
-  }, [firebaseAuthUser,props.history]);
+  }, [firebaseAuthUser,history]);
 
   const createPost = async(post: any, image: File) => {
     try { 
@@ -49,7 +51,7 @@ const PostsNew = (props: Props) => {
     .then((response) => {
       console.log(response)
       console.log('create post')
-      props.history.push(`/posts/${response.id}`);
+      history.push(`/posts/${response.id}`);
       const message = '釣果を投稿しました'
       const severity = 'success'
       props.handleFlash(message,severity)
