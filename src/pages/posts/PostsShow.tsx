@@ -59,6 +59,7 @@ const PostsShow = (props: Props) => {
   const { firebaseAuthUser } = useContext(AuthContext)
   const {currentUser} = useContext(CurrentUserContext)
   const [isFollowed, setIsFollowed] = useState<boolean>(false)
+  const [hasMore, setHasMore] = useState(true);
   const history = useHistory();
  
   useEffect(() => {
@@ -211,23 +212,28 @@ const PostsShow = (props: Props) => {
     }
   }
 
-  useEffect(() => {
-    const getComments = async() => {
+
+    const getComments = async(page: number) => {
     try { 
       await
-        PostsRepository.getPostComments(postId)
+        PostsRepository.getPostComments(postId, page)
         .then((results) => {
-        console.log(results)
-        setComments(results);
+          if (results.length < 1) {
+            setHasMore(false);
+            return;
+          }
+          console.log(results)
+          setComments(results);
         })
       }
       catch (error) {
         console.log(error.message);
       }
     }
-    getComments();
-  },[setComments, postId]);
 
+  const loadMore = async (page: number) => {
+    getComments(page)    
+  }
 
   const createComment = async(comment: CommentFormModel) => {
     try { 
@@ -443,7 +449,7 @@ const PostsShow = (props: Props) => {
                     </Fragment>
                     :<ContentsLoading/>
                   }
-                  {post && comments ?
+                  {post ?
                     <Fragment>
                       <PostData post={post}/>
                       <Box fontWeight="fontWeightBold" mt={5} mb={2}　fontSize={16}>
@@ -474,7 +480,6 @@ const PostsShow = (props: Props) => {
                         isFollowed={isFollowed}
                       />
                       {post.memo}
-
                       <CommentContainer
                         post={post}
                         comments={comments}
@@ -482,6 +487,8 @@ const PostsShow = (props: Props) => {
                         createComment={createComment}
                         updateComment={updateComment}
                         destroyComment={destroyComment}
+                        loadMore={loadMore} 
+                        hasMore={hasMore}
                       />
                     </Fragment>:
                     <ContentsLoading/>

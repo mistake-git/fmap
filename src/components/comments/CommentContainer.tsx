@@ -7,6 +7,8 @@ import CommentFormModel from "../../forms/CommentFormModel";
 import { Box} from "@material-ui/core";
 import { Link } from 'react-router-dom';
 import { User } from "firebase";
+import InfiniteScroll from "react-infinite-scroller";
+import ContentsLoading from "../layouts/ContentsLoading";
 
 interface Props {
   firebaseAuthUser: User | null | undefined
@@ -15,6 +17,8 @@ interface Props {
   createComment: (comment: CommentFormModel) => {}
   destroyComment: (id: number) => {}
   updateComment: (comment: CommentFormModel) => {}
+  hasMore: boolean
+  loadMore:(page: number) => {}
 }
 
 export default function CommentContainer(props: Props) {
@@ -35,6 +39,11 @@ export default function CommentContainer(props: Props) {
           してください
         </Box>
       }
+      <InfiniteScroll
+        loadMore={props.loadMore} 
+        hasMore={props.hasMore}
+        loader={<ContentsLoading key={0}/>}
+      >
       {props.comments.map((comment: CommentModel) => (
         <Comment
           key={comment.id}
@@ -44,6 +53,7 @@ export default function CommentContainer(props: Props) {
           updateComment={props.updateComment}
         />
       ))}
+      </InfiniteScroll>
     </Fragment>
   );
 }
