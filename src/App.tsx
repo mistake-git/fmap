@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import Rankings from "./pages/rankings/Rankings";
 import Feed from "./pages/users/Feed";
 import Notifications from "./pages/Notifications";
+import SignInDummy from "./pages/SignInDummy";
 
 const App: React.FC = () => {
 
@@ -60,6 +61,19 @@ const App: React.FC = () => {
                 history 
               }) => (
                 <SignIn 
+                  match={match} 
+                  handleFlash={handleFlash}
+                  history={history}
+                />
+              )} 
+            />
+            <Route 
+              exact path="/signin_dummy" 
+              render={({ 
+                match,
+                history 
+              }) => (
+                <SignInDummy 
                   match={match} 
                   handleFlash={handleFlash}
                   history={history}
