@@ -10,7 +10,7 @@ const initialState: State = {
 }
  
 const LikeModule = createSlice({
-  name: 'Like',
+  name: 'like',
   initialState,
   reducers: {
     createLike(state: State, action: PayloadAction){
