@@ -14,6 +14,8 @@ import {
 } from "@material-ui/core";
 import auth from "../../plugins/firebase";
 import { useHistory } from 'react-router-dom';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
+import { useDispatch } from 'react-redux';
 
 const AuthSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,7 +31,7 @@ interface Props {
 export default function PasswordEdit(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
   const history = useHistory();
-
+  const dispatch = useDispatch()
   useEffect(() => {
     firebaseAuthUser && history.push('/')
   }, [history, firebaseAuthUser])
@@ -44,16 +46,16 @@ export default function PasswordEdit(props: Props) {
           const email = value.email
           await auth.sendPasswordResetEmail(email).then(function() {
             resetForm({})
-            const message="メールを送信しました"
-            const severity = 'success'
-            props.handleFlash(message,severity )
+            dispatch(updateMessage('メールを送信しました'))
+            dispatch(updateSeverity('success'))
+            dispatch(updateOpen(true))
           })
           } 
           catch (error) {
             console.log(error.message);
-            const message="メールを送信できませんでした"
-            const severity = 'error'
-            props.handleFlash(message,severity )
+            dispatch(updateMessage('メールを送信できませんでした'))
+            dispatch(updateSeverity('error'))
+            dispatch(updateOpen(true))
           }
         }}>
         {({ submitForm, isSubmitting, isValid }) => (

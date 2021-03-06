@@ -28,6 +28,8 @@ import auth from "../../plugins/firebase";
 import UsersRepository from "../../repositories/UsersRepository";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
+import { useDispatch } from "react-redux";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,6 +63,7 @@ const PostsShow = (props: Props) => {
   const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const [hasMore, setHasMore] = useState(true);
   const history = useHistory();
+  const dispatch = useDispatch()
  
   useEffect(() => {
     const getPost = async() => {
@@ -166,9 +169,9 @@ const PostsShow = (props: Props) => {
   const createLike = async() => {
     if(firebaseAuthUser === null ){
       history.push("/signin");
-      const message = 'ログインしてください'
-      const severity = 'info'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('ログインしてください'))
+      dispatch(updateSeverity('info'))
+      dispatch(updateOpen(true))
       return;
     }
     try { 
@@ -178,16 +181,16 @@ const PostsShow = (props: Props) => {
         setLike(response)
         getPostLikesUsers()
         console.log('create like')
-        const message = 'いいねしました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('いいねしました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'いいねに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('いいねに失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -199,16 +202,16 @@ const PostsShow = (props: Props) => {
         setLike(null)
         getPostLikesUsers()
         console.log('destroy like')
-        const message = 'いいねを取り消しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('いいねを削除しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'いいねの取り消しに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('いいねの削除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -243,16 +246,16 @@ const PostsShow = (props: Props) => {
         const newData = update(comments, {$unshift:[response]})
         setComments(newData)
         console.log('create comment')
-        const message = 'コメントを投稿しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('コメントを投稿しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'いいねの取り消しに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('コメントの投稿に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -266,16 +269,16 @@ const PostsShow = (props: Props) => {
         setComments(updateComments)
         console.log('update comment')
         console.log(updateComments)
-        const message = 'コメントを編集しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('コメントを編集しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'コメントの編集に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('コメントの編集に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -288,16 +291,16 @@ const PostsShow = (props: Props) => {
         const deleteComments = update(comments, {$splice: [[commentIndex, 1]]})
         setComments(deleteComments)
         console.log('destroy comment')
-        const message = 'コメントを削除しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('コメントを削除しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = ' コメントの削除に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('コメントの削除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -308,16 +311,16 @@ const PostsShow = (props: Props) => {
       .then(() => {
         console.log('delete post')
         history.push("/posts");
-        const message = '釣果を削除しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('釣果を削除しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
       alert(error.message);
-      const message = '釣果の削除に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('釣果の削除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -357,9 +360,9 @@ const PostsShow = (props: Props) => {
   const createRelationships = async(follow_id: number) => {
     if(firebaseAuthUser === null ){
       history.push("/signin");
-      const message = 'ログインしてください'
-      const severity = 'info'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('ログインしてください'))
+      dispatch(updateSeverity('info'))
+      dispatch(updateOpen(true))
       return;
     }
     try { 
@@ -371,17 +374,17 @@ const PostsShow = (props: Props) => {
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
-          const message = 'ユーザーをフォローしました'
-          const severity = 'success'
-          props.handleFlash(message,severity)
+          dispatch(updateMessage('ユーザーをフォローしました'))
+          dispatch(updateSeverity('success'))
+          dispatch(updateOpen(true))
         })
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'ユーザーのフォローに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('ユーザーのフォローに失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -393,9 +396,9 @@ const PostsShow = (props: Props) => {
         console.log('destroy relationships')
         RelationshipsRepository.isFollowed(results.id)
         .then((results) => {
-          const message = 'フォローを解除しました'
-          const severity = 'success'
-          props.handleFlash(message,severity)
+          dispatch(updateMessage('フォローを解除しました'))
+          dispatch(updateSeverity('success'))
+          dispatch(updateOpen(true))
           setIsFollowed(results)
           console.log(results)
         })
@@ -403,9 +406,9 @@ const PostsShow = (props: Props) => {
     }
     catch (error) {
       alert(error.message);
-      const message = 'フォローの解除に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('フォローの解除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 

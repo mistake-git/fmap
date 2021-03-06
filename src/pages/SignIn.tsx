@@ -5,6 +5,8 @@ import { AuthContext } from '../Auth'
 import * as H from 'history'
 import auth from '../plugins/firebase'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { updateMessage, updateOpen, updateSeverity } from '../actions/Flash'
 
 interface Props {
   history: H.History
@@ -15,14 +17,15 @@ interface Props {
 export default function SiginIn(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
   const history = useHistory();
+  const dispatch = useDispatch()
 
   const signIn = (email: string, password: string) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((results) => {
-        const message = 'ログインしました'
-        const severity = 'success'
-        props.handleFlash(message, severity)
+        dispatch(updateMessage('ログインしました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
         const firebaseAuthUser = results.user
         firebaseAuthUser
           ?.getIdToken(true)
@@ -36,9 +39,9 @@ export default function SiginIn(props: Props) {
       })
       .catch(function (error) {
         console.log(error)
-        const message = 'ログインに失敗しました'
-        const severity = 'error'
-        props.handleFlash(message, severity)
+        dispatch(updateMessage('ログインに失敗しました'))
+        dispatch(updateSeverity('error'))
+        dispatch(updateOpen(true))
       })
   }
 

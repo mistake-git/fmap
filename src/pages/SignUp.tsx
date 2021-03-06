@@ -6,6 +6,8 @@ import * as H from 'history'
 import UsersRepository from '../repositories/UsersRepository'
 import UserFormModel from '../forms/UserFormModel'
 import { useHistory } from 'react-router-dom'
+import { updateMessage, updateOpen, updateSeverity } from '../actions/Flash'
+import { useDispatch } from 'react-redux'
 
 interface Props {
   history: H.History
@@ -16,6 +18,7 @@ interface Props {
 export default function SignUp(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
   const history = useHistory();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // if logged in, redirect to home
@@ -26,15 +29,15 @@ export default function SignUp(props: Props) {
     UsersRepository.createUser(user)
       .then((response) => {
         console.log(response)
-        const message = 'アカウントを作成しました'
-        const severity = 'success'
-        props.handleFlash(message, severity)
+        dispatch(updateMessage('アカウントを作成しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
       .catch((error) => {
         console.error(error)
-        const message = 'アカウントに失敗しました'
-        const severity = 'error'
-        props.handleFlash(message, severity)
+        dispatch(updateMessage('アカウント作成に失敗しました'))
+        dispatch(updateSeverity('error'))
+        dispatch(updateOpen(true))
       })
   }
 

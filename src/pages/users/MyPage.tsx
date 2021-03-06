@@ -21,6 +21,8 @@ import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
+import { useDispatch } from "react-redux";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
@@ -44,6 +46,7 @@ const MyPage = (props: Props) => {
   const {currentUser} = useContext(CurrentUserContext)
   const id  = useParams();
   const history = useHistory();
+  const dispatch = useDispatch()
 
 
   const getUser = async() => {
@@ -136,9 +139,9 @@ const MyPage = (props: Props) => {
   const createRelationships = async(follow_id: number) => {
     if(firebaseAuthUser === null ){
       history.push("/signin");
-      const message = 'ログインしてください'
-      const severity = 'info'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('ログインしてください'))
+      dispatch(updateSeverity('info'))
+      dispatch(updateOpen(true))
       return;
     }
     try { 
@@ -151,17 +154,17 @@ const MyPage = (props: Props) => {
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
-          const message = 'ユーザーをフォローしました'
-          const severity = 'success'
-          props.handleFlash(message,severity)
+          dispatch(updateMessage('ユーザーをフォローしました'))
+          dispatch(updateSeverity('success'))
+          dispatch(updateOpen(true))
         })
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'ユーザーのフォローに失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('ユーザーのフォローに失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -177,17 +180,17 @@ const MyPage = (props: Props) => {
         .then((results) => {
           setIsFollowed(results)
           console.log(results)
-          const message = 'フォローを解除しました'
-          const severity = 'success'
-          props.handleFlash(message,severity)
+          dispatch(updateMessage('フォローを解除しました'))
+          dispatch(updateSeverity('success'))
+          dispatch(updateOpen(true))
         })
       })
     }
     catch (error) {
       alert(error.message);
-      const message = 'フォローの解除に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('フォローの解除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -250,16 +253,16 @@ const MyPage = (props: Props) => {
         setUser(response);
         getUserPosts()
         getUserLikesPosts()
-        const message = 'プロフィール画像を更新しました'
-        const severity = 'success'
-        props.handleFlash(message,severity)
+        dispatch(updateMessage('プロフィール画像を更新しました'))
+        dispatch(updateSeverity('success'))
+        dispatch(updateOpen(true))
       })
     }
     catch (error) {
-      console.log(error.message);
-      const message = 'プロフィール画像の更新に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      console.log(error.message)
+      dispatch(updateMessage('プロフィール画像の更新に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 
@@ -272,16 +275,16 @@ const MyPage = (props: Props) => {
       setUser(response);
       getUserPosts()
       getUserLikesPosts()
-      const message = 'プロフィール画像を削除しました'
-      const severity = 'success'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('プロフィールを削除しました'))
+      dispatch(updateSeverity('success'))
+      dispatch(updateOpen(true))
     })
     }
     catch (error) {
       console.log(error.message);
-      const message = 'プロフィール画像の削除に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('プロフィール画像の削除に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 

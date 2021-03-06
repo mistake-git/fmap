@@ -31,7 +31,7 @@ const PostsNew = (props: Props) => {
       dispatch(updateSeverity('info'))
       dispatch(updateOpen(true))
     }
-  }, [firebaseAuthUser, props, history]);
+  }, [firebaseAuthUser, props, history, dispatch]);
 
   const createPost = async(post: any, image: File) => {
     try { 
@@ -56,7 +56,7 @@ const PostsNew = (props: Props) => {
       console.log('create post')
       history.push(`/posts/${response.id}`);
       dispatch(updateMessage('釣果を投稿しました'))
-      dispatch(updateSeverity('info'))
+      dispatch(updateSeverity('success'))
       dispatch(updateOpen(true))
     })
     }

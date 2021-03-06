@@ -23,7 +23,6 @@ import Contact from "./pages/Contact";
 const App: React.FC = () => {
 
   const handleFlash = (flashMessage: string, flashSeverity: 'success'| 'error'| 'info'| undefined)  =>　{
-    setShowFlash(true)
     setMessage(flashMessage)
     setSeverity(flashSeverity)
   }
@@ -32,10 +31,8 @@ const App: React.FC = () => {
     if (reason === 'clickaway') {
       return;
     }
-    setShowFlash(false);
   };
 
-  const [showFlash, setShowFlash] = useState(false);
   const [message, setMessage] = useState<string>('');
   const [severity, setSeverity] = useState<undefined | 'success' | 'error' | 'info'>(undefined);
 

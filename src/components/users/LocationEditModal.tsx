@@ -14,6 +14,8 @@ import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
 import UserModel from '../../models/UserModel';
 import UserFormModel from '../../forms/UserFormModel';
+import { useDispatch } from 'react-redux';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
 
 const UserSchema = Yup.object().shape({
 });
@@ -26,18 +28,17 @@ interface Props{
 
 export default function LocationEditModal(props: Props) {
   const [open, setOpen] = useState(false);
-
+  const dispatch = useDispatch()
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const values ={
     address: props.user.address,
   }
+
   return (
     <div>
        <Button  onClick={handleClickOpen}>
@@ -66,16 +67,17 @@ export default function LocationEditModal(props: Props) {
                 address: value.address
               }
               props.updateUser(user)
-              const message = '活動エリアを編集しました'
-              const severity = 'success'
-              props.handleFlash(message,severity)
+              dispatch(updateMessage('活動エリアを編集しました'))
+              dispatch(updateSeverity('success'))
+              dispatch(updateOpen(true))
               handleClose();              
             } 
             catch (error) {
               console.log(error.message);
-              const message = '活動エリアの編集に失敗しました'
-              const severity = 'success'
-              props.handleFlash(message,severity)          
+              dispatch(updateMessage('活動エリアの編集に失敗しました'))
+              dispatch(updateSeverity('error'))
+              dispatch(updateOpen(true))  
+              handleClose();            
             }
           }}>
           {({ submitForm, setFieldValue, isSubmitting, isValid,}) => (

@@ -10,6 +10,8 @@ import { CurrentUserContext } from "../../CurrentUser";
 import moment from 'moment'
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
@@ -18,11 +20,11 @@ interface Props {
 }
 
 const PostsEdit = (props: Props) => {
-
   const [post, setPost] = useState<any>('');
   const [error, setError] = useState<Boolean>(false)
   const { currentUser} = useContext(CurrentUserContext)
   const history = useHistory();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getPost = async() => {
@@ -64,17 +66,17 @@ const PostsEdit = (props: Props) => {
     PostsRepository.updatePost(props.match.params.id,formData)   
     .then((response) => {
       console.log(response)
-      const message = '釣果を編集しました'
-      const severity = 'success'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('釣果を編集しました'))
+      dispatch(updateSeverity('success'))
+      dispatch(updateOpen(true))
       history.push(`/posts/${response.id}`);
     })
     }
     catch (error) {
       console.log(error.message);
-      const message = '釣果の編集に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(updateMessage('釣果の編集に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 

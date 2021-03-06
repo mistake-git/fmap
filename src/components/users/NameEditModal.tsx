@@ -14,6 +14,8 @@ import * as Yup from "yup";
 import { TextField } from "formik-material-ui";
 import UserModel from '../../models/UserModel';
 import UserFormModel from '../../forms/UserFormModel';
+import { useDispatch } from 'react-redux';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,18 +30,16 @@ interface Props{
 
 export default function NameEditModal(props: Props) {
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   const values ={
     name: props.user.name,
   }
+  const dispatch = useDispatch()
   
   return (
     <div>
@@ -69,16 +69,17 @@ export default function NameEditModal(props: Props) {
                 name: value.name
               }
               props.updateUser(user)
-              const message = '名前を編集しました'
-              const severity = 'success'
-              props.handleFlash(message,severity)
+              dispatch(updateMessage('ユーザー名を編集しました'))
+              dispatch(updateSeverity('success'))
+              dispatch(updateOpen(true))
               handleClose();              
             } 
             catch (error) {
               console.log(error.message);
-              const message = '名前の編集に失敗しました'
-              const severity = 'success'
-              props.handleFlash(message,severity)          
+              dispatch(updateMessage('ユーザー名の編集に失敗しました'))
+              dispatch(updateSeverity('error'))
+              dispatch(updateOpen(true))
+              handleClose();       
             }
           }}>
           {({ submitForm, setFieldValue, isSubmitting, isValid,}) => (

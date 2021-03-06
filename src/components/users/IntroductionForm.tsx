@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import UserFormModel from "../../forms/UserFormModel";
+import { useDispatch } from "react-redux";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
 
 const useStyles = makeStyles({
   root: {
@@ -30,14 +32,12 @@ interface Props{
 }
 
 export default function IntroductionForm(props: Props) {
-
+  const dispatch = useDispatch()
   const classes = useStyles();
   const [formOpen, setFormOpen]= useState(false);
-
   const handleOpen = () => {
     setFormOpen(true)
   };
-
   const handleClose = () => {
     setFormOpen(false)
   };
@@ -64,15 +64,15 @@ export default function IntroductionForm(props: Props) {
                 introduction: value.introduction
               }
              props.updateUser(user)
-              const message = '自己紹介を編集しました'
-              const severity = 'success'
-              props.handleFlash(message,severity)
-             setFormOpen(false)
+              dispatch(updateMessage('自己紹介を編集しました'))
+              dispatch(updateSeverity('success'))
+              dispatch(updateOpen(true))
+              setFormOpen(false)
             } catch (error) {
               console.log(error.message);
-              const message = '自己紹介の編集に失敗しました'
-              const severity = 'error'
-              props.handleFlash(message,severity)
+              dispatch(updateMessage('自己紹介の編集に失敗しました'))
+              dispatch(updateSeverity('error'))
+              dispatch(updateOpen(true))
             }
           }}>
           {({ submitForm, isSubmitting, isValid }) => (
