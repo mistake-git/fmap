@@ -37,6 +37,8 @@ import LatLngSearchForm from './LatLngSearchForm';
 import PostModel from '../../models/PostModel';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import { useDispatch } from 'react-redux';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
 
 const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({
@@ -116,6 +118,8 @@ export default function PostForm(props: Props) {
   const　placeHolder ="住所を入力　例 東京都多摩市"
   const apiKey = process.env.REACT_APP_GOOGLE_MAP_KEY
 
+  const dispatch = useDispatch();
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -172,9 +176,9 @@ export default function PostForm(props: Props) {
       setOpen(true);
       setCurrentLocation({lat:　latitude, lng:　longitude})
       setDefaultLocation({lat:　latitude, lng:　longitude})
-      const message = '位置情報を取得しました'
-      const severity = 'success'
-      props.handleFlash(message,severity) 
+      dispatch(updateMessage('位置情報を取得しました'))
+      dispatch(updateSeverity('success'))
+      dispatch(updateOpen(true))
   }
 
   const errorFunc = (error: any) => {
@@ -185,9 +189,9 @@ export default function PostForm(props: Props) {
       {message:  "要求がタイムアウトしました。"},
     ]
     const errorMessage = errorMessageList[error.code]
-    const message = errorMessage.message
-    const severity = 'error'
-    props.handleFlash(message,severity) 
+    dispatch(updateMessage(errorMessage.message))
+    dispatch(updateSeverity('error'))
+    dispatch(updateOpen(true))
   }
 
   var options = {

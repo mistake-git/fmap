@@ -9,7 +9,7 @@ import { CurrentUserContext } from "../../CurrentUser";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { changeMessage, changeSeverity, displayFlash } from "../../actions/Flash";
+import { updateMessage, updateSeverity, updateOpen } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
@@ -27,9 +27,9 @@ const PostsNew = (props: Props) => {
     // if not logged in, redirect to login page
     if (firebaseAuthUser === null){
       history.push("/signin")
-      dispatch(changeMessage('投稿するにはログインしてください'))
-      dispatch(changeSeverity('info'))
-      dispatch(displayFlash(true))
+      dispatch(updateMessage('投稿するにはログインしてください'))
+      dispatch(updateSeverity('info'))
+      dispatch(updateOpen(true))
     }
   }, [firebaseAuthUser, props, history]);
 
@@ -55,16 +55,16 @@ const PostsNew = (props: Props) => {
       console.log(response)
       console.log('create post')
       history.push(`/posts/${response.id}`);
-      dispatch(changeMessage('釣果を投稿しました'))
-      dispatch(changeSeverity('info'))
-      dispatch(displayFlash(true))
+      dispatch(updateMessage('釣果を投稿しました'))
+      dispatch(updateSeverity('info'))
+      dispatch(updateOpen(true))
     })
     }
     catch (error) {
       console.log(error.message);
-      dispatch(changeMessage('釣果の投稿に失敗しました'))
-      dispatch(changeSeverity('error'))
-      dispatch(displayFlash(true))
+      dispatch(updateMessage('釣果の投稿に失敗しました'))
+      dispatch(updateSeverity('error'))
+      dispatch(updateOpen(true))
     }
   }
 

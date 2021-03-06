@@ -3,7 +3,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
-import { displayFlash } from '../../actions/Flash';
+import { updateOpen } from '../../actions/Flash';
+import { AppState } from '../../store';
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -27,12 +28,12 @@ interface Props {
 export default function FlashAlert(props: Props) {
   const dispatch = useDispatch()
   const classes = useStyles();
-  const severity = useSelector((flash: any) => flash.severity);
-  const message = useSelector((flash: any) => flash.message);
-  const open = useSelector((flash: any) => flash.open);
+  const severity = useSelector((state: AppState)=> state.flash.severity);
+  const message = useSelector((state: AppState)=> state.flash.message);
+  const open = useSelector((state: AppState)=> state.flash.isOpen);
 
   const flashMessageClose = () =>{
-    dispatch(displayFlash(false))
+    dispatch(updateOpen(false))
   }
 
   return (
