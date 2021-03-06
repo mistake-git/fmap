@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux'
-import { FlashReducer, State } from './states/FlashState'
+import { FlashReducer, FlashState } from './states/FlashState'
 
 export type AppState = {
-  flash: State
+  flash: FlashState
 }
 
 const store = createStore(
