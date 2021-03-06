@@ -13,7 +13,6 @@ import { updateMessage, updateSeverity, updateOpen } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
-  handleFlash: (message: string, severity: 'success'|'error'|'info') => void
   match: any
 }
 
@@ -107,7 +106,6 @@ const PostsNew = (props: Props) => {
             lat={lat}
             lng={lng}
             title={title}
-            handleFlash={props.handleFlash}
           /> : <ContentsLoading/>
           }
         </Grid>

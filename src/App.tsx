@@ -22,33 +22,14 @@ import Contact from "./pages/Contact";
 
 const App: React.FC = () => {
 
-  const handleFlash = (flashMessage: string, flashSeverity: 'success'| 'error'| 'info'| undefined)  =>　{
-    setMessage(flashMessage)
-    setSeverity(flashSeverity)
-  }
-
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-  };
-
-  const [message, setMessage] = useState<string>('');
-  const [severity, setSeverity] = useState<undefined | 'success' | 'error' | 'info'>(undefined);
 
   return (
     <Router>
 
-      <FlashAlert
-        message={message}
-        severity={severity}
-        handleClose={handleClose}
-      />
+      <FlashAlert/>
       
       <AuthProvider>
-        <CurrentUserProvider
-          handleFlash={handleFlash}
-        >
+        <CurrentUserProvider>
           <Switch>
             <Route exact path="/" component={Map} />
             <Route 
@@ -59,7 +40,6 @@ const App: React.FC = () => {
               }) => (
                 <SignIn 
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -72,7 +52,6 @@ const App: React.FC = () => {
               }) => (
                 <Contact
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -85,7 +64,6 @@ const App: React.FC = () => {
               }) => (
                 <SignUp 
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -98,7 +76,6 @@ const App: React.FC = () => {
               }) => (
                 <PasswordEdit 
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -126,7 +103,6 @@ const App: React.FC = () => {
               }) => (
                 <PostsEdit 
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -139,7 +115,6 @@ const App: React.FC = () => {
               }) => (
                 <Mypage 
                   match={match} 
-                  handleFlash={handleFlash}
                   history={history}
                 />
               )} 
@@ -153,7 +128,6 @@ const App: React.FC = () => {
                 }) => (
                   <PostsNew
                     match={match} 
-                    handleFlash={handleFlash}
                     history={history}
                   />
                 )} 
@@ -166,7 +140,6 @@ const App: React.FC = () => {
                 }) => (
                   <PostsShow 
                     match={match} 
-                    handleFlash={handleFlash}
                     history={history}
                   />
                 )} 

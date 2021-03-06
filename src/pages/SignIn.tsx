@@ -10,7 +10,6 @@ import { updateMessage, updateOpen, updateSeverity } from '../actions/Flash'
 
 interface Props {
   history: H.History
-  handleFlash: (message: string, severity: 'success' | 'error') => void
   match: any
 }
 

@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 
 
 interface Props{
-  handleFlash: (message: string, severity: 'success'|'error') => void
   value: string | undefined
   updateUser: (user: UserFormModel) => void
 }

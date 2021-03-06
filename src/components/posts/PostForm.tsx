@@ -95,7 +95,6 @@ interface Props {
   action: any
   title: string
   post?: PostModel
-  handleFlash: (message: string, severity: 'success'|'error') => void
 }
 
 export default function PostForm(props: Props) {

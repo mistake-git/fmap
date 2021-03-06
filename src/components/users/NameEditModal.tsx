@@ -23,7 +23,6 @@ const UserSchema = Yup.object().shape({
 });
 
 interface Props{
-  handleFlash: (message: string, severity: 'success'|'error') => void
   user: UserModel
   updateUser: (user: UserFormModel) => void
 }

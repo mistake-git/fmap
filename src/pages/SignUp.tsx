@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux'
 
 interface Props {
   history: H.History
-  handleFlash: (message: string, severity: 'success' | 'error') => void
   match: any
 }
 

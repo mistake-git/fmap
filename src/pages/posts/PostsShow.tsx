@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props<Params extends { [K in keyof Params]?: string } = {id: any} >{
   history: H.History;
-  handleFlash: (message: string, severity: 'success'|'error'| 'info') => void
   match: match<Params> | null;
 }
 

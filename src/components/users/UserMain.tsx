@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props{
   user: UserModel
-  handleFlash: (message: string, severity: 'success'|'error') => void
   updateProfileImage: (image: File) => {}
   destroyProfileImage: () => void
   firebaseAuthUser: User | null | undefined
@@ -61,7 +60,6 @@ export default function UserMain(props: Props) {
           <LocationEditModal
             user={props.user}
             updateUser={props.updateUser}
-            handleFlash={props.handleFlash}
           />
         }
       </ListItem>
@@ -96,7 +94,6 @@ export default function UserMain(props: Props) {
           <NameEditModal
             user={props.user}
             updateUser={props.updateUser}
-            handleFlash={props.handleFlash}
           />
         }
       </ListItem>

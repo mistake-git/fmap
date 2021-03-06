@@ -19,13 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
-  handleClose: () => void
-  severity: undefined | 'success' | 'error' | 'info'
-  message: string
-}
-
-export default function FlashAlert(props: Props) {
+export default function FlashAlert() {
   const dispatch = useDispatch()
   const classes = useStyles();
   const severity = useSelector((state: AppState)=> state.flash.severity);

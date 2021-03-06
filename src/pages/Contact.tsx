@@ -8,7 +8,6 @@ import * as Yup from "yup";
 
 interface Props {
   history: H.History;
-  handleFlash: (message: string, severity: 'success'|'error'|'info') => void
   match: any
 }
 

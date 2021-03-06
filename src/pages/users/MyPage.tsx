@@ -26,7 +26,6 @@ import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
-  handleFlash: (message: string, severity: 'success'|'error' | 'info') => void
   match: any
 }
 
@@ -329,7 +328,6 @@ const MyPage = (props: Props) => {
                     updateProfileImage={updateProfileImage}
                     destroyProfileImage={destroyProfileImage}
                     updateUser={updateUser}
-                    handleFlash={props.handleFlash}
                   />
                   <Box my={2}>
                     {user.introduction}
@@ -337,7 +335,6 @@ const MyPage = (props: Props) => {
                       <IntroductionForm
                         value={user.introduction}
                         updateUser={updateUser}
-                        handleFlash={props.handleFlash}
                       />
                     }
                   </Box>
