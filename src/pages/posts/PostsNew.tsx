@@ -9,7 +9,7 @@ import { CurrentUserContext } from "../../CurrentUser";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { changeMessage, changeSeverity } from "../../actions/FlashMessage";
+import { changeMessage, changeSeverity, displayFlash } from "../../actions/Flash";
 
 interface Props {
   history: H.History;
@@ -29,6 +29,7 @@ const PostsNew = (props: Props) => {
       history.push("/signin")
       dispatch(changeMessage('投稿するにはログインしてください'))
       dispatch(changeSeverity('info'))
+      dispatch(displayFlash(true))
     }
   }, [firebaseAuthUser, props, history]);
 
@@ -54,16 +55,16 @@ const PostsNew = (props: Props) => {
       console.log(response)
       console.log('create post')
       history.push(`/posts/${response.id}`);
-      const message = '釣果を投稿しました'
-      const severity = 'success'
-      props.handleFlash(message,severity)
+      dispatch(changeMessage('釣果を投稿しました'))
+      dispatch(changeSeverity('info'))
+      dispatch(displayFlash(true))
     })
     }
     catch (error) {
       console.log(error.message);
-      const message = '釣果の投稿に失敗しました'
-      const severity = 'error'
-      props.handleFlash(message,severity)
+      dispatch(changeMessage('釣果の投稿に失敗しました'))
+      dispatch(changeSeverity('error'))
+      dispatch(displayFlash(true))
     }
   }
 
