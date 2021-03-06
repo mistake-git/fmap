@@ -28,7 +28,7 @@ const PostsNew = (props: Props) => {
       const severity = 'info'
       props.handleFlash(message,severity)
     }
-  }, [firebaseAuthUser,history]);
+  }, [firebaseAuthUser, props, history]);
 
   const createPost = async(post: any, image: File) => {
     try { 

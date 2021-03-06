@@ -46,16 +46,6 @@ const MyPage = (props: Props) => {
   const history = useHistory();
 
 
-  //ユーザーのIDだけ変わった時にユーザー情報を取得
-  useEffect(() => {
-    getUser()
-    getUserPosts()
-    getUserData()
-    getUserLikesPosts()
-    getUserFollowers()
-    getUserFollowings()
-  }, [id]);
-
   const getUser = async() => {
     try { 
     await
@@ -70,10 +60,6 @@ const MyPage = (props: Props) => {
       setError(true)
     }
   }
-
-  useEffect(() => {
-    getUser();
-   },[setUser]);
 
   const getUserData = async() => {
     try { 
@@ -91,10 +77,6 @@ const MyPage = (props: Props) => {
     }
   }
 
-  useEffect(() => {
-    getUserData();
-   },[]);
-
    const getUserPosts = async() => {
     try { 
     await
@@ -109,10 +91,6 @@ const MyPage = (props: Props) => {
     }
   }
 
-  useEffect(() => {
-    getUserPosts();
-   },[setPosts]);
-
    const getUserLikesPosts = async() => {
     try { 
     await
@@ -126,16 +104,7 @@ const MyPage = (props: Props) => {
       console.log(error.message);
     }
   }
-
-  useEffect(() => {
-    getUserLikesPosts();
-  },[setLikesPosts]);
-
-
-  useEffect(() => {
-    getUserFollowings();
-  },[setFollowings]);
-
+  
   const getUserFollowings = async() => {
     try { 
     await
@@ -149,10 +118,6 @@ const MyPage = (props: Props) => {
       console.log(error.message);
     }
   }
-
-  useEffect(() => {
-    getUserFollowers();
-  },[setFollowers]);
 
   const getUserFollowers = async() => {
     try { 
@@ -271,7 +236,7 @@ const MyPage = (props: Props) => {
         });
       }
     check();
-  }, []);
+  }, [firebaseAuthUser,]);
 
   const updateProfileImage = async(image: File) => {
     try { 
@@ -319,6 +284,25 @@ const MyPage = (props: Props) => {
       props.handleFlash(message,severity)
     }
   }
+
+  //ユーザーのIDだけ変わった時にユーザー情報を取得
+  useEffect(() => {
+    getUser()
+    getUserPosts()
+    getUserData()
+    getUserLikesPosts()
+    getUserFollowers()
+    getUserFollowings()
+  }, [id]);
+
+  useEffect(() => {
+    getUser()
+    getUserPosts()
+    getUserData()
+    getUserLikesPosts()
+    getUserFollowers()
+    getUserFollowings()
+  }, []);
 
   return (
     <Fragment>

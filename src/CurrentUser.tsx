@@ -26,7 +26,7 @@ const CurrentUserProvider = (props: any) => {
         })
       });
     }
-  }, []);
+  }, [firebaseAuthUser, props]);
   
   return (
     <CurrentUserContext.Provider
