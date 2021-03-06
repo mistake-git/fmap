@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardContent, createStyles, FormControl, Grid, InputAdornment, LinearProgress, makeStyles, MenuItem, Theme, Typography} from "@material-ui/core";
+import { Box, Button, Card, CardContent, createStyles, Grid, LinearProgress, makeStyles, MenuItem, Theme, Typography} from "@material-ui/core";
 import Template from "../components/layouts/Template";
 import * as H from 'history';
 import { Field, Form, Formik } from "formik";
@@ -49,7 +49,6 @@ const forms=[
   {name: "name", label: "名前",type: "text"},
   {name: "email", label: "メールアドレス",type: "email"},
 ]
-
 
 const Contact = (props: Props) => {
 
