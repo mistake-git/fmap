@@ -1,13 +1,13 @@
 import { createStore, combineReducers } from 'redux'
-import { SignInReducer, State } from './states/SignInState'
+import { FlashMessageReducer, State } from './states/FlashMessageState'
 
 export type AppState = {
-  signIn: State
+  flashMessage: State
 }
 
 const store = createStore(
   combineReducers<AppState>({
-    signIn: SignInReducer,
+    flashMessage: FlashMessageReducer,
   })
 )
 

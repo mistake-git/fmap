@@ -8,6 +8,8 @@ import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from "../../CurrentUser";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { changeMessage, changeSeverity } from "../../actions/FlashMessage";
 
 interface Props {
   history: H.History;
@@ -19,14 +21,14 @@ const PostsNew = (props: Props) => {
   const { currentUser} = useContext(CurrentUserContext)
   const {firebaseAuthUser } = useContext(AuthContext);
   const history = useHistory();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // if not logged in, redirect to login page
     if (firebaseAuthUser === null){
       history.push("/signin")
-      const message = '投稿するにはログインしてください'
-      const severity = 'info'
-      props.handleFlash(message,severity)
+      dispatch(changeMessage('投稿するにはログインしてください'))
+      dispatch(changeSeverity('info'))
     }
   }, [firebaseAuthUser, props, history]);
 
