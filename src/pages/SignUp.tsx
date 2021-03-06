@@ -16,7 +16,7 @@ interface Props {
 
 export default function SignUp(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
-  const history = useHistory();
+  const history = useHistory()
   const dispatch = useDispatch()
 
   useEffect(() => {

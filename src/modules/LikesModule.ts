@@ -1,29 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import LikeModel from '../models/LikeModel'
- 
+
 type State = {
   Like: LikeModel | null
 }
- 
+
 const initialState: State = {
-  Like: null
+  Like: null,
 }
- 
+
 const LikeModule = createSlice({
   name: 'like',
   initialState,
   reducers: {
-    createLike(state: State, action: PayloadAction){
-
-    },
-    destroyLike(state: State, action: PayloadAction){
-
-    }
-  }
+    createLike(state: State, action: PayloadAction) {},
+    destroyLike(state: State, action: PayloadAction) {},
+  },
 })
- 
-export const {
-  createLike, destroyLike
-} = LikeModule.actions
- 
+
+export const { createLike, destroyLike } = LikeModule.actions
+
 export default LikeModule

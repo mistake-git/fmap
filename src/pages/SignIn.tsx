@@ -15,7 +15,7 @@ interface Props {
 
 export default function SiginIn(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
-  const history = useHistory();
+  const history = useHistory()
   const dispatch = useDispatch()
 
   const signIn = (email: string, password: string) => {
