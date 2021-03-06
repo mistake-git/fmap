@@ -152,7 +152,7 @@ const PostsShow = (props: Props) => {
         });
       }
     f();
-  }, []);
+  }, [firebaseAuthUser]);
 
   const getMyLike = (likes: LikeModel[], currentUser: UserModel) => {
     const mylike = likes.find((like: LikeModel) => {
