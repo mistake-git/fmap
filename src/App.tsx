@@ -1,5 +1,5 @@
 import "./App.css";
-import React ,{ useState,} from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./Auth";
 import {CurrentUserProvider} from "./CurrentUser"
@@ -21,8 +21,7 @@ import Notifications from "./pages/Notifications";
 import Contact from "./pages/Contact";
 
 const App: React.FC = () => {
-
-
+  
   return (
     <Router>
 
