@@ -22,12 +22,6 @@ import Contact from "./pages/Contact";
 import auth from "./plugins/firebase";
 
 const App: React.FC = () => {
-
-  useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      
-    });
-  }, []);
   
   return (
     <Router>
