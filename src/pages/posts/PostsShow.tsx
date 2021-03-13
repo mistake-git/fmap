@@ -121,49 +121,23 @@ const PostsShow = (props: Props) => {
     getPostData();
   },[setSizeData, postId]);
 
-  const getPostLikes = async() => {
-    try { 
-    const likes = await
-      PostsRepository.getPostLikes(postId)
-        .then((results) => {
-        return results
-      })
-      return likes;
-    }
-    catch (error) {
-      console.log(error.message);
-    }
-    return [] as LikeModel[];
-  }
 
   useEffect(() => {
-    const f = async() => {
-      const likes = await getPostLikes();
-        auth.onAuthStateChanged((user) => {
-          if (firebaseAuthUser !== null && user !== null) {
-            UsersRepository.getUser(user!.uid)
-            .then((results) => {
-              console.log(results)
-              const me = results
-              getMyLike(likes, me)
-            })
-            .catch((data) =>{
-              console.log(data.user)
-            })
-          }
-        });
+    const getMyLike = async() => {
+        if (firebaseAuthUser !== null) {
+          LikessRepository.getMyLike(postId)
+          .then((results) => {
+            console.log(results)
+            setLike(results)
+          })
+          .catch((data) =>{
+            console.log(data.user)
+          })
+        }
       }
-    f();
+    getMyLike();
   }, [firebaseAuthUser]);
 
-  const getMyLike = (likes: LikeModel[], currentUser: UserModel) => {
-    const mylike = likes.find((like: LikeModel) => {
-    　return (like.user_id === currentUser?.id);
-    });
-    console.log('mylike')
-    console.log(mylike)
-    setLike(mylike || null)
-  }
 
   const createLike = async() => {
     if(firebaseAuthUser === null ){
