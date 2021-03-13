@@ -102,7 +102,6 @@ const PostsNew = (props: Props) => {
           <PostForm 
             action={createPost} 
             values={values}
-            currentUser={currentUser}
             lat={lat}
             lng={lng}
             title={title}

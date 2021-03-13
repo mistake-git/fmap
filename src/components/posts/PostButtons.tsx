@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
   post: PostModel;
-  currentUser: UserModel | null;
   like: LikeModel|null;
   postUser: UserModel;
   destroyPost: (id: number) => {};

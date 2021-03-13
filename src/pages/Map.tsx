@@ -60,7 +60,7 @@ const Map = () => {
             現在<span className={classes.countText}>{posts.length}</span>
             件の釣果
           </Typography>
-          <GoogleMap posts={posts} currentUser={currentUser} />
+          <GoogleMap posts={posts} />
         </Fragment>
       ) : (
         <ContentsLoading />

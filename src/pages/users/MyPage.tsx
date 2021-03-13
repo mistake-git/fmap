@@ -364,7 +364,6 @@ const MyPage = (props: Props) => {
                     <Grid xs={4} md={2} item>
                       <FollowButton
                         user={user}
-                        currentUser={currentUser}
                         createRelationships={createRelationships}
                         destroyRelationships={destroyRelationships}
                         isFollowed={isFollowed}
@@ -377,7 +376,6 @@ const MyPage = (props: Props) => {
                 <Box my={2}>
                   { user && posts && likesPosts ?
                   <UserTab
-                    currentUser={currentUser}
                     user={user}
                     posts={posts}
                     likesPosts={likesPosts}

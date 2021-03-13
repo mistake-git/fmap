@@ -398,7 +398,6 @@ const PostsShow = (props: Props) => {
                   {post &&
                     <PostButtons 
                       post={post}
-                      currentUser={currentUser}
                       like={like}
                       postUser={post.user}
                       destroyPost={destroyPost} 

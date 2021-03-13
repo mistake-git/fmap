@@ -111,7 +111,6 @@ const PostsEdit = (props: Props) => {
             {post && currentUser ?
               <PostForm 
                 post={post} 
-                currentUser={currentUser}
                 action={updatePost}
                 values={values}
                 lat={post.latitude}

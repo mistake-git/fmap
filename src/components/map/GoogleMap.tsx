@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, {useContext } from "react";
 import styled from 'styled-components'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useState } from 'react'
@@ -7,6 +7,7 @@ import { Avatar, Tooltip } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import UserModel from '../../models/UserModel';
 import PostModel from '../../models/PostModel';
+import { CurrentUserContext } from "../../CurrentUser";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,7 +40,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props{
-  currentUser: UserModel 
   posts: PostModel[]
 }
 
@@ -57,6 +57,7 @@ const GoogleMap = (props: Props) => {
       setCurrentKey(keyNumber)
     }
   }
+  const {currentUser} = useContext(CurrentUserContext)
   
   //サイズからピンの大きさを求める
   const getPinSize = (size: number) =>{
@@ -271,8 +272,8 @@ const GoogleMap = (props: Props) => {
             key: apiKey!
           }}
           defaultCenter={{
-            lat: props.currentUser && props.currentUser.latitude? props.currentUser.latitude: 35.9871612,
-            lng: props.currentUser && props.currentUser.longitude? props.currentUser.longitude: 140.419659
+            lat: currentUser && currentUser.latitude? currentUser.latitude: 35.9871612,
+            lng: currentUser && currentUser.longitude? currentUser.longitude: 140.419659
           }}
           yesIWantToUseGoogleMapApiInternals = {true}
           defaultZoom={8}

@@ -4,10 +4,10 @@ import UserModel from "../../models/UserModel";
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { AuthContext } from "../../Auth";
+import { CurrentUserContext } from "../../CurrentUser";
 
 interface Props {
   user: UserModel;
-  currentUser: UserModel | null;
   createRelationships: (follow_id: number) => {}
   destroyRelationships: (user_id: number, follow_id: number) => {}
   isFollowed: boolean
@@ -15,13 +15,14 @@ interface Props {
 
 export default function FollowButton(props: Props) {
   const { firebaseAuthUser } = useContext(AuthContext)
+  const {currentUser} = useContext(CurrentUserContext)
 
   const follow = () => {
     props.createRelationships(props.user.id)
   }
 
   const unFollow = () => {
-    props.destroyRelationships(props.currentUser!.id, props.user.id)
+    props.destroyRelationships(currentUser!.id, props.user.id)
   }
 
 	return (

@@ -88,7 +88,6 @@ const Transition = React.forwardRef(function Transition(
 });
 
 interface Props {
-  currentUser: UserModel
   lat: any
   lng: any
   values: any

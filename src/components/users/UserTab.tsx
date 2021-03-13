@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react';
+import React ,{ useContext, useState } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -15,6 +15,7 @@ import UserModel from '../../models/UserModel';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import BarChart from '../chart/BarChart';
+import { CurrentUserContext } from '../../CurrentUser';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -62,7 +63,6 @@ interface Props {
   fishData: any
   monthData: any
   user: UserModel
-  currentUser: UserModel | null
 }
 
 export default function UserTab(props: Props) {
@@ -72,6 +72,7 @@ export default function UserTab(props: Props) {
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
+  const {currentUser} = useContext(CurrentUserContext)
 
   return (
     <div className={classes.root}>
@@ -99,7 +100,7 @@ export default function UserTab(props: Props) {
                 </Grid>
               )
             }):
-            props.currentUser && props.currentUser.id === props.user.id ?
+            currentUser && currentUser.id === props.user.id ?
             <Box mx="auto">
               <Box my={5}>釣果がありません</Box>
               <Link to={'/posts/new'} className={classes.decolationNone}>
@@ -154,7 +155,6 @@ export default function UserTab(props: Props) {
       <TabPanel value={value} index={3}>
         <div  style={{ marginTop: "1em" }}>
           <GoogleMap
-            currentUser={props.user}
             posts={props.posts}
           />
         </div>

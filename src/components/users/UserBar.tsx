@@ -58,7 +58,6 @@ export default function UserBar(props: Props) {
             {currentUser?.id !== props.postUser.id &&
               <FollowButton
                 user={props.postUser}
-                currentUser={currentUser}
                 createRelationships={props.createRelationships}
                 destroyRelationships={props.destroyRelationships}
                 isFollowed={props.isFollowed}
