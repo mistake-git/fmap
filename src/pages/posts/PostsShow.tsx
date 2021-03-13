@@ -23,7 +23,6 @@ import LikessRepository from "../../repositories/LikesRepository";
 import CommentModel from "../../models/CommentModel";
 import { match, useHistory } from "react-router-dom";
 import { AuthContext } from "../../Auth";
-import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
@@ -57,7 +56,6 @@ const PostsShow = (props: Props) => {
   const [error, setError] = useState<boolean>(false)
   const postId = props.match?.params.id
   const { firebaseAuthUser } = useContext(AuthContext)
-  const {currentUser} = useContext(CurrentUserContext)
   const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const [hasMore, setHasMore] = useState(true);
   const history = useHistory();

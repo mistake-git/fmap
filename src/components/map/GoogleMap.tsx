@@ -5,7 +5,6 @@ import { useState } from 'react'
 import GoogleMapReact, { MapOptions, Maps } from 'google-map-react'
 import { Avatar, Tooltip } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import UserModel from '../../models/UserModel';
 import PostModel from '../../models/PostModel';
 import { CurrentUserContext } from "../../CurrentUser";
 

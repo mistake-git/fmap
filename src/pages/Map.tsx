@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Template from '../components/layouts/Template'
 import GoogleMap from '../components/map/GoogleMap'
 import PostModel from '../models/PostModel'
 import SearchForm from '../components/layouts/SearchForm'
 import { Box, makeStyles, Typography } from '@material-ui/core'
 import PostsRepository from '../repositories/PostsRepository'
-import { CurrentUserContext } from '../CurrentUser'
 import ContentsLoading from '../components/layouts/ContentsLoading'
 
 const useStyles = makeStyles(() => ({
@@ -19,7 +18,6 @@ const useStyles = makeStyles(() => ({
 const Map = () => {
   const [posts, setPosts] = useState<PostModel[] | null>(null)
   const placeHolder = '魚を検索 例 タイ'
-  const { currentUser } = useContext(CurrentUserContext)
   const classes = useStyles()
 
   //非同期で投稿をAPIから取得

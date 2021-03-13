@@ -30,7 +30,6 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 import MapPicker from 'react-google-map-picker'
 import * as Yup from "yup";
-import UserModel from '../../models/UserModel';
 import CancelIcon from '@material-ui/icons/Cancel';
 import PostsRepository from '../../repositories/PostsRepository';
 import LatLngSearchForm from './LatLngSearchForm';
