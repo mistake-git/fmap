@@ -2,17 +2,11 @@ import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../Auth'
 import AuthTemplate from '../components/layouts/AuthTemplate'
 import SignUpForm from '../components/auth/SignUpForm'
-import * as H from 'history'
 import UsersRepository from '../repositories/UsersRepository'
 import UserFormModel from '../forms/UserFormModel'
 import { useHistory } from 'react-router-dom'
 import { updateMessage, updateOpen, updateSeverity } from '../actions/FlashActions'
 import { useDispatch } from 'react-redux'
-
-interface Props {
-  history: H.History
-  match: any
-}
 
 export default function SignUp() {
   const { firebaseAuthUser } = useContext(AuthContext)
