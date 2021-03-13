@@ -50,8 +50,6 @@ const SignInForm = (props: Props) => {
               size="small"
               component={TextField}
             />
-
-        
           </FormControl>
           <FormControl margin="dense"  fullWidth>
             <Field

@@ -27,6 +27,16 @@ const CurrentUserProvider = (props: any) => {
           dispatch(updateSeverity('error'))
           dispatch(updateOpen(true))
         })
+        const firebaseAuthUser = user
+        firebaseAuthUser
+          ?.getIdToken(true)
+          .then((idToken) => {
+            console.log(idToken)
+            localStorage.setItem('id-token', idToken)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       });
     }
   }, [firebaseAuthUser, props, dispatch]);
