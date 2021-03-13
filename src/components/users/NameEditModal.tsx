@@ -15,7 +15,7 @@ import { TextField } from "formik-material-ui";
 import UserModel from '../../models/UserModel';
 import UserFormModel from '../../forms/UserFormModel';
 import { useDispatch } from 'react-redux';
-import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/FlashActions';
 
 const UserSchema = Yup.object().shape({
   name: Yup.string()

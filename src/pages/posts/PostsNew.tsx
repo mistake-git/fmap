@@ -9,7 +9,7 @@ import { CurrentUserContext } from "../../CurrentUser";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { updateMessage, updateSeverity, updateOpen } from "../../actions/Flash";
+import { updateMessage, updateSeverity, updateOpen } from "../../actions/FlashActions";
 
 interface Props {
   history: H.History;

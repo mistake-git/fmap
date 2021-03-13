@@ -29,7 +29,7 @@ import UsersRepository from "../../repositories/UsersRepository";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
 import { useDispatch } from "react-redux";
-import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/FlashActions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

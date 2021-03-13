@@ -6,7 +6,7 @@ import * as H from 'history'
 import UsersRepository from '../repositories/UsersRepository'
 import UserFormModel from '../forms/UserFormModel'
 import { useHistory } from 'react-router-dom'
-import { updateMessage, updateOpen, updateSeverity } from '../actions/Flash'
+import { updateMessage, updateOpen, updateSeverity } from '../actions/FlashActions'
 import { useDispatch } from 'react-redux'
 
 interface Props {

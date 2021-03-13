@@ -38,7 +38,7 @@ import PostModel from '../../models/PostModel';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import { useDispatch } from 'react-redux';
-import { updateMessage, updateOpen, updateSeverity } from '../../actions/Flash';
+import { updateMessage, updateOpen, updateSeverity } from '../../actions/FlashActions';
 
 const katakanaRegExp = /^[ァ-ヶー　 ]+$/
 export const PostSchema = Yup.object().shape({

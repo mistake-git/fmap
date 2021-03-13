@@ -11,7 +11,7 @@ import moment from 'moment'
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/FlashActions";
 
 interface Props {
   history: H.History;

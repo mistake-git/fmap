@@ -4,7 +4,7 @@ import UserModel from "./models/UserModel";
 import UsersRepository from "./repositories/UsersRepository";
 import { AuthContext } from './Auth'
 import { useDispatch } from "react-redux";
-import { updateMessage, updateOpen, updateSeverity } from "./actions/Flash";
+import { updateMessage, updateOpen, updateSeverity } from "./actions/FlashActions";
 
 const CurrentUserContext = createContext<any | null>(null);
 

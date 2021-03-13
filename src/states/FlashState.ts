@@ -1,5 +1,5 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers'
-import { updateOpen, updateMessage, updateSeverity } from '../actions/Flash'
+import { updateOpen, updateMessage, updateSeverity } from '../actions/FlashActions'
 import FlashMessageModel from '../models/FlashMessageModel'
 
 export type FlashState = FlashMessageModel

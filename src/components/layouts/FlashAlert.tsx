@@ -3,7 +3,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
-import { updateOpen } from '../../actions/Flash';
+import { updateOpen } from '../../actions/FlashActions';
 import { AppState } from '../../store';
 
 function Alert(props: AlertProps) {

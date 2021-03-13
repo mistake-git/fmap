@@ -22,7 +22,7 @@ import auth from "../../plugins/firebase";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
 import { useDispatch } from "react-redux";
-import { updateMessage, updateOpen, updateSeverity } from "../../actions/Flash";
+import { updateMessage, updateOpen, updateSeverity } from "../../actions/FlashActions";
 
 interface Props {
   history: H.History;
