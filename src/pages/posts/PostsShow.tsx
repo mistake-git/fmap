@@ -25,7 +25,6 @@ import { match, useHistory } from "react-router-dom";
 import { AuthContext } from "../../Auth";
 import { CurrentUserContext } from "../../CurrentUser";
 import auth from "../../plugins/firebase";
-import UsersRepository from "../../repositories/UsersRepository";
 import ContentsLoading from "../../components/layouts/ContentsLoading";
 import RelationshipsRepository from "../../repositories/RelationshipsRepository";
 import { useDispatch } from "react-redux";
