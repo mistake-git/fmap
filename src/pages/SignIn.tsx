@@ -8,12 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { updateMessage, updateOpen, updateSeverity } from '../actions/FlashActions'
 
-interface Props {
-  history: H.History
-  match: any
-}
-
-export default function SiginIn(props: Props) {
+export default function SiginIn() {
   const { firebaseAuthUser } = useContext(AuthContext)
   const history = useHistory()
   const dispatch = useDispatch()

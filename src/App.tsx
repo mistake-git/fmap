@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./Auth";
 import {CurrentUserProvider} from "./CurrentUser"
@@ -19,30 +19,25 @@ import Rankings from "./pages/rankings/Rankings";
 import Feed from "./pages/users/Feed";
 import Notifications from "./pages/Notifications";
 import Contact from "./pages/Contact";
+import auth from "./plugins/firebase";
 
 const App: React.FC = () => {
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      
+    });
+  }, []);
   
   return (
     <Router>
-
       <FlashAlert/>
-      
       <AuthProvider>
         <CurrentUserProvider>
           <Switch>
             <Route exact path="/" component={Map} />
-            <Route 
-              exact path="/signin" 
-              render={({ 
-                match,
-                history 
-              }) => (
-                <SignIn 
-                  match={match} 
-                  history={history}
-                />
-              )} 
-            />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/signup" component={SignUp} />
             <Route 
               exact path="/contact" 
               render={({ 
@@ -50,18 +45,6 @@ const App: React.FC = () => {
                 history 
               }) => (
                 <Contact
-                  match={match} 
-                  history={history}
-                />
-              )} 
-            />
-            <Route 
-              exact path="/signup" 
-              render={({ 
-                match,
-                history 
-              }) => (
-                <SignUp 
                   match={match} 
                   history={history}
                 />
