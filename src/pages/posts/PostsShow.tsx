@@ -121,23 +121,21 @@ const PostsShow = (props: Props) => {
     getPostData();
   },[setSizeData, postId]);
 
-
   useEffect(() => {
     const getMyLike = async() => {
-        if (firebaseAuthUser !== null) {
-          LikessRepository.getMyLike(postId)
-          .then((results) => {
-            console.log(results)
-            setLike(results)
-          })
-          .catch((data) =>{
-            console.log(data.user)
-          })
-        }
+      if (firebaseAuthUser !== null) {
+        LikessRepository.getMyLike(postId)
+        .then((results) => {
+          console.log(results)
+          setLike(results)
+        })
+        .catch((data) =>{
+          console.log(data.user)
+        })
       }
+    }
     getMyLike();
   }, [firebaseAuthUser]);
-
 
   const createLike = async() => {
     if(firebaseAuthUser === null ){
