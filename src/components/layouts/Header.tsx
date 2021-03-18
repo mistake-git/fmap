@@ -282,7 +282,7 @@ export default function Header() {
           </Button>
         </Link>
         )}
-        {firebaseAuthUser &&
+        {currentUser &&
         <Fragment>
           <Button className={classes.linkBold} onClick={handleNotificationOpen}>
             {notifications &&
@@ -325,10 +325,12 @@ export default function Header() {
               </Box>
             }
           </Popover>
-          <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
-            <AccountCircle />
-            {currentUser?.name}
-          </Button>
+          {currentUser &&
+            <Button className={classes.linkBold} aria-controls="user-menu" aria-haspopup="true" onClick={handleClick}>
+              <AccountCircle />
+              {currentUser.name}
+            </Button>
+          }
           <Menu
             id="user-menu"
             anchorEl={anchorEl}
